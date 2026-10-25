@@ -1,0 +1,217 @@
+[
+  {
+    "path": "README.md",
+    "size": 4580,
+    "sha256": "6972c2de21dc882d80d24a8be1cd114dadbf65dc4a509b9ebdce730657c7e38c"
+  },
+  {
+    "path": "docs/design_pages.json",
+    "size": 61661,
+    "sha256": "5c329008c2d827ddb6f5a982d65278699fe9516a50e0bd2f0452f3ac8ce09f4d"
+  },
+  {
+    "path": "docs/make_design.py",
+    "size": 47951,
+    "sha256": "d6d00af574391520c341a8bf1663a00ce1692af23170bb6a1db9174d80e5a20d"
+  },
+  {
+    "path": "docs/设计说明与交互规范_v0.2.md",
+    "size": 41868,
+    "sha256": "d4810659aa3e58ba5929304815ec8cd6877b3cc134cd0ba0e15c94086e1a4dfd"
+  },
+  {
+    "path": "docs/页面交互与系统设计_v0.2.docx",
+    "size": 687252,
+    "sha256": "703c4d5ca70e25b487988c2231e28057f5490c5cbffa50b434441edb98122b08"
+  },
+  {
+    "path": "docs/页面交互与系统设计_v0.2.pdf",
+    "size": 1299984,
+    "sha256": "a67f7623b2de7998354d4c7a9191b32256aed4d57a2ad3ef7db9db4ddd492b7c"
+  },
+  {
+    "path": "index.html",
+    "size": 145830,
+    "sha256": "6c5a6dbf79a20c4a1d939cd0e9baec646fdbe873548c359c1e48d2b19693943e"
+  },
+  {
+    "path": "previews/agents.png",
+    "size": 160115,
+    "sha256": "ddcdb154f503973d06bb65c8ca494aef6871f1fcdeadc2f4816c2e04eac2b38c"
+  },
+  {
+    "path": "previews/approvals.png",
+    "size": 229736,
+    "sha256": "6bb3e92dc8c28c36201d4ec7fe678db3b7797339e830ce808d5b65fb1efa7a8d"
+  },
+  {
+    "path": "previews/approvals_1366.png",
+    "size": 227541,
+    "sha256": "d3cefbb0945c23cbe481928cc0e69c8fda14d9bac4f48028ff41e45453a67166"
+  },
+  {
+    "path": "previews/assistants.png",
+    "size": 139474,
+    "sha256": "565096232fdc24f2179a89a6ed88e17b16c8443976df8f95a26ad23534f13334"
+  },
+  {
+    "path": "previews/audit.png",
+    "size": 113581,
+    "sha256": "0509a2be2b6c73ea9e958ad56bb9ad48567c40e1010e9293ed1569c7c31920b8"
+  },
+  {
+    "path": "previews/chat.png",
+    "size": 215518,
+    "sha256": "4bd9ad7821eecab3d70563c8b55284d101de17467caa665bfbc754e48c51e834"
+  },
+  {
+    "path": "previews/chat_1366.png",
+    "size": 183017,
+    "sha256": "0a3c5c9f3d5232285b6ed321feef9ba554eb0a34da78d819be2b889a0a292d44"
+  },
+  {
+    "path": "previews/editor.png",
+    "size": 200635,
+    "sha256": "ff1608267f9302b58ed8c3b5a8ba058016a5187e4e9aa20d83654007ef6eb1ec"
+  },
+  {
+    "path": "previews/editor_1366.png",
+    "size": 199296,
+    "sha256": "1e57b98f724a7cf36e462c3ccb458455eb467bb0077881c10544b8cab674d779"
+  },
+  {
+    "path": "previews/guide.png",
+    "size": 279448,
+    "sha256": "df090a422a401c807eb8c1bc687ef8f12bd81c5444c78689e393ae529051f97b"
+  },
+  {
+    "path": "previews/history.png",
+    "size": 121968,
+    "sha256": "c1075d982da18194f31f6239971add7f12ca843b5fded73b3ba790e456f2e357"
+  },
+  {
+    "path": "previews/home.png",
+    "size": 143430,
+    "sha256": "d3e70e1db398019b9fdee5bb12ea6c20a5b8ca0bce5c4e6fdc00944cf959b3cd"
+  },
+  {
+    "path": "previews/inbox.png",
+    "size": 111734,
+    "sha256": "85b911da0bc8d48bebaa3fcd18c9d14d9aa4b27ff6fd70cee674e4de63f9c5cf"
+  },
+  {
+    "path": "previews/knowledge.png",
+    "size": 123592,
+    "sha256": "ee682c6f2cbbadb5c214bd0aaa356d31eaea47c80ad96329ff1c61f58f6f75be"
+  },
+  {
+    "path": "previews/login.png",
+    "size": 84081,
+    "sha256": "817f73f3e4e0ff867ec4cb52831c86266d57a979648f4172ef7582d626ed93eb"
+  },
+  {
+    "path": "previews/mcp.png",
+    "size": 148253,
+    "sha256": "74308755e8024f53bbae5e524a277ec57437ed57c583d2dc73f22e78f9b27113"
+  },
+  {
+    "path": "previews/overview.png",
+    "size": 226247,
+    "sha256": "d4a0cb98d653b510305b05d1faf799adc3a4944e5aad789e0cade62eb1990c65"
+  },
+  {
+    "path": "previews/quotas.png",
+    "size": 156145,
+    "sha256": "9db8fc69125b4dae775e9157cdb5d5a883788cada4c7190425ead7d63e4dba5b"
+  },
+  {
+    "path": "previews/result.png",
+    "size": 248588,
+    "sha256": "529c10eb0207fe00d3d269cefae1980936f8313ed178d3c8950405c71acce70e"
+  },
+  {
+    "path": "previews/skills.png",
+    "size": 157949,
+    "sha256": "2527afab0596511c70eb355e28bfd1db1681502383b3c629eb40ab68c2d48e69"
+  },
+  {
+    "path": "previews/systems.png",
+    "size": 173158,
+    "sha256": "77aa6b1a569b5b6891b634083798d30325f0b2d7c157b674e6a9cc9a5e2afd83"
+  },
+  {
+    "path": "previews/task.png",
+    "size": 183048,
+    "sha256": "b2e5db04e217ab3722e041db6faac95f9aca3838db8105e622c1e9f45d9cd47e"
+  },
+  {
+    "path": "previews/tasks.png",
+    "size": 197278,
+    "sha256": "8a4669a3c7b0d5a9aafb339e19a87e91b7be3e54ea1ca0a3f0fe76a8560ebe6b"
+  },
+  {
+    "path": "previews/tasks_1366.png",
+    "size": 195481,
+    "sha256": "ed89bfb3f247b1819d9716d576ad21726aabb30aca83e44cbbd9c1ed70278fd6"
+  },
+  {
+    "path": "previews/users.png",
+    "size": 169691,
+    "sha256": "1063b06ce0fe87cc9c1cab605116bc95feba0a4d8b64ca371f4a293b3f82e4c5"
+  },
+  {
+    "path": "previews/workflows.png",
+    "size": 131108,
+    "sha256": "097461c7e65098a4bb87faadfb631a7c0aaa5a7a049044ebca8decfd88b36936"
+  },
+  {
+    "path": "source/app.js",
+    "size": 119181,
+    "sha256": "4b4bd340123f11e93d0530716df515fb60da70e3fcbb7803bf96a79ccbf8a972"
+  },
+  {
+    "path": "source/body.html",
+    "size": 292,
+    "sha256": "ee82b3cdf93aed9f8a2e16261031922107eaf0fbfaef1901100a7ea4abf440e5"
+  },
+  {
+    "path": "source/build.py",
+    "size": 339,
+    "sha256": "3c931a6f3c4d01421ce540d23369f591521a34bed654b9346a920cd400e3244e"
+  },
+  {
+    "path": "source/start.html",
+    "size": 234,
+    "sha256": "5c405bc8ca5d3c5fb101c60d41e2abef363044ae4c99e06bf2eeeade00c881d0"
+  },
+  {
+    "path": "source/style.css",
+    "size": 26098,
+    "sha256": "0b9411af80190e4d5e501ef321c0fa2e3b6cec44329fe5ecce893317d29cf501"
+  },
+  {
+    "path": "tests/check_interactions.py",
+    "size": 10040,
+    "sha256": "e657afed839d72b018dcfbc769a589555f534626428261e09e3776b9d19f92b9"
+  },
+  {
+    "path": "tests/check_ui.py",
+    "size": 2296,
+    "sha256": "ee7f37c6e0423875913b85ac61eb99ff89ac3fff70c42c487ab575619a952f80"
+  },
+  {
+    "path": "tests/interaction_report.json",
+    "size": 3008,
+    "sha256": "79b4e1dc27dced7e2c6731cfd50622c2326c38042b8e2dff1388ac2c98fa0a51"
+  },
+  {
+    "path": "tests/ui_report.json",
+    "size": 4442,
+    "sha256": "e72067298170498c542af85dd2e144ba1f3a5d4a802b9a6670377d95d2fa13a9"
+  },
+  {
+    "path": "tests/测试报告.md",
+    "size": 3331,
+    "sha256": "9137ca5005d5fa907613c34a215e83f0d5b5c5acaf9f470b3471488135998977"
+  }
+]

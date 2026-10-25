@@ -1,0 +1,134 @@
+{
+  "method": "Chromium 离线 set_content 渲染与真实 DOM 点击；没有真实外部服务调用",
+  "cases": [
+    {
+      "name": "前台上下文 / 执行事件 / 产物切换",
+      "result": "pass"
+    },
+    {
+      "name": "补充问题使用脚本响应且不冒充 AI 调用",
+      "result": "pass"
+    },
+    {
+      "name": "待补充状态回答后进入运行",
+      "result": "pass"
+    },
+    {
+      "name": "运行推进到待验证而非已解决",
+      "result": "pass"
+    },
+    {
+      "name": "结果验证后已解决",
+      "result": "pass"
+    },
+    {
+      "name": "重开保留旧结果并创建新一轮",
+      "result": "pass"
+    },
+    {
+      "name": "停止请求与停止确认分离",
+      "result": "pass"
+    },
+    {
+      "name": "失败重试新建执行尝试",
+      "result": "pass"
+    },
+    {
+      "name": "结果未知禁止自动继续",
+      "result": "pass"
+    },
+    {
+      "name": "审批未勾选时阻止批准",
+      "result": "pass"
+    },
+    {
+      "name": "批准只入队且不可重复批准",
+      "result": "pass"
+    },
+    {
+      "name": "审批关联任务可推进至待验证再确认",
+      "result": "pass"
+    },
+    {
+      "name": "拒绝审批必须填写原因",
+      "result": "pass"
+    },
+    {
+      "name": "计划变化使旧审批失效",
+      "result": "pass"
+    },
+    {
+      "name": "流程节点保存草稿",
+      "result": "pass"
+    },
+    {
+      "name": "流程节点新增与排序",
+      "result": "pass"
+    },
+    {
+      "name": "流程基本校验可见结果",
+      "result": "pass"
+    },
+    {
+      "name": "流程发布新版本与保留发布记录",
+      "result": "pass"
+    },
+    {
+      "name": "重复输出变量被校验拒绝",
+      "result": "pass"
+    },
+    {
+      "name": "Skill 缺少元信息校验失败",
+      "result": "pass"
+    },
+    {
+      "name": "Skill 合法内容保存与发布",
+      "result": "pass"
+    },
+    {
+      "name": "模型请求值与确认值分离",
+      "result": "pass"
+    },
+    {
+      "name": "停用 MCP 阻止后续演示执行",
+      "result": "pass"
+    },
+    {
+      "name": "测试角色访问后台显示无权访问",
+      "result": "pass"
+    },
+    {
+      "name": "停用演示用户禁止测试身份登录",
+      "result": "pass"
+    },
+    {
+      "name": "额度表单保存有效数值与审计",
+      "result": "pass"
+    },
+    {
+      "name": "搜索无结果显示空状态",
+      "result": "pass"
+    },
+    {
+      "name": "本地文件添加与文本预览",
+      "result": "pass"
+    },
+    {
+      "name": "禁止不支持的附件格式",
+      "result": "pass"
+    },
+    {
+      "name": "样例 CSV 可下载并明确为合成数据",
+      "result": "pass"
+    },
+    {
+      "name": "新问题输入进入补充状态并显示用户目标",
+      "result": "pass"
+    },
+    {
+      "name": "原生对话框可 Escape 关闭",
+      "result": "pass"
+    }
+  ],
+  "pageErrors": []
+}

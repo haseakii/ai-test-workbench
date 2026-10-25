@@ -1,0 +1,236 @@
+{
+  "routes": [
+    {
+      "route": "home",
+      "h1": "新建问题",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "h1": "问题排查",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "history",
+      "h1": "历史问题",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "result",
+      "h1": "核对结果与产物",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "knowledge",
+      "h1": "知识与经验",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "inbox",
+      "h1": "我的待办",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "overview",
+      "h1": "总控概览",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "tasks",
+      "h1": "任务中心",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "task",
+      "h1": "任务详情",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approvals",
+      "h1": "审批中心",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "workflows",
+      "h1": "工作流",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "editor",
+      "h1": "报表差异核对 · 流程编辑",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "assistants",
+      "h1": "助手配置",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "agents",
+      "h1": "ACP 与模型",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "skills",
+      "h1": "Skill 中心",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "mcp",
+      "h1": "MCP 工具与连接",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "systems",
+      "h1": "系统与环境",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "users",
+      "h1": "用户与权限",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "quotas",
+      "h1": "额度与预算",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "audit",
+      "h1": "审计日志",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "login",
+      "h1": "问题有上下文，\n执行有边界，\n结论有依据。",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "guide",
+      "h1": "原型评审指南",
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "viewport": [
+        1366,
+        768
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "editor",
+      "viewport": [
+        1366,
+        768
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approvals",
+      "viewport": [
+        1366,
+        768
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "tasks",
+      "viewport": [
+        1366,
+        768
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "viewport": [
+        1024,
+        900
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "editor",
+      "viewport": [
+        1024,
+        900
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approvals",
+      "viewport": [
+        1024,
+        900
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "tasks",
+      "viewport": [
+        1024,
+        900
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "viewport": [
+        390,
+        844
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "editor",
+      "viewport": [
+        390,
+        844
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approvals",
+      "viewport": [
+        390,
+        844
+      ],
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "tasks",
+      "viewport": [
+        390,
+        844
+      ],
+      "bodyHorizontalOverflow": false
+    }
+  ],
+  "errors": [],
+  "missingActions": [],
+  "screenshots": [
+    "home.png",
+    "chat.png",
+    "history.png",
+    "result.png",
+    "knowledge.png",
+    "inbox.png",
+    "overview.png",
+    "tasks.png",
+    "task.png",
+    "approvals.png",
+    "workflows.png",
+    "editor.png",
+    "assistants.png",
+    "agents.png",
+    "skills.png",
+    "mcp.png",
+    "systems.png",
+    "users.png",
+    "quotas.png",
+    "audit.png",
+    "login.png",
+    "guide.png"
+  ]
+}
