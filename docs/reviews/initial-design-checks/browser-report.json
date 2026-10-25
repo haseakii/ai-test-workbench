@@ -1,0 +1,768 @@
+{
+  "time": "2026-10-25T08:29:41.659Z",
+  "scope": "offline synthetic prototype, not real Provider acceptance",
+  "method": "Playwright on local file:// plus DOM actions",
+  "cases": [
+    {
+      "name": "chat is the default with no technical dashboard",
+      "result": "pass"
+    },
+    {
+      "name": "system selection narrows environments",
+      "result": "pass"
+    },
+    {
+      "name": "quick questions populate composer without sending",
+      "result": "pass"
+    },
+    {
+      "name": "attachment metadata can be added and removed without upload",
+      "result": "pass"
+    },
+    {
+      "name": "chat sends text safely and fixes system and environment",
+      "result": "pass"
+    },
+    {
+      "name": "permission and verification stay inside conversation",
+      "result": "pass"
+    },
+    {
+      "name": "new conversations and history preserve previous context",
+      "result": "pass"
+    },
+    {
+      "name": "stopping a simulated reply prevents later result",
+      "result": "pass"
+    },
+    {
+      "name": "new context invalidates pending permission",
+      "result": "pass"
+    },
+    {
+      "name": "shift enter inserts newline and mobile retains new conversation",
+      "result": "pass"
+    },
+    {
+      "name": "management entry shows four configuration sections, with secondary diagnostics",
+      "result": "pass"
+    },
+    {
+      "name": "configuration edits remain draft across navigation and do not affect chat",
+      "result": "pass"
+    },
+    {
+      "name": "preview dialog can cancel with focus restoration before applying",
+      "result": "pass"
+    },
+    {
+      "name": "duplicate names block publication and preserve input",
+      "result": "pass"
+    },
+    {
+      "name": "new records start disabled and whole-draft discard restores selection",
+      "result": "pass"
+    },
+    {
+      "name": "disabled default model fails validation without changing applied config",
+      "result": "pass"
+    },
+    {
+      "name": "role preview limits user systems, environments, models and attachments",
+      "result": "pass"
+    },
+    {
+      "name": "model mapping changes do not overwrite existing conversation snapshot",
+      "result": "pass"
+    },
+    {
+      "name": "revoking an environment blocks continuation and preserves the original scope",
+      "result": "pass"
+    },
+    {
+      "name": "restoring scope does not silently rebind or discard old messages",
+      "result": "pass"
+    },
+    {
+      "name": "published configuration invalidates a pending permission card",
+      "result": "pass"
+    },
+    {
+      "name": "empty grants produce an explicit empty user state and no send",
+      "result": "pass"
+    },
+    {
+      "name": "configuration audit records changes and reload restores synthetic defaults",
+      "result": "pass"
+    },
+    {
+      "name": "new system and environment require an explicit role grant before appearing",
+      "result": "pass"
+    },
+    {
+      "name": "environment default model is selected on a new conversation scope",
+      "result": "pass"
+    },
+    {
+      "name": "reparenting an environment never silently changes an existing conversation system",
+      "result": "pass"
+    },
+    {
+      "name": "invalid limit blocks apply and keeps the number for correction",
+      "result": "pass"
+    },
+    {
+      "name": "management distinguishes configuration, integrations, runtime, context, users and records",
+      "result": "pass"
+    },
+    {
+      "name": "connection preflight never upgrades unknown capabilities to verified",
+      "result": "pass"
+    },
+    {
+      "name": "MCP schema changes and expired authentication have explicit blocking reasons",
+      "result": "pass"
+    },
+    {
+      "name": "runtime blocks writes, arbitrary terminal, network and mismatched code versions",
+      "result": "pass"
+    },
+    {
+      "name": "context requires valid output reservation and preserves unknown model window",
+      "result": "pass"
+    },
+    {
+      "name": "memory review is required and deletion remains pending receipts",
+      "result": "pass"
+    },
+    {
+      "name": "configuration administrator cannot manage user identities",
+      "result": "pass"
+    },
+    {
+      "name": "user grant preview rejects missing reason, self elevation and out-of-scope grants",
+      "result": "pass"
+    },
+    {
+      "name": "suspending a synthetic user requires review and records a new revision",
+      "result": "pass"
+    },
+    {
+      "name": "valid user grant change applies only after confirmation and advances authorization revision",
+      "result": "pass"
+    },
+    {
+      "name": "records metadata is filtered by reviewer role and scope before display",
+      "result": "pass"
+    },
+    {
+      "name": "record content requires a reason and its own short-lived review lease",
+      "result": "pass"
+    },
+    {
+      "name": "switching administrator roles revokes content lease",
+      "result": "pass"
+    },
+    {
+      "name": "record search does not execute backend work",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough model change invalidates pending plan without rewriting prior snapshot",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough execution and user delivery share a fixed preparation and binding",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough conversation delivers a clearly synthetic deterministic file",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough administrator finds this same conversation, context and result revision",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough content lease is lost when leaving the review page",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough older result cannot confirm a newer question or result version",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough frozen configuration revision stays distinct from current admission policy",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough artifact download rechecks current role permission",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough a submitter without approval rights waits for the responsible reviewer",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough pausing the actual preview user stops next steps and hides history titles",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough restoring a user preserves drafts but does not revive prior approval",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough live user grant changes update model and approval rights on the same identity",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough MCP observation change expires the current plan with no replay",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough context includes only eligible memory with original source authority",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough source revocation invalidates derived result and administrator content lease",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough content lease expires automatically without a manual button",
+      "result": "pass"
+    },
+    {
+      "name": "walkthrough expired pending plan cannot be approved or executed later",
+      "result": "pass"
+    },
+    {
+      "name": "actual file navigation loads self-contained prototype",
+      "result": "pass"
+    },
+    {
+      "name": "empty conditions block with visible feedback",
+      "result": "pass"
+    },
+    {
+      "name": "normal execution awaits explicit user verification",
+      "result": "pass"
+    },
+    {
+      "name": "synthetic CSV download includes clear provenance and deterministic difference",
+      "result": "pass"
+    },
+    {
+      "name": "reopen preserves prior result and verifier",
+      "result": "pass"
+    },
+    {
+      "name": "not_found retains original owner and disabled replacement",
+      "result": "pass"
+    },
+    {
+      "name": "original receipt recovery does not resubmit",
+      "result": "pass"
+    },
+    {
+      "name": "changing default does not rebind active execution",
+      "result": "pass"
+    },
+    {
+      "name": "final fence precedes a new binding",
+      "result": "pass"
+    },
+    {
+      "name": "cancel request and acknowledgement remain separate",
+      "result": "pass"
+    },
+    {
+      "name": "approval checkbox guard and decision/delivery separation",
+      "result": "pass"
+    },
+    {
+      "name": "failed approval preserves entered review comment",
+      "result": "pass"
+    },
+    {
+      "name": "native expiry renews request and resets human confirmation",
+      "result": "pass"
+    },
+    {
+      "name": "renewed approval delivers once and awaits operation receipt",
+      "result": "pass"
+    },
+    {
+      "name": "unknown delivery disables resend and resolves original receipt",
+      "result": "pass"
+    },
+    {
+      "name": "unsupported bridge is visible and send disabled",
+      "result": "pass"
+    },
+    {
+      "name": "capability and budget failures leave dispatch count zero",
+      "result": "pass"
+    },
+    {
+      "name": "bad evidence cannot produce successful result",
+      "result": "pass"
+    },
+    {
+      "name": "bad artifact blocks sample download",
+      "result": "pass"
+    },
+    {
+      "name": "handoff export preserves unresolved ownership and provenance",
+      "result": "pass"
+    },
+    {
+      "name": "state explorer exposes all five layers",
+      "result": "pass"
+    },
+    {
+      "name": "dialog Escape closes and returns focus",
+      "result": "pass"
+    },
+    {
+      "name": "refresh explicitly resets in-memory simulation",
+      "result": "pass"
+    }
+  ],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "layouts": [
+    {
+      "route": "admin-integrations",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-runtime",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-context",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-users",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-records",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-systems",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-environments",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-models",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-permissions",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "workbench",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "result",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "connections",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "binding",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approval",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "contract",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "exceptions",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-integrations",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-runtime",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-context",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-users",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-records",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-systems",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-environments",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-models",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-permissions",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "workbench",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "result",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "connections",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "binding",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approval",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "contract",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "exceptions",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-integrations",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-runtime",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-context",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-users",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-records",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-systems",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-environments",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-models",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-permissions",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "workbench",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "result",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "connections",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "binding",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approval",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "contract",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "exceptions",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-integrations",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-runtime",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-context",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-users",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-records",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "chat",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-systems",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-environments",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-models",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-permissions",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "workbench",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "result",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "connections",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "binding",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "approval",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "contract",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "exceptions",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    }
+  ],
+  "sourceHashes": {
+    "docs/prototype/index.html": "eefce4eb3db3d7061e8723be2701004509e3c47d5ef88ee507b46d0b7fe545a4",
+    "docs/prototype/model.js": "e017dd22d08a535310fb26b317c22c48f0e5e12324c1732a7c62d13048988cab",
+    "docs/prototype/app.js": "a3cfc178c23258f83661008142c4d28e825dbd03d067d0ef21adde254ab4e873",
+    "docs/prototype/journey.js": "5c82ae7d296be460a91ffcb72eee79bf51febd39292142b4d9482935ba8bb287",
+    "docs/prototype/tests/walkthrough-checks.cjs": "4594ce877a206898cd4d94a230bf3611bfd9321bda955bfd288e0596f77630ee",
+    "docs/prototype/service-design.js": "d4a8ca67cfe25346426db48ae943ce0da9631baa896cefad9b65be36c86bb56d",
+    "docs/prototype/service-design.css": "790540e014cd9b0fd9e7c67b8d59393dd54cf80ad9b303124d87608467dc7cff",
+    "docs/prototype/tests/service-design-checks.cjs": "c290bc9cd7c1f84bbfecbf455bb24f54bbba5c2f6b116064451f9530c08d9e68",
+    "docs/prototype/configuration.js": "2c0575ce2b2c1d00bba32c08396851949e51eb2ca16392ff1392682d917ac34d",
+    "docs/prototype/admin.js": "836c1966a9ccec89229485ba20885626d297a00c31d4dee365e3c1affc198155",
+    "docs/prototype/admin.css": "d1d130ff5a528989078d5686bb87603b638bee86f78b90419e6ead2bc97d73ed",
+    "docs/prototype/tests/admin-checks.cjs": "35d5733da7631575744b1463abd7e4cb6b1d6c5886b432640bcc7c7fd831942f",
+    "docs/prototype/chat.js": "aa97b303556b24f08759321803aea25214448c9361b6b059d202af6024cf7d42",
+    "docs/prototype/chat.css": "f47cab50c8fe31691e447696f178fc87a20968b9b1397d5c3133c5187fbac6e8",
+    "docs/prototype/tests/chat-checks.cjs": "a5d9079e42eb3014a1cfc5e51a498f21d9d29256a13c47d7e4f671073205aa53",
+    "docs/prototype/style.css": "27c15a3287c8e8d145f081086d1ac9a1d083ccecfa07ef5fa1997b336bc0eba3",
+    "docs/prototype/shell.html": "bfdc0f6c04127e316ed395e6165916238e10b57472e1b523c2b115f9d0baa95b",
+    "docs/design/contracts/state-transitions.json": "a92395cfb2c713493a3d1f2fd9e9b1396182291ffb8b3028b03550b78f3edc19",
+    "docs/prototype/tests/browser-check.cjs": "85b0b1401083e271c6f572254efe6b7c7a249cbbe77c8fe219159a3238d19fe6"
+  },
+  "browser": "156.0.4314.42",
+  "passed": 81,
+  "total": 81,
+  "overflows": []
+}

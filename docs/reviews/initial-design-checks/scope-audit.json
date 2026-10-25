@@ -1,0 +1,255 @@
+{
+  "scope": "Files/sections and offline cases only; semantic design review remains a human assessment.",
+  "requirements": [
+    {
+      "id": "D01",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/INTERACTION-SPEC.md",
+          "section": "## 用户端：一个对话界面",
+          "sha256": "57e68e9559ccaf6aaaddb74cc1669756112e182722f825f9584df5d71304411a"
+        },
+        {
+          "path": "docs/design/SERVICE-EXECUTION.md",
+          "section": "## 一条消息如何执行",
+          "sha256": "d739709d335baaa9af518c9314a34b46281edab4e01ef686d6cbd8ac0f8e8643"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 4,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D02",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/ADMIN-CONFIGURATION.md",
+          "section": "## 前后台映射与既有会话",
+          "sha256": "9802623de2fcff94a2129961b193920ac62923d2581884a68b5c20ff001b487e"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 系统接入合同",
+          "sha256": "5e7602ea50b47f3c3acddfd48dfbd0980e61384fbc0c4e45aa253a9871710025"
+        }
+      ],
+      "offlineCasesMatched": 2,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D03",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/SERVICE-EXECUTION.md",
+          "section": "## 前台 API 草案",
+          "sha256": "d739709d335baaa9af518c9314a34b46281edab4e01ef686d6cbd8ac0f8e8643"
+        },
+        {
+          "path": "docs/design/SERVICE-EXECUTION.md",
+          "section": "## 事件与恢复",
+          "sha256": "d739709d335baaa9af518c9314a34b46281edab4e01ef686d6cbd8ac0f8e8643"
+        },
+        {
+          "path": "docs/design/EXECUTION-PROVIDER.md",
+          "section": "## 2. 方法合同",
+          "sha256": "82efd0073a4a406bac21257703ac0fa2599049b75442c08b1747ab166f8cc4f6"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 4,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D04",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## 四个不同的配置对象",
+          "sha256": "2b4267b0fa3d6ef75b64b02240dafda74c18b4602be5adceee63969d0a6f775a"
+        },
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## 准入状态与模型能力",
+          "sha256": "2b4267b0fa3d6ef75b64b02240dafda74c18b4602be5adceee63969d0a6f775a"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 2,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D05",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## ACP Host 生命周期",
+          "sha256": "2b4267b0fa3d6ef75b64b02240dafda74c18b4602be5adceee63969d0a6f775a"
+        },
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## 权限、文件、终端与 MCP",
+          "sha256": "2b4267b0fa3d6ef75b64b02240dafda74c18b4602be5adceee63969d0a6f775a"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 3,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D06",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 三种环境分别建模",
+          "sha256": "5e7602ea50b47f3c3acddfd48dfbd0980e61384fbc0c4e45aa253a9871710025"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 文件与网络出口",
+          "sha256": "5e7602ea50b47f3c3acddfd48dfbd0980e61384fbc0c4e45aa253a9871710025"
+        }
+      ],
+      "offlineCasesMatched": 1,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D07",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 上下文组装合同",
+          "sha256": "758905a1763269cb593c35498d10541f6a31880ac62b0e872d64326a9bab14a5"
+        },
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 连续对话和恢复",
+          "sha256": "758905a1763269cb593c35498d10541f6a31880ac62b0e872d64326a9bab14a5"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 2,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D08",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 记忆生命周期",
+          "sha256": "758905a1763269cb593c35498d10541f6a31880ac62b0e872d64326a9bab14a5"
+        },
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 保留、删除与追踪",
+          "sha256": "758905a1763269cb593c35498d10541f6a31880ac62b0e872d64326a9bab14a5"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 2,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D09",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 代码读取流程",
+          "sha256": "5e7602ea50b47f3c3acddfd48dfbd0980e61384fbc0c4e45aa253a9871710025"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 隔离与恢复验收",
+          "sha256": "5e7602ea50b47f3c3acddfd48dfbd0980e61384fbc0c4e45aa253a9871710025"
+        }
+      ],
+      "offlineCasesMatched": 1,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D10",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/MCP-ACCESS.md",
+          "section": "## 协议版本与传输",
+          "sha256": "bad0cd28e30e5554d41f7372c9b4322075077f24892ed18d788755de7f8ba37e"
+        },
+        {
+          "path": "docs/design/MCP-ACCESS.md",
+          "section": "## 工具调用链",
+          "sha256": "bad0cd28e30e5554d41f7372c9b4322075077f24892ed18d788755de7f8ba37e"
+        },
+        {
+          "path": "docs/design/MCP-ACCESS.md",
+          "section": "## 超时、重试和撤权",
+          "sha256": "bad0cd28e30e5554d41f7372c9b4322075077f24892ed18d788755de7f8ba37e"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 2,
+      "realImplementationStatus": "not_started"
+    },
+    {
+      "id": "D11",
+      "designEvidencePresent": true,
+      "evidence": [
+        {
+          "path": "docs/design/USER-GOVERNANCE.md",
+          "section": "## 用户权限变更",
+          "sha256": "7fe4705b528479e6fd4783be2826affa047ad74cf939a241d81fda59c91c100b"
+        },
+        {
+          "path": "docs/design/USER-GOVERNANCE.md",
+          "section": "## 记录列表和内容审阅",
+          "sha256": "7fe4705b528479e6fd4783be2826affa047ad74cf939a241d81fda59c91c100b"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层",
+          "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+        }
+      ],
+      "offlineCasesMatched": 7,
+      "realImplementationStatus": "not_started"
+    }
+  ],
+  "requirementCount": 11,
+  "browserSourcesCurrent": true
+}

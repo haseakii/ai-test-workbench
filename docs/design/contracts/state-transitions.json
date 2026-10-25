@@ -1,0 +1,687 @@
+{
+  "status": "design_draft",
+  "defaultRule": "未列出的转换均拒绝；重复事实仅幂等确认，不重复触发副作用。",
+  "layers": {
+    "issue": {
+      "label": "问题会话",
+      "initial": "awaiting_user",
+      "states": [
+        "open",
+        "awaiting_user",
+        "awaiting_verification",
+        "resolved",
+        "handoff",
+        "archived_unconfirmed"
+      ],
+      "transitions": [
+        {
+          "id": "I01",
+          "from": [
+            "awaiting_user"
+          ],
+          "event": "conditions_confirmed",
+          "to": "open",
+          "actor": "提交人/授权负责人",
+          "guard": "必需条件及环境固定",
+          "atomic": "T_CREATE"
+        },
+        {
+          "id": "I02",
+          "from": [
+            "open"
+          ],
+          "event": "input_required",
+          "to": "awaiting_user",
+          "actor": "业务流程",
+          "guard": "仅缺阻塞条件",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "I03",
+          "from": [
+            "open",
+            "awaiting_user"
+          ],
+          "event": "result_delivered",
+          "to": "awaiting_verification",
+          "actor": "业务服务",
+          "guard": "运行成功且证据/文件授权及完整性满足",
+          "atomic": "T_RESULT"
+        },
+        {
+          "id": "I04",
+          "from": [
+            "awaiting_verification"
+          ],
+          "event": "user_resolved",
+          "to": "resolved",
+          "actor": "提交人/授权负责人",
+          "guard": "对当前输入轮次及 resultRevision 的明确确认，必要来源仍有效",
+          "atomic": "T_VERIFY"
+        },
+        {
+          "id": "I05",
+          "from": [
+            "awaiting_verification",
+            "resolved"
+          ],
+          "event": "user_reopened",
+          "to": "open",
+          "actor": "提交人/授权负责人",
+          "guard": "旧执行安全关闭；新轮次保留旧结果",
+          "atomic": "T_REOPEN"
+        },
+        {
+          "id": "I06",
+          "from": [
+            "open",
+            "awaiting_user",
+            "awaiting_verification"
+          ],
+          "event": "handoff_requested",
+          "to": "handoff",
+          "actor": "授权负责人",
+          "guard": "接管包及责任人明确；不释放未知拥有权",
+          "atomic": "T_HANDOFF"
+        },
+        {
+          "id": "I07",
+          "from": [
+            "awaiting_verification"
+          ],
+          "event": "archive_unconfirmed",
+          "to": "archived_unconfirmed",
+          "actor": "授权负责人",
+          "guard": "未收到解决确认，不计入解决率",
+          "atomic": "T_VERIFY"
+        }
+      ]
+    },
+    "run": {
+      "label": "流程运行",
+      "initial": "draft",
+      "states": [
+        "draft",
+        "ready",
+        "active",
+        "waiting",
+        "reconciling",
+        "stopping",
+        "succeeded",
+        "failed",
+        "cancelled",
+        "handoff"
+      ],
+      "transitions": [
+        {
+          "id": "R01",
+          "from": [
+            "draft"
+          ],
+          "event": "preflight_passed",
+          "to": "ready",
+          "actor": "业务服务",
+          "guard": "固定流程、能力、权限及预算校验通过",
+          "atomic": "T_CREATE"
+        },
+        {
+          "id": "R02",
+          "from": [
+            "ready"
+          ],
+          "event": "dispatch_started",
+          "to": "active",
+          "actor": "业务服务",
+          "guard": "节点与唯一 Binding、预算、outbox 原子保存",
+          "atomic": "T_DISPATCH"
+        },
+        {
+          "id": "R03",
+          "from": [
+            "active"
+          ],
+          "event": "wait_required",
+          "to": "waiting",
+          "actor": "业务服务",
+          "guard": "存在等待输入/审批节点，禁止计费轮询",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "R04",
+          "from": [
+            "waiting"
+          ],
+          "event": "wait_cleared",
+          "to": "active",
+          "actor": "业务服务",
+          "guard": "输入采纳或批准已送达且执行前复查通过",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "R05",
+          "from": [
+            "active",
+            "waiting",
+            "stopping"
+          ],
+          "event": "observation_unknown",
+          "to": "reconciling",
+          "actor": "业务服务",
+          "guard": "接纳/执行/停止事实未知",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "R06",
+          "from": [
+            "reconciling"
+          ],
+          "event": "active_recovered",
+          "to": "active",
+          "actor": "业务服务",
+          "guard": "权威快照确认原执行活跃",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "R07",
+          "from": [
+            "active",
+            "waiting",
+            "reconciling"
+          ],
+          "event": "cancel_requested",
+          "to": "stopping",
+          "actor": "授权用户/业务服务",
+          "guard": "登记停止命令，不宣告已取消",
+          "atomic": "T_CANCEL"
+        },
+        {
+          "id": "R08",
+          "from": [
+            "active",
+            "waiting",
+            "reconciling",
+            "stopping"
+          ],
+          "event": "all_nodes_succeeded",
+          "to": "succeeded",
+          "actor": "业务服务",
+          "guard": "必要节点全部成功、无活跃执行/未知副作用、产物可用",
+          "atomic": "T_RESULT"
+        },
+        {
+          "id": "R09",
+          "from": [
+            "stopping",
+            "reconciling"
+          ],
+          "event": "cancel_confirmed",
+          "to": "cancelled",
+          "actor": "业务服务",
+          "guard": "原拥有者不活跃且副作用已知",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "R10",
+          "from": [
+            "ready",
+            "active",
+            "waiting",
+            "reconciling",
+            "stopping"
+          ],
+          "event": "failure_confirmed",
+          "to": "failed",
+          "actor": "业务服务",
+          "guard": "权威失败且无活跃执行/未知副作用",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "R11",
+          "from": [
+            "ready",
+            "active",
+            "waiting",
+            "reconciling",
+            "stopping"
+          ],
+          "event": "handoff_requested",
+          "to": "handoff",
+          "actor": "授权负责人",
+          "guard": "接管包完整，未知占用仍保留",
+          "atomic": "T_HANDOFF"
+        }
+      ]
+    },
+    "node": {
+      "label": "节点运行",
+      "initial": "blocked",
+      "states": [
+        "blocked",
+        "ready",
+        "dispatching",
+        "active",
+        "waiting_input",
+        "waiting_approval",
+        "reconciling",
+        "stopping",
+        "succeeded",
+        "failed",
+        "cancelled",
+        "handoff"
+      ],
+      "transitions": [
+        {
+          "id": "N01",
+          "from": [
+            "blocked"
+          ],
+          "event": "dependencies_ready",
+          "to": "ready",
+          "actor": "业务流程",
+          "guard": "必需输入及前置节点满足",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "N02",
+          "from": [
+            "ready"
+          ],
+          "event": "dispatch_started",
+          "to": "dispatching",
+          "actor": "业务服务",
+          "guard": "未存在另一未关闭 Binding",
+          "atomic": "T_DISPATCH"
+        },
+        {
+          "id": "N03",
+          "from": [
+            "dispatching"
+          ],
+          "event": "execution_active",
+          "to": "active",
+          "actor": "后端事实投影",
+          "guard": "accepted 回执及原执行活跃已确认",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "N04",
+          "from": [
+            "active"
+          ],
+          "event": "input_required",
+          "to": "waiting_input",
+          "actor": "业务流程",
+          "guard": "缺少阻塞条件",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "N05",
+          "from": [
+            "active"
+          ],
+          "event": "permission_required",
+          "to": "waiting_approval",
+          "actor": "后端事实投影",
+          "guard": "具体 operationHash 与 requestId 已保存",
+          "atomic": "T_APPROVAL"
+        },
+        {
+          "id": "N06",
+          "from": [
+            "waiting_input",
+            "waiting_approval"
+          ],
+          "event": "wait_cleared",
+          "to": "active",
+          "actor": "业务服务",
+          "guard": "采纳回执/有效权限送达及复查",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "N07",
+          "from": [
+            "dispatching",
+            "active",
+            "waiting_input",
+            "waiting_approval",
+            "stopping"
+          ],
+          "event": "observation_unknown",
+          "to": "reconciling",
+          "actor": "后端事实投影",
+          "guard": "失联或外部结果未知",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "N08",
+          "from": [
+            "reconciling"
+          ],
+          "event": "active_recovered",
+          "to": "active",
+          "actor": "后端事实投影",
+          "guard": "原执行权威快照一致",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "N09",
+          "from": [
+            "active",
+            "waiting_input",
+            "waiting_approval",
+            "reconciling"
+          ],
+          "event": "cancel_requested",
+          "to": "stopping",
+          "actor": "授权用户/业务服务",
+          "guard": "保留正在发生的动作",
+          "atomic": "T_CANCEL"
+        },
+        {
+          "id": "N10",
+          "from": [
+            "active",
+            "reconciling",
+            "stopping"
+          ],
+          "event": "execution_succeeded",
+          "to": "succeeded",
+          "actor": "后端事实投影",
+          "guard": "终态、不活跃、副作用已知、输出合同满足",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "N11",
+          "from": [
+            "stopping",
+            "reconciling"
+          ],
+          "event": "cancel_confirmed",
+          "to": "cancelled",
+          "actor": "后端事实投影",
+          "guard": "权威停止及副作用已知",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "N12",
+          "from": [
+            "dispatching",
+            "active",
+            "waiting_input",
+            "waiting_approval",
+            "reconciling",
+            "stopping"
+          ],
+          "event": "failure_confirmed",
+          "to": "failed",
+          "actor": "后端事实投影",
+          "guard": "明确拒绝或安全失败；未知不得走此边",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "N13",
+          "from": [
+            "blocked",
+            "ready",
+            "dispatching",
+            "active",
+            "waiting_input",
+            "waiting_approval",
+            "reconciling",
+            "stopping"
+          ],
+          "event": "handoff_requested",
+          "to": "handoff",
+          "actor": "授权负责人",
+          "guard": "保留原 Binding 事实与占用",
+          "atomic": "T_HANDOFF"
+        }
+      ]
+    },
+    "binding": {
+      "label": "执行绑定",
+      "initial": "prepared",
+      "states": [
+        "prepared",
+        "submitting",
+        "acceptance_unknown",
+        "accepted",
+        "active",
+        "waiting_permission",
+        "stopping",
+        "reconciling",
+        "terminal",
+        "rejected"
+      ],
+      "transitions": [
+        {
+          "id": "B01",
+          "from": [
+            "prepared"
+          ],
+          "event": "start_sent",
+          "to": "submitting",
+          "actor": "适配器",
+          "guard": "先保存接纳日志再发送",
+          "atomic": "T_SEND"
+        },
+        {
+          "id": "B02",
+          "from": [
+            "submitting",
+            "acceptance_unknown"
+          ],
+          "event": "acceptance_found",
+          "to": "accepted",
+          "actor": "后端回执",
+          "guard": "同键同哈希及外部运行引用",
+          "atomic": "T_ACCEPT"
+        },
+        {
+          "id": "B03",
+          "from": [
+            "submitting"
+          ],
+          "event": "response_lost",
+          "to": "acceptance_unknown",
+          "actor": "适配器",
+          "guard": "接纳事实无法确认",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "B04",
+          "from": [
+            "prepared",
+            "submitting"
+          ],
+          "event": "rejection_proven",
+          "to": "rejected",
+          "actor": "后端回执",
+          "guard": "明确未接纳且不可延迟接纳",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "B05",
+          "from": [
+            "acceptance_unknown"
+          ],
+          "event": "admission_closed",
+          "to": "rejected",
+          "actor": "接纳端",
+          "guard": "not_accepted_final + admissionFence",
+          "atomic": "T_CLOSE"
+        },
+        {
+          "id": "B06",
+          "from": [
+            "accepted"
+          ],
+          "event": "execution_active",
+          "to": "active",
+          "actor": "后端快照",
+          "guard": "原执行活跃",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "B07",
+          "from": [
+            "active"
+          ],
+          "event": "permission_required",
+          "to": "waiting_permission",
+          "actor": "后端请求",
+          "guard": "原生请求与动作哈希可定位",
+          "atomic": "T_APPROVAL"
+        },
+        {
+          "id": "B08",
+          "from": [
+            "waiting_permission"
+          ],
+          "event": "permission_delivered",
+          "to": "active",
+          "actor": "桥接回执",
+          "guard": "有效批准与当前请求；送达不等于已执行",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "B09",
+          "from": [
+            "accepted",
+            "active",
+            "waiting_permission"
+          ],
+          "event": "cancel_requested",
+          "to": "stopping",
+          "actor": "适配器",
+          "guard": "先登记取消请求",
+          "atomic": "T_CANCEL"
+        },
+        {
+          "id": "B10",
+          "from": [
+            "accepted",
+            "active",
+            "waiting_permission",
+            "stopping"
+          ],
+          "event": "observation_unknown",
+          "to": "reconciling",
+          "actor": "适配器",
+          "guard": "断线/回执冲突/副作用未知",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "B11",
+          "from": [
+            "reconciling"
+          ],
+          "event": "active_recovered",
+          "to": "active",
+          "actor": "权威快照",
+          "guard": "executionActive=true，原拥有者不变",
+          "atomic": "T_PROJECT"
+        },
+        {
+          "id": "B12",
+          "from": [
+            "active",
+            "waiting_permission",
+            "stopping",
+            "reconciling",
+            "accepted"
+          ],
+          "event": "terminal_confirmed",
+          "to": "terminal",
+          "actor": "权威快照",
+          "guard": "终态 outcome + executionActive=false + effectStatus 已知",
+          "atomic": "T_CLOSE"
+        }
+      ]
+    },
+    "approval": {
+      "label": "业务审批决定",
+      "initial": "pending",
+      "states": [
+        "pending",
+        "approved",
+        "denied",
+        "changes_requested",
+        "expired",
+        "revoked",
+        "superseded"
+      ],
+      "transitions": [
+        {
+          "id": "A01",
+          "from": [
+            "pending"
+          ],
+          "event": "approve",
+          "to": "approved",
+          "actor": "合格审批人",
+          "guard": "CAS、当前映射、计划/期限/权限有效",
+          "atomic": "T_DECIDE"
+        },
+        {
+          "id": "A02",
+          "from": [
+            "pending"
+          ],
+          "event": "deny",
+          "to": "denied",
+          "actor": "合格审批人",
+          "guard": "意见必填、CAS",
+          "atomic": "T_DECIDE"
+        },
+        {
+          "id": "A03",
+          "from": [
+            "pending"
+          ],
+          "event": "request_changes",
+          "to": "changes_requested",
+          "actor": "合格审批人",
+          "guard": "意见必填，新计划另建审批",
+          "atomic": "T_DECIDE"
+        },
+        {
+          "id": "A04",
+          "from": [
+            "pending",
+            "approved"
+          ],
+          "event": "business_expired",
+          "to": "expired",
+          "actor": "服务端时钟",
+          "guard": "validUntil 已过，未开始动作不可再消费",
+          "atomic": "T_EXPIRE"
+        },
+        {
+          "id": "A05",
+          "from": [
+            "pending",
+            "approved"
+          ],
+          "event": "revoke",
+          "to": "revoked",
+          "actor": "有权撤销者",
+          "guard": "停止未来动作，已开始的另核查",
+          "atomic": "T_EXPIRE"
+        },
+        {
+          "id": "A06",
+          "from": [
+            "pending",
+            "approved"
+          ],
+          "event": "plan_or_request_replaced",
+          "to": "superseded",
+          "actor": "业务服务",
+          "guard": "参数漂移或原生请求失效；保留历史，新审批重新确认",
+          "atomic": "T_APPROVAL"
+        }
+      ]
+    }
+  }
+}

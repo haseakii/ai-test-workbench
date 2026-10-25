@@ -19,3 +19,9 @@ jobs:
           persist-credentials: false
       - name: Verify original UTF-8 source hashes
         run: python3 scripts/verify_sources.py
+      - name: Check current initial design consistency
+        run: python3 scripts/check_initial_design.py
+      - name: Check complete design scope references
+        run: python3 scripts/audit_design_scope.py
+      - name: Check offline simulation constraints
+        run: node docs/prototype/tests/model.test.cjs

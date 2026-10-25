@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>AI 测试协作平台 · 初始设计评审</title>
+  <style>/*__STYLES__*/</style>
+</head>
+<body>
+  <div id="chat-root"></div>
+  <div id="configuration-root" hidden></div>
+  <div id="review-root" hidden>
+  <a class="skip" href="#main">跳到内容</a>
+  <header class="top"><div class="brand"><span class="mark">核</span><div><strong>AI 测试协作平台</strong><small>问题有依据，结果可验证</small></div></div><span class="scope">初始设计评审 · 离线演示</span><span class="identity">合成提交人 / 评审管理员</span></header>
+  <div class="layout"><aside class="sidebar"><a class="nav-item" href="#chat">← 返回对话</a><a class="nav-item" href="#admin-systems">← 返回平台管理</a><div class="nav-label">独立契约演练</div><nav id="work-nav" aria-label="测试工作台"></nav><div class="nav-label">设计诊断</div><nav id="admin-nav" aria-label="平台管理"></nav><div class="side-note">所有数据均为合成示例。<br>连接、模型和资源实际能力未验收。<br>刷新将清空本轮模拟记录。</div><a class="history-link" href="../review-baseline-20261025/index.html">查看历史原型 ↗</a></aside>
+  <main id="main" tabindex="-1"><div id="page-header"></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div id="content"></div></main></div>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">重置本轮演示？</h2><p>当前模拟记录会清空。仓库历史档案不受影响。</p><div class="actions"><button data-ui="close-reset">取消</button><button data-ui="confirm-reset" class="primary">重置演示</button></div></dialog>
+  </div>
+  <script>/*__JOURNEY__*/</script>
+  <script>/*__CONFIGURATION__*/</script>
+  <script>/*__SERVICE_DESIGN__*/</script>
+  <script>/*__ADMIN__*/</script>
+  <script>/*__CHAT__*/</script>
+  <script>/*__TABLES__*/</script>
+  <script>/*__MODEL__*/</script>
+  <script>/*__APP__*/</script>
+</body></html>

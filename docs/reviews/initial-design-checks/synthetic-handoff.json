@@ -1,0 +1,59 @@
+{
+  "provenance": "offline_synthetic_example_not_business_evidence",
+  "responsible": "合成测试负责人",
+  "unknowns": "所有真实能力、真实执行、真实费用均未验收",
+  "next": "核查原拥有者与外部副作用；禁止静默换后端重放",
+  "state": {
+    "scenario": "timeout",
+    "revision": 2,
+    "round": 1,
+    "issue": "handoff",
+    "run": "handoff",
+    "node": "handoff",
+    "defaultProvider": "control",
+    "binding": {
+      "id": "demo-binding-1",
+      "nodeRunId": "demo-node-1",
+      "provider": "control",
+      "connectionRevision": 3,
+      "ownershipEpoch": 1,
+      "specHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "state": "acceptance_unknown",
+      "externalRef": null,
+      "executionActive": "unknown",
+      "effectStatus": "none",
+      "outcome": null,
+      "ownerOccupied": true,
+      "admissionFence": null,
+      "checkpoint": true
+    },
+    "approval": null,
+    "approvalHistory": [],
+    "conditions": "合成报表：UTC+8，10 月 1–24 日，已完成订单",
+    "resultRevision": 0,
+    "results": [],
+    "verification": null,
+    "health": "online",
+    "capability": "simulation_only",
+    "usage": "unreported_actual",
+    "usageBlocked": false,
+    "evidenceConsistent": true,
+    "artifact": "metadata_only",
+    "modelCalls": 0,
+    "startCommands": 1,
+    "permissionSends": 0,
+    "operationsExecuted": 0,
+    "stopRequested": false,
+    "currentPlanHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "eventIds": [],
+    "eventWatermark": 1,
+    "events": [
+      {
+        "sequence": 1,
+        "source": "本地合成模拟器",
+        "message": "已准备合成人工接管材料；原 Binding 与未决拥有权仍保留。"
+      }
+    ],
+    "message": "已准备合成人工接管材料；原 Binding 与未决拥有权仍保留。"
+  }
+}

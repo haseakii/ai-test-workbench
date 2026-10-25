@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>AI 测试协作平台 · 初始设计评审</title>
+  <style>:root{font-family:"Segoe UI","Microsoft YaHei",sans-serif;color:#192c3c;background:#f3f6f8;font-size:14px;line-height:1.65;--ink:#192c3c;--muted:#647686;--accent:#176d64;--border:#dce4e9}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{outline-offset:3px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #3e9e91}button{border:1px solid #cbd7df;border-radius:7px;background:#fff;padding:8px 13px;color:var(--ink);cursor:pointer}button:hover{background:#eef5f5}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.primary:hover{background:#10594f}.danger{color:#a63236;border-color:#e1b4b7}.top{height:78px;background:#fff;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--border);padding:0 30px}.brand{display:flex;align-items:center;gap:12px}.brand strong{font-size:18px;display:block}.brand small{font-size:11px;color:var(--muted);letter-spacing:1px}.mark{display:grid;place-items:center;border-radius:10px;width:40px;height:40px;background:#176d64;color:#fff;font-weight:700}.scope{padding:4px 10px;border:1px solid #ddcda7;background:#fffaf0;color:#8b651a;border-radius:30px;font-size:12px}.identity{margin-left:auto;color:var(--muted);font-size:12px}.layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 78px)}.sidebar{background:#fff;border-right:1px solid var(--border);padding:26px 16px;display:flex;flex-direction:column;gap:8px}.nav-label{font-size:11px;letter-spacing:2px;color:#84929c;padding:12px}.nav-item{display:block;text-decoration:none;padding:10px 12px;border-radius:7px;margin:2px 0;color:#496171}.nav-item[aria-current=page]{background:#e5f1ee;color:#155e54;font-weight:600}.side-note{font-size:11px;color:#6d7e89;border-top:1px solid var(--border);padding:20px 12px;margin-top:35px}.history-link{font-size:12px;color:#647686;margin:0 12px}main{min-width:0;padding:28px 34px 80px}.page-head{display:flex;align-items:start;justify-content:space-between;gap:16px;margin-bottom:22px}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--accent);font-weight:600}h1{font-size:27px;margin:3px 0 6px;line-height:1.5}h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:0 0 9px}p{margin:6px 0 14px}.muted,small{color:var(--muted)}.small{font-size:12px}.grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(270px,1fr);gap:20px;align-items:start}.stack{display:grid;gap:18px}.card{background:#fff;border:1px solid var(--border);border-radius:11px;padding:22px;min-width:0}.card.tint{background:#f5faf8;border-color:#cbded7}.card.warning{background:#fff9ed;border-color:#e9d9b5}.card.danger-card{background:#fff5f5;border-color:#e8c5c8}.tag{display:inline-block;border:1px solid #cbded7;background:#ecf6f2;border-radius:5px;padding:2px 8px;font-size:11px;color:#1d6a5d}.tag.warn{border-color:#e4d3ab;background:#fff5dd;color:#8d651a}.tag.gray{background:#f3f5f7;border-color:var(--border);color:#5d7080}.between{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.actions.compact{margin-top:6px}label{display:block;margin-bottom:7px;font-size:12px;color:#506776}textarea,input[type=text],select{border:1px solid #cbd7df;border-radius:7px;padding:9px 11px;background:#fff;width:100%;color:var(--ink)}textarea{resize:vertical;min-height:96px}input[type=checkbox]{margin:0 8px 0 0}.check{display:flex;align-items:flex-start;color:var(--ink);font-size:13px;margin:14px 0}.check input{margin-top:5px;flex-shrink:0}.table-wrap{overflow-x:auto;max-width:100%}table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid #e8edf0}th{font-weight:500;color:#6c7f8b;background:#f7f9fa}code{font-family:Consolas,monospace;font-size:11px;overflow-wrap:anywhere;background:#f4f6f8;border-radius:4px;padding:2px 4px}dl{display:grid;grid-template-columns:112px minmax(0,1fr);gap:10px 12px;font-size:12px;margin:0}dt{color:#758691}dd{margin:0;overflow-wrap:anywhere}.steps{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.step{font-size:12px;padding:8px 11px;background:#f1f4f6;border-radius:6px}.step.done{color:#155e54;background:#e9f3ee}.banner{padding:13px 16px;border-left:3px solid #c59d43;background:#fff9ed;color:#805f22;border-radius:5px;margin:0 0 20px;font-size:12px}.state-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:16px 0}.state-cell{background:#fff;border:1px solid var(--border);padding:12px;border-radius:8px}.state-cell small{display:block;font-size:11px}.state-cell strong{font-size:12px;overflow-wrap:anywhere}.event{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #edf0f2;font-size:12px}.event-index{font:11px Consolas,monospace;color:#8a9ba7;padding-top:4px}.empty{padding:25px 10px;color:#7b8e9b;text-align:center;font-size:13px}.feedback{position:fixed;bottom:16px;left:calc(220px + 34px);right:30px;background:#243e45;color:#fff;border-radius:8px;box-shadow:0 5px 20px #173e3b22;padding:12px 16px;font-size:12px;z-index:5;max-height:110px;overflow:auto}.feedback:empty{display:none}.stat{font-size:28px;font-weight:600;color:#1e665b}.help{font-size:11px;color:#788c98;margin-top:7px}.scope-line{font-size:12px;color:#647686;margin-bottom:16px}.separator{border-top:1px solid var(--border);margin:18px 0}a{color:#176d64}.scenario{display:flex;gap:10px;align-items:center}.scenario select{max-width:210px}.scenario label{margin:0;white-space:nowrap}.recovery{border-left:2px solid #b4d0c7;padding-left:16px;margin-top:12px}.recovery p{font-size:12px}.checklist{padding-left:20px;color:#526b79;font-size:13px}.checklist li{padding:5px 0}dialog{border:1px solid var(--border);border-radius:12px;max-width:440px;padding:24px}dialog::backdrop{background:#182d3d66}.skip{position:absolute;top:-60px;left:20px;background:#fff;padding:8px;z-index:9}.skip:focus{top:10px}.mt{margin-top:18px}.result-amount{font-size:35px;letter-spacing:-1px}.mono{font-family:Consolas,monospace;font-size:12px;overflow-wrap:anywhere}@media(min-width:1600px){main{max-width:1550px;width:100%;margin:auto}}@media(max-width:1100px){main{padding:24px}.grid{grid-template-columns:1fr}.state-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.identity{display:none}.feedback{left:244px}}@media(max-width:700px){.top{height:auto;min-height:78px;padding:15px;flex-wrap:wrap;gap:12px}.scope{font-size:10px}.brand strong{font-size:16px}.layout{display:block}.sidebar{border-right:0;padding:10px 15px;gap:4px}.sidebar nav{display:flex;flex-wrap:wrap;gap:3px}.nav-label,.side-note,.history-link{display:none}.nav-item{font-size:12px;padding:6px 10px}main{padding:20px 15px 110px}.page-head{flex-direction:column}.card{padding:17px}.state-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback{left:12px;right:12px}h1{font-size:24px}.scenario{flex-wrap:wrap}dl{grid-template-columns:85px minmax(0,1fr)}th,td{min-width:90px}.grid{gap:14px}}
+
+h1:focus{outline:none}button{white-space:nowrap}.scenario select{width:200px}.feedback{position:static;max-height:none;margin:0 0 18px;background:#edf5f2;color:#285e53;box-shadow:none;border:1px solid #d4e5dd;border-radius:7px;padding:10px 14px}
+
+/* Conversation surface. Administration retains its own review styles. */
+[hidden]{display:none!important}
+#chat-root{height:100dvh;display:grid;grid-template-columns:236px minmax(0,1fr);background:#fff;color:#292b2e;font:14px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}
+#chat-root *{box-sizing:border-box}
+#chat-root button,#chat-root select,#chat-root textarea{font:inherit;color:inherit}
+#chat-root button{cursor:pointer;border:0;background:transparent;border-radius:9px;white-space:normal}
+#chat-root button:disabled{cursor:default;opacity:.4}
+#chat-root button:hover:not(:disabled){background:#eae9e6}
+#chat-root :focus-visible{outline:2px solid #5c7771;outline-offset:3px}
+.chat-sidebar{background:#f7f7f5;padding:27px 16px 18px;display:flex;flex-direction:column;min-width:0;border-right:1px solid #efefec}
+.chat-brand{font-weight:650;color:#303331;text-decoration:none;font-size:17px;padding:0 12px 25px;display:block}
+.chat-brand span{font-size:23px;vertical-align:-1px;margin-right:7px}
+#chat-root .new-chat{text-align:left;background:#eeefec;padding:10px 13px;font-weight:550}
+.chat-history-label{font-size:11px;color:#8b8d8a;padding:30px 12px 10px;letter-spacing:.04em}
+.chat-sidebar nav{overflow-y:auto;min-height:0}
+#chat-root .session-item{display:block;width:100%;padding:10px 12px;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+#chat-root .session-item.selected{background:#e9ebe7}
+.chat-sidebar-bottom{margin-top:auto;padding:25px 12px 0;display:grid;gap:8px;font-size:12px}
+.chat-sidebar-bottom a{color:#777c77;text-decoration:none}.chat-sidebar-bottom small{font-size:10px;color:#939791}
+.chat-main{height:100dvh;min-width:0;display:flex;flex-direction:column;padding:0}
+.chat-header{height:72px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 35px}
+.chat-header strong{font-size:14px;font-weight:500}.chat-header>span{color:#90938f;font-size:11px}
+.chat-scroll{flex:1;min-height:0;overflow-y:auto;scrollbar-gutter:stable;padding:0 26px}
+.chat-welcome{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:45px 0 60px;text-align:center}
+.welcome-symbol{font-size:38px;color:#4f655d;margin-bottom:18px;line-height:1}
+.chat-welcome h1{font-size:28px;letter-spacing:-.7px;font-weight:550;margin:0 0 10px;color:#2d302d}.chat-welcome p{font-size:13px;color:#90938e;margin:0}
+.chat-bottom{width:min(100% - 64px,780px);margin:0 auto;padding:0 0 18px;flex-shrink:0}
+.quick-prompts{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+#chat-root .quick-prompts button{border:1px solid #e7e8e4;border-radius:20px;padding:7px 14px;color:#747a72;font-size:12px}
+.chat-composer{border:1px solid #dcdfd8;border-radius:20px;padding:14px 16px 11px;box-shadow:0 4px 22px #202a2006;background:white}
+.chat-context{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding:0 3px 9px;border-bottom:1px solid #f2f2ef}
+.chat-context label{font-size:11px;color:#90958c;display:flex;gap:4px;align-items:center}
+#chat-root select{background:transparent;border:0;width:auto;max-width:160px;border-radius:5px;padding:3px 6px;font-size:12px;cursor:pointer}
+#chat-root select:disabled{cursor:default;color:#777d74;opacity:1}.context-fixed{font-size:10px;color:#9a9e97;margin-left:auto}
+#chat-root textarea{border:0;outline:none;box-shadow:none;resize:none;width:100%;background:transparent;padding:15px 3px 4px;min-height:82px;max-height:150px;line-height:1.7;border-radius:5px}
+#chat-root textarea::placeholder{color:#9b9f96}#chat-root textarea:focus-visible{outline:none}
+.composer-tools{display:flex;align-items:center;justify-content:space-between;margin-top:6px}.composer-tools>div{display:flex;align-items:center;gap:4px}
+#chat-root .attach-button{font-size:23px;width:32px;height:32px;line-height:1;padding:0;color:#6a7167}
+.model-note{font-size:10px;color:#9ba095;margin-left:3px}
+#chat-root .send-button{background:#333b34;color:white;min-width:33px;height:33px;padding:0 11px;font-size:19px;border-radius:11px}
+#chat-root .send-button[data-chat=stop]{font-size:12px}#chat-root .send-button:hover:not(:disabled){background:#4b594d}
+#chat-notice{text-align:center;font-size:10px;color:#9a9e95;padding-top:10px;min-height:25px}
+.message-list{max-width:760px;margin:20px auto 36px}.chat-message{margin:0 0 30px;overflow-wrap:anywhere}.chat-message.user{margin-left:15%;padding:13px 18px;background:#f4f5f1;border-radius:15px}
+.message-author{font-size:12px;font-weight:600;margin-bottom:10px;color:#60695e}.message-author span{font-size:10px;font-weight:400;color:#9ba293;margin-left:7px}.user .message-author{display:none}
+.message-text{white-space:pre-wrap;line-height:1.9;font-size:14px}.message-files,.draft-files{display:flex;gap:6px;flex-wrap:wrap;font-size:11px;color:#788172;overflow-wrap:anywhere}.message-files span,.draft-files>span{background:#f2f4ee;border-radius:7px;padding:4px 7px;margin-top:5px}.draft-files>span{max-width:100%}#chat-root .draft-files button{padding:0 6px}
+.inline-permission{border:1px solid #e2e7dc;border-radius:12px;padding:16px 18px;margin-top:16px;font-size:13px}.inline-permission p{margin:8px 0}.inline-permission small{color:#8c9584;font-size:11px}.inline-permission>div,.result-choice{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}#chat-root .inline-permission button,#chat-root .result-choice button{border:1px solid #dce1d5;font-size:12px;padding:6px 12px}#chat-root button.chat-primary{background:#3e4c3d;color:white}.result-choice span{color:#6d7f62;font-size:12px}
+.replying{font-size:12px;color:#8b9482}.replying span{margin-left:12px;letter-spacing:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(min-height:850px){.chat-bottom{padding-bottom:30px}.chat-welcome{padding-bottom:100px}}
+@media(max-width:760px){#chat-root{grid-template-columns:minmax(0,1fr)}.chat-sidebar{display:none}.chat-header{height:58px;padding:0 20px}.chat-header:before{content:none}.chat-bottom{width:calc(100% - 26px);padding-bottom:12px}.chat-scroll{padding:0 20px}.chat-welcome{padding:30px 0}.chat-welcome h1{font-size:24px}.quick-prompts{gap:6px;margin-bottom:14px}#chat-root .quick-prompts button{font-size:11px;padding:6px 9px}.chat-context{gap:6px}.context-fixed{width:100%;margin:0}.chat-message.user{margin-left:7%}.chat-composer{padding:10px 12px}.chat-header strong{display:none}.chat-header::after{content:none}.mobile-new{display:block!important}.chat-header>span{font-size:10px}}
+.mobile-new{display:none}
+
+.chat-provenance{font-size:11px;color:#85917b;margin-top:15px}.chat-provenance summary{cursor:pointer}.chat-provenance p{font-size:11px;line-height:1.8;overflow-wrap:anywhere}
+
+/* Management shares the conversation's quiet visual language. */
+#configuration-root{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100dvh;background:#fbfcfa;color:#30382f;font:14px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}
+#configuration-root *{box-sizing:border-box}
+#configuration-root input,#configuration-root select,#configuration-root button{font:inherit}
+#configuration-root button{cursor:pointer;border:1px solid #dce2d7;border-radius:8px;padding:8px 13px;background:white;color:#3e4c39;white-space:normal}
+#configuration-root button:hover{background:#f1f4ed}
+#configuration-root .admin-primary{background:#40543e;color:white;border-color:#40543e}
+#configuration-root :focus-visible{outline:2px solid #6a8663;outline-offset:2px}
+#configuration-root h1:focus{outline:none}
+.admin-sidebar{background:#f5f7f2;border-right:1px solid #e7ebe2;padding:28px 18px;display:flex;flex-direction:column;position:sticky;top:0;height:100dvh}
+.admin-brand{font-size:17px;font-weight:650;color:#35472f;text-decoration:none;padding:0 9px 22px}.admin-back{color:#737e6b;text-decoration:none;font-size:12px;padding:0 9px 30px}
+.admin-nav-title{font-size:10px;color:#929b88;padding:0 12px 9px;letter-spacing:.1em}
+.admin-sidebar nav{display:grid;gap:5px}.admin-sidebar nav a{display:block;padding:11px 13px;text-decoration:none;color:#65705e;border-radius:9px}.admin-sidebar nav a[aria-current]{background:#e6ecdf;color:#34482e;font-weight:600}
+.admin-secondary{margin-top:auto;padding:30px 10px 0;display:grid;gap:9px;font-size:12px}.admin-secondary a{color:#7d8873;text-decoration:none}.admin-secondary small{color:#9aa28f;font-size:10px;margin-top:14px}
+.admin-main{min-width:0;padding:35px 40px 40px;max-width:1580px;width:100%;margin:auto}
+.admin-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}.admin-eyebrow{font-size:10px;color:#8f9983;letter-spacing:.09em}.admin-heading h1{font-size:27px;font-weight:550;letter-spacing:-.5px;margin:7px 0}.admin-heading p{font-size:12px;color:#8a9580;margin:0}
+.admin-badge{font-size:11px;color:#7c8a70;border:1px solid #e2e9d9;border-radius:20px;padding:5px 11px;white-space:nowrap}
+.admin-toolbar{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e9ede3;padding:18px 0;gap:14px;font-size:12px;color:#7a8970}.admin-toolbar>div{display:flex;gap:8px}
+#admin-feedback{font-size:12px;color:#6d795f;margin-bottom:16px;overflow-wrap:anywhere}#admin-feedback:empty{margin:0}
+.admin-columns{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:24px;align-items:start}.admin-editor,.admin-preview{background:white;border:1px solid #e5eade;border-radius:15px;min-width:0;overflow:hidden}
+.admin-records{display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid #edf0e8;background:#fcfdfa;padding:15px}
+#configuration-root .admin-records button{font-size:12px;border-color:transparent;background:transparent;padding:7px 11px}#configuration-root .admin-records button[aria-pressed]{background:#e9f0e2;color:#445f35}#configuration-root .admin-records button span{font-size:10px;color:#9ca88e;display:block}
+.admin-form{padding:26px 28px}.admin-form h2,.admin-preview h2{font-size:16px;font-weight:600;margin:0 0 16px}.admin-form h3{font-size:12px;color:#5e7053;letter-spacing:.04em;margin:27px 0 12px;font-weight:600}
+.admin-muted{font-size:11px;color:#919c86;line-height:1.8;margin:10px 0 18px}.admin-field{display:flex;flex-direction:column;font-size:12px;color:#728066;gap:7px;margin:16px 0}
+#configuration-root .admin-field input,#configuration-root .admin-field select{width:100%;min-width:0;border:1px solid #dce4d4;background:#fff;border-radius:8px;padding:9px 11px;color:#46543b;font-size:13px}
+.admin-toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #f0f3eb;font-size:12px}.admin-toggle span{min-width:0}.admin-toggle small{display:block;font-size:10px;color:#98a08e;margin-top:4px;line-height:1.6}
+#configuration-root input[type=checkbox]{width:16px;height:16px;accent-color:#607e4a;flex-shrink:0;margin:0;cursor:pointer}
+.admin-check{display:flex;align-items:center;gap:9px;margin:9px 0;font-size:12px;color:#65765a}.admin-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.admin-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.admin-resource{display:grid;grid-template-columns:94px minmax(0,1fr);gap:13px 10px;font-size:12px;border:1px solid #e7edde;border-radius:10px;padding:18px;margin-top:20px;overflow-wrap:anywhere}.admin-resource span{color:#99a38e}.admin-resource strong{font-weight:400;color:#647557}
+.admin-note{background:#f5f8f0;border-radius:9px;padding:13px 15px;font-size:11px;color:#839475;line-height:1.9;margin-top:20px}.admin-details{margin-top:22px;color:#849777;font-size:11px}.admin-details summary,.admin-audit summary{cursor:pointer}.admin-details a{color:#647e54}
+.admin-preview{padding:25px 22px}.admin-preview h2{font-size:14px}.admin-preview dl{display:block;margin:16px 0}.admin-preview dt{font-size:10px;color:#9aa88b;margin-top:17px}.admin-preview dd{margin:5px 0 0;font-size:12px;color:#667b55;overflow-wrap:anywhere}.admin-preview-link{font-size:12px;color:#5f7b4f;text-decoration:none}.admin-preview .admin-note{font-size:10px;padding:12px}
+.admin-audit{margin-top:22px;font-size:11px;color:#8c9b7f;overflow-wrap:anywhere}.admin-audit p{background:#f0f5e9;padding:12px}
+#configuration-root dialog{max-width:540px;width:calc(100% - 36px);padding:28px;border:1px solid #e2e8d9;border-radius:15px;color:#586c49}#configuration-root dialog::backdrop{background:#27361e44}#configuration-root dialog h2{font-size:19px;margin:0 0 16px}#configuration-root dialog p,#configuration-root dialog li{font-size:12px;line-height:1.9;overflow-wrap:anywhere}.admin-dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+@media(max-width:1150px){.admin-main{padding:25px}.admin-columns{grid-template-columns:minmax(0,1fr)}.admin-preview dl{display:grid;grid-template-columns:95px minmax(0,1fr);gap:7px}.admin-preview dt,.admin-preview dd{margin:0}.admin-preview .admin-field{max-width:250px}}
+@media(max-width:760px){#configuration-root{grid-template-columns:minmax(0,1fr)}.admin-sidebar{position:static;height:auto;padding:17px}.admin-brand{padding:0 0 10px}.admin-back{padding:0 0 13px}.admin-sidebar nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}.admin-sidebar nav a{font-size:12px;padding:9px 6px;text-align:center}.admin-nav-title,.admin-secondary small{display:none}.admin-secondary{margin:0;padding:14px 0 0;display:flex;gap:20px;font-size:11px}.admin-main{padding:22px 14px}.admin-heading{align-items:start}.admin-heading h1{font-size:23px}.admin-heading p{max-width:240px;font-size:11px}.admin-badge{display:none}.admin-toolbar{align-items:start;flex-direction:column;gap:12px}.admin-form{padding:20px}.admin-check-grid{grid-template-columns:1fr}.admin-resource{grid-template-columns:70px minmax(0,1fr)}.admin-two{gap:10px}.admin-columns{gap:16px}}
+
+#configuration-root .admin-primary:hover{background:#4f6549;color:#fff}
+
+.service-nav-title{margin-top:23px}.admin-service-nav a{font-size:12px;padding-top:8px!important;padding-bottom:8px!important}
+.service-role{display:flex;align-items:center;gap:20px;border-top:1px solid #e6ecdf;padding-top:9px;margin-bottom:18px}.service-role .admin-field{width:220px;margin:10px 0}.service-role>span{font-size:11px;color:#97a18b}
+.service-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}.service-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.service-card{min-width:0;background:white;border:1px solid #e1e8d8;border-radius:14px;padding:24px;margin-bottom:22px;overflow-wrap:anywhere}.service-card h2{font-size:16px;font-weight:600;margin:0 0 16px}.service-card h3{font-size:12px;margin:24px 0 12px;color:#698158}.service-card p{font-size:12px;color:#879975;line-height:1.9}.service-card dl{display:block}.service-card dt{font-size:10px;color:#9ca98e;margin-top:15px}.service-card dd{font-size:12px;color:#718960;margin:4px 0 0}.service-state{font-size:11px;background:#f6f1e5;color:#9b8858;border-radius:7px;padding:5px 9px}.service-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.service-actions button{font-size:12px!important}.service-list{padding-left:20px;font-size:12px;color:#7c9369;line-height:2.1}.service-card details{font-size:11px;color:#91a17d}.service-card summary{cursor:pointer}.service-card small{font-size:10px;color:#91a17d}
+#service-feedback{font-size:12px;color:#9c7850;margin-bottom:18px}#service-feedback:empty{display:none}#service-preflight,#runtime-result,#context-result{font-size:12px;color:#93865e;background:#f6f7ef;border-radius:8px;padding:13px;margin-top:16px;white-space:pre-wrap}#runtime-result:empty,#context-result:empty{display:none}
+#configuration-root .service-record{display:block;width:100%;text-align:left;margin:9px 0;font-size:12px;overflow-wrap:anywhere}#configuration-root .service-record.selected{background:#eaf1e2}
+.service-sensitive{background:#f1f6e9;border:1px solid #e3edd8;border-radius:9px;padding:15px;white-space:pre-wrap;color:#738760!important}
+@media(max-width:1150px){.service-three{grid-template-columns:minmax(0,1fr)}.service-two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.admin-service-nav{grid-template-columns:repeat(3,minmax(0,1fr))!important}.admin-service-nav a{font-size:11px!important}.service-role{align-items:start;flex-direction:column;gap:0}.service-two,.service-three{gap:0}.service-card{padding:19px}.service-role>span{font-size:10px}}
+</style>
+</head>
+<body>
+  <div id="chat-root"></div>
+  <div id="configuration-root" hidden></div>
+  <div id="review-root" hidden>
+  <a class="skip" href="#main">跳到内容</a>
+  <header class="top"><div class="brand"><span class="mark">核</span><div><strong>AI 测试协作平台</strong><small>问题有依据，结果可验证</small></div></div><span class="scope">初始设计评审 · 离线演示</span><span class="identity">合成提交人 / 评审管理员</span></header>
+  <div class="layout"><aside class="sidebar"><a class="nav-item" href="#chat">← 返回对话</a><a class="nav-item" href="#admin-systems">← 返回平台管理</a><div class="nav-label">独立契约演练</div><nav id="work-nav" aria-label="测试工作台"></nav><div class="nav-label">设计诊断</div><nav id="admin-nav" aria-label="平台管理"></nav><div class="side-note">所有数据均为合成示例。<br>连接、模型和资源实际能力未验收。<br>刷新将清空本轮模拟记录。</div><a class="history-link" href="../review-baseline-20261025/index.html">查看历史原型 ↗</a></aside>
+  <main id="main" tabindex="-1"><div id="page-header"></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div id="content"></div></main></div>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">重置本轮演示？</h2><p>当前模拟记录会清空。仓库历史档案不受影响。</p><div class="actions"><button data-ui="close-reset">取消</button><button data-ui="confirm-reset" class="primary">重置演示</button></div></dialog>
+  </div>
+  <script>/* Shared offline review ledger. Synthetic identities, contexts, records and files only. */
+(() => {
+  'use strict';
+  const clone=x=>JSON.parse(JSON.stringify(x));
+  const users=[
+    {id:'demo-tester',name:'合成测试用户',role:'tester',scopes:['orders-test'],status:'active',revision:1},
+    {id:'demo-collaborator',name:'合成协作成员',role:'observer',scopes:['orders-test'],status:'active',revision:1},
+    {id:'demo-admin',name:'当前合成管理员',role:'access',scopes:['orders-test'],status:'active',revision:1},
+    {id:'demo-live-tester',name:'当前对话用户（合成测试人员）',role:'tester',scopes:null,status:'active',revision:1},
+    {id:'demo-live-observer',name:'当前对话用户（合成协作成员）',role:'observer',scopes:null,status:'active',revision:1}
+  ];
+  const records=new Map(),listeners=[],recordListeners=[];let approvalHandler=null;
+  const integration={revision:1,mcpSchemaRevision:1,actualCapabilities:'unknown'};
+  const memory={id:'demo-memory-1',state:'candidate',mode:'off',sourceAccess:true,revision:1,scope:'orders-test'};
+  const subjectId=role=>role==='observer'?'demo-live-observer':'demo-live-tester';
+  const subject=role=>clone(users.find(u=>u.id===subjectId(role)));
+  const emit=()=>listeners.forEach(fn=>fn());
+  function event(s,type){
+    s.trace??=[];s.trace.push({id:`demo-chat-${s.id}-event-${s.trace.length+1}`,sequence:s.trace.length+1,type,at:new Date().toISOString()});
+  }
+  function memoryAllowed(scope){return memory.mode!=='off'&&memory.state==='active'&&memory.sourceAccess&&memory.scope===scope;}
+  function prepare(s){
+    const owner=subject(s.roleId),model=s.snapshot.models.find(m=>m.id===s.modelId);
+    return {id:`demo-context-${s.id}-${s.inputRevision}`,synthetic:true,validUntil:new Date(Date.now()+5*60*1000).toISOString(),turnId:`demo-turn-${s.id}-${s.inputRevision}`,inputRevision:s.inputRevision,
+      configurationRevision:s.snapshot.revision,policyRevision:window.ConfigurationPrototype.current().revision,authorizationRevision:owner.revision,
+      systemId:s.systemId,environmentId:s.environmentId,modelId:s.modelId,
+      modelObservation:'unknown',requestedModel:s.model,actualModelId:null,provider:model?.provider||'unknown',
+      runtimeRef:'demo-runtime-readonly',codeSnapshot:'demo-commit-a',deployedCommit:'demo-commit-a',mcpConnectionRef:'demo-tools-readonly',mcpSchemaRevision:integration.mcpSchemaRevision,integrationRevision:integration.revision,mcpCapability:'unknown',
+      messageIds:s.messages.map((m,i)=>`demo-chat-${s.id}-message-${i+1}`),
+      attachmentNames:s.messages.flatMap(m=>(m.files||[]).map(f=>f.name)),attachmentContentsRead:false,
+      memoryRevision:memory.revision,memoryRefs:memoryAllowed(s.environmentId)?[memory.id]:[],
+      excludedMemory:memoryAllowed(s.environmentId)?null:memory.mode==='off'?'默认关闭':!memory.sourceAccess?'原来源授权失效':memory.state!=='active'?'未审核启用或已撤销':'环境不匹配'};
+  }
+  function planCurrent(s,p){
+    return !!p&&Date.parse(p.validUntil)>Date.now()&&p.inputRevision===s.inputRevision&&p.modelId===s.modelId&&p.policyRevision===window.ConfigurationPrototype.current().revision&&p.authorizationRevision===subject(s.roleId).revision&&p.memoryRevision===memory.revision&&p.integrationRevision===integration.revision;
+  }
+  function sourceCurrent(preparation){return !preparation?.memoryRefs.length||memoryAllowed(preparation.environmentId);}
+  function sync(s){
+    if(!s.locked||!s.messages.length)return;
+    const current=s.messages.findLast(m=>m.kind==='result');
+    const record={id:'demo-chat-'+s.id,owner:s.subjectId,scope:s.environmentId,title:s.title+'（本次离线对话）',
+      status:!sourceCurrent(current?.preparation)?'来源失效待核查':s.verification?.resultRevision===s.latestResultRevision?'已确认':s.phase==='result'?'待验证':s.phase==='permission'?(s.messages.some(m=>m.pendingReview)?'待负责人审批':'待确认'):s.busy?'处理中':'待补充',
+      text:s.messages.map(m=>(m.role==='user'?'用户：':'助手：')+(m.kind==='result'&&!sourceCurrent(m.preparation)?'此结果来源已失效，正文隐藏。':m.text)).join('\n\n'),usage:'未上报实际费用 · 无真实调用',
+      events:(s.trace||[]).map(e=>e.type),trace:clone(s.trace||[]),
+      preparation:clone(current?.preparation||s.preparation||null),binding:clone(s.binding||null),
+      resultRevision:s.latestResultRevision||0,verification:clone(s.verification||null),synthetic:true};
+    if(JSON.stringify(records.get(record.id))!==JSON.stringify(record)){records.set(record.id,record);recordListeners.forEach(fn=>fn());}
+  }
+  function artifact(s,m){
+    const csv='\uFEFF来源,报表金额_EUR,明细金额_EUR,差额_EUR\n离线合成示例_非业务结果,128450,125920,'+(128450-125920)+'\n';
+    return {id:`demo-chat-${s.id}-artifact-${m.resultRevision}`,name:`合成差异示例-结果${m.resultRevision}.csv`,content:csv,
+      mime:'text/csv;charset=utf-8',resultRevision:m.resultRevision,contextRef:m.preparation.id,synthetic:true};
+  }
+  window.ReviewJourney={users,subjectId,subject,event,prepare,planCurrent,sourceCurrent,sync,artifact,
+    approve(id,contextRef){return approvalHandler?approvalHandler(id,contextRef):{ok:false,reason:'没有待处理的计划'};},setApprovalHandler(fn){approvalHandler=fn;},records:()=>clone([...records.values()]),subscribeRecords(fn){recordListeners.push(fn);},memory:()=>clone(memory),memoryAllowed,
+    updateMemory(patch){Object.assign(memory,patch);memory.revision++;emit();},
+    integrationChanged(reason){integration.revision++;if(reason==='schema')integration.mcpSchemaRevision++;emit();},integration:()=>clone(integration),
+    userChanged(){emit();},subscribe(fn){listeners.push(fn);}
+  };
+})();
+</script>
+  <script>/* Synthetic configuration shared by the offline admin and chat previews. Not an API or ACL service. */
+(() => {
+  'use strict';
+  const clone = x => JSON.parse(JSON.stringify(x));
+  const initial = {
+    revision:1,
+    systems:[
+      {id:'orders',name:'订单系统',owner:'订单测试组',description:'订单、明细与报表核对',enabled:true,prompts:['核对报表与明细差异','排查接口异常','分析错误日志']},
+      {id:'payments',name:'支付系统',owner:'支付测试组',description:'支付请求、回调与异常定位',enabled:true,prompts:['排查接口异常','分析错误日志']},
+      {id:'reports',name:'报表系统',owner:'数据测试组',description:'报表口径与数据差异检查',enabled:true,prompts:['核对报表与明细差异','分析错误日志']}
+    ],
+    environments:[
+      {id:'orders-test',system:'orders',name:'测试环境',enabled:true,defaultModel:'general'},
+      {id:'orders-stage',system:'orders',name:'预发环境',enabled:true,defaultModel:'general'},
+      {id:'payments-test',system:'payments',name:'测试环境',enabled:true,defaultModel:'general'},
+      {id:'payments-integration',system:'payments',name:'联调环境',enabled:true,defaultModel:'general'},
+      {id:'reports-test',system:'reports',name:'测试环境',enabled:true,defaultModel:'general'},
+      {id:'reports-stage',system:'reports',name:'预发环境',enabled:true,defaultModel:'general'}
+    ],
+    models:[
+      {id:'general',name:'默认模型',provider:'control',agent:'示例 Agent A',enabled:true},
+      {id:'analysis',name:'分析模型',provider:'direct',agent:'示例 Agent B',enabled:true}
+    ],
+    roles:[
+      {id:'tester',name:'测试人员',canApproveRead:true,environments:['orders-test','orders-stage','payments-test','payments-integration','reports-test','reports-stage'],models:['general','analysis'],attachments:true,download:true,history:true,events:true,approver:'测试负责人',maxCalls:10,concurrency:1},
+      {id:'observer',name:'协作成员',canApproveRead:false,environments:['orders-test'],models:['general'],attachments:false,download:false,history:true,events:false,approver:'测试负责人',maxCalls:3,concurrency:1}
+    ]
+  };
+  let published=clone(initial), draft=clone(initial), previewRole='tester';
+  const audit=[],listeners=[];
+  const current = () => clone(published);
+  function visible(config=published,roleId=previewRole,applySubject=true) {
+    const subject=applySubject?window.ReviewJourney.subject(roleId):null;
+    const role=config.roles.find(x=>x.id===(subject?.role||roleId));
+    const models=config.models.filter(x=>x.enabled&&role?.models.includes(x.id)&&(!subject||subject.status==='active'));
+    const environments=config.environments.filter(x=>x.enabled&&role?.environments.includes(x.id)&&(!subject||subject.status==='active'&&(!subject.scopes||subject.scopes.includes(x.id)))&&config.systems.some(s=>s.id===x.system&&s.enabled));
+    const systems=config.systems.filter(x=>x.enabled&&environments.some(e=>e.system===x.id));
+    return clone({role,models,environments,systems});
+  }
+  function errors(config=draft) {
+    const messages=[];
+    for(const [key,label] of [['systems','系统'],['models','模型'],['environments','环境']]){
+      const names=new Set();
+      for(const item of config[key]){
+        const name=item.name.trim(),identity=(key==='environments'?item.system+':':'')+name;
+        if(!name||name.length>40)messages.push(label+'名称须为 1–40 字。');
+        if(names.has(identity))messages.push(label+'名称重复：'+name);names.add(identity);
+      }
+    }
+    for(const sys of config.systems)if(!sys.owner.trim())messages.push(sys.name+'需要负责人。');
+    for(const env of config.environments){
+      if(!config.systems.some(x=>x.id===env.system))messages.push('环境所属系统不存在。');
+      if(env.enabled&&config.systems.some(x=>x.id===env.system&&x.enabled)&&!config.models.some(x=>x.id===env.defaultModel&&x.enabled))messages.push(env.name+'的默认模型未启用。');
+    }
+    for(const role of config.roles){
+      if(!role.approver.trim())messages.push(role.name+'需要审批责任人。');
+      if(!Number.isInteger(role.maxCalls)||role.maxCalls<1||role.maxCalls>100)messages.push('单轮调用上限须为 1–100 的整数。');
+      if(!Number.isInteger(role.concurrency)||role.concurrency<1||role.concurrency>5)messages.push('并发上限须为 1–5 的整数。');
+      const v=visible(config,role.id,false);
+      for(const env of v.environments)if(!v.models.some(m=>m.id===env.defaultModel))messages.push(role.name+'无权使用 '+env.name+' 的默认模型。');
+    }
+    return [...new Set(messages)];
+  }
+  function changes(){
+    const labels={systems:'系统',environments:'环境',models:'模型',roles:'权限'};
+    const result=[];
+    for(const key of Object.keys(labels))for(const item of draft[key]){
+      const old=published[key].find(x=>x.id===item.id);
+      if(JSON.stringify(old)!==JSON.stringify(item))result.push(`${labels[key]} · ${item.name}（${item.id}）`);
+    }
+    return result;
+  }
+  function access(session){
+    const subject=window.ReviewJourney.subject(session.roleId);
+    if(subject.status!=='active')return '当前用户已暂停，不能继续检查或读取历史内容。';
+    const v=visible(published,session.roleId);
+    if(!v.environments.some(x=>x.id===session.environmentId&&x.system===session.systemId)||!v.models.some(x=>x.id===session.modelId))return '当前系统、环境或模型已停用，或不在你的权限范围。请联系管理员，或新建对话选择可用范围。';
+    return '';
+  }
+  window.ReviewJourney.subscribe(()=>listeners.forEach(fn=>fn()));
+  window.ConfigurationPrototype={
+    current, draft:()=>draft, visible, errors, changes, access,
+    role:()=>previewRole,
+    setRole(id){if(!published.roles.some(x=>x.id===id))return;previewRole=id;listeners.forEach(fn=>fn());},
+    subscribe(fn){listeners.push(fn);},
+    discard(){draft=clone(published);},
+    publish(){const issues=errors();if(issues.length)return {ok:false,errors:issues};const changed=changes();if(!changed.length)return {ok:false,errors:['没有待应用的改动。']};published=clone(draft);published.revision++;draft=clone(published);audit.unshift({revision:published.revision,actor:'合成配置管理员',at:new Date().toISOString(),changes:changed});listeners.forEach(fn=>fn());return {ok:true,revision:published.revision};},
+    audit:()=>clone(audit)
+  };
+})();
+</script>
+  <script>/* Extended design review only: no auth service, model, Agent, MCP, database or code access. */
+(() => {
+  'use strict';
+  const root=document.querySelector('#configuration-root');
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const pages={integrations:['模型、ACP 与 MCP','分清模型账号、Agent 执行连接和工具服务，先检查接入条件。'],runtime:['执行环境与代码','区分业务环境、Agent 宿主和代码快照，明确真实访问限制。'],context:['上下文与记忆','按来源和权限组装本轮材料，长期记忆需单独审核。'],users:['用户与权限','按可管理范围维护成员状态与授权；以下都是合成身份。'],records:['用户记录','按范围审阅合成问题、执行事实和资料；正文需要用途授权。']};
+  const settings={auth:'agent_managed',acpVersion:'v1',mcpVersion:'2026-07-28',transport:'streamable-http',readCode:true,writeCode:false,terminal:false,network:'allowlist',isolation:'unverified',codeCommit:'demo-commit-a',deployment:'demo-commit-a',memory:'off',contextLimit:16000,outputReserve:4000};
+  const J=window.ReviewJourney,users=J.users;
+  const records=[{id:'demo-record-1',owner:'demo-tester',scope:'orders-test',title:'报表与明细差异（合成）',status:'待验证',text:'合成提问：报表金额和明细金额不一致。\n合成助手：请对齐时间与状态，再核对证据。本例尚待用户确认。',usage:'未上报实际费用',events:['用户条件已保存','唯一执行绑定：demo-binding-record-1','只读授权已确认（合成）','上下文清单已固定（合成）','合成结果已交付，待用户验证']},{id:'demo-record-2',owner:'demo-collaborator',scope:'orders-test',title:'接口超时核查（合成）',status:'核查中',text:'合成请求发生超时。必须核查原拥有者，不能改后端重复执行。',usage:'估算不可替代实际费用',events:['start 回执未知','原提交核查中','外部效果未知，保留拥有权']},{id:'demo-record-private',owner:'demo-tester',scope:'payments-test',title:'不可枚举记录',status:'处理中',text:'不可见',events:[]}];
+  const audit=[];
+  let page='integrations',actor='config',scenario='unknown',notice='',preflight=null,userId='demo-tester',userDraft=null,recordId='demo-record-1',query='',lease=null,leaseDrafts={},memoryState='candidate',leaseTimer=null;
+  const roles={config:'配置管理员',access:'权限管理员',support:'支持审阅员',approver:'审批责任人'};
+  const scopes=['orders-test','orders-stage'];
+  const button=(id,text,extra='')=>`<button type="button" data-service="${id}" ${extra}>${text}</button>`;
+  const select=(label,key,value,items)=>`<label class="admin-field">${label}<select data-service-field="${key}">${items.map(([id,name])=>`<option value="${id}" ${id===value?'selected':''}>${esc(name)}</option>`).join('')}</select></label>`;
+  const input=(label,key,value,type='text')=>`<label class="admin-field">${label}<input type="${type}" data-service-field="${key}" value="${esc(value)}"></label>`;
+  const toggle=(label,key,value)=>`<label class="admin-toggle"><span>${label}</span><input type="checkbox" data-service-field="${key}" ${value?'checked':''}></label>`;
+  function log(action,target){audit.unshift({action,target,actor:roles[actor],at:new Date().toISOString()});}
+  function navigation(active){return `<aside class="admin-sidebar"><a class="admin-brand" href="#admin-systems">◈ 平台管理</a><a class="admin-back" href="#chat">← 返回用户对话</a><div class="admin-nav-title">对话配置</div><nav class="admin-config-nav">${[['systems','系统配置'],['environments','环境配置'],['models','模型配置'],['permissions','权限配置']].map(([id,name])=>`<a href="#admin-${id}">${name}</a>`).join('')}</nav><div class="admin-nav-title service-nav-title">接入与治理</div><nav class="admin-service-nav">${Object.entries(pages).map(([id,[name]])=>`<a href="#admin-${id}" ${id===active?'aria-current="page"':''}>${name}</a>`).join('')}</nav><div class="admin-secondary"><a href="#contract">设计与契约评审 ↗</a><a href="#approval">审批恢复演练 ↗</a><small>初始设计 · 离线演示<br>无真实接入与身份服务</small></div></aside>`;}
+  function integrations(){return `<div class="service-three"><section class="service-card"><h2>模型访问</h2><p class="admin-muted">用户显示名来自模型预设，账号与密钥方式另行管理。</p>${select('账号管理方式','auth',settings.auth,[['agent_managed','Agent / 总控自行管理'],['secret_ref','受控宿主按引用注入']])}<dl><dt>凭据</dt><dd>${settings.auth==='agent_managed'?'只保存外部认证状态，不复制账号秘密':'仅保存秘密引用；原型无秘密值'}</dd><dt>数据出口</dt><dd>限定区域与服务目录；实际策略待验证</dd><dt>实际模型</dt><dd>未知，不能凭显示名称推断能力</dd></dl></section><section class="service-card"><h2>ACP 执行连接</h2>${select('协议支持分支','acpVersion',settings.acpVersion,[['v1','v1 · 当前设计基线'],['v2-draft','v2 · Draft，未准入']])}<dl><dt>生命周期</dt><dd>初始化 → 认证 → 新会话 → 事件 → 核查 / 停止</dd><dt>恢复与权限桥</dt><dd>逐能力发现；当前未验证</dd><dt>拥有者</dt><dd>固定 Binding，不透明切换后端</dd></dl></section><section class="service-card"><h2>MCP 工具连接</h2>${select('协议版本','mcpVersion',settings.mcpVersion,[['2026-07-28','2026-07-28'],['2025-11-25','2025-11-25 · 兼容分支']])}${select('传输','transport',settings.transport,[['streamable-http','Streamable HTTP'],['stdio','受控 stdio 子进程']])}<p class="admin-muted">两个 HTTP 版本的会话与流语义不同；不混用。工具清单、参数、风险、身份与预算分别检查。</p><span class="service-state">真实工具能力：未知</span></section></div><section class="service-card"><h2>接入条件预检</h2><p class="admin-muted">本地模拟策略检查，不探测端点，不安装或启动进程。</p>${select('演示故障','scenario',scenario,[['unknown','实际能力未知'],['schema','MCP schema 发生变化'],['bridge','审批桥接缺失'],['auth','认证已过期'],['scope','工具参数越界'],['timeout','工具调用结果未知'],['normal','设计条件齐全，仍待实测']])}${button('preflight','运行离线预检','class="admin-primary"')}${button('simulate-admission-change','模拟变更使当前计划失效')}<div id="service-preflight" role="status">${preflight?esc(preflight):'尚未运行预检。'}</div></section>`;}
+  function runtime(){return `<div class="service-two"><section class="service-card"><h2>Agent 运行档案</h2><p class="admin-muted">业务环境：订单 / 测试。宿主模板：受控单 Agent。实际制品与隔离证据尚未配置。</p>${select('网络出口','network',settings.network,[['allowlist','仅登记的模型 / 资源服务'],['unrestricted','任意网络 · 禁止准入']])}${select('隔离证据','isolation',settings.isolation,[['unverified','未验证'],['design-only','仅策略草案，待实机证据']])}${toggle('允许受控代码读取','readCode',settings.readCode)}${toggle('允许写业务代码（本轮禁止）','writeCode',settings.writeCode)}${toggle('开放任意终端（本轮禁止）','terminal',settings.terminal)}<div class="admin-note">worktree 不是 OS 沙箱。原型不创建目录、不执行命令、不读取代码。</div></section><section class="service-card"><h2>代码与现场版本</h2>${input('代码快照（合成）','codeCommit',settings.codeCommit)}${input('现场部署版本（合成）','deployment',settings.deployment)}<div class="admin-resource"><span>允许范围</span><strong>登记仓库 / 固定 commit / 只读路径</strong><span>拒绝范围</span><strong>秘密文件、链接逃逸、跨租户目录</strong><span>证据定位</span><strong>repo / commit / path / 行号 / blobHash</strong><span>其他资源</span><strong>只读查询、脱敏日志、本会话附件</strong></div>${button('runtime-check','检查环境策略','class="admin-primary"')}<div id="runtime-result" role="status">${preflight&&page==='runtime'?esc(preflight):''}</div></section></div>`;}
+  function context(){return `<div class="service-two"><section class="service-card"><h2>本轮上下文组装</h2>${input('总窗口预算（示例 token）','contextLimit',settings.contextLimit,'number')}${input('输出预留（示例 token）','outputReserve',settings.outputReserve,'number')}<ol class="service-list"><li>固定策略与操作计划</li><li>用户问题和明确条件</li><li>获准附件与当前版本代码证据</li><li>可追溯会话摘要</li><li>经审核且仍有效的记忆</li></ol>${button('context-check','生成合成材料清单','class="admin-primary"')}<div id="context-result" role="status">${preflight&&page==='context'?esc(preflight):''}</div><p class="admin-muted">实际模型窗口未知时仍阻断真实发送。过滤权限在检索之前，发出前再次核查。</p></section><section class="service-card"><h2>记忆策略</h2>${select('跨会话记忆','memory',settings.memory,[['off','默认关闭'],['personal','个人主动保存并审核'],['environment','系统环境范围 · 维护者审核']])}<p>合成条目：报表核对先对齐时间与状态。</p><dl><dt>来源</dt><dd>demo-record-1 / result-revision-1 · 合成</dd><dt>适用范围</dt><dd>订单 / 测试 · 原来源 ACL 仍有效才可用</dd><dt>条目状态</dt><dd id="memory-state">${esc(memoryState)}</dd></dl><div class="service-actions">${button('memory-review','审核候选')}${button('memory-activate','启用已审核条目')}${button('memory-revoke','撤销')}${button('memory-delete','请求删除')}${button('memory-source-revoke','模拟原来源撤权')}</div><p class="admin-muted">删除先进入 deletion_pending，待正文、索引、摘要及外部副本回执。不会把点击删除称为已经清除所有副本。</p></section></div>`;}
+  function userPage(){const user=users.find(u=>u.id===userId);if(!userDraft||userDraft.id!==userId){userDraft=JSON.parse(JSON.stringify(user));if(userDraft.scopes===null)userDraft.scopes=[...(window.ConfigurationPrototype.current().roles.find(r=>r.id===user.role)?.environments||[])];}return `<div class="service-two"><section class="service-card"><h2>成员（合成）</h2>${users.map(u=>button('select-user',`${esc(u.name)} · ${u.status==='active'?'正常':'已暂停'}`,`data-id="${u.id}" class="service-record ${u.id===userId?'selected':''}"`)).join('')}<div class="admin-note">当前管理者可授予：订单 / 测试、订单 / 预发。不能借用户管理自行提权。</div></section><section class="service-card"><h2>${esc(user.name)}</h2><p class="admin-muted">${user.id} · 授权修订 ${user.revision} · 本页只改变合成用户样例。</p>${select('成员角色','userRole',userDraft.role,[['tester','测试人员'],['observer','协作成员'],['access','权限管理员（不可授予）']])}${['orders-test','orders-stage','payments-test'].map(id=>`<label class="admin-check"><input type="checkbox" data-user-scope="${id}" ${userDraft.scopes.includes(id)?'checked':''}>${esc(id)} ${scopes.includes(id)?'':'· 超出可授予范围'}</label>`).join('')}${input('变更理由 / 工单','reason',userDraft.reason||'')}<div class="service-actions">${button('save-user','预览权限变更','class="admin-primary"')}${button('toggle-user',user.status==='active'?'暂停该用户':'恢复该用户')}</div><p class="admin-muted">暂停阻止后续执行并触发撤权核查；真实在途动作是否停止需要权威回执。</p></section></div>`;}
+  function recordPage(){const visible=['support','approver'].includes(actor)?[...records,...J.records()].filter(r=>r.scope==='orders-test'&&(!query||r.title.includes(query)||r.owner.includes(query))):[];const r=visible.find(x=>x.id===recordId);const canRead=!!(r&&lease&&lease.id===r.id&&lease.expires>Date.now()&&lease.actor===actor);return `<div class="service-two"><section class="service-card"><h2>获准范围内的问题记录</h2>${input('搜索标题或用户（合成）','query',query)}<p class="admin-muted">列表仅返回订单 / 测试范围的脱敏元数据。不可见记录不参与计数。</p>${visible.length?visible.map(x=>button('select-record',`${esc(x.title)} · ${esc(x.status)}`,`data-id="${x.id}" class="service-record"`)).join(''):'<p>无可访问记录，或当前演示角色无 records.list 权限。</p>'}</section><section class="service-card"><h2>记录详情</h2>${r?`<dl><dt>用户 / 范围</dt><dd>${esc(r.owner)} / ${esc(r.scope)}</dd><dt>状态 / 费用</dt><dd>${esc(r.status)} / ${esc(r.usage)}</dd></dl><h3>后台处理时间线（合成）</h3><ol class="service-list">${r.events.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><details><summary>配置与材料引用</summary><p>${esc(r.preparation?JSON.stringify({context:r.preparation.id,requestedModel:r.preparation.requestedModel,actualModel:r.preparation.actualModelId,code:r.preparation.codeSnapshot,mcp:r.preparation.mcpConnectionRef,memory:r.preparation.memoryRefs,binding:r.binding?.id,resultRevision:r.resultRevision}):'demo-runtime / demo-context-manifest / demo-code-commit / demo-mcp-schema')}</p></details>${actor==='approver'&&r.status==='待负责人审批'?button('approve-plan','审阅当前只读计划（合成）','class="admin-primary"'):''}<h3>正文审阅</h3>${input('审阅理由 / 工单','leaseReason',leaseDrafts[actor+':'+recordId]||'')}${button('lease','申请本条记录的短期审阅','class="admin-primary"')}${button('expire-lease','模拟租约过期')}<div id="record-content">${canRead?`<p class="service-sensitive">${esc(r.text)}</p><small>本次正文读取已记入合成审计。附件和下载仍需单独授权。</small>`:'<p class="admin-muted">正文尚未授权；元数据访问不包含正文和下载。</p>'}</div>`:'<p>请选择一条当前可访问的记录。</p>'}</section></div>`;}
+  function render(next,focus=false){
+    const target=pages[next]?next:'integrations';if(target!==page)preflight=null;page=target;root.dataset.mode='service';
+    root.innerHTML=navigation(page)+`<main class="admin-main"><header class="admin-heading"><div><div class="admin-eyebrow">平台管理 / 接入与治理</div><h1 tabindex="-1">${pages[page][0]}</h1><p>${pages[page][1]}</p></div><span class="admin-badge">合成资料 · 设计评审</span></header><div class="service-role">${select('演示管理角色','actor',actor,Object.entries(roles))}<span>角色切换用于评审拒绝路径，不是登录鉴权。</span></div><div id="service-feedback" role="status" aria-live="polite">${esc(notice)}</div>${({integrations,runtime,context,users:userPage,records:recordPage})[page]()}<details class="admin-audit"><summary>本次合成治理审计（${audit.length}）</summary>${audit.map(a=>`<p>${esc(a.actor)} · ${esc(a.action)} · ${esc(a.target)} · ${a.at}</p>`).join('')||'<p>暂无操作。</p>'}</details></main><dialog id="service-dialog" aria-labelledby="service-dialog-title"></dialog>`;
+    if(focus)root.querySelector('h1').focus();
+    const dialog=root.querySelector('#service-dialog');dialog.addEventListener('cancel',()=>setTimeout(()=>root.querySelector('[data-service=save-user]')?.focus(),0));
+  }
+  const feedback=text=>{notice=text;root.querySelector('#service-feedback').textContent=text;};
+  root.addEventListener('input',e=>{
+    if(root.dataset.mode!=='service')return;const key=e.target.dataset.serviceField;
+    if(!key||e.target.tagName==='SELECT'||e.target.type==='checkbox')return;
+    if(key==='reason'){userDraft.reason=e.target.value;return;}
+    if(key==='query'){query=e.target.value;return;}
+    if(key==='leaseReason'){leaseDrafts[actor+':'+recordId]=e.target.value;return;}
+    settings[key]=e.target.type==='number'?Number(e.target.value):e.target.value;preflight=null;
+  });
+  root.addEventListener('change',e=>{
+    if(root.dataset.mode!=='service')return;const key=e.target.dataset.serviceField;
+    if(e.target.dataset.userScope){const id=e.target.dataset.userScope;userDraft.scopes=e.target.checked?[...new Set([...userDraft.scopes,id])]:userDraft.scopes.filter(x=>x!==id);return;}
+    if(!key||e.target.type!=='checkbox'&&e.target.tagName!=='SELECT')return;
+    if(key==='actor'){actor=e.target.value;lease=null;notice='演示管理角色已切换，内容租约已失效。';}
+    else if(key==='scenario')scenario=e.target.value;
+    else if(key==='userRole')userDraft.role=e.target.value;
+    else {settings[key]=e.target.type==='checkbox'?e.target.checked:e.target.value;if(key==='memory')J.updateMemory({mode:settings.memory});}
+    preflight=null;render(page);
+  });
+  root.addEventListener('keydown',e=>{if(root.dataset.mode==='service'&&e.target.dataset.serviceField==='query'&&e.key==='Enter'){e.preventDefault();recordId='';render(page);}});
+  root.addEventListener('click',e=>{
+    if(root.dataset.mode!=='service')return;const b=e.target.closest('[data-service]');if(!b)return;const action=b.dataset.service;
+    if(['preflight','runtime-check','context-check','memory-review','memory-activate','memory-revoke','memory-delete','memory-source-revoke'].includes(action)&&actor!=='config'){feedback('当前演示角色没有配置 / 记忆管理权限。');return;}
+    if(action==='simulate-admission-change'){if(actor!=='config'){feedback('当前角色不能模拟接入变更。');return;}J.integrationChanged(scenario);log('接入观察变更，计划需复查',scenario);notice='已更新合成接入修订。旧计划失效，已有执行绑定保留。';render(page);return;}
+    if(action==='preflight'){const failures={unknown:'阻断：实际模型与 Agent / MCP 能力未知。',schema:'阻断：工具 schema 摘要变化，需重新审核参数与计划。',bridge:'阻断：审批桥接未验证，不允许自动响应权限。',auth:'阻断：认证已过期，需责任人恢复认证。',scope:'阻断：工具参数超出允许环境或资源范围，不允许执行。',timeout:'结果未知：保留原 invocation 引用并核查，禁止新键重做。',normal:'设计条件齐全；真实认证、隔离、能力和执行仍未验证，不能真实启动。'};preflight=settings.acpVersion==='v2-draft'?'阻断：v2 为 Draft，适配器未准入。':failures[scenario];log('离线接入预检',scenario);render(page);return;}
+    if(action==='runtime-check'){const blockers=[];if(settings.writeCode)blockers.push('禁止写业务代码');if(settings.terminal)blockers.push('禁止任意终端');if(settings.network!=='allowlist')blockers.push('禁止任意网络');if(!settings.codeCommit.trim()||!settings.deployment.trim())blockers.push('缺少固定版本');else if(settings.codeCommit!==settings.deployment)blockers.push('代码与部署版本不一致，只能给有限结论');blockers.push('真实隔离尚未验证');preflight='阻断：'+blockers.join('；');render(page);return;}
+    if(action==='context-check'){const total=settings.contextLimit,reserve=settings.outputReserve;preflight=!Number.isInteger(total)||!Number.isInteger(reserve)||total<1||reserve<1||reserve>=total?'阻断：上下文预算必须为正整数，且需保留足够输入空间。':`合成清单：当前问题、获准代码片段和证据、来源可追溯摘要；长期记忆${settings.memory==='off'?'关闭':'仅限审核通过且原 ACL 仍有效的条目'}。输入预算 ${total-reserve}，输出预留 ${reserve}；真实模型窗口未知，实际发送仍阻断。`;render(page);return;}
+    if(action==='memory-source-revoke'){J.updateMemory({sourceAccess:false});log(action,'demo-memory-1');notice='原来源已撤权，相关上下文、结果与正文租约失效。';render(page);return;}
+    if(action==='memory-review'){if(memoryState!=='candidate'){feedback('只有候选条目可以审核。');return;}memoryState='reviewed';}
+    if(action==='memory-activate'){if(memoryState!=='reviewed'){feedback('须先审核，再启用；候选和已撤销条目不可直接进入上下文。');return;}memoryState='active';}
+    if(action==='memory-revoke')memoryState='revoked';
+    if(action==='memory-delete')memoryState='deletion_pending';
+    if(action.startsWith('memory-')){J.updateMemory({state:memoryState});log(action,'demo-memory-1');render(page);return;}
+    if(action==='select-user'){userId=b.dataset.id;userDraft=null;render(page);return;}
+    if(action==='save-user'||action==='toggle-user'){
+      const u=users.find(x=>x.id===userId);if(actor!=='access'){feedback('当前演示角色没有 users.manage 权限。');return;}
+      if(u.id==='demo-admin'){feedback('禁止修改自身身份或自行提权。');return;}
+      if(!userDraft.reason||userDraft.reason.trim().length<5){feedback('请填写至少 5 字的变更理由 / 工单。');return;}
+      if(userDraft.scopes.some(x=>!scopes.includes(x)&&!(u.scopes||window.ConfigurationPrototype.current().roles.find(r=>r.id===u.role)?.environments||[]).includes(x))||!['tester','observer'].includes(userDraft.role)){feedback('超出可授予的角色或环境范围。');return;}
+      const dialog=root.querySelector('#service-dialog');dialog.innerHTML=`<h2 id="service-dialog-title">确认合成用户变更</h2><p>${esc(u.name)} · ${action==='toggle-user'?(u.status==='active'?'暂停后续使用':'恢复使用，不恢复旧批准'):esc(userDraft.role+' / '+userDraft.scopes.join(', '))}</p><p>理由：${esc(userDraft.reason)}</p>${button('cancel','继续编辑')}${button(action==='toggle-user'?'confirm-toggle':'confirm-save','确认变更','class="admin-primary"')}`;dialog.showModal();return;
+    }
+    if(action==='cancel'){root.querySelector('#service-dialog').close();return;}
+    if(action==='confirm-save'||action==='confirm-toggle'){const u=users.find(x=>x.id===userId);if(actor!=='access'||u.id==='demo-admin'||userDraft.revision!==u.revision){feedback('变更权限或修订冲突，需重新检查。');return;}if(action==='confirm-save'){u.role=userDraft.role;u.scopes=[...userDraft.scopes];}else u.status=u.status==='active'?'suspended':'active';u.revision++;J.userChanged();log(action,u.id);lease=null;userDraft=null;notice='已更新合成用户样例；真实身份服务和在途撤权仍未实现。';render(page);return;}
+    if(action==='approve-plan'){const r=J.records().find(x=>x.id===recordId);if(actor!=='approver'||r?.scope!=='orders-test'||r.status!=='待负责人审批'){feedback('无权处理此计划或计划已失效。');return;}const dialog=root.querySelector('#service-dialog');dialog.innerHTML=`<h2 id="service-dialog-title">确认这份只读计划？</h2><p>${esc(r.title)} / ${esc(r.scope)}<br>模型：${esc(r.preparation.requestedModel)}<br>上下文：${esc(r.preparation.id)}<br>固定输入修订：${r.preparation.inputRevision}；不包含写入。合成演示，不调用真实资源。</p>${button('cancel','取消')}${button('confirm-plan','批准这份计划','class="admin-primary"')}`;dialog.dataset.contextRef=r.preparation.id;dialog.showModal();return;}
+    if(action==='confirm-plan'){const dialog=root.querySelector('#service-dialog');if(actor!=='approver'){feedback('当前角色不能审批此计划。');return;}const result=J.approve(recordId,dialog.dataset.contextRef);log('负责人计划审批',recordId);notice=result.ok?'负责人已确认本计划，等待合成结果；用户验收仍独立。':result.reason;render(page);return;}
+    if(action==='select-record'){recordId=b.dataset.id;lease=null;render(page);return;}
+    if(action==='lease'){const r=[...records,...J.records()].find(x=>x.id===recordId),reason=root.querySelector('[data-service-field=leaseReason]')?.value||'';if(actor!=='support'||r?.scope!=='orders-test'){feedback('当前角色或记录范围不允许正文审阅。');return;}if(reason.trim().length<5){feedback('需填写至少 5 字的用途理由 / 工单。');return;}lease={id:r.id,expires:Date.now()+5*60*1000,actor};clearTimeout(leaseTimer);leaseTimer=setTimeout(()=>{lease=null;notice='内容租约已自动到期，正文已隐藏。';if(root.dataset.mode==='service'&&page==='records')render(page);},5*60*1000);log('正文租约及读取：'+reason,r.id);notice='已取得本条合成记录的短期用途租约；不包含附件下载。';render(page);return;}
+    if(action==='expire-lease'){lease=null;clearTimeout(leaseTimer);notice='内容租约已过期，正文不再显示。';render(page);}
+  });
+  J.subscribeRecords(()=>{if(root.dataset.mode==='service'&&page==='records')render(page);});
+  window.ConfigurationPrototype.subscribe(()=>{if(lease){lease=null;clearTimeout(leaseTimer);notice='授权配置变化，正文租约已失效。';if(root.dataset.mode==='service'&&page==='records')render(page);}});
+  J.subscribe(()=>{if(lease){lease=null;clearTimeout(leaseTimer);notice='授权或材料已变化，正文租约已失效。';}if(root.dataset.mode==='service'&&page==='records')render(page);});
+  window.ServiceDesignPrototype={pages,navigation,render,inspect:()=>JSON.parse(JSON.stringify({settings,users,audit,memoryState,lease})),has:id=>Object.hasOwn(pages,id),hide(){lease=null;clearTimeout(leaseTimer);}};
+})();
+</script>
+  <script>/* Configuration authoring mock; all edits live only in this document's memory. */
+(() => {
+  'use strict';
+  const C=window.ConfigurationPrototype, root=document.querySelector('#configuration-root');
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const pages={systems:['系统配置','决定用户可以选择哪些系统，以及常用的检查问题。'],environments:['环境配置','为系统配置可用环境、默认模型与只读资源范围。'],models:['模型配置','管理对话中的模型名称，以及对应的执行连接与 Agent。'],permissions:['权限配置','按成员角色限定系统、环境、模型和资料访问。']};
+  const selections={systems:'orders',environments:'orders-test',models:'general',permissions:'tester'};
+  const providers={control:'总控适配器',direct:'受控 ACP 直连'};
+  let page='systems',notice='',trigger;
+  const btn=(id,text,cls='')=>`<button type="button" data-admin="${id}" class="${cls}">${text}</button>`;
+  const text=(label,field,value,extra='')=>`<label class="admin-field">${label}<input data-field="${field}" value="${esc(value)}" ${extra}></label>`;
+  const toggle=(label,field,value,help='')=>`<label class="admin-toggle"><span>${label}${help?`<small>${help}</small>`:''}</span><input type="checkbox" data-field="${field}" ${value?'checked':''}></label>`;
+  const select=(label,field,value,items)=>`<label class="admin-field">${label}<select data-field="${field}">${items.map(([id,name])=>`<option value="${id}" ${id===value?'selected':''}>${esc(name)}</option>`).join('')}</select></label>`;
+  const group=()=>page==='permissions'?'roles':page;
+  const selected=()=>C.draft()[group()].find(x=>x.id===selections[page]);
+  function systems(x){return `<h2>用户看到的系统</h2><p class="admin-muted">固定流程：只读问题检查 · 示例。用户通过对话发起，不需要配置流程。</p>${text('系统名称','name',x.name,'maxlength="40"')}${text('负责团队','owner',x.owner)}${text('用途说明','description',x.description)}${toggle('在用户端提供此系统','enabled',x.enabled,'停用后不再接受新的检查，既有记录保留。')}<h3>常用检查问题</h3><p class="admin-muted">显示在用户输入框上方，点击后填入问题。</p>${['核对报表与明细差异','排查接口异常','分析错误日志'].map(p=>`<label class="admin-check"><input type="checkbox" data-prompt="${p}" ${x.prompts.includes(p)?'checked':''}>${p}</label>`).join('')}`;}
+  function environments(x){const d=C.draft(),sys=d.systems.find(s=>s.id===x.system);return `<h2>${esc(sys.name)} / 环境设置</h2>${select('所属系统','system',x.system,d.systems.map(s=>[s.id,s.name]))}${text('环境名称','name',x.name,'maxlength="40"')}${select('默认模型','defaultModel',x.defaultModel,d.models.map(m=>[m.id,m.name+(m.enabled?'':' · 已停用')]))}${toggle('在用户端提供此环境','enabled',x.enabled)}<h3>只读资源范围</h3><div class="admin-resource"><span>代码</span><strong>${esc(x.system)} / 固定部署版本</strong><span>日志</span><strong>${esc(x.name)} / 当前问题时间范围</strong><span>数据</span><strong>脱敏只读查询 / 限定报表和明细</strong><span>文件</span><strong>本会话附件 / 经授权的检查产物</strong></div><p class="admin-muted">以上为合成范围说明。资源映射与真实执行身份待接入时配置；原型不保存连接串或凭据。</p><div class="admin-note">同一个问题会话固定系统和环境。修改环境默认模型，只影响之后新建的会话；不会替换正在执行的拥有者。</div>`;}
+  function models(x){return `<h2>用户端模型选项</h2>${text('显示名称','name',x.name,'maxlength="40"')}${select('执行连接','provider',x.provider,Object.entries(providers))}<div class="admin-resource"><span>Agent</span><strong>${esc(x.agent)}</strong><span>实际模型 / 能力</span><strong>未知 · 尚未发现和验证</strong><span>允许的操作</span><strong>合成只读演示</strong></div>${toggle('在用户端提供此模型预设','enabled',x.enabled,'仅对已获权限的角色可见。')}<div class="admin-note">这是一项示例预设，不代表真实模型已可用。正式产品只允许将执行器已发现、确认且满足策略的模型投入使用。</div><details class="admin-details"><summary>执行连接与能力诊断</summary><p>总控和受控 ACP 直连都通过 ExecutionProvider。配置改变不迁移既有执行；能力未知、不匹配或审批桥接缺失时阻断真实执行。</p><a href="#connections">查看连接契约演练 ↗</a></details>`;}
+  function permissions(x){const d=C.draft();return `<h2>${esc(x.name)}的使用范围</h2><h3>系统与环境</h3><div class="admin-check-grid">${d.environments.map(env=>`<label class="admin-check"><input type="checkbox" data-grant="environments" value="${env.id}" ${x.environments.includes(env.id)?'checked':''}>${esc(d.systems.find(s=>s.id===env.system).name)} / ${esc(env.name)}</label>`).join('')}</div><h3>可选模型</h3>${d.models.map(m=>`<label class="admin-check"><input type="checkbox" data-grant="models" value="${m.id}" ${x.models.includes(m.id)?'checked':''}>${esc(m.name)}</label>`).join('')}<h3>资料访问</h3>${toggle('添加附件','attachments',x.attachments,'原型只展示文件名；正式上传和内容读取分别鉴权。')}${toggle('下载检查文件','download',x.download,'对每份产物重新鉴权；本页仅配置和预览。')}${toggle('查看本人历史对话','history',x.history,'不包含他人的会话。原型未接入真实身份。')}${toggle('查看执行事件','events',x.events,'事件与诊断不是公开数据；本页仅配置和预览。')}<h3>审批与用量约束</h3>${toggle('允许确认本人会话的只读计划','canApproveRead',x.canApproveRead,'不包含写入或替他人批准；未授权时交由责任人。')}${text('审批责任人','approver',x.approver)}<div class="admin-two">${text('单轮调用上限（示例）','maxCalls',x.maxCalls,'type="number" min="1" max="100"')}${text('并发上限（示例）','concurrency',x.concurrency,'type="number" min="1" max="5"')}</div><p class="admin-muted">固定只读策略；具体操作执行前确认。受控写入不在本轮范围。数量与费用需后端落实，这里不声称已硬性限制。</p>`;}
+  function preview(){const v=C.visible(C.draft()),rows=[['系统',v.systems.map(x=>x.name).join('、')||'无可用系统'],['环境',v.environments.map(x=>x.name).filter((x,i,a)=>a.indexOf(x)===i).join('、')||'无可用环境'],['模型',v.models.map(x=>x.name).join('、')||'无可用模型'],['附件',v.role.attachments?'允许添加':'不可添加'],['文件下载',v.role.download?'允许（仍需逐项授权）':'不允许'],['历史 / 事件',`${v.role.history?'本人历史':'不提供历史'} / ${v.role.events?'允许事件':'不提供事件'}`]];return `<h2>用户端预览</h2><label class="admin-field">预览身份<select id="admin-preview-role">${C.draft().roles.map(r=>`<option value="${r.id}" ${C.role()===r.id?'selected':''}>${r.name}</option>`).join('')}</select></label><p class="admin-muted">下方展示草稿效果。对话读取已应用配置；身份切换仅用于离线评审。</p><dl>${rows.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl><a class="admin-preview-link" href="#chat">返回用户对话 ↗</a><div class="admin-note">用户只选择已配置、已获权限的选项，无需理解后端或权限规则。</div>`;}
+  function render(next=page,focus=false){
+    if(window.ServiceDesignPrototype?.has(next)){window.ServiceDesignPrototype.render(next,focus);return;}
+    root.dataset.mode='configuration';page=pages[next]?next:'systems';const d=C.draft();if(!selected())selections[page]=d[group()][0].id;const x=selected(),items=d[group()];
+    root.innerHTML=`<aside class="admin-sidebar"><a class="admin-brand" href="#admin-systems">◈ 平台管理</a><a class="admin-back" href="#chat">← 返回用户对话</a><div class="admin-nav-title">对话配置</div><nav class="admin-config-nav">${Object.entries(pages).map(([id,[title]])=>`<a href="#admin-${id}" ${page===id?'aria-current="page"':''}>${title}</a>`).join('')}</nav><div class="admin-nav-title service-nav-title">接入与治理</div><nav class="admin-service-nav">${Object.entries(window.ServiceDesignPrototype.pages).map(([id,[name]])=>`<a href="#admin-${id}">${name}</a>`).join('')}</nav><div class="admin-secondary"><a href="#contract">设计与契约评审 ↗</a><a href="#approval">审批恢复演练 ↗</a><small>初始设计 · 离线配置<br>刷新清空全部模拟改动</small></div></aside><main class="admin-main"><header class="admin-heading"><div><div class="admin-eyebrow">平台管理 / 对话配置</div><h1 tabindex="-1">${pages[page][0]}</h1><p>${pages[page][1]}</p></div><span class="admin-badge">合成配置管理员</span></header><div class="admin-toolbar"><span id="admin-draft-status"></span><div>${btn('discard','放弃草稿')}${btn('publish','预览并应用','admin-primary')}</div></div><div id="admin-feedback" role="status" aria-live="polite">${esc(notice)}</div><div class="admin-columns"><section class="admin-editor"><div class="admin-records" aria-label="配置记录">${page!=='permissions'?btn('add','＋ 新增'): ''}${items.map(i=>`<button data-record="${i.id}" ${i.id===x.id?'aria-pressed="true"':''}>${esc(page==='environments'?d.systems.find(s=>s.id===i.system).name+' / '+i.name:i.name)}${i.enabled===false?'<span>已停用</span>':''}</button>`).join('')}</div><div class="admin-form">${({systems,environments,models,permissions})[page](x)}</div></section><aside class="admin-preview">${preview()}</aside></div><details class="admin-audit"><summary>本次演示的配置记录（${C.audit().length}）</summary>${C.audit().length?C.audit().map(a=>`<p>配置修订 ${a.revision} · ${esc(a.actor)} · ${esc(a.at)}<br>${esc(a.changes.join('；'))}</p>`).join(''):'<p>暂无应用记录。草稿尚未影响用户对话。</p>'}</details></main><dialog id="admin-dialog" aria-labelledby="admin-dialog-title"></dialog>`;
+    updatePreview();if(focus)root.querySelector('h1').focus();
+    root.querySelector('#admin-dialog').addEventListener('cancel',()=>setTimeout(()=>trigger?.focus(),0));
+  }
+  function updatePreview(){root.querySelector('#admin-draft-status').textContent=`已应用配置修订 ${C.current().revision} · ${C.changes().length?'有 '+C.changes().length+' 项未应用改动':'草稿与已应用配置一致'}`;root.querySelector('.admin-preview').innerHTML=preview();}
+  root.addEventListener('input',e=>{if(root.dataset.mode==='service')return;if(!e.target.dataset.field||e.target.type==='checkbox'||e.target.tagName==='SELECT')return;const value=e.target.type==='number'?Number(e.target.value):e.target.value;selected()[e.target.dataset.field]=value;updatePreview();});
+  root.addEventListener('change',e=>{if(root.dataset.mode==='service')return;
+    if(e.target.dataset.field&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT')return;
+    const x=selected();
+    if(e.target.dataset.field){x[e.target.dataset.field]=e.target.type==='checkbox'?e.target.checked:e.target.value;if(e.target.dataset.field==='provider')x.agent=x.provider==='control'?'示例 Agent A':'示例 Agent B';}
+    if(e.target.dataset.prompt)x.prompts=e.target.checked?[...new Set([...x.prompts,e.target.dataset.prompt])]:x.prompts.filter(p=>p!==e.target.dataset.prompt);
+    if(e.target.dataset.grant){const key=e.target.dataset.grant;x[key]=e.target.checked?[...new Set([...x[key],e.target.value])]:x[key].filter(v=>v!==e.target.value);}
+    if(e.target.id==='admin-preview-role')C.setRole(e.target.value);
+    render();
+  });
+  root.addEventListener('click',e=>{if(root.dataset.mode==='service')return;
+    const b=e.target.closest('button');if(!b)return;
+    if(b.dataset.admin==='add'){const d=C.draft(),id='demo-'+group()+'-'+(d[group()].length+1);let item;if(page==='systems')item={id,name:'新系统 '+(d.systems.length+1),owner:'待指定团队',description:'',enabled:false,prompts:[]};if(page==='environments')item={id,system:d.systems[0].id,name:'新环境 '+(d.environments.length+1),enabled:false,defaultModel:d.models[0].id};if(page==='models')item={id,name:'新模型预设 '+(d.models.length+1),provider:'control',agent:'示例 Agent A',enabled:false};if(item){d[group()].push(item);selections[page]=id;render();}return;}
+    if(b.dataset.record){selections[page]=b.dataset.record;render();return;}
+    const dialog=root.querySelector('#admin-dialog');
+    if(b.dataset.admin==='publish'){
+      const errors=C.errors();if(errors.length||!C.changes().length){notice=errors.join(' ')||'没有待应用的改动。';root.querySelector('#admin-feedback').textContent=notice;return;}
+      trigger=b;dialog.innerHTML=`<h2 id="admin-dialog-title">应用这份演示配置？</h2><ul>${C.changes().map(c=>`<li>${esc(c)}</li>`).join('')}</ul><p>新对话读取新配置。已有会话的环境和执行配置快照不变；停用和撤权在下一步检查时阻断。不会调用真实资源。</p><div class="admin-dialog-actions">${btn('cancel','继续编辑')}${btn('confirm','应用到离线演示','admin-primary')}</div>`;dialog.showModal();
+    }
+    if(b.dataset.admin==='discard'){trigger=b;dialog.innerHTML=`<h2 id="admin-dialog-title">放弃全部未应用改动？</h2><p>四个配置页面的草稿恢复为已应用配置。</p><div class="admin-dialog-actions">${btn('cancel','继续编辑')}${btn('confirm-discard','放弃草稿')}</div>`;dialog.showModal();}
+    if(b.dataset.admin==='cancel'){dialog.close();trigger?.focus();}
+    if(b.dataset.admin==='confirm'){const result=C.publish();notice=result.ok?'已应用到离线演示。可返回用户对话查看可选项。':result.errors.join(' ');dialog.close();render(page,true);}
+    if(b.dataset.admin==='confirm-discard'){C.discard();notice='已放弃草稿，已应用配置未改变。';dialog.close();render(page,true);}
+  });
+  window.AdminPrototype={render};
+})();
+</script>
+  <script>/* Offline conversation presentation. All replies are scripted; no model or resource calls. */
+(() => {
+  'use strict';
+  const root = document.querySelector('#chat-root');
+  const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const C=window.ConfigurationPrototype,J=window.ReviewJourney;
+  function sync(s, resetModel=false) {
+    const v=C.visible(s.snapshot||C.current(),s.roleId);
+    if(!s.locked){
+      const sys=v.systems.find(x=>x.id===s.systemId)||v.systems[0];
+      const env=v.environments.find(x=>x.id===s.environmentId&&x.system===sys?.id)||v.environments.find(x=>x.system===sys?.id);
+      const model=(!resetModel&&v.models.find(x=>x.id===s.modelId))||v.models.find(x=>x.id===env?.defaultModel)||v.models[0];
+      Object.assign(s,{systemId:sys?.id,environmentId:env?.id,modelId:model?.id,system:sys?.name||'无可用系统',environment:env?.name||'无可用环境',model:model?.name||'无可用模型'});
+    }
+    return v;
+  }
+  const denied=s=>C.access(s);
+  function check(s){const error=denied(s);if(error){root.querySelector('#chat-notice').textContent=error;return false;}return true;}
+  let nextId = 1, currentId, timer = null;
+  const sessions = [];
+  function create() {
+    const s = {id:nextId++, roleId:C.role(),subjectId:J.subjectId(C.role()),inputRevision:0,latestResultRevision:0,verification:null,binding:null,trace:[], title:'新对话', systemId:null,environmentId:null,modelId:null, draft:'', files:[], messages:[], phase:'intro', busy:false, locked:false};
+    sync(s);sessions.unshift(s); currentId=s.id; return s;
+  }
+  create();
+  const current = () => sessions.find(s => s.id === currentId);
+  const button = (action, text, extra='') => `<button type="button" data-chat="${action}" ${extra}>${text}</button>`;
+  const options = (values, selected) => values.map(v => `<option${v===selected?' selected':''}>${esc(v)}</option>`).join('');
+  function currentResult(s,m){return m.resultRevision===s.latestResultRevision&&m.inputRevision===s.inputRevision&&s.phase==='result'&&!s.busy&&!denied(s)&&J.sourceCurrent(m.preparation);}
+  function invalidatePlans(s,reason){for(const m of s.messages)if(m.kind==='permission'&&(!m.decision||m.pendingReview)){m.pendingReview=false;m.decision=reason;J.event(s,reason);}}
+  function scheduleExpiry(s,preparation){setTimeout(()=>{const m=s.messages.find(x=>x.kind==='permission'&&x.preparation.id===preparation.id&&(!x.decision||x.pendingReview));if(!m)return;m.pendingReview=false;m.decision='计划已过期，请补充信息重新确认';s.phase='details';J.event(s,'待确认计划到期，未执行');J.sync(s);if(currentId===s.id)render();},Math.max(0,Date.parse(preparation.validUntil)-Date.now()+1));}
+  function message(s, m, i) {
+    let content = `<div class="message-text">${esc(m.text)}</div>`;
+    if(m.files?.length) content += `<div class="message-files">${m.files.map(f=>`<span>▧ ${esc(f.name)} · 仅文件名</span>`).join('')}</div>`;
+    if(m.kind === 'permission') content += `<div class="inline-permission"><strong>确认本次检查范围</strong><p>${esc(s.system)} · ${esc(s.environment)}<br>只读查询与本次问题有关的记录，生成检查摘要；不修改数据。</p><small>离线演示：不会访问任何系统。范围变更需重新确认。</small><div>${m.decision ? `<span>${esc(m.decision)}</span>` : (C.visible(C.current(),s.roleId).role?.canApproveRead?button('allow','允许本次检查',`class="chat-primary" data-message="${i}"`):button('request-review','请负责人确认',`class="chat-primary" data-message="${i}"`))+button('deny','暂不允许',`data-message="${i}"`)}</div></div>`;
+    if(m.kind === 'result') {
+      if(!J.sourceCurrent(m.preparation))content='<p class="admin-muted">该结果关联的来源已失效，暂不能读取、下载或确认。历史版本保留。</p>';
+      const active=currentResult(s,m);
+      content+=`<details class="chat-provenance"><summary>检查依据 · 结果 ${m.resultRevision}（合成）</summary><p>上下文：${esc(m.preparation.id)}；请求模型：${esc(m.preparation.requestedModel)}；实际模型未知。<br>代码与工具引用均为演示。附件仅文件名，未解析；使用记忆 ${m.preparation.memoryRefs.length} 项。</p></details><div class="result-choice">${m.verified?'<span>✓ 已确认此示例结果</span>':active?button('resolved','问题已解决',`data-message="${i}"`)+button('continue','继续排查',`data-message="${i}"`):'<span>历史或失效结果，不能确认当前问题</span>'}${active||m.verified&&J.sourceCurrent(m.preparation)?button('download','下载合成差异示例',`data-message="${i}" ${!C.visible().role?.download?'disabled':''}`):''}</div>`;
+    }
+    return `<article class="chat-message ${m.role}"><div class="message-author">${m.role==='user'?'你':'测试助手 <span>模拟回复</span>'}</div>${content}</article>`;
+  }
+  function render(focus=false) {
+    const s=current(),v=sync(s),blocked=denied(s);J.sync(s);
+    const history=sessions.filter(x=>x.subjectId===s.subjectId&&(C.visible().role?.history||x.id===s.id)&&(!denied(x)||x.id===s.id));
+    const prompts=v.systems.find(x=>x.id===s.systemId)?.prompts||[];
+    root.innerHTML=`<aside class="chat-sidebar"><a class="chat-brand" href="#chat"><span>◈</span> 测试助手</a>${button('new','＋ 新对话','class="new-chat"')}<div class="chat-history-label">最近对话</div><nav aria-label="最近对话">${history.map(x=>button('session',esc(denied(x)?'不可访问的对话':x.title),`data-id="${x.id}" class="session-item ${x.id===s.id?'selected':''}" ${s.busy?'disabled':''}`)).join('')}</nav><div class="chat-sidebar-bottom"><a href="#admin-systems">平台管理 ↗</a><small>离线原型 · 刷新清空对话</small></div></aside>
+    <main class="chat-main"><header class="chat-header"><strong>测试助手</strong>${button('new','＋ 新对话','class="mobile-new"')}<select class="mobile-new" id="chat-mobile-history" aria-label="切换对话">${history.map(x=>`<option value="${x.id}" ${x.id===s.id?'selected':''}>${esc(denied(x)?'不可访问的对话':x.title)}</option>`).join('')}</select><span>初始设计 · 离线演示</span></header><div class="chat-scroll" role="log" aria-label="对话记录" aria-live="polite">${blocked ? `<div class="chat-welcome"><h1>暂无可用的检查范围</h1><p>${esc(blocked)}</p></div>` : s.messages.length ? `<div class="message-list">${s.messages.map((m,i)=>message(s,m,i)).join('')}${s.busy?'<div class="replying" role="status">正在生成模拟回复<span>•••</span></div>':''}</div>` : '<div class="chat-welcome"><div class="welcome-symbol">◈</div><h1>今天想检查什么？</h1><p>选好系统和环境，直接描述问题。</p></div>'}</div>
+    <div class="chat-bottom">${!s.messages.length?`<div class="quick-prompts">${prompts.map((p,i)=>button('prompt',p,`data-prompt="${i}"`)).join('')}</div>`:''}<form id="chat-form" class="chat-composer"><div class="chat-context"><label>系统 <select id="chat-system" ${s.locked?'disabled':''}>${options(s.locked?[s.system]:v.systems.map(x=>x.name),s.system)}</select></label><label>环境 <select id="chat-environment" ${s.locked?'disabled':''}>${options(s.locked?[s.environment]:v.environments.filter(x=>x.system===s.systemId).map(x=>x.name),s.environment)}</select></label>${s.locked?'<span class="context-fixed" title="新建对话可选择其他系统和环境">本对话已固定</span>':''}</div><label class="sr-only" for="chat-input">描述问题</label><textarea id="chat-input" placeholder="描述你遇到的问题，也可以附上截图或文件…" rows="2">${esc(s.draft)}</textarea><div class="draft-files">${s.files.map((f,i)=>`<span>▧ ${esc(f.name)} ${button('remove-file','×',`data-file="${i}" aria-label="移除 ${esc(f.name)}"`)}</span>`).join('')}</div><div class="composer-tools"><div>${button('attach','＋','class="attach-button" aria-label="添加附件" '+(blocked||!C.visible().role?.attachments?'disabled':''))}<input id="chat-files" type="file" multiple hidden><label class="sr-only" for="chat-model">模型</label><select id="chat-model" aria-label="模型" ${s.busy?'disabled':''}>${options([...new Set([s.model,...v.models.map(x=>x.name)])],s.model)}</select><span class="model-note">演示</span></div>${s.busy?button('stop','停止','class="send-button"'):'<button type="submit" class="send-button" aria-label="发送消息" '+(blocked||(!s.draft.trim()&&!s.files.length)?'disabled':'')+'>↑</button>'}</div></form><div id="chat-notice" role="status">${blocked?esc(blocked):s.files.length?'附件仅展示文件名，未读取内容。':'模拟对话，不连接模型或业务系统。'}</div></div></main>`;
+    if(focus)root.querySelector('#chat-input').focus();
+    const scroll=root.querySelector('.chat-scroll');scroll.scrollTop=scroll.scrollHeight;
+  }
+  function reply(s, fn,preparation=null) {
+    s.busy=true;J.sync(s);if(currentId===s.id)render();
+    timer=setTimeout(()=>{s.busy=false;timer=null;if(!denied(s)&&(!preparation||J.planCurrent(s,preparation)))fn();else {if(s.binding)s.binding.state='stopped_simulation';s.phase='details';J.event(s,'权限或上下文变化，本地模拟停止；真实在途执行需核查');s.messages.push({role:'assistant',text:'范围、权限或上下文已变化，已停止本次模拟回复。'});}J.sync(s);if(currentId===s.id)render(true);},650);
+  }
+  function send() {
+    const s=current(); if(s.busy||(!s.draft.trim()&&!s.files.length)||!check(s))return;
+    if(s.files.length&&!C.visible().role.attachments){root.querySelector('#chat-notice').textContent='当前角色不能添加附件，请移除后再发送。';return;}
+    if(!s.snapshot)s.snapshot=C.current();
+    invalidatePlans(s,'已被新的补充内容替代');
+    s.inputRevision++;s.verification=null;
+    const text=s.draft.trim()||'请查看这些附件';
+    s.messages.push({role:'user',text,files:s.files,model:s.model,inputRevision:s.inputRevision});J.event(s,'用户消息已保存（合成）');
+    s.draft='';s.files=[];s.locked=true;
+    if(s.title==='新对话')s.title=text.slice(0,22);
+    const first=s.phase==='intro';
+    if(first)s.topic=/接口|回调/.test(text)?'接口':/日志/.test(text)?'日志':'报表';
+    s.preparation=J.prepare(s);J.event(s,'上下文与接入快照已固定（合成）');
+    reply(s,()=>{
+      if(first){s.messages.push({role:'assistant',text:`已选择${s.system}的${s.environment}。请补充发生时间、预期结果和实际现象；有截图或错误信息也可以一起说明。\n\n这里先演示条件追问，附件内容尚未读取。`});s.phase='details';}
+      else {s.messages.push({role:'assistant',kind:'permission',preparation:s.preparation,configurationRevision:C.current().revision,text:'收到补充信息。接下来可以先做一次只读检查，请确认下面的范围。'});s.phase='permission';scheduleExpiry(s,s.preparation);}
+    },s.preparation);
+  }
+  function startInspection(s,m){m.pendingReview=false;m.decision='已允许本次示例检查';J.event(s,'当前计划已确认（合成）');s.binding={id:`demo-chat-binding-${s.id}-${s.inputRevision}`,provider:m.preparation.provider,state:'active_simulation',actualExecution:'not_run'};J.event(s,'唯一绑定已建立：'+s.binding.id);reply(s,()=>{s.latestResultRevision++;if(s.binding)s.binding.state='terminal_simulation';J.event(s,'产物已就绪，结果待用户验证（合成）');s.messages.push({role:'assistant',kind:'result',resultRevision:s.latestResultRevision,inputRevision:s.inputRevision,preparation:m.preparation,text:'示例检查已完成，等待你验证。\n\n演示结论：'+(s.topic==='接口'?'先核对请求参数、响应码和同一时点的服务日志，缩小异常范围。':s.topic==='日志'?'先按发生时间与请求标识关联日志，区分首个异常和后续连带错误。':'报表与明细使用的筛选范围可能不同，建议先对齐时间范围与状态条件，再核对差异。')+'\n\n这是一条合成结果，用于评审对话流程；没有读取实际数据，也没有生成真实证据。'});s.phase='result';},m.preparation);}
+  root.addEventListener('input',e=>{if(e.target.id==='chat-input'){const s=current();s.draft=e.target.value;const sendButton=root.querySelector('[type=submit]');if(sendButton)sendButton.disabled=!!denied(s)||(!s.draft.trim()&&!s.files.length);}});
+  root.addEventListener('keydown',e=>{if(e.target.id==='chat-input'&&e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();send();}});
+  root.addEventListener('submit',e=>{e.preventDefault();send();});
+  root.addEventListener('change',e=>{
+    const s=current();
+    if(e.target.id==='chat-mobile-history'){if(!s.busy)currentId=Number(e.target.value);render();}
+    if(e.target.id==='chat-system'&&!s.locked){s.systemId=C.visible().systems.find(x=>x.name===e.target.value)?.id;s.environmentId=null;sync(s,true);render();root.querySelector('#chat-system').focus();}
+    if(e.target.id==='chat-environment'&&!s.locked){s.environmentId=C.visible().environments.find(x=>x.system===s.systemId&&x.name===e.target.value)?.id;sync(s,true);render();}
+    if(e.target.id==='chat-model'&&!s.busy){const m=C.visible(s.snapshot||C.current(),s.roleId).models.find(x=>x.name===e.target.value);if(m&&m.id!==s.modelId){invalidatePlans(s,'模型已变更，请补充信息重新确认');s.model=m.name;s.modelId=m.id;s.verification=null;s.phase=s.phase==='intro'?'intro':'details';J.event(s,'下轮请求模型偏好已变更；旧执行快照保留');}render();}
+    if(e.target.id==='chat-files'&&C.visible().role?.attachments&&!denied(s)){s.files.push(...Array.from(e.target.files,f=>({name:f.name,size:f.size})));render(true);}
+  });
+  root.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-chat]');if(!b)return;
+    const s=current(), action=b.dataset.chat;
+    if(action==='stop'){clearTimeout(timer);timer=null;s.busy=false;if(s.binding)s.binding.state='stopped_simulation';J.event(s,'停止本地模拟回复，未发生真实执行');s.messages.push({role:'assistant',text:'已停止本次模拟回复，可以继续补充。'});render(true);return;}
+    if(action==='new'){if(s.busy){root.querySelector('#chat-notice').textContent='请先停止当前回复，再新建对话。';return;}create();render(true);return;}
+    if(action==='session'&&!s.busy){currentId=Number(b.dataset.id);render(true);return;}
+    if(action==='prompt'){s.draft=C.visible(s.snapshot||C.current(),s.roleId).systems.find(x=>x.id===s.systemId)?.prompts[Number(b.dataset.prompt)]||'';render(true);return;}
+    if(action==='attach'&&C.visible().role?.attachments&&!denied(s)){root.querySelector('#chat-files').click();return;}
+    if(action==='remove-file'){s.files.splice(Number(b.dataset.file),1);render(true);return;}
+    if(s.busy)return;
+    const m=s.messages[Number(b.dataset.message)];
+    if(action==='allow'&&m?.kind==='permission'&&!m.decision){if(!check(s))return;if(!J.planCurrent(s,m.preparation)){m.decision='配置已更新，请补充信息重新确认';render();return;}if(!C.visible(C.current(),s.roleId).role?.canApproveRead){root.querySelector('#chat-notice').textContent='当前用户无此计划审批权，请交由负责人确认。';return;}startInspection(s,m);return;}
+    if(action==='request-review'&&m?.kind==='permission'&&!m.decision){if(!check(s)||!J.planCurrent(s,m.preparation))return;m.pendingReview=true;m.decision='等待负责人确认';J.event(s,'计划已送负责人，提交人未自批');render(true);return;}
+    if(action==='deny'&&m?.kind==='permission'&&!m.decision){m.decision='暂未允许';s.messages.push({role:'assistant',text:'已暂停检查。你可以继续补充信息，准备好后再确认新的检查范围。'});s.phase='details';}
+    if(action==='resolved'&&m?.kind==='result'&&!m.verified&&currentResult(s,m)){m.verified=true;s.verification={resultRevision:m.resultRevision,inputRevision:s.inputRevision,subjectId:s.subjectId};J.event(s,'用户确认结果版本 '+m.resultRevision);s.messages.push({role:'user',text:'已确认此示例结果。'});}
+    if(action==='continue'&&m?.kind==='result'&&currentResult(s,m)){s.draft='还没有解决，补充情况：';render(true);return;}
+    if(action==='download'&&m?.kind==='result'){
+      if(denied(s)||!C.visible().role?.download||!J.sourceCurrent(m.preparation)||!currentResult(s,m)&&!m.verified){root.querySelector('#chat-notice').textContent='下载被阻止：范围、来源或产物权限已失效。';return;}
+      const file=J.artifact(s,m);const url=URL.createObjectURL(new Blob([file.content],{type:file.mime}));const a=document.createElement('a');a.href=url;a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);J.event(s,'下载合成产物：'+file.id);J.sync(s);return;
+    }
+    render(true);
+  });
+  C.subscribe(()=>{
+    const s=current();
+    if(s.roleId!==C.role()){if(s.busy){clearTimeout(timer);timer=null;s.busy=false;s.messages.push({role:'assistant',text:'预览身份已切换，本次模拟回复已停止。'});}create();}
+    for(const item of sessions){
+      for(const m of item.messages)if(m.kind==='permission'&&(!m.decision||m.pendingReview)&&!J.planCurrent(item,m.preparation)){m.pendingReview=false;m.decision='配置已更新，请补充信息重新确认';J.event(item,'配置、授权或记忆修订使旧计划失效');}
+      if(item.busy&&denied(item)){clearTimeout(timer);timer=null;item.busy=false;if(item.binding)item.binding.state='stopped_simulation';J.event(item,'撤权停止本地模拟；真实执行未发生');}
+      J.sync(item);
+    }
+    if(!root.hidden)render();
+  });
+  J.setApprovalHandler((recordId,contextRef)=>{const s=sessions.find(x=>'demo-chat-'+x.id===recordId);const m=s?.messages.findLast(x=>x.kind==='permission'&&x.pendingReview);if(!s||!m||denied(s)||!J.planCurrent(s,m.preparation)||m.preparation.id!==contextRef)return {ok:false,reason:'计划、权限或上下文已失效，需要重新提交'};startInspection(s,m);return {ok:true};});
+  window.ChatPrototype={render,inspect:()=>JSON.parse(JSON.stringify(current()))};
+})();
+</script>
+  <script>window.REVIEW_TABLES={"status": "design_draft", "defaultRule": "未列出的转换均拒绝；重复事实仅幂等确认，不重复触发副作用。", "layers": {"issue": {"label": "问题会话", "initial": "awaiting_user", "states": ["open", "awaiting_user", "awaiting_verification", "resolved", "handoff", "archived_unconfirmed"], "transitions": [{"id": "I01", "from": ["awaiting_user"], "event": "conditions_confirmed", "to": "open", "actor": "提交人/授权负责人", "guard": "必需条件及环境固定", "atomic": "T_CREATE"}, {"id": "I02", "from": ["open"], "event": "input_required", "to": "awaiting_user", "actor": "业务流程", "guard": "仅缺阻塞条件", "atomic": "T_PROJECT"}, {"id": "I03", "from": ["open", "awaiting_user"], "event": "result_delivered", "to": "awaiting_verification", "actor": "业务服务", "guard": "运行成功且证据/文件授权及完整性满足", "atomic": "T_RESULT"}, {"id": "I04", "from": ["awaiting_verification"], "event": "user_resolved", "to": "resolved", "actor": "提交人/授权负责人", "guard": "对当前输入轮次及 resultRevision 的明确确认，必要来源仍有效", "atomic": "T_VERIFY"}, {"id": "I05", "from": ["awaiting_verification", "resolved"], "event": "user_reopened", "to": "open", "actor": "提交人/授权负责人", "guard": "旧执行安全关闭；新轮次保留旧结果", "atomic": "T_REOPEN"}, {"id": "I06", "from": ["open", "awaiting_user", "awaiting_verification"], "event": "handoff_requested", "to": "handoff", "actor": "授权负责人", "guard": "接管包及责任人明确；不释放未知拥有权", "atomic": "T_HANDOFF"}, {"id": "I07", "from": ["awaiting_verification"], "event": "archive_unconfirmed", "to": "archived_unconfirmed", "actor": "授权负责人", "guard": "未收到解决确认，不计入解决率", "atomic": "T_VERIFY"}]}, "run": {"label": "流程运行", "initial": "draft", "states": ["draft", "ready", "active", "waiting", "reconciling", "stopping", "succeeded", "failed", "cancelled", "handoff"], "transitions": [{"id": "R01", "from": ["draft"], "event": "preflight_passed", "to": "ready", "actor": "业务服务", "guard": "固定流程、能力、权限及预算校验通过", "atomic": "T_CREATE"}, {"id": "R02", "from": ["ready"], "event": "dispatch_started", "to": "active", "actor": "业务服务", "guard": "节点与唯一 Binding、预算、outbox 原子保存", "atomic": "T_DISPATCH"}, {"id": "R03", "from": ["active"], "event": "wait_required", "to": "waiting", "actor": "业务服务", "guard": "存在等待输入/审批节点，禁止计费轮询", "atomic": "T_PROJECT"}, {"id": "R04", "from": ["waiting"], "event": "wait_cleared", "to": "active", "actor": "业务服务", "guard": "输入采纳或批准已送达且执行前复查通过", "atomic": "T_PROJECT"}, {"id": "R05", "from": ["active", "waiting", "stopping"], "event": "observation_unknown", "to": "reconciling", "actor": "业务服务", "guard": "接纳/执行/停止事实未知", "atomic": "T_PROJECT"}, {"id": "R06", "from": ["reconciling"], "event": "active_recovered", "to": "active", "actor": "业务服务", "guard": "权威快照确认原执行活跃", "atomic": "T_PROJECT"}, {"id": "R07", "from": ["active", "waiting", "reconciling"], "event": "cancel_requested", "to": "stopping", "actor": "授权用户/业务服务", "guard": "登记停止命令，不宣告已取消", "atomic": "T_CANCEL"}, {"id": "R08", "from": ["active", "waiting", "reconciling", "stopping"], "event": "all_nodes_succeeded", "to": "succeeded", "actor": "业务服务", "guard": "必要节点全部成功、无活跃执行/未知副作用、产物可用", "atomic": "T_RESULT"}, {"id": "R09", "from": ["stopping", "reconciling"], "event": "cancel_confirmed", "to": "cancelled", "actor": "业务服务", "guard": "原拥有者不活跃且副作用已知", "atomic": "T_CLOSE"}, {"id": "R10", "from": ["ready", "active", "waiting", "reconciling", "stopping"], "event": "failure_confirmed", "to": "failed", "actor": "业务服务", "guard": "权威失败且无活跃执行/未知副作用", "atomic": "T_CLOSE"}, {"id": "R11", "from": ["ready", "active", "waiting", "reconciling", "stopping"], "event": "handoff_requested", "to": "handoff", "actor": "授权负责人", "guard": "接管包完整，未知占用仍保留", "atomic": "T_HANDOFF"}]}, "node": {"label": "节点运行", "initial": "blocked", "states": ["blocked", "ready", "dispatching", "active", "waiting_input", "waiting_approval", "reconciling", "stopping", "succeeded", "failed", "cancelled", "handoff"], "transitions": [{"id": "N01", "from": ["blocked"], "event": "dependencies_ready", "to": "ready", "actor": "业务流程", "guard": "必需输入及前置节点满足", "atomic": "T_PROJECT"}, {"id": "N02", "from": ["ready"], "event": "dispatch_started", "to": "dispatching", "actor": "业务服务", "guard": "未存在另一未关闭 Binding", "atomic": "T_DISPATCH"}, {"id": "N03", "from": ["dispatching"], "event": "execution_active", "to": "active", "actor": "后端事实投影", "guard": "accepted 回执及原执行活跃已确认", "atomic": "T_PROJECT"}, {"id": "N04", "from": ["active"], "event": "input_required", "to": "waiting_input", "actor": "业务流程", "guard": "缺少阻塞条件", "atomic": "T_PROJECT"}, {"id": "N05", "from": ["active"], "event": "permission_required", "to": "waiting_approval", "actor": "后端事实投影", "guard": "具体 operationHash 与 requestId 已保存", "atomic": "T_APPROVAL"}, {"id": "N06", "from": ["waiting_input", "waiting_approval"], "event": "wait_cleared", "to": "active", "actor": "业务服务", "guard": "采纳回执/有效权限送达及复查", "atomic": "T_PROJECT"}, {"id": "N07", "from": ["dispatching", "active", "waiting_input", "waiting_approval", "stopping"], "event": "observation_unknown", "to": "reconciling", "actor": "后端事实投影", "guard": "失联或外部结果未知", "atomic": "T_PROJECT"}, {"id": "N08", "from": ["reconciling"], "event": "active_recovered", "to": "active", "actor": "后端事实投影", "guard": "原执行权威快照一致", "atomic": "T_PROJECT"}, {"id": "N09", "from": ["active", "waiting_input", "waiting_approval", "reconciling"], "event": "cancel_requested", "to": "stopping", "actor": "授权用户/业务服务", "guard": "保留正在发生的动作", "atomic": "T_CANCEL"}, {"id": "N10", "from": ["active", "reconciling", "stopping"], "event": "execution_succeeded", "to": "succeeded", "actor": "后端事实投影", "guard": "终态、不活跃、副作用已知、输出合同满足", "atomic": "T_CLOSE"}, {"id": "N11", "from": ["stopping", "reconciling"], "event": "cancel_confirmed", "to": "cancelled", "actor": "后端事实投影", "guard": "权威停止及副作用已知", "atomic": "T_CLOSE"}, {"id": "N12", "from": ["dispatching", "active", "waiting_input", "waiting_approval", "reconciling", "stopping"], "event": "failure_confirmed", "to": "failed", "actor": "后端事实投影", "guard": "明确拒绝或安全失败；未知不得走此边", "atomic": "T_CLOSE"}, {"id": "N13", "from": ["blocked", "ready", "dispatching", "active", "waiting_input", "waiting_approval", "reconciling", "stopping"], "event": "handoff_requested", "to": "handoff", "actor": "授权负责人", "guard": "保留原 Binding 事实与占用", "atomic": "T_HANDOFF"}]}, "binding": {"label": "执行绑定", "initial": "prepared", "states": ["prepared", "submitting", "acceptance_unknown", "accepted", "active", "waiting_permission", "stopping", "reconciling", "terminal", "rejected"], "transitions": [{"id": "B01", "from": ["prepared"], "event": "start_sent", "to": "submitting", "actor": "适配器", "guard": "先保存接纳日志再发送", "atomic": "T_SEND"}, {"id": "B02", "from": ["submitting", "acceptance_unknown"], "event": "acceptance_found", "to": "accepted", "actor": "后端回执", "guard": "同键同哈希及外部运行引用", "atomic": "T_ACCEPT"}, {"id": "B03", "from": ["submitting"], "event": "response_lost", "to": "acceptance_unknown", "actor": "适配器", "guard": "接纳事实无法确认", "atomic": "T_PROJECT"}, {"id": "B04", "from": ["prepared", "submitting"], "event": "rejection_proven", "to": "rejected", "actor": "后端回执", "guard": "明确未接纳且不可延迟接纳", "atomic": "T_CLOSE"}, {"id": "B05", "from": ["acceptance_unknown"], "event": "admission_closed", "to": "rejected", "actor": "接纳端", "guard": "not_accepted_final + admissionFence", "atomic": "T_CLOSE"}, {"id": "B06", "from": ["accepted"], "event": "execution_active", "to": "active", "actor": "后端快照", "guard": "原执行活跃", "atomic": "T_PROJECT"}, {"id": "B07", "from": ["active"], "event": "permission_required", "to": "waiting_permission", "actor": "后端请求", "guard": "原生请求与动作哈希可定位", "atomic": "T_APPROVAL"}, {"id": "B08", "from": ["waiting_permission"], "event": "permission_delivered", "to": "active", "actor": "桥接回执", "guard": "有效批准与当前请求；送达不等于已执行", "atomic": "T_PROJECT"}, {"id": "B09", "from": ["accepted", "active", "waiting_permission"], "event": "cancel_requested", "to": "stopping", "actor": "适配器", "guard": "先登记取消请求", "atomic": "T_CANCEL"}, {"id": "B10", "from": ["accepted", "active", "waiting_permission", "stopping"], "event": "observation_unknown", "to": "reconciling", "actor": "适配器", "guard": "断线/回执冲突/副作用未知", "atomic": "T_PROJECT"}, {"id": "B11", "from": ["reconciling"], "event": "active_recovered", "to": "active", "actor": "权威快照", "guard": "executionActive=true，原拥有者不变", "atomic": "T_PROJECT"}, {"id": "B12", "from": ["active", "waiting_permission", "stopping", "reconciling", "accepted"], "event": "terminal_confirmed", "to": "terminal", "actor": "权威快照", "guard": "终态 outcome + executionActive=false + effectStatus 已知", "atomic": "T_CLOSE"}]}, "approval": {"label": "业务审批决定", "initial": "pending", "states": ["pending", "approved", "denied", "changes_requested", "expired", "revoked", "superseded"], "transitions": [{"id": "A01", "from": ["pending"], "event": "approve", "to": "approved", "actor": "合格审批人", "guard": "CAS、当前映射、计划/期限/权限有效", "atomic": "T_DECIDE"}, {"id": "A02", "from": ["pending"], "event": "deny", "to": "denied", "actor": "合格审批人", "guard": "意见必填、CAS", "atomic": "T_DECIDE"}, {"id": "A03", "from": ["pending"], "event": "request_changes", "to": "changes_requested", "actor": "合格审批人", "guard": "意见必填，新计划另建审批", "atomic": "T_DECIDE"}, {"id": "A04", "from": ["pending", "approved"], "event": "business_expired", "to": "expired", "actor": "服务端时钟", "guard": "validUntil 已过，未开始动作不可再消费", "atomic": "T_EXPIRE"}, {"id": "A05", "from": ["pending", "approved"], "event": "revoke", "to": "revoked", "actor": "有权撤销者", "guard": "停止未来动作，已开始的另核查", "atomic": "T_EXPIRE"}, {"id": "A06", "from": ["pending", "approved"], "event": "plan_or_request_replaced", "to": "superseded", "actor": "业务服务", "guard": "参数漂移或原生请求失效；保留历史，新审批重新确认", "atomic": "T_APPROVAL"}]}}};</script>
+  <script>/* Offline review simulator. All facts, IDs, amounts and capabilities are synthetic. */
+(function (root) {
+  'use strict';
+  const clone = value => JSON.parse(JSON.stringify(value));
+  const connections = {
+    control: { label: '总控适配器', agent: '示例 Agent A', model: '合成分析模型 A', bridge: false },
+    direct: { label: '受控 ACP 直连', agent: '示例 Agent B', model: '合成分析模型 B', bridge: true }
+  };
+  const scenarios = {
+    normal: '只读问题闭环', timeout: '提交无响应', approval: '审批与安全恢复',
+    mismatch: '能力不匹配', unknownCapability: '能力未知', bridge: '审批桥接不可用',
+    usage: '用量未上报', evidence: '证据版本不一致', artifact: '产物完整性失败'
+  };
+  function binding(provider, round) {
+    return { id: 'demo-binding-' + round, nodeRunId: 'demo-node-' + round, provider,
+      connectionRevision: 3, ownershipEpoch: round, specHash: 'a'.repeat(64), state: 'prepared',
+      externalRef: null, executionActive: false, effectStatus: 'none', outcome: null,
+      ownerOccupied: false, admissionFence: null, checkpoint: true };
+  }
+  function newApproval(revision = 1, round = 1) {
+    return { id: 'demo-approval-' + round + '-' + revision, revision, decision: 'pending', delivery: 'ready',
+      action: 'not_started', requestId: 'demo-permission-' + round + '-' + revision, mappingRevision: revision,
+      requestLive: true, valid: true, planHash: 'b'.repeat(64), planRevalidated: true,
+      preconditionsMatch: true, operationId: 'demo-export-' + round, consumed: false, comment: '' };
+  }
+  function createState(scenario = 'normal') {
+    const s = { scenario, revision: 1, round: 1, issue: 'awaiting_user', run: 'draft', node: 'blocked',
+      defaultProvider: 'control', binding: binding('control', 1), approval: null, approvalHistory: [],
+      conditions: '', resultRevision: 0, results: [], verification: null, health: 'online',
+      capability: 'simulation_only', usage: 'unreported_actual', usageBlocked: false,
+      evidenceConsistent: true, artifact: 'metadata_only', modelCalls: 0, startCommands: 0,
+      permissionSends: 0, operationsExecuted: 0, stopRequested: false, currentPlanHash: 'b'.repeat(64), eventIds: [], eventWatermark: 0, events: [],
+      message: '请选择演示路径。实际连接、模型与资源能力均未验收。' };
+    if (['approval', 'bridge'].includes(scenario)) {
+      s.defaultProvider = scenario === 'approval' ? 'direct' : 'control';
+      s.binding = binding(s.defaultProvider, 1);
+      Object.assign(s, { issue: 'open', run: 'waiting', node: 'waiting_approval', startCommands: 1 });
+      Object.assign(s.binding, { state: 'waiting_permission', externalRef: 'demo-run-1', executionActive: true, ownerOccupied: true });
+      s.approval = newApproval();
+      s.conditions = '合成报表：10 月 1–24 日，UTC+8，已完成订单，EUR';
+    }
+    if (scenario === 'mismatch') s.capability = 'unsupported';
+    if (scenario === 'unknownCapability') s.capability = 'unknown';
+    if (scenario === 'usage') s.usageBlocked = true;
+    if (scenario === 'evidence') s.evidenceConsistent = false;
+    if (scenario === 'artifact') s.artifact = 'failed';
+    if (scenario === 'timeout') {
+      s.conditions = '合成报表：UTC+8，10 月 1–24 日，已完成订单';
+      Object.assign(s, { issue: 'open', run: 'reconciling', node: 'reconciling', startCommands: 1 });
+      Object.assign(s.binding, { state: 'acceptance_unknown', executionActive: 'unknown', ownerOccupied: true });
+    }
+    return s;
+  }
+  function safeClosed(s) {
+    const b = s.binding;
+    return (b.state === 'terminal' || b.state === 'rejected') && b.executionActive === false &&
+      b.effectStatus !== 'unknown' && !b.ownerOccupied;
+  }
+  function require_(condition, message) { if (!condition) throw new Error(message); }
+  function record(s, message) {
+    s.eventWatermark += 1;
+    s.events.push({ sequence: s.eventWatermark, source: '本地合成模拟器', message });
+    s.message = message;
+  }
+  function permissionGuard(s) {
+    const a = s.approval;
+    require_(a && a.decision === 'approved', '先由合格审批人对当前计划作出批准。');
+    require_(a.requestLive && a.valid, '请求或批准已失效，禁止发送旧权限选项。');
+    require_(a.planHash === s.currentPlanHash && a.planRevalidated && a.preconditionsMatch, '计划或前置条件变化，必须重新取证和审批。');
+    require_(connections[s.binding.provider].bridge, '此连接没有可用审批桥接；转原生工作台或人工接管。');
+    require_(!s.usageBlocked, '用量未上报，禁止新增计费或敏感分派；可继续不计费核查。');
+    require_(!a.consumed, '该操作已经消费批准，不可再次执行。');
+  }
+  function active(s) {
+    s.binding.state = s.stopRequested ? 'stopping' : 'active';
+    s.binding.executionActive = true; s.binding.ownerOccupied = true;
+    s.run = s.stopRequested ? 'stopping' : 'active'; s.node = s.run;
+  }
+  function act(original, action, payload = {}) {
+    const s = clone(original);
+    try {
+      switch (action) {
+        case 'conditions':
+          require_(s.run === 'draft', '本轮条件已固定，补充应进入消息采纳流程。');
+          require_((payload.text || '').trim().length > 0, '请补充报表范围、时区和订单状态。');
+          s.conditions = payload.text.trim(); s.issue = 'open'; s.run = 'ready'; s.node = 'ready';
+          record(s, '条件已保存；等待模拟提交，未调用执行后端。'); break;
+        case 'default_provider':
+          require_(connections[payload.provider], '请选择已登记的连接。');
+          s.defaultProvider = payload.provider;
+          record(s, '下次默认连接已变更；当前 Binding 和拥有者保持固定。'); break;
+        case 'start': case 'start_timeout':
+          require_(s.node === 'ready' && s.binding.state === 'prepared', '已有提交或执行占用，禁止重复 start。');
+          require_(s.capability === 'simulation_only', '能力未知或不匹配，启动门禁拒绝。');
+          require_(!s.usageBlocked, '用量未上报，禁止新的计费调用。');
+          s.startCommands += 1; s.binding.ownerOccupied = true;
+          if (action === 'start_timeout') {
+            s.binding.state = 'acceptance_unknown'; s.binding.executionActive = 'unknown';
+            s.run = 'reconciling'; s.node = 'reconciling';
+            record(s, 'start 响应丢失：保留原键和预算，先核查接纳，不能换后端重做。');
+          } else {
+            s.binding.externalRef = 'demo-run-' + s.round; active(s);
+            record(s, '模拟收到 accepted 回执并确认原执行活跃；没有启动真实 Agent。');
+          } break;
+        case 'lookup_not_found':
+          require_(s.binding.state === 'acceptance_unknown', '当前没有待核查的未知提交。');
+          record(s, 'not_found 不能排除延迟接纳；保持 acceptance_unknown 与原拥有权。'); break;
+        case 'lookup_found':
+          require_(s.binding.state === 'acceptance_unknown', '只允许核查原未知提交。');
+          s.binding.externalRef = 'demo-run-' + s.round; active(s);
+          record(s, '找到原接收回执，恢复同一个 Binding；没有发送第二个 start。'); break;
+        case 'close_final':
+          require_(s.binding.state === 'acceptance_unknown', '仅可封闭原未知提交。');
+          Object.assign(s.binding, { state: 'rejected', executionActive: false, effectStatus: 'none', ownerOccupied: false, admissionFence: 'demo-final-fence' });
+          s.run = 'failed'; s.node = 'failed';
+          record(s, '模拟接纳端返回 not_accepted_final 与 admissionFence；旧键永久封闭。'); break;
+        case 'disconnect':
+          require_(['active', 'waiting_permission', 'stopping'].includes(s.binding.state), '当前没有可断线的在途执行。');
+          s.health = 'offline'; s.binding.state = 'reconciling'; s.binding.executionActive = 'unknown';
+          s.run = 'reconciling'; s.node = 'reconciling';
+          if (s.approval) { s.approval.requestLive = false; s.approval.delivery = 'stale'; }
+          record(s, '连接离线：执行事实未知，仍保留原拥有者与预算挂账。'); break;
+        case 'reconcile_active':
+          require_(s.binding.state === 'reconciling' && s.binding.externalRef, '先按原提交核查外部引用。');
+          require_(!s.approval || s.approval.delivery !== 'delivery_unknown', '先核对原权限决定是否送达。');
+          s.health = 'online'; active(s);
+          if (s.approval && !s.approval.requestLive) { s.binding.state = 'waiting_permission'; s.run = 'waiting'; s.node = 'waiting_approval'; }
+          record(s, '模拟权威快照确认原拥有者仍在；失效权限仍需单独恢复。'); break;
+        case 'cancel':
+          require_(s.binding.externalRef && ['active', 'waiting_permission', 'reconciling'].includes(s.binding.state), '先核查是否已接收；没有引用时不能假装取消成功。');
+          s.stopRequested = true; s.binding.state = 'stopping'; s.run = 'stopping'; s.node = 'stopping';
+          record(s, '已登记停止请求；尚未确认停止，也不承诺回滚。'); break;
+        case 'confirm_cancel':
+          require_(s.binding.state === 'stopping', '先登记停止请求。');
+          require_(!s.approval || s.approval.delivery !== 'delivery_unknown', '权限送达未知，不能证明最终副作用；先核查。');
+          Object.assign(s.binding, { state: 'terminal', executionActive: false, effectStatus: s.approval?.consumed ? 'verified' : 'none', outcome: 'cancelled', ownerOccupied: false });
+          s.run = 'cancelled'; s.node = 'cancelled';
+          record(s, '模拟停止与副作用回执已确认；已发生的动作仍保留。'); break;
+        case 'complete':
+          require_(['active', 'stopping'].includes(s.binding.state) && ['active', 'stopping'].includes(s.node), '仅可确认原执行的权威完成事实。');
+          require_(!s.approval || s.approval.action === 'verified', '受限动作尚无核验回执，不可跳到完成。');
+          require_(s.evidenceConsistent && s.artifact !== 'failed', '证据版本/时点或文件完整性不满足，不能交付确定性结果。');
+          Object.assign(s.binding, { state: 'terminal', executionActive: false, effectStatus: s.approval?.consumed ? 'verified' : 'none', outcome: 'succeeded', ownerOccupied: false });
+          s.run = 'succeeded'; s.node = 'succeeded'; s.issue = 'awaiting_verification'; s.artifact = 'verified';
+          s.resultRevision += 1;
+          s.results.push({ revision: s.resultRevision, bindingId: s.binding.id, conclusion: '合成案例：状态口径不同，示例差额 2,530 EUR', verifiedBy: null });
+          record(s, '模拟结果已交付，问题待验证；Agent 完成不会自动解决问题。'); break;
+        case 'verify':
+          require_(s.issue === 'awaiting_verification' && s.artifact === 'verified' && s.evidenceConsistent, '当前结果不满足人工验证条件。');
+          s.issue = 'resolved'; s.verification = { actor: '合成提交人', resultRevision: s.resultRevision };
+          s.results.at(-1).verifiedBy = '合成提交人';
+          record(s, '合成提交人确认当前结果版本已解决。'); break;
+        case 'new_round':
+          require_(safeClosed(s), '旧执行未安全关闭；普通 not_found、离线或停止请求均不足。');
+          if (s.approval) s.approvalHistory.push(clone(s.approval));
+          s.round += 1; s.binding = binding(s.defaultProvider, s.round); s.issue = 'open';
+          s.run = 'ready'; s.node = 'ready'; s.approval = null; s.verification = null; s.artifact = 'metadata_only'; s.stopRequested = false; s.currentPlanHash = 'b'.repeat(64);
+          record(s, '已保留旧结果/审批，并创建新轮次、新 NodeRun 与新 Binding。'); break;
+        case 'request_approval':
+          require_(s.binding.state === 'active' && !s.approval, '需要原执行的具体权限请求。');
+          s.approval = newApproval(1, s.round); s.binding.state = 'waiting_permission'; s.run = 'waiting'; s.node = 'waiting_approval';
+          record(s, '模拟受限文件导出请求；暂停动作，等待人工审批。'); break;
+        case 'approve':
+          require_(s.approval?.decision === 'pending', '当前审批已处理，不可重复决定。');
+          require_(payload.checked === true, '请确认已审阅当前固定计划和影响范围。');
+          require_(s.approval.requestLive && s.approval.valid && s.approval.preconditionsMatch, '请求/批准失效或计划漂移，需重新审批。');
+          s.approval.decision = 'approved'; s.approval.revision += 1;
+          record(s, '业务批准已保存，尚未发送权限响应，动作未执行。'); break;
+        case 'deny':
+          require_(s.approval?.decision === 'pending', '只能拒绝待处理审批。');
+          require_((payload.comment || '').trim(), '拒绝必须填写原因。');
+          s.approval.decision = 'denied'; s.approval.comment = payload.comment.trim();
+          record(s, '业务审批已拒绝；敏感动作未执行，等待调整或接管。'); break;
+        case 'expire_native': case 'expire_business': case 'drift':
+          require_(s.approval && ['pending', 'approved'].includes(s.approval.decision) && !s.approval.consumed, '没有可失效的未消费审批。');
+          require_(s.approval.delivery === 'ready', '响应已经发送，先核查是否发生动作，不能假定未执行并重新批准。');
+          s.approval.decision = action === 'expire_business' ? 'expired' : 'superseded';
+          s.approval.delivery = 'stale'; s.approval.requestLive = false;
+          if (action === 'expire_business') s.approval.valid = false;
+          if (action === 'drift') { s.currentPlanHash = 'c'.repeat(64); s.approval.preconditionsMatch = false; s.approval.planRevalidated = false; }
+          record(s, '旧批准/请求失效，禁止重放旧 option；新请求必须重新人工批准。'); break;
+        case 'refresh_plan':
+          require_(s.approval?.delivery === 'stale', '仅对失效计划重新取证。');
+          s.approval.planRevalidated = true; s.approval.preconditionsMatch = true;
+          record(s, '合成材料重新核查完成；这还不是新的批准。'); break;
+        case 'prepare_new_permission': {
+          const a = s.approval;
+          require_(a && a.delivery === 'stale', '先确认旧请求失效。');
+          require_(connections[s.binding.provider].bridge && s.binding.checkpoint && s.binding.effectStatus === 'none' && s.binding.executionActive !== 'unknown', '缺少安全检查点/未执行证明/桥接能力，转人工接管。');
+          require_(a.planRevalidated && a.preconditionsMatch && !a.consumed, '先重新取证并排除已执行动作。');
+          if (['pending', 'approved'].includes(a.decision)) a.decision = 'superseded';
+          s.approvalHistory.push(clone(a)); s.approval = newApproval(a.mappingRevision + 1, s.round);
+          s.approval.planHash = s.currentPlanHash;
+          s.approval.operationId = a.planHash === s.currentPlanHash ? a.operationId : 'demo-export-' + s.round + '-plan-' + s.approval.mappingRevision;
+          s.binding.state = 'waiting_permission'; s.run = 'waiting'; s.node = 'waiting_approval';
+          record(s, '原 Binding 取得新的合成请求与新业务审批；未执行工具，确认框重新清空。'); break;
+        }
+        case 'send_permission': case 'send_timeout':
+          permissionGuard(s);
+          require_(s.approval.delivery === 'ready', '已发送或送达未知，禁止重复响应。');
+          require_(s.binding.state === 'waiting_permission', '执行已停止或状态未知，不能发送批准。');
+          s.permissionSends += 1;
+          if (action === 'send_timeout') {
+            s.approval.delivery = 'delivery_unknown'; s.approval.action = 'result_unknown';
+            s.binding.state = 'reconciling'; s.binding.effectStatus = 'unknown'; s.run = 'reconciling'; s.node = 'reconciling';
+            record(s, '权限响应送达未知；保留决定键，先核查，不重新批准或重发。');
+          } else { s.approval.delivery = 'delivered'; active(s); record(s, '模拟响应已送达；动作结果仍未确认。'); }
+          break;
+        case 'lookup_delivery':
+          require_(s.approval?.delivery === 'delivery_unknown', '当前没有未知送达。');
+          s.approval.delivery = 'delivered'; s.approval.action = 'not_started'; s.binding.effectStatus = 'none'; active(s);
+          record(s, '模拟核对原决定回执：已送达、尚未执行；没有额外发送。'); break;
+        case 'inner_deny':
+          require_(s.approval?.decision === 'approved' && !s.approval.consumed, '先有业务批准且尚未执行。');
+          require_(s.approval.delivery !== 'delivery_unknown', '先核查原响应，不可把未知伪装拒绝。');
+          s.approval.delivery = 'denied_by_provider'; s.binding.state = 'waiting_permission'; s.run = 'waiting'; s.node = 'waiting_approval';
+          record(s, '内层策略拒绝，外层批准不能绕过；动作未执行。'); break;
+        case 'operation_receipt':
+          permissionGuard(s);
+          require_(s.approval.delivery === 'delivered' && s.binding.state === 'active', '没有有效送达或执行已停止。');
+          s.approval.action = 'verified'; s.approval.consumed = true; s.binding.effectStatus = 'verified'; s.operationsExecuted += 1;
+          record(s, '收到合成动作核验回执，批准仅消费一次。'); break;
+        case 'usage_unknown': s.usageBlocked = true; record(s, '真实用量未上报；新增计费动作阻断，核查与停止仍可用。'); break;
+        case 'billable_step':
+          require_(s.binding.state === 'active' && !s.usageBlocked, '当前状态或未知用量禁止新增计费动作。');
+          require_(s.modelCalls < 2, '模拟调用次数上限为 2；这不证明真实金额硬限制。');
+          s.modelCalls += 1; record(s, '仅模拟一次新调用计数，没有模型调用或实际费用。'); break;
+        case 'evidence_mismatch': s.evidenceConsistent = false; record(s, '代码部署版本与取证版本不一致，结论限为待核查。'); break;
+        case 'artifact_corrupt': s.artifact = 'failed'; record(s, '合成产物哈希校验失败，禁止下载/确认解决，不自动重新生成。'); break;
+        case 'duplicate_event':
+          if (!s.eventIds.includes('demo-event-1')) { s.eventIds.push('demo-event-1'); record(s, '首次接收合成事件 demo-event-1；不含计费。'); }
+          else s.message = '重复事件已忽略，没有重复推进、通知或计费。';
+          break;
+        case 'handoff':
+          require_(!['resolved', 'archived_unconfirmed'].includes(s.issue), '已解决问题请先明确重开。');
+          s.issue = 'handoff'; s.run = 'handoff'; s.node = 'handoff';
+          record(s, '已准备合成人工接管材料；原 Binding 与未决拥有权仍保留。'); break;
+        default: throw new Error('未知模拟动作。');
+      }
+      s.revision += 1;
+    } catch (e) { s.message = '操作被阻止：' + e.message; }
+    return s;
+  }
+  const api = { createState, act, safeClosed, connections, scenarios };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.ReviewModel = api;
+})(typeof globalThis === 'undefined' ? this : globalThis);
+</script>
+  <script>/* Presentation for the offline simulator; no persistence, fetch or resource execution. */
+(() => {
+  'use strict';
+  const M = window.ReviewModel;
+  let state = M.createState(), route = location.hash.slice(1) || 'chat', layer = 'binding', resetTrigger, formDrafts = {};
+  const esc = value => String(value ?? '未知').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const labels = {awaiting_user:'待补充',open:'处理中',awaiting_verification:'待验证',resolved:'已解决',handoff:'人工接管',archived_unconfirmed:'未确认归档',draft:'草稿',ready:'就绪',active:'执行中',waiting:'等待中',reconciling:'核查中',stopping:'停止中',succeeded:'执行成功',failed:'失败',cancelled:'已取消',blocked:'待依赖',dispatching:'分派中',waiting_input:'待输入',waiting_approval:'待审批',prepared:'已准备',submitting:'提交中',acceptance_unknown:'接纳未知',accepted:'已接收',waiting_permission:'待权限',terminal:'执行终态',rejected:'已拒绝',pending:'待决定',approved:'已批准',denied:'已拒绝',expired:'已过期',superseded:'已被替代',revoked:'已撤销',changes_requested:'需调整',delivered:'已送达',delivery_unknown:'送达未知',stale:'已失效',denied_by_provider:'内层拒绝',not_started:'未执行',result_unknown:'结果未知',verified:'已核验',metadata_only:'仅元数据'};
+  const tag = (text, warn = false) => '<span class="tag '+(warn?'warn':'')+'">'+esc(labels[text] || text)+'</span>';
+  const btn = (action, text, enabled = true, cls = '') => '<button data-action="'+action+'" class="'+cls+'" '+(enabled?'':'disabled')+'>'+text+'</button>';
+  const ui = (action,text,cls='') => '<button data-ui="'+action+'" class="'+cls+'">'+text+'</button>';
+  const kv = rows => '<dl>'+rows.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join('')+'</dl>';
+  const card = (title, body, cls='') => '<section class="card '+cls+'"><h2>'+title+'</h2>'+body+'</section>';
+  const actions = text => '<div class="actions">'+text+'</div>';
+  const pages = {workbench:'闭环演练',result:'结果与验证',connections:'执行连接',binding:'运行与绑定',approval:'审批与恢复',contract:'契约与状态',exceptions:'异常与接管'};
+  const link = (id,title=pages[id]) => '<a class="nav-item" href="#'+id+'" '+(route===id?'aria-current="page"':'')+'>'+title+'</a>';
+  function header() {
+    return '<div class="page-head"><div><div class="eyebrow">'+(route==='workbench'||route==='result'?'测试工作台':'平台管理')+' / 初始设计</div><h1 tabindex="-1">'+pages[route]+'</h1><div class="muted">报表与明细不一致 · 一个问题、一条固定流程、一个执行拥有者</div></div><div class="scenario"><label for="scenario">演示路径</label><select id="scenario">'+Object.entries(M.scenarios).map(([id,name])=>'<option value="'+id+'" '+(state.scenario===id?'selected':'')+'>'+name+'</option>').join('')+'</select>'+ui('reset','重置')+'</div></div><div class="scope-line">系统：合成订单系统　/　环境：测试　/　固定流程：报表核对 · 已发布示例　/　轮次 '+state.round+'</div>';
+  }
+  function states() {
+    const values=[['问题',state.issue],['流程运行',state.run],['节点运行',state.node],['执行绑定',state.binding.state],['审批决定',state.approval?.decision || '无请求']];
+    return '<div class="state-grid">'+values.map(([name,value])=>'<div class="state-cell"><small>'+name+'</small><strong>'+esc(labels[value]||value)+'</strong><br><code>'+esc(value)+'</code></div>').join('')+'</div>';
+  }
+  function events() {
+    return state.events.length?state.events.slice(-8).reverse().map(x=>'<div class="event"><span class="event-index">'+String(x.sequence).padStart(2,'0')+'</span><div>'+esc(x.message)+'<div class="help">'+esc(x.source)+'</div></div></div>').join(''):'<div class="empty">暂无执行事件。空记录不证明外部未发生执行。</div>';
+  }
+  function bindingInfo() {
+    const b=state.binding,c=M.connections[b.provider];
+    return kv([['执行拥有者',c.label+' / '+c.agent],['Binding',b.id],['NodeRun',b.nodeRunId],['连接 revision',b.connectionRevision],['外部运行引用',b.externalRef || '尚未确认'],['演示执行活跃',b.executionActive],['副作用',b.effectStatus],['拥有权占用',b.ownerOccupied?'保留':'未占用/已安全关闭'],['模型请求',c.model+'（合成）'],['实际模型确认','未知，未启动真实 Agent'],['下次默认连接',M.connections[state.defaultProvider].label]]);
+  }
+  function workbench() {
+    const b=state.binding;
+    return states()+'<div class="grid"><div class="stack">'+card('德国成交金额与导出明细不一致','<p class="muted">先补齐报表时间、时区、订单状态与币种；获得可核对证据后再交付结果。</p><div class="steps"><span class="step done">1 提出问题</span><span class="step '+(state.conditions?'done':'')+'">2 补齐条件</span><span class="step '+(b.externalRef?'done':'')+'">3 授权取证</span><span class="step '+(state.results.length?'done':'')+'">4 结果与验证</span></div><label for="conditions">报表范围、时区、状态与币种</label><textarea id="conditions" placeholder="例如：10 月 1–24 日，UTC+8，已完成订单，EUR">'+esc(state.conditions || '')+'</textarea>'+actions(btn('conditions','保存条件',state.run==='draft','primary')+btn('start','模拟接收并执行',state.node==='ready')+btn('start_timeout','模拟提交无响应',state.node==='ready'))+'<div class="help">实际能力均未验收；这里仅推进内存中的合成状态。</div>')+card('执行过程',events()+actions(btn('complete','模拟执行完成',['active','stopping'].includes(b.state))+btn('cancel','请求停止',['active','waiting_permission','reconciling'].includes(b.state))+btn('confirm_cancel','模拟停止确认',b.state==='stopping')+btn('request_approval','模拟受限导出请求',b.state==='active'&&!state.approval)))+'</div><div class="stack">'+card('当前上下文',bindingInfo(),'tint')+card('交付门槛','<ul class="checklist"><li>部署与代码版本一致</li><li>报表区间、取数时点与水位可比较</li><li>产物完整性和下载权限已检查</li><li>运行成功后仍需用户确认</li></ul><a href="#result">查看结果与验证 →</a>')+'</div></div>';
+  }
+  function resultPage() {
+    const ready=state.issue==='awaiting_verification' && state.evidenceConsistent && state.artifact==='verified';
+    const rows=state.results.map(x=>'<tr><td>结果 #'+x.revision+'</td><td>'+esc(x.bindingId)+'</td><td>'+esc(x.verifiedBy||'未确认')+'</td><td>'+esc(x.conclusion)+'</td></tr>').join('');
+    return '<div class="banner">以下金额、查询区间、版本及文件均为内置合成示例，未解析用户材料或查询数据库。</div><div class="grid"><div class="stack">'+card('结论与有效范围',state.results.length?'<div class="between"><span class="result-amount">2,530 <small>EUR</small></span>'+tag(state.evidenceConsistent?'合成结论可复核':'证据不一致',!state.evidenceConsistent)+'</div><p>示例报表与明细采用不同订单状态口径。该结论仅适用于内置样例。</p>':'<div class="empty">本轮尚无新结果；已有历史结果会继续保留。</div>')+card('可定位证据',kv([['部署 / 代码',state.evidenceConsistent?'demo-deploy-1025 / demo-deploy-1025':'demo-deploy-1025 / demo-other'],['查询区间','2026-10-01T00:00:00+08:00 ≤ t < 2026-10-25T00:00:00+08:00'],['数据库取数时点','2026-10-25T06:00:00Z（合成）'],['报表水位','2026-10-25T05:55:00Z；示例延迟 5 分钟'],['来源定位','synthetic_report / sheet=德国 / rows=2–4'],['完整性',labels[state.artifact]||state.artifact]]))+card('结果历史','<div class="table-wrap"><table><thead><tr><th>版本</th><th>来源绑定</th><th>用户确认</th><th>结论</th></tr></thead><tbody>'+rows+'</tbody></table></div>')+'</div><div class="stack">'+card('用户验证','<p>执行成功只代表分析完成。请针对当前结果版本确认问题是否解决。</p>'+tag(state.issue)+actions(btn('verify','确认本结果已解决',ready,'primary')+btn('new_round','仍有问题 / 新一轮',M.safeClosed(state)))+'<div class="help">重开会保留旧结果。未知执行仍占用时禁止创建替代执行。</div>')+card('文件与接管','<p>产物状态：'+tag(state.artifact,state.artifact==='failed')+'</p>'+actions(ui('download-sample','下载合成差异样例')+ui('download-handoff','下载合成接管包'))+'<p class="help">下载前会重新检查当前模拟状态。真实 ACL、计算和文件导入尚未接入。</p>')+'</div></div>';
+  }
+  function connectionsPage() {
+    return '<div class="banner">两条连接只做结构演示。真实连接健康、Agent 能力与模型确认均为未知；不会发起探测。</div><div class="grid"><div class="stack">'+Object.entries(M.connections).map(([id,c])=>card(c.label,'<div class="between"><span class="muted">'+c.agent+'</span>'+tag('实际未验收',true)+'</div><div class="separator"></div>'+kv([['连接标识','demo-'+id],['配置 revision',3],['Agent / 模型',c.agent+' → '+c.model],['能力观察','实际：unknown；演示数据：内置'],['审批桥接',c.bridge?'模拟宿主支持，实际未验收':'已查源码缺少完整外部审批桥接'],['二进制产物',id==='control'?'当前入口仅元数据，需适配导入':'模拟有导入步骤，实际未验收'],['实际隔离/预算','unknown，worktree 不等于 OS 沙箱']])+'<div class="actions"><button data-default="'+id+'">设为下次默认连接</button></div>',state.binding.provider===id?'tint':'')).join('')+'</div>'+card('绑定规则','<p>当前 Binding：<code>'+esc(state.binding.id)+'</code></p><p>当前拥有者：<strong>'+esc(M.connections[state.binding.provider].label)+'</strong></p><p>下次默认：'+esc(M.connections[state.defaultProvider].label)+'</p><ul class="checklist"><li>默认修改只影响新节点</li><li>接纳未知时先核查原键</li><li>原执行安全关闭后才可创建新绑定</li><li>能力未知/不匹配时拒绝真实启动</li></ul><a href="#binding">查看当前绑定 →</a>')+'</div>';
+  }
+  function bindingPage() {
+    const b=state.binding, unknown=b.state==='acceptance_unknown';
+    return states()+'<div class="grid"><div class="stack">'+card('唯一执行拥有者',bindingInfo(),'tint')+card('提交与断线核查','<p class="muted">查不到记录并不能排除延迟接纳。必须找到原回执，或证明旧提交永久不能接纳。</p>'+actions(btn('lookup_not_found','模拟查询：not_found',unknown)+btn('lookup_found','模拟找到原回执',unknown,'primary')+btn('close_final','模拟最终封闭原提交',unknown))+actions(btn('disconnect','模拟连接离线',['active','waiting_permission','stopping'].includes(b.state))+btn('reconcile_active','模拟原拥有者快照恢复',b.state==='reconciling')+btn('new_round','安全关闭后新一轮',M.safeClosed(state)))+'<div class="help">最终封闭证明：'+esc(b.admissionFence||'尚无')+'。这些回执均为合成示例。</div>')+'</div><div class="stack">'+card('事件与水位',events()+actions(btn('duplicate_event','模拟重复事件')))+card('预算与停止',kv([['真实费用','未上报'],['演示估算','18 内部积分；不等同实际费用'],['新调用门禁',state.usageBlocked?'阻断':'仅允许合成计数'],['合成新调用数',state.modelCalls+' / 2'],['start 发送数',state.startCommands],['停止状态',labels[b.state]||b.state]])+actions(btn('billable_step','模拟一次新增调用',b.state==='active'&&!state.usageBlocked)+btn('usage_unknown','模拟用量未知'))+'<p class="help">调用次数限制不证明供应商金额硬阻断。未知预算保持挂账。</p>')+'</div></div>';
+  }
+  function approvalPage() {
+    const a=state.approval;
+    if(!a)return card('暂无权限请求','<div class="empty">先加载“审批与安全恢复”演示路径，或在原执行中模拟受限导出请求。</div>');
+    const bridge=M.connections[state.binding.provider].bridge;
+    return '<div class="banner">批准固定的合成文件导出计划。原生请求没有统一固定超时；本页手动模拟请求失效，不运行 SQL 或写入。</div><div class="grid"><div class="stack">'+card('固定操作与范围',kv([['动作','导出合成差异文件；仅测试环境'],['operationId',a.operationId],['获审计划哈希',a.planHash],['当前计划哈希',state.currentPlanHash],['目标集合','合成订单 3 条；字段仅国家和金额'],['前置状态',a.preconditionsMatch?'合成数据 revision=7 已核对':'已漂移，需要重新取证'],['批准有效性',a.valid?'演示逻辑时钟：有效':'演示逻辑时钟：已过期'],['资源权限','仅合成样例；真实资源无授权'],['审批桥接',bridge?'模拟支持，实际未知':'当前连接不支持完整审批桥接']]))+card('业务决定','<div class="between">'+tag(a.decision,a.decision!=='approved')+'<code>'+esc(a.id)+'</code></div><label class="check"><input type="checkbox" id="approval-check" '+(formDrafts.approvalId===a.id&&formDrafts.checked?'checked':'')+'>我已审阅当前计划、影响范围、前置条件与有效期。</label><label for="approval-comment">审批意见（拒绝必填）</label><input type="text" id="approval-comment" value="'+esc(formDrafts.approvalId===a.id?formDrafts.comment:a.comment)+'" placeholder="请输入审批意见">'+actions(btn('approve','保存业务批准',a.decision==='pending','primary')+btn('deny','拒绝本计划',a.decision==='pending')))+'<section class="card"><h2>历史审批</h2>'+(state.approvalHistory.length?state.approvalHistory.map(h=>'<p><code>'+esc(h.id)+'</code> '+tag(h.decision,true)+' → <code>'+esc(h.requestId)+'</code></p>').join(''):'<div class="empty">尚无历史决定。恢复后保留旧记录。</div>')+'</section></div><div class="stack">'+card('权限送达与动作结果',kv([['原生 requestId',a.requestId],['映射 revision',a.mappingRevision],['请求有效',a.requestLive?'合成请求仍有效':'已失效 / 不可重放'],['响应送达',labels[a.delivery]||a.delivery],['动作结果',labels[a.action]||a.action],['权限发送次数',state.permissionSends],['已核验动作次数',state.operationsExecuted]])+actions(btn('send_permission','模拟发送权限响应',a.decision==='approved'&&a.delivery==='ready'&&bridge,'primary')+btn('send_timeout','模拟响应送达未知',a.decision==='approved'&&a.delivery==='ready'&&bridge))+actions(btn('lookup_delivery','核对原决定回执',a.delivery==='delivery_unknown')+btn('operation_receipt','模拟动作核验回执',a.delivery==='delivered'&&!a.consumed)+btn('inner_deny','模拟内层策略拒绝',a.decision==='approved'&&!a.consumed)))+card('失效与安全恢复','<div class="recovery"><p>① 核查原拥有者与未执行证明</p><p>② 保留旧请求和决定</p><p>③ 原 Binding 准备新请求</p><p>④ 新业务审批，再复查，再发送</p></div>'+actions(btn('expire_native','模拟原生请求失效',a.delivery==='ready')+btn('expire_business','模拟业务批准过期',a.delivery==='ready')+btn('drift','模拟前置条件漂移',a.delivery==='ready'))+actions(btn('refresh_plan','模拟重新取证',a.delivery==='stale')+btn('prepare_new_permission','安全准备新请求',a.delivery==='stale')))+'</div></div>';
+  }
+  function contractPage() {
+    const l=window.REVIEW_TABLES.layers[layer];
+    const methods=['inspectCapabilities','validateBinding','start','lookupSubmission','closeSubmission','getSnapshot','readEvents','submitInput','cancel','preparePermissionResume','respondPermission','getArtifact'];
+    return '<div class="banner">正式数据结构与异常规则保存在设计文档。这里展示设计合同，不代表接口已经实现。</div>'+card('执行契约','<div class="actions compact">'+methods.map(x=>'<code>'+x+'</code>').join('')+'</div><p class="help">同键同哈希复用回执；not_found 不证明未接纳；取消请求不等于停止确认；未知不能换后端重放。</p><a href="../design/EXECUTION-PROVIDER.md">完整合同文档 →</a>')+'<div class="card mt"><div class="between"><h2>分层状态转换</h2><label for="state-layer">选择状态层</label><select id="state-layer" style="max-width:200px">'+Object.entries(window.REVIEW_TABLES.layers).map(([id,x])=>'<option value="'+id+'" '+(id===layer?'selected':'')+'>'+x.label+'</option>').join('')+'</select></div><p class="muted small">未列出的转换拒绝；重复事实只确认，不重复执行。审批决定、送达与动作状态分开。</p><div class="table-wrap"><table><thead><tr><th>ID / 从</th><th>触发 → 到</th><th>责任主体</th><th>守卫</th><th>原子组</th></tr></thead><tbody>'+l.transitions.map(x=>'<tr><td><b>'+x.id+'</b><br>'+esc(x.from.join(' / '))+'</td><td>'+esc(x.event)+'<br>→ '+esc(x.to)+'</td><td>'+esc(x.actor)+'</td><td>'+esc(x.guard)+'</td><td>'+esc(x.atomic)+'</td></tr>').join('')+'</tbody></table></div></div>';
+  }
+  function exceptionPage() {
+    return states()+'<div class="grid"><div class="stack">'+card('当前阻塞与证据','<p>'+esc(state.message)+'</p>'+kv([['能力状态',state.capability==='simulation_only'?'仅合成演示，实际 unknown':state.capability],['用量门禁',state.usageBlocked?'新增计费阻断':'真实费用未上报；仅演示计数'],['证据一致性',state.evidenceConsistent?'合成版本与时点可比':'版本或时点不一致，限制结论'],['产物完整性',labels[state.artifact]||state.artifact],['未知拥有权',state.binding.ownerOccupied?'仍保留，不可替代执行':'无未关闭执行占用']]),'warning')+card('失效路径演示',actions(btn('usage_unknown','用量未上报')+btn('evidence_mismatch','证据版本不一致')+btn('artifact_corrupt','产物完整性失败')+btn('handoff','转人工接管',!['resolved','archived_unconfirmed'].includes(state.issue))))+'</div>'+card('人工接管材料','<ul class="checklist"><li>问题、条件、固定系统环境</li><li>唯一 Binding、外部运行引用、未知接纳和副作用</li><li>审批、原生请求及送达历史</li><li>最后事件水位、证据及文件状态</li><li>预算挂账、下一步核查与负责人</li></ul><p>接管责任人：<strong>合成测试负责人</strong></p><p class="help">接管不会清除未决拥有权。包仅包含合成材料，真实导出仍须逐项授权。</p>'+actions(ui('download-handoff','下载合成接管包')) )+'</div>';
+  }
+  function render(focus=false) {
+    const chat = !route || route === 'chat';
+    const admin = route.startsWith('admin-');
+    if(route!=='admin-records')window.ServiceDesignPrototype.hide();
+    document.querySelector('#configuration-root').hidden=!admin;
+    document.querySelector('#chat-root').hidden=!chat;
+    document.querySelector('#review-root').hidden=chat||admin;
+    if(admin){window.AdminPrototype.render(route.slice(6),focus);return;}
+    if(chat){window.ChatPrototype.render(focus);return;}
+    if(!pages[route])route='workbench';
+    document.querySelector('#work-nav').innerHTML=link('workbench')+link('result');
+    document.querySelector('#admin-nav').innerHTML=['connections','binding','approval','contract','exceptions'].map(x=>link(x)).join('');
+    const views={workbench,result:resultPage,connections:connectionsPage,binding:bindingPage,approval:approvalPage,contract:contractPage,exceptions:exceptionPage};
+    document.querySelector('#page-header').innerHTML=header();
+    document.querySelector('#content').innerHTML=views[route]();
+    document.querySelector('#feedback').textContent=state.message;
+    if(focus)document.querySelector('#review-root h1').focus();
+  }
+  function perform(action,payload={}){if(document.querySelector('#approval-comment'))formDrafts={approvalId:state.approval?.id,comment:document.querySelector('#approval-comment').value,checked:document.querySelector('#approval-check').checked};state=M.act(state,action,payload);render();}
+  function download(name,content,type) {
+    const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    if(b.dataset.default){perform('default_provider',{provider:b.dataset.default});return;}
+    if(b.dataset.action){perform(b.dataset.action,{text:document.querySelector('#conditions')?.value,checked:document.querySelector('#approval-check')?.checked,comment:document.querySelector('#approval-comment')?.value});return;}
+    if(b.dataset.ui==='reset'){resetTrigger=b;document.querySelector('#reset-dialog').showModal();}
+    if(b.dataset.ui==='close-reset'){document.querySelector('#reset-dialog').close();resetTrigger?.focus();}
+    if(b.dataset.ui==='confirm-reset'){document.querySelector('#reset-dialog').close();state=M.createState(state.scenario);formDrafts={};render(true);}
+    if(b.dataset.ui==='download-sample'){
+      if(state.artifact!=='verified'||!state.evidenceConsistent||!state.results.length){document.querySelector('#feedback').textContent='下载被阻止：当前产物未核验或证据不一致。';return;}
+      download('合成差异样例.csv','\uFEFF国家,报表金额_EUR,明细金额_EUR,差额_EUR,来源\n德国,128450,125920,2530,离线合成示例_非业务结果\n','text/csv;charset=utf-8');
+    }
+    if(b.dataset.ui==='download-handoff')download('合成人工接管包.json',JSON.stringify({provenance:'offline_synthetic_example_not_business_evidence',responsible:'合成测试负责人',unknowns:'所有真实能力、真实执行、真实费用均未验收',next:'核查原拥有者与外部副作用；禁止静默换后端重放',state},null,2),'application/json');
+  });
+  document.addEventListener('change',e=>{
+    if(e.target.id==='scenario'){state=M.createState(e.target.value);formDrafts={};render(true);}
+    if(e.target.id==='state-layer'){layer=e.target.value;render();}
+  });
+  document.querySelector('#reset-dialog').addEventListener('cancel',()=>setTimeout(()=>resetTrigger?.focus(),0));
+  window.addEventListener('hashchange',()=>{route=location.hash.slice(1);render(true);});
+  window.__reviewPrototype={getState:()=>JSON.parse(JSON.stringify(state)),act:perform,loadScenario:name=>{state=M.createState(name);formDrafts={};render();}};
+  render();
+})();
+</script>
+</body></html>

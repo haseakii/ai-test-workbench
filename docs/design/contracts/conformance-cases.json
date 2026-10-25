@@ -1,0 +1,203 @@
+{
+  "status": "design_catalog_not_provider_pass",
+  "cases": [
+    {
+      "id": "CP01",
+      "method": "start",
+      "trigger": "同键同哈希重复提交",
+      "expected": "仅一个外部执行；复用接收回执",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP02",
+      "method": "start",
+      "trigger": "同键异哈希",
+      "expected": "IDEMPOTENCY_CONFLICT，无第二执行",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP03",
+      "method": "lookupSubmission",
+      "trigger": "响应丢失后 not_found",
+      "expected": "仍 acceptance_unknown，不重提不换后端",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP04",
+      "method": "lookupSubmission",
+      "trigger": "找到原回执",
+      "expected": "恢复原 Binding，无额外 start",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP05",
+      "method": "closeSubmission",
+      "trigger": "封闭与延迟接纳竞态",
+      "expected": "线性化 found 或最终不接纳证明；旧键永不重新接纳",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP06",
+      "method": "readEvents",
+      "trigger": "重复事件页",
+      "expected": "只消费一次，状态/用量/通知不重复",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP07",
+      "method": "readEvents",
+      "trigger": "跳号或游标过期",
+      "expected": "EVENT_GAP/CURSOR_EXPIRED，快照及水位续接",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP08",
+      "method": "getSnapshot",
+      "trigger": "旧快照及终态冲突",
+      "expected": "不回退，冲突核查",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP09",
+      "method": "cancel",
+      "trigger": "取消请求/完成竞态",
+      "expected": "requested 不等于 confirmed，最终事实裁决",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP10",
+      "method": "getSnapshot",
+      "trigger": "断线或租约到期",
+      "expected": "保留原拥有权，不另起后端",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP11",
+      "method": "preparePermissionResume",
+      "trigger": "原生请求失效",
+      "expected": "原 Binding、安全检查点、新请求、新审批",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP12",
+      "method": "respondPermission",
+      "trigger": "业务批准与送达分离",
+      "expected": "批准不执行，送达不等于动作完成",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP13",
+      "method": "respondPermission",
+      "trigger": "送达超时",
+      "expected": "delivery_unknown，查询原决定，不重发",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP14",
+      "method": "respondPermission",
+      "trigger": "前置条件漂移/过期",
+      "expected": "拒绝旧批准，新计划重审",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP15",
+      "method": "respondPermission",
+      "trigger": "原生策略拒绝",
+      "expected": "外层批准不覆盖，动作未执行",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP16",
+      "method": "validateBinding",
+      "trigger": "能力未知/不匹配/桥接缺失",
+      "expected": "显式阻断，不静默降级",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP17",
+      "method": "submitInput",
+      "trigger": "已接收但尚未采纳",
+      "expected": "accepted_pending，不声称 adopted",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP18",
+      "method": "getArtifact",
+      "trigger": "二进制不支持/完整性失败",
+      "expected": "不可下载，不自动重生成",
+      "prototypeCoverage": "mock_guard",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP19",
+      "method": "getSnapshot",
+      "trigger": "用量未知及父子费用回放",
+      "expected": "不伪造零，阻断新计费，不重复结算",
+      "prototypeCoverage": "partial_mock",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP20",
+      "method": "inspectCapabilities",
+      "trigger": "观察过期或版本变化",
+      "expected": "原观察失效，未知不当支持",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP21",
+      "method": "getArtifact",
+      "trigger": "附件/事件/产物/历史/下载越权或撤权",
+      "expected": "各接口拒绝，不通过缓存泄露",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP22",
+      "method": "getSnapshot",
+      "trigger": "总控停止时 ACP 直连完整基础链路",
+      "expected": "同一权限/预算下独立完成，用户验证",
+      "prototypeCoverage": "real_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    }
+  ]
+}

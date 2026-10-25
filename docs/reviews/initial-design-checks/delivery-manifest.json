@@ -1,0 +1,415 @@
+{
+  "status": "initial_design_review_only",
+  "recordedAt": "2026-10-25T16:32:21.963860+08:00",
+  "historicalBase": "a657b222b4050c2869f91d8308d79865427f2b41",
+  "scope": "Complete design and offline synthetic prototype; no business implementation or real-resource acceptance.",
+  "sources": [
+    {
+      "path": ".github/workflows/design-check.yml",
+      "bytes": 723,
+      "sha256": "70c9dc38388773659aa25f198bb5f380bb91eaa356b40f3ba74eb5bc1e627375"
+    },
+    {
+      "path": "CONTEXT.md",
+      "bytes": 2925,
+      "sha256": "ed0b7888b2f9ac7e947786248c7c975dfb6f99d2a321b324765e219150e2b868"
+    },
+    {
+      "path": "docs/architecture/ADR-001.md",
+      "bytes": 1901,
+      "sha256": "4ca5206351d98edb33dbc230137b0c11b5db67d7327a6bcdb8e3cf18ef5bad0b"
+    },
+    {
+      "path": "docs/design/ADMIN-CONFIGURATION.md",
+      "bytes": 9543,
+      "sha256": "9802623de2fcff94a2129961b193920ac62923d2581884a68b5c20ff001b487e"
+    },
+    {
+      "path": "docs/design/APPROVAL-RECOVERY.md",
+      "bytes": 6431,
+      "sha256": "61bf98d550bcc5f0a22ba5dd0ff4489e114b3bcf9ff366c93d74e5467d208edb"
+    },
+    {
+      "path": "docs/design/CONTEXT-MEMORY.md",
+      "bytes": 7468,
+      "sha256": "758905a1763269cb593c35498d10541f6a31880ac62b0e872d64326a9bab14a5"
+    },
+    {
+      "path": "docs/design/contracts/conformance-cases.json",
+      "bytes": 6395,
+      "sha256": "827e5f80730af527031e5e0a82aac83ee82af7596561a537c81504c7192b7298"
+    },
+    {
+      "path": "docs/design/contracts/design-coverage.json",
+      "bytes": 8726,
+      "sha256": "fb7294f4ed3999237851e478825bd74325e03d47ee1ae51d599d5847a74a0098"
+    },
+    {
+      "path": "docs/design/contracts/examples.json",
+      "bytes": 5766,
+      "sha256": "a2b4d022958cdca9f94a3e2eb6cb9822b2c80dffa8f74da17cef3e4c14f818bb"
+    },
+    {
+      "path": "docs/design/contracts/execution-provider.d.ts",
+      "bytes": 13509,
+      "sha256": "2e9771d85ad7645ec9ef160bc15b230611722784fd2708f752b54dc9d07ce232"
+    },
+    {
+      "path": "docs/design/contracts/service-boundaries.d.ts",
+      "bytes": 5497,
+      "sha256": "87a3d156890fedcd5f739e5898a045cc196ab781e57803a7e683fe2563cabc96"
+    },
+    {
+      "path": "docs/design/contracts/state-transitions.json",
+      "bytes": 18054,
+      "sha256": "a92395cfb2c713493a3d1f2fd9e9b1396182291ffb8b3028b03550b78f3edc19"
+    },
+    {
+      "path": "docs/design/DESIGN-COVERAGE.md",
+      "bytes": 5220,
+      "sha256": "4d2962d638204d66f71afa24596399d14956a56a9bdbdb5645f1d624170f0f76"
+    },
+    {
+      "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+      "bytes": 7189,
+      "sha256": "ea1d8d49659b2195cf9d79b3b25f93b9750ca9f5549ea3f6a2aec9e7e44f7a6d"
+    },
+    {
+      "path": "docs/design/EVIDENCE-BUDGET.md",
+      "bytes": 2982,
+      "sha256": "7988be41fe7679d0418e785ceb905184482a6226be7e02e9f4dc196efc6fd8c6"
+    },
+    {
+      "path": "docs/design/EXECUTION-PROVIDER.md",
+      "bytes": 10615,
+      "sha256": "82efd0073a4a406bac21257703ac0fa2599049b75442c08b1747ab166f8cc4f6"
+    },
+    {
+      "path": "docs/design/INTERACTION-SPEC.md",
+      "bytes": 7102,
+      "sha256": "57e68e9559ccaf6aaaddb74cc1669756112e182722f825f9584df5d71304411a"
+    },
+    {
+      "path": "docs/design/MCP-ACCESS.md",
+      "bytes": 5509,
+      "sha256": "bad0cd28e30e5554d41f7372c9b4322075077f24892ed18d788755de7f8ba37e"
+    },
+    {
+      "path": "docs/design/MODEL-ACP-ACCESS.md",
+      "bytes": 8992,
+      "sha256": "2b4267b0fa3d6ef75b64b02240dafda74c18b4602be5adceee63969d0a6f775a"
+    },
+    {
+      "path": "docs/design/PROTOCOL-OBSERVATIONS.md",
+      "bytes": 2284,
+      "sha256": "7643620fe3a031181e51c5bf95231275064bb0e375c61a9c93c241d23e47ed4e"
+    },
+    {
+      "path": "docs/design/README.md",
+      "bytes": 4221,
+      "sha256": "1bf22fcfef29f7661b2b8ee548e23e82ed52e46e785b60b754b7d61f24f50b6d"
+    },
+    {
+      "path": "docs/design/REVIEW-CHECKLIST.md",
+      "bytes": 3454,
+      "sha256": "50237891274c40fd178be82904046ffed2e012b6dbe9ec69e93d60f2b8324076"
+    },
+    {
+      "path": "docs/design/RUNTIME-RESOURCES.md",
+      "bytes": 6653,
+      "sha256": "5e7602ea50b47f3c3acddfd48dfbd0980e61384fbc0c4e45aa253a9871710025"
+    },
+    {
+      "path": "docs/design/SERVICE-EXECUTION.md",
+      "bytes": 9420,
+      "sha256": "d739709d335baaa9af518c9314a34b46281edab4e01ef686d6cbd8ac0f8e8643"
+    },
+    {
+      "path": "docs/design/STATE-MACHINES.md",
+      "bytes": 11518,
+      "sha256": "980e3a35e26274cb143471e65d51cdb74e89ce0081d14dbd130cbe0a5e8e8bcb"
+    },
+    {
+      "path": "docs/design/USER-GOVERNANCE.md",
+      "bytes": 6314,
+      "sha256": "7fe4705b528479e6fd4783be2826affa047ad74cf939a241d81fda59c91c100b"
+    },
+    {
+      "path": "docs/prototype/admin.css",
+      "bytes": 7121,
+      "sha256": "d1d130ff5a528989078d5686bb87603b638bee86f78b90419e6ead2bc97d73ed"
+    },
+    {
+      "path": "docs/prototype/admin.js",
+      "bytes": 14148,
+      "sha256": "836c1966a9ccec89229485ba20885626d297a00c31d4dee365e3c1affc198155"
+    },
+    {
+      "path": "docs/prototype/app.js",
+      "bytes": 22572,
+      "sha256": "a3cfc178c23258f83661008142c4d28e825dbd03d067d0ef21adde254ab4e873"
+    },
+    {
+      "path": "docs/prototype/chat.css",
+      "bytes": 6754,
+      "sha256": "f47cab50c8fe31691e447696f178fc87a20968b9b1397d5c3133c5187fbac6e8"
+    },
+    {
+      "path": "docs/prototype/chat.js",
+      "bytes": 18203,
+      "sha256": "aa97b303556b24f08759321803aea25214448c9361b6b059d202af6024cf7d42"
+    },
+    {
+      "path": "docs/prototype/configuration.js",
+      "bytes": 6516,
+      "sha256": "2c0575ce2b2c1d00bba32c08396851949e51eb2ca16392ff1392682d917ac34d"
+    },
+    {
+      "path": "docs/prototype/journey.js",
+      "bytes": 5779,
+      "sha256": "5c82ae7d296be460a91ffcb72eee79bf51febd39292142b4d9482935ba8bb287"
+    },
+    {
+      "path": "docs/prototype/model.js",
+      "bytes": 19720,
+      "sha256": "e017dd22d08a535310fb26b317c22c48f0e5e12324c1732a7c62d13048988cab"
+    },
+    {
+      "path": "docs/prototype/service-design.css",
+      "bytes": 2541,
+      "sha256": "790540e014cd9b0fd9e7c67b8d59393dd54cf80ad9b303124d87608467dc7cff"
+    },
+    {
+      "path": "docs/prototype/service-design.js",
+      "bytes": 25349,
+      "sha256": "d4a8ca67cfe25346426db48ae943ce0da9631baa896cefad9b65be36c86bb56d"
+    },
+    {
+      "path": "docs/prototype/shell.html",
+      "bytes": 2332,
+      "sha256": "bfdc0f6c04127e316ed395e6165916238e10b57472e1b523c2b115f9d0baa95b"
+    },
+    {
+      "path": "docs/prototype/style.css",
+      "bytes": 7367,
+      "sha256": "27c15a3287c8e8d145f081086d1ac9a1d083ccecfa07ef5fa1997b336bc0eba3"
+    },
+    {
+      "path": "docs/prototype/tests/admin-checks.cjs",
+      "bytes": 9915,
+      "sha256": "35d5733da7631575744b1463abd7e4cb6b1d6c5886b432640bcc7c7fd831942f"
+    },
+    {
+      "path": "docs/prototype/tests/browser-check.cjs",
+      "bytes": 12233,
+      "sha256": "85b0b1401083e271c6f572254efe6b7c7a249cbbe77c8fe219159a3238d19fe6"
+    },
+    {
+      "path": "docs/prototype/tests/chat-checks.cjs",
+      "bytes": 5814,
+      "sha256": "a5d9079e42eb3014a1cfc5e51a498f21d9d29256a13c47d7e4f671073205aa53"
+    },
+    {
+      "path": "docs/prototype/tests/model.test.cjs",
+      "bytes": 9355,
+      "sha256": "c46dcb1c0ec2cdc36c387e3e8204fbf2b9450081a4276821542ca0b2a6b11b26"
+    },
+    {
+      "path": "docs/prototype/tests/service-design-checks.cjs",
+      "bytes": 8142,
+      "sha256": "c290bc9cd7c1f84bbfecbf455bb24f54bbba5c2f6b116064451f9530c08d9e68"
+    },
+    {
+      "path": "docs/prototype/tests/walkthrough-checks.cjs",
+      "bytes": 11258,
+      "sha256": "4594ce877a206898cd4d94a230bf3611bfd9321bda955bfd288e0596f77630ee"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 5896,
+      "sha256": "d314666af85e3c539400fa82b8979ae3cf31c1dd983a3696c58476e2a2ce1700"
+    },
+    {
+      "path": "docs/reviews/DECISIONS-20261025.md",
+      "bytes": 6540,
+      "sha256": "1f3aaed0724eddd0f4d73c6ce22f4e59d423b9e383c9a38b98ca97b0ee49e578"
+    },
+    {
+      "path": "docs/reviews/END-TO-END-REVIEW-20261025.md",
+      "bytes": 3086,
+      "sha256": "1d03621ac2f6801feee48e87b1bd957e1b61819b61611a4d8f755cf89409eb62"
+    },
+    {
+      "path": "docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md",
+      "bytes": 4549,
+      "sha256": "25006e949b489db0e3ed957f8b4548e9aa3bc059473ab6aede18817d30f91620"
+    },
+    {
+      "path": "docs/roadmap/design-to-build.md",
+      "bytes": 2472,
+      "sha256": "2eceb8482c05a83a275c0bb5aab4de828da59976018459fd4b2906d428ce53e7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6028,
+      "sha256": "ca1acab07b20341ccc9f4bcf3023a4a2b4b152ade9abeee2893e0df6d436bcea"
+    },
+    {
+      "path": "scripts/audit_design_scope.py",
+      "bytes": 2178,
+      "sha256": "2636bade6ab1fb293e06753f71634321ca1166eff55cb654a9b7bf506a0c518b"
+    },
+    {
+      "path": "scripts/build_initial_prototype.py",
+      "bytes": 2080,
+      "sha256": "93644383bd88df5a2bcd5b8591a87a50b4be283a1f7fc9c4b705e5b55de4c92d"
+    },
+    {
+      "path": "scripts/check_initial_design.py",
+      "bytes": 4810,
+      "sha256": "86916d193e8572e33375ac1718fae61a756939d43c54a382876a40042c839f85"
+    },
+    {
+      "path": "scripts/record_initial_design_checks.py",
+      "bytes": 2927,
+      "sha256": "27e047478e53a3e5e6d4db447e07e37203f223f4602cba438e75388a6a58b488"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/prototype/index.html",
+      "bytes": 149551,
+      "sha256": "eefce4eb3db3d7061e8723be2701004509e3c47d5ef88ee507b46d0b7fe545a4"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/browser-report.json",
+      "bytes": 20247,
+      "sha256": "a24041e59f5239fce4582ec3f13e58d73281d6605ee33ac14a139dc53666a29d"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/model-tests.tap",
+      "bytes": 5944,
+      "sha256": "d7c0ec3c1e3267cb725964770361e67e784c9165a3927d1a186872feb25e2e9d"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/README.md",
+      "bytes": 4612,
+      "sha256": "a4d27e2b1bda5e6fe04fc6d62a7c87bc14d205887c29c4a875942eb18336d549"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/scope-audit.json",
+      "bytes": 8986,
+      "sha256": "06eefe3c8d4d4fb0b98c0cb4a017bfa69bfdb9632fb545d23c37387c63b2873b"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-context.png",
+      "bytes": 84396,
+      "sha256": "9d41f3450313b67734f35aa32ce010f30b13aded8bcb668cae86d2a7b7367529"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-environments.png",
+      "bytes": 107089,
+      "sha256": "6431c5033eab3c9f12fa4e352b44540d361901491d6dffc3df969304f653fa8e"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-integrations.png",
+      "bytes": 97853,
+      "sha256": "292faf9e969e066ba2d0620754f8d63e98becabbf81bb59f532704523983e504"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-mobile.png",
+      "bytes": 75020,
+      "sha256": "d29ffc2a0cc4a8c775be1ac65622e9cd63ab92713b000c6305ce576f323c14d3"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-models.png",
+      "bytes": 91488,
+      "sha256": "cd5ac4d2773d8123c869c35a3c751dc2e844ce26ea4724b2469f3de93b5e177f"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-permissions.png",
+      "bytes": 119892,
+      "sha256": "2f7db913fac605e85144448d6f6190e84434fd7126271b89d2ea9fb65961b683"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-records.png",
+      "bytes": 82068,
+      "sha256": "28d8fe9523a89d6d31f30186f27ccc50988dff3530d762f1e43032111060b8a5"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-runtime.png",
+      "bytes": 86319,
+      "sha256": "13a2393208db25d517aa4963f089a39bfe75212bae2dc26f2f9a35ae0034a1db"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-systems.png",
+      "bytes": 91652,
+      "sha256": "28da059a0a4c6e62bf8c076233fee46f032a171cf14e087664903dd11c7e5f36"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/admin-users.png",
+      "bytes": 78283,
+      "sha256": "17553dbb320fae4f6f9175f64d3867deec9229c787784dcaa21557fbb36200e7"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/approval.png",
+      "bytes": 143998,
+      "sha256": "d458a193fde742bafb5e39208799e998c9e75c598f33e67a93a2f15674cb0765"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/binding.png",
+      "bytes": 132701,
+      "sha256": "44409b9602856c52109a3899738abbd90870c393c26bbca8cc0f0d0e74782eb8"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/chat-conversation.png",
+      "bytes": 75936,
+      "sha256": "0def0f2ed059b4e0d768cec3b17c58ae4a4f9cf7c040b3290f493b1d5c97eda4"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/chat-mobile.png",
+      "bytes": 43437,
+      "sha256": "73f504afa8143e8dc45a48b6c5a494858d007955b76589130fc016d16f335d89"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/chat.png",
+      "bytes": 41242,
+      "sha256": "430f7b7dc50c57c85bfadd5fa0dd33240a49d9fe3dc06cfd2189d159d2b86111"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/connections.png",
+      "bytes": 127254,
+      "sha256": "3ba0d467b5ce45c703c03e9701784c491dff4b7f6719246a584bbd8b4afe7277"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/walkthrough-record.png",
+      "bytes": 145418,
+      "sha256": "4bedc06dffb095eecab38521d0c09bb367d141ee95d0d9e0eda03bb769683f43"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/screenshots/workbench.png",
+      "bytes": 132184,
+      "sha256": "4092e106e139b5c0175e55953d54a759552f51940e7afe746873b0b3736d169d"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/static-report.json",
+      "bytes": 320,
+      "sha256": "a5cfae533e93b9f43ba2b9b3a359e36e2d4dbd7bb2de50aab001e4b221fb55b5"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/synthetic-difference.csv",
+      "bytes": 123,
+      "sha256": "5daaed3a666e7c341dcf3e5f4ef451833495b5ef3a355b70f48d875e9f5436c8"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/synthetic-handoff.json",
+      "bytes": 1901,
+      "sha256": "c6222e7955b2e566a9d9fba35ce13755a56edf7e5573b4c6e3528e78d9d463aa"
+    },
+    {
+      "path": "docs/reviews/initial-design-checks/walkthrough-difference.csv",
+      "bytes": 109,
+      "sha256": "3113435386565a3fc292918f4764a352967e3bc28ae91617d8ceda9da38a7e9e"
+    }
+  ]
+}

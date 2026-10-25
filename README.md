@@ -12,21 +12,28 @@
 | --- | --- |
 | 当前决策与待审批事项 | [决策记录](docs/reviews/DECISIONS-20261025.md) |
 | 全部资料导航 | [设计文档索引](docs/README.md) |
+| 当前初始设计 | [设计与契约入口](docs/design/README.md) |
+| 当前对话原型 | [初始原型](docs/prototype/index.html) |
+| 完整需求与接入设计 | [覆盖矩阵](docs/design/DESIGN-COVERAGE.md) · [服务执行](docs/design/SERVICE-EXECUTION.md) · [模型与 ACP](docs/design/MODEL-ACP-ACCESS.md) |
+| 管理端配置 | [系统、环境、模型与权限设计](docs/design/ADMIN-CONFIGURATION.md) · [配置原型](docs/prototype/index.html#admin-systems) |
+| 执行契约与状态 | [ExecutionProvider](docs/design/EXECUTION-PROVIDER.md) · [分层状态表](docs/design/STATE-MACHINES.md) · [审批恢复](docs/design/APPROVAL-RECOVERY.md) |
+| 整体链路走查 | [衔接合同](docs/design/END-TO-END-WALKTHROUGH.md) · [发现与修补](docs/reviews/END-TO-END-REVIEW-20261025.md) |
+| 本轮变更与检查 | [变更说明](docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md) |
 | 已认可的架构方向 | [ADR-001 当前状态](docs/architecture/ADR-001.md) |
 | 完整架构设计原稿 | [ADR-001 v0.1](docs/review-baseline-20261025/architecture/ADR-001_独立平台与可插拔执行后端_v0.1.md) |
-| 页面交互完整规格 | [v0.2 Markdown 原稿](docs/review-baseline-20261025/docs/设计说明与交互规范_v0.2.md) |
-| 可点击交互原型 | [v0.2 index.html](docs/review-baseline-20261025/index.html) |
+| 历史页面交互规格 | [v0.2 Markdown 原稿](docs/review-baseline-20261025/docs/设计说明与交互规范_v0.2.md) |
+| 历史交互原型 | [v0.2 index.html](docs/review-baseline-20261025/index.html) |
 | PDF / Word 阅读版 | [生成资料目录](docs/generated/v0.2/README.md) |
-| 原型源码及构建脚本 | [source](docs/review-baseline-20261025/source) |
+| 当前原型源码与构建 | [prototype](docs/prototype/) · [构建脚本](scripts/build_initial_prototype.py) |
 | 历史测试记录 | [测试报告](docs/review-baseline-20261025/tests/测试报告.md) |
 | 后续开发顺序与门槛 | [design-to-build](docs/roadmap/design-to-build.md) |
 | 原件与阅读版区别 | [归档说明](docs/ARCHIVE-STATUS.md) |
 
 ## 打开原型
 
-下载仓库后，直接用 Edge 或 Chrome 打开 `docs/review-baseline-20261025/index.html`。不需要前端安装或后台服务。GitHub 文件页显示的是源码，不是已部署网页。没有启用 GitHub Pages。
+下载仓库后，直接用 Edge 或 Chrome 打开 `docs/prototype/index.html`。当前统一按初始设计整理，不另分产品版本；原型为单文件离线演示，不需要后台服务。GitHub 文件页显示的是源码，没有部署网页。历史 v0.2 仍可从上表打开。
 
-前台包含发起问题、持续对话、附件、执行事件、证据、结果验证和历史；后台包含任务、审批、流程、助手、Agent/模型、Skill、MCP、系统环境、用户权限、额度及审计。全部业务数据为合成示例，AI/数据库/审批执行为模拟，不输入真实密码或敏感资料。
+用户端只有一个类似 Codex 的对话工作台：选择系统和环境，通过快捷问题、文本与附件描述问题，在对话中补充条件、确认检查范围和验证结果。后台集中配置系统、环境、模型和权限，支持草稿、效果预览与应用到离线演示；用户端只选择获准的配置。管理端还可评审 ACP / MCP 接入、执行环境、上下文记忆，以及合成用户和问题记录的权限治理。执行绑定、契约和恢复诊断保留在管理端的次要设计评审入口；历史 22 页作为范围参考，不作为用户导航。全部数据和执行为合成模拟，不输入真实密码或敏感资料。刷新清空本轮模拟，不构成持久性或真实能力证明。
 
 ## 架构与职责
 
@@ -49,12 +56,14 @@ multi-agent    ACP Agent
 
 ## 当前状态
 
-架构方向已获用户认可；v0.2 页面细节、下一轮原型、执行契约和技术选型仍待评审。原文中的“待审批”等内容作为历史保留，以当前决策记录说明状态。
+架构方向已获用户认可；用户已授权完善初始设计和原型。正式契约草案、分层转换表及审批恢复路径已形成，页面细节、合同冻结和技术选型仍待评审。原文中的“待审批”等内容作为历史保留，以当前决策记录说明状态。
 
-本次仅入库设计与原型资料，没有实现生产后端、连接业务数据库、调用真实模型或修改总控。文档生成 workflow 只处理本仓库的离线演示与文档。
+当前仅有设计、类型声明、离线模拟及其检查，没有业务后端或真实资源接入。文档检查 workflow 只处理本仓库离线材料。
 
 原始 PDF、Word、26 张截图和原始 ZIP 仍完整保存在资料库 `AI测试协作平台_原型与架构评审_20261025`。仓库保留所有 UTF-8 文本原稿与原型源码，并从这些源码重建 PNG/PDF/DOCX 阅读版；**生成阅读版不保证与历史二进制原件字节或分页相同**，详见归档说明。
 
 ## 源稿校验
 
-运行 `python scripts/verify_sources.py`，校验所有入库文本原稿 SHA-256。`docs/generated/v0.2/` 的构建记录与原有 tests/ 报告分开保存，不把历史检查冒充本轮实测。下一步先评审设计，再进入业务开发。
+运行 `python scripts/verify_sources.py` 做工作树逐字节源稿校验。Windows `core.autocrlf=true` 可能使它失败；本轮检查另核对 Git HEAD 中 20 份原稿哈希，并单列本地 CRLF 差异，不把换行等价称为逐字节通过。
+
+运行 `python scripts/check_initial_design.py` 和 `node docs/prototype/tests/model.test.cjs` 检查当前初始设计与内存模拟约束；用 `python scripts/build_initial_prototype.py` 重建离线单文件。浏览器检查入口见[检查清单](docs/design/REVIEW-CHECKLIST.md)。历史记录和本轮报告分开，模拟通过不等于后端或业务验收。

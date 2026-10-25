@@ -1,0 +1,262 @@
+{
+  "scope": "Design completion and offline demonstration only; not implementation acceptance",
+  "requirements": [
+    {
+      "id": "D01",
+      "requirement": "用户对话与交互",
+      "designEvidence": [
+        {
+          "path": "docs/design/INTERACTION-SPEC.md",
+          "section": "## 用户端：一个对话界面"
+        },
+        {
+          "path": "docs/design/SERVICE-EXECUTION.md",
+          "section": "## 一条消息如何执行"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "chat is the default with no technical dashboard",
+        "permission and verification stay inside conversation",
+        "walkthrough conversation delivers a clearly synthetic deterministic file",
+        "walkthrough older result cannot confirm a newer question or result version"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D02",
+      "requirement": "系统接入与后台配置",
+      "designEvidence": [
+        {
+          "path": "docs/design/ADMIN-CONFIGURATION.md",
+          "section": "## 前后台映射与既有会话"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 系统接入合同"
+        }
+      ],
+      "prototypeCases": [
+        "new system and environment require an explicit role grant before appearing",
+        "model mapping changes do not overwrite existing conversation snapshot"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D03",
+      "requirement": "后台执行驱动前台",
+      "designEvidence": [
+        {
+          "path": "docs/design/SERVICE-EXECUTION.md",
+          "section": "## 前台 API 草案"
+        },
+        {
+          "path": "docs/design/SERVICE-EXECUTION.md",
+          "section": "## 事件与恢复"
+        },
+        {
+          "path": "docs/design/EXECUTION-PROVIDER.md",
+          "section": "## 2. 方法合同"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "not_found retains original owner and disabled replacement",
+        "cancel request and acknowledgement remain separate",
+        "walkthrough execution and user delivery share a fixed preparation and binding",
+        "walkthrough frozen configuration revision stays distinct from current admission policy"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D04",
+      "requirement": "模型接入",
+      "designEvidence": [
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## 四个不同的配置对象"
+        },
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## 准入状态与模型能力"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "connection preflight never upgrades unknown capabilities to verified",
+        "walkthrough model change invalidates pending plan without rewriting prior snapshot"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D05",
+      "requirement": "ACP 接入",
+      "designEvidence": [
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## ACP Host 生命周期"
+        },
+        {
+          "path": "docs/design/MODEL-ACP-ACCESS.md",
+          "section": "## 权限、文件、终端与 MCP"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "unsupported bridge is visible and send disabled",
+        "walkthrough a submitter without approval rights waits for the responsible reviewer",
+        "walkthrough expired pending plan cannot be approved or executed later"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D06",
+      "requirement": "执行环境配置",
+      "designEvidence": [
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 三种环境分别建模"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 文件与网络出口"
+        }
+      ],
+      "prototypeCases": [
+        "runtime blocks writes, arbitrary terminal, network and mismatched code versions"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D07",
+      "requirement": "上下文与连续会话",
+      "designEvidence": [
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 上下文组装合同"
+        },
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 连续对话和恢复"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "context requires valid output reservation and preserves unknown model window",
+        "walkthrough context includes only eligible memory with original source authority"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D08",
+      "requirement": "记忆治理",
+      "designEvidence": [
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 记忆生命周期"
+        },
+        {
+          "path": "docs/design/CONTEXT-MEMORY.md",
+          "section": "## 保留、删除与追踪"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "memory review is required and deletion remains pending receipts",
+        "walkthrough source revocation invalidates derived result and administrator content lease"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D09",
+      "requirement": "代码读取",
+      "designEvidence": [
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 代码读取流程"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 隔离与恢复验收"
+        }
+      ],
+      "prototypeCases": [
+        "runtime blocks writes, arbitrary terminal, network and mismatched code versions"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D10",
+      "requirement": "MCP 接入",
+      "designEvidence": [
+        {
+          "path": "docs/design/MCP-ACCESS.md",
+          "section": "## 协议版本与传输"
+        },
+        {
+          "path": "docs/design/MCP-ACCESS.md",
+          "section": "## 工具调用链"
+        },
+        {
+          "path": "docs/design/MCP-ACCESS.md",
+          "section": "## 超时、重试和撤权"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "MCP schema changes and expired authentication have explicit blocking reasons",
+        "walkthrough MCP observation change expires the current plan with no replay"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D11",
+      "requirement": "管理用户与审阅记录",
+      "designEvidence": [
+        {
+          "path": "docs/design/USER-GOVERNANCE.md",
+          "section": "## 用户权限变更"
+        },
+        {
+          "path": "docs/design/USER-GOVERNANCE.md",
+          "section": "## 记录列表和内容审阅"
+        },
+        {
+          "path": "docs/design/END-TO-END-WALKTHROUGH.md",
+          "section": "## 一份问题记录贯穿各层"
+        }
+      ],
+      "prototypeCases": [
+        "user grant preview rejects missing reason, self elevation and out-of-scope grants",
+        "record content requires a reason and its own short-lived review lease",
+        "switching administrator roles revokes content lease",
+        "valid user grant change applies only after confirmation and advances authorization revision",
+        "walkthrough administrator finds this same conversation, context and result revision",
+        "walkthrough live user grant changes update model and approval rights on the same identity",
+        "walkthrough content lease expires automatically without a manual button"
+      ],
+      "implementationStatus": "not_started"
+    }
+  ]
+}

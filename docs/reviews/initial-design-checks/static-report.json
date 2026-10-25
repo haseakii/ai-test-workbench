@@ -1,0 +1,8 @@
+{
+  "static_checks_passed": 342,
+  "transition_rows": 49,
+  "conformance_catalog": 22,
+  "archive_HEAD_SHA_passed": 20,
+  "archive_local_CRLF_differences": 20,
+  "limits": "Static consistency only; declaration not compiled, no real Provider contract test. CRLF equivalence is not byte-identical archive verification."
+}

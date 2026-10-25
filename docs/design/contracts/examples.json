@@ -1,0 +1,180 @@
+{
+  "provenance": "synthetic_design_examples_not_execution_evidence",
+  "context": {
+    "contractVersion": "initial-draft",
+    "correlationId": "demo-correlation",
+    "tenantId": "demo-tenant",
+    "subjectContext": {
+      "subjectId": "demo-user",
+      "authorizationRef": "demo-user-scope"
+    },
+    "deadline": "2026-10-25T08:00:00Z"
+  },
+  "startRequest": {
+    "submission": {
+      "bindingId": "demo-binding-1",
+      "nodeRunId": "demo-node-1",
+      "providerId": "demo-control",
+      "tenantId": "demo-tenant",
+      "idempotencyKey": "demo-start-key",
+      "specHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "command": {
+      "commandId": "demo-command",
+      "idempotencyKey": "demo-start-key",
+      "requestHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expectedRevision": 1
+    },
+    "spec": {
+      "contractVersion": "initial-draft",
+      "tenantId": "demo-tenant",
+      "conversationId": "demo-conversation",
+      "workflowRunId": "demo-workflow-run",
+      "workflowVersion": "demo-published-flow",
+      "nodeRunId": "demo-node-1",
+      "bindingId": "demo-binding-1",
+      "ownershipEpoch": 1,
+      "connection": {
+        "providerId": "demo-control",
+        "connectionId": "demo-connection",
+        "connectionRevision": 3
+      },
+      "capabilitySnapshotHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "agentId": "demo-agent",
+      "systemId": "demo-orders",
+      "environmentId": "demo-test",
+      "deployedCommit": "demo-deploy-1025",
+      "codeCommit": "demo-deploy-1025",
+      "objective": "核对合成报表与明细",
+      "inputs": [
+        {
+          "attachmentId": "demo-attachment",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "authorizationRef": "demo-attachment-access"
+        }
+      ],
+      "executionIdentityRef": "demo-service-identity",
+      "workspaceAuthorizationRef": "demo-workspace-scope",
+      "resourceAuthorizationRefs": [
+        "demo-read-scope"
+      ],
+      "modelRequest": {
+        "modelId": "synthetic-model",
+        "presetId": "demo-preset",
+        "presetRevision": 1
+      },
+      "skills": [
+        {
+          "skillId": "demo-reconcile",
+          "revision": 1,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "budget": {
+        "reservationId": "demo-reservation",
+        "scopeId": "demo-budget-scope",
+        "maxNewCalls": 2,
+        "maxConcurrency": 1,
+        "estimatedAmount": "0.10",
+        "currency": "DEMO",
+        "unknownUsagePolicy": "block_new_billable_actions",
+        "callLimitEnforcement": "unknown"
+      },
+      "deadline": "2026-10-25T08:00:00Z",
+      "outputContract": {
+        "schemaRef": "demo-difference-schema",
+        "artifactTypes": [
+          "text/csv"
+        ],
+        "evidenceRequired": true
+      },
+      "preparation": {
+        "integrationSnapshotRef": "demo-integration-snapshot-1",
+        "integrationSnapshotHash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtimeManifestRef": "demo-runtime-manifest-1",
+        "runtimeManifestHash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "contextManifestRef": "demo-context-manifest-1",
+        "contextManifestHash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "authorizationRevision": 1,
+        "inputRevision": 1,
+        "configurationSnapshotRevision": 1,
+        "admissionPolicyRevision": 1
+      }
+    }
+  },
+  "accepted": {
+    "status": "accepted",
+    "binding": {
+      "bindingId": "demo-binding-1",
+      "nodeRunId": "demo-node-1",
+      "providerId": "demo-control"
+    },
+    "run": {
+      "providerRunId": "demo-provider-run",
+      "taskId": "demo-task",
+      "sessionId": null,
+      "attemptId": null
+    },
+    "acceptedAt": "2026-10-25T07:00:00Z",
+    "receiptId": "demo-receipt",
+    "specHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reused": false
+  },
+  "notFound": {
+    "status": "not_found",
+    "observedAt": "2026-10-25T07:01:00Z",
+    "authoritativeNonAcceptance": false
+  },
+  "finalNonAcceptance": {
+    "status": "not_accepted_final",
+    "admissionFence": "demo-sealed-start-key",
+    "closedAt": "2026-10-25T07:02:00Z",
+    "proofRef": "demo-proof"
+  },
+  "unknownSubmissionError": {
+    "ok": false,
+    "error": {
+      "code": "RESULT_UNKNOWN",
+      "message": "接纳结果未知；核查原提交",
+      "correlationId": "demo-correlation",
+      "phase": "submission",
+      "acceptance": "unknown",
+      "retryAdvice": "reconcile",
+      "currentRevision": 1,
+      "nonAcceptanceProof": null
+    }
+  },
+  "cancelRequested": {
+    "status": "requested",
+    "commandId": "demo-cancel",
+    "receivedAt": "2026-10-25T07:03:00Z"
+  },
+  "permissionDeliveryUnknown": {
+    "status": "delivery_unknown",
+    "requestId": "demo-permission",
+    "commandId": "demo-decision"
+  },
+  "usageUnreported": {
+    "scopeId": "demo-budget-scope",
+    "sourceId": "demo-usage",
+    "meter": "cost",
+    "aggregation": "cumulative",
+    "coverage": "run_total",
+    "observedAt": "2026-10-25T07:04:00Z",
+    "quality": "unreported",
+    "amount": null,
+    "unit": null,
+    "currency": null
+  },
+  "artifactMetadata": {
+    "artifactId": "demo-csv",
+    "bindingId": "demo-binding-1",
+    "mimeType": "text/csv",
+    "bytes": 150,
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "sourceRef": "demo-external-artifact",
+    "importState": "metadata_only",
+    "authorizationRef": "demo-artifact-access",
+    "access": null
+  }
+}

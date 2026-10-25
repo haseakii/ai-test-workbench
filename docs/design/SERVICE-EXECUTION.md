@@ -1,0 +1,93 @@
+# 后台服务与前台对话执行
+
+初始设计评审稿。用户界面维持单一对话；本页定义将来服务端如何承接，不表示已经实现后台服务。
+
+## 服务划分与数据归属
+
+采用模块化单体，首条链路一个受控执行节点。API、事务分派器和投影器可由一个应用部署，执行宿主作为受限子进程或隔离工作进程；不先建设分布式调度平台。
+
+| 模块 | 拥有的数据 / 职责 | 不得越界 |
+| --- | --- | --- |
+| 身份与策略 | 成员、角色、授权修订、范围、审批责任 | 不信任浏览器自报身份和模型自报权限 |
+| 对话服务 | 会话、消息、输入序号、待验证结果、用户确认 | 不把聊天消息 ID 当原生 Agent session ID |
+| 配置服务 | 系统、环境、模型预设、接入与运行策略修订 | 不修改运行中 Binding |
+| 执行协调 | 固定流程节点、预算预占、outbox、唯一 Binding、核查 | 不复制总控 Agent 分工和内部重试 |
+| 材料与上下文 | 附件、代码证据、上下文清单、检索授权、记忆候选 | 不把检索结果当指令或授权 |
+| Provider 适配 | 总控适配器 / 受控 ACP Host | 不与总控共用数据库或前端内部状态 |
+| 资源网关 | 代码、数据、日志、MCP、文件真实访问控制 | 不靠提示词落实只读 |
+| 审计与用量 | 操作事实、计量来源、配置与访问审计 | 不把估算当实际费用 |
+
+平台关系库保存业务记录、事件与事务 outbox；对象存储保存隔离的附件和产物；检索索引仅为可重建投影。数据库产品与身份提供方留待技术评审。总控数据独立，平台只保存其外部引用。候选表：subjects、memberships、grants、configuration_revisions、conversations、messages、workflow_runs、node_runs、bindings、commands、events、approvals、attachments、artifacts、context_manifests、memory_items、usage_ledger、outbox、audit_entries。每个业务表包含 tenantId；查询索引以租户及权限范围开头。
+
+## 一条消息如何执行
+
+1. 登录身份在服务端解析为 subject、租户和授权修订。用户选择系统、环境和模型预设，服务端求可用交集。
+2. 首条输入以 `clientMessageId` 去重，在一笔事务中写用户消息、会话修订和待处理命令，返回已保存回执；不声称已发送给模型。
+3. 分派器校验账号、环境部署版本、执行器能力、运行隔离、上下文清单和预算。缺条件就追加追问事件，不分派无用查询。
+4. 需要取证时生成固定计划，分配获授权的审批责任人；提交人不具备审批权时，前台显示“等待负责人确认”，不能自批。
+5. 原子保存 NodeRun、Binding、预算预占与 start outbox。适配器用稳定命令键提交；接收未知只核查原提交。
+6. 权威事件落库、去重并投影后，通过平台事件流更新前台。文本增量可以先显示“生成中”，未完成片段不作为最终证据。
+7. 平台导入产物，校验 ACL、大小、哈希、证据时点与版本，交付结果修订；进入待验证。用户确认保存针对该修订的独立记录。
+
+```mermaid
+sequenceDiagram
+  participant U as 对话界面
+  participant A as 平台 API
+  participant D as 业务库和 outbox
+  participant P as ExecutionProvider
+  participant R as 受控资源服务
+  U->>A: 消息 + clientMessageId
+  A->>D: 消息、修订、命令（事务）
+  A-->>U: 已保存 + 平台事件游标
+  A->>P: 校验能力 / 固定规格 / 唯一 Binding
+  P->>R: 真实身份与限定授权
+  R-->>P: 有来源的证据 / 拒绝
+  P-->>A: 权威事件、结果与用量
+  A->>D: 去重事件与业务投影（事务）
+  A-->>U: 过程、授权卡、待验证结果
+  U->>A: 确认 resultRevision
+  A->>D: 独立用户验证记录
+```
+
+## 前台 API 草案
+
+所有入口使用服务端会话或短期令牌，校验 CSRF / Origin；敏感对象逐项鉴权。命令含 `commandId, idempotencyKey, expectedRevision`，服务端生成 scope 和 subject。返回 `{data, revision, correlationId}` 或 `{error:{code,retryable,detail},correlationId}`；拒绝与未知结果分开。
+
+| 入口 | 请求与响应要点 | 权限 / 副作用 |
+| --- | --- | --- |
+| GET /workbench/options | system/environment/model 过滤结果、配置和授权修订、不可用原因 | 选项读取；不泄漏未授权对象计数 |
+| POST /conversations | 系统、环境、预设 ID → conversationId、revision | 新建；同键返回同一会话 |
+| POST /conversations/{id}/messages | clientMessageId、text、已导入附件 ID、expectedRevision → saved / queued / waiting_input | 消息保存去重；占用节点执行中时补充材料不另起重复执行 |
+| POST /conversations/{id}/inputs | 材料引用、目标 checkpoint → accepted_pending / adopted / rejected | 对应 Provider submitInput；不得声称材料一定已被当前动作采用 |
+| GET /conversations/{id}/events | cursor、limit → 平台事件分页 | conversation.events.read；游标不含权限 |
+| GET /conversations/{id}/stream | 平台事件游标 → SSE 增量 / snapshot_required | SSE 只是前台传输，不直接转发 MCP 流 |
+| POST /conversations/{id}/stop | command、目标运行引用 → stopping / already_terminal / unknown | 不以 HTTP 200 代替停止确认 |
+| POST /approvals/{id}/decision | approve / reject、operationHash、expectedRevision、理由 | 授权审批人；执行前复查；旧卡返回 PLAN_STALE |
+| POST /results/{id}/verification | resultRevision、expectedInputRevision、resolved / unresolved、意见 | 仅提交人或指定验收人；重复提交不重复变更 |
+| POST /attachments/import | 上传会话引用、预期 MIME/大小/哈希 → 隔离上传引用 | 大小/类型/配额、扫描与解析完成前不可进入上下文 |
+| GET /artifacts/{id}/download | purpose → 短效一次用途链接 | 内容授权、完整性、保留期，撤权后拒绝续签 |
+| GET /admin/records | 过滤条件、受限分页 → 脱敏元数据 | records.list；全文授权不由列表权限推导 |
+| POST /admin/content-leases | 会话 ID、理由、工单引用 → 短期范围租约 | records.content.read；审计失败则拒绝读取 |
+| PATCH /admin/users/{id}/grants | 基础修订、角色和环境、理由 → 新授权修订 | users.manage；禁止自我提权和越过可授予范围 |
+
+分页 limit=1–100；内容和附件另限大小。401 未登录、403 无权、404 对不存在或不可枚举的对象统一响应、409 修订/幂等冲突、410 游标/引用过期、422 缺条件、429 超限、503 能力或依赖不可用。副作用请求超时仍以原命令键查询，不盲目自动重发。消息长度、留存、上传配额和超时默认值均由配置发布，实施前以实际能力校准。
+
+## 事件与恢复
+
+平台事件包含 eventId、conversationId、runId、sequence、occurredAt、receivedAt、source、causationId、schemaVersion、visibility、payloadRef。Provider 游标和平台游标分开保存；唯一约束 `(bindingId, providerEventId)` 防重复，消息流按平台 sequence 投影。乱序事件待补齐或核查快照，不直接把晚到 active 覆盖 terminal。
+
+SSE 断开不取消后台执行；重连从持久游标恢复。游标过期返回 snapshot_required，前端重取授权快照并继续；不得新建执行。撤权时终止现有流、拒绝重连和内容引用，浏览器收到权限变化后清除可见敏感缓存。客户端刷新可恢复已保存的正式会话；当前离线原型刷新清空，不能据此宣称正式持久性通过。
+
+输入草稿只存在本地且不进入模型。运行中新增材料排队到安全输入点；若改变当前计划，旧批准失效。停止期间保留已收到证据并展示未知用量，只有权威终态可显示已停止。后端完成与停止交错时保存最终事实，不回滚已发生动作。
+
+## 管理与执行审计
+
+关联链：userMessageId → platformCommandId → workflow/node/binding → provider run/session → tool invocation → evidence/artifact → resultRevision → verification。记录配置、代码、上下文和记忆修订，实际选用的模型 ID 与观测证据，不存秘密值或隐藏思维链。
+
+配置管理员只维护配置；支持人员按理由查记录；权限管理员只授予其可管理范围；资源服务持有实际限制。详见[用户治理](USER-GOVERNANCE.md)、[模型与 ACP](MODEL-ACP-ACCESS.md)、[运行资源](RUNTIME-RESOURCES.md)。事务、崩溃恢复和并发均为待实施验收，不把离线投影当数据库保证。
+
+## 整体走查补充
+
+[衔接合同](END-TO-END-WALKTHROUGH.md)统一各阶段引用和失效规则。冻结的 configurationSnapshotRevision 与最近准入的 admissionPolicyRevision 分开，不能把旧配置冒充新执行。模型 / 输入 / 授权 / 工具 schema / 记忆依赖变化后，旧计划失效；实际采用模型保持独立观察，unknown 不以预设名称替代。
+
+用户验收检查当前 inputRevision、resultRevision 及必要来源有效性。管理员记录读取同一 conversationId 的授权投影，用户消息、后台事件、产物下载和验收能关联核对；正文、附件、事件、下载仍各自授权。新增离线共同记录不代替正式业务库和事务保证。
