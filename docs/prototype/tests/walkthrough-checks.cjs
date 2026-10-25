@@ -66,32 +66,32 @@ module.exports=async({page,check,nav,out})=>{
   assert.equal((await inspect()).draft,'这份未发送草稿要保留');
  });
  await check('walkthrough restoring a user preserves drafts but does not revive prior approval',async()=>{
-  await nav('admin-users');await field('reason').fill('走查 DEMO：恢复当前对话用户');await service('toggle-user');await service('confirm-toggle');await nav('chat');
+  await nav('admin-users');await page.locator('[data-service=select-user][data-id=demo-live-tester]').click();await field('reason').fill('走查 DEMO：恢复当前对话用户');await service('toggle-user');await service('confirm-toggle');await nav('chat');
   assert.equal(await page.locator('#chat-input').inputValue(),'这份未发送草稿要保留');assert.equal(await page.locator('[data-chat=allow]').count(),0);
  });
  await check('walkthrough live user grant changes update model and approval rights on the same identity',async()=>{
-  await nav('admin-users');await field('userRole').selectOption('observer');await field('reason').fill('走查 DEMO：调整当前用户协作权限');await service('save-user');await service('confirm-save');await nav('chat');
+  await nav('admin-users');await page.locator('[data-service=select-user][data-id=demo-live-tester]').click();await field('userRole').selectOption('observer');await field('reason').fill('走查 DEMO：调整当前用户协作权限');await service('save-user');await service('confirm-save');await nav('chat');
   await send('按新权限继续补充条件');assert.equal((await inspect()).subjectId,'demo-live-tester');assert.deepEqual(await page.locator('#chat-model option').allTextContents(),['默认模型']);assert(await page.locator('[data-chat=attach]').isDisabled());assert.equal(await page.locator('[data-chat=allow]').count(),0);assert.equal(await page.locator('[data-chat=request-review]').count(),1);
  });
  await fresh();
  await check('walkthrough MCP observation change expires the current plan with no replay',async()=>{
-  await question();const s=await inspect();await nav('admin-integrations');await field('scenario').selectOption('schema');await service('simulate-admission-change');await nav('chat');
+  await question();const s=await inspect();await nav('admin-integrations');await page.locator('.governance-diagnostics').evaluate(d=>d.open=true);await field('scenario').selectOption('schema');await service('simulate-admission-change');await nav('chat');
   assert.equal(await page.locator('[data-chat=allow]').count(),0);assert.equal((await inspect()).binding,null);assert.deepEqual((await inspect()).snapshot,s.snapshot);
  });
  await fresh();
  await check('walkthrough context includes only eligible memory with original source authority',async()=>{
-  await nav('admin-context');await field('memory').selectOption('environment');await service('memory-review');await service('memory-activate');await nav('chat');await question();
+  await nav('admin-context');await page.locator('[data-gov=edit]').click();await page.locator('[data-gov-field=memory]').selectOption('environment');await page.locator('[data-gov=publish]').click();await page.locator('[data-gov=confirm]').click();await page.locator('.governance-diagnostics summary').first().click();await service('memory-review');await service('memory-activate');await nav('chat');await question();
   const s=await inspect();assert.deepEqual(s.preparation.memoryRefs,['demo-memory-1']);assert.equal(s.preparation.attachmentContentsRead,false);
   await click('allow');await page.waitForSelector('.result-choice');
  });
  await check('walkthrough source revocation invalidates derived result and administrator content lease',async()=>{
   const id='demo-chat-'+(await inspect()).id;await record(id);await field('leaseReason').fill('走查 DEMO：检查来源撤权');await service('lease');
-  await nav('admin-context');await field('actor').selectOption('config');await service('memory-source-revoke');await nav('chat');
+  await nav('admin-context');await field('actor').selectOption('config');await page.locator('.governance-diagnostics summary').first().click();await service('memory-source-revoke');await nav('chat');
   assert((await page.locator('.assistant').last().innerText()).includes('来源已失效'));assert.equal(await page.locator('[data-chat=resolved]').count(),0);assert.equal(await page.locator('[data-chat=download]').count(),0);
   await record(id);assert.equal(await page.locator('.service-sensitive').count(),0);await field('leaseReason').fill('走查 DEMO：重新审阅脱敏历史');await service('lease');assert(!(await page.locator('.service-sensitive').innerText()).includes('演示结论：'));
  });
  await check('walkthrough content lease expires automatically without a manual button',async()=>{
-  await page.clock.install();await page.locator('[data-service=select-record][data-id=demo-record-1]').click();await field('leaseReason').fill('走查 DEMO：检查真实定时过期');await service('lease');assert.equal(await page.locator('.service-sensitive').count(),1);
+  await page.clock.install();await service('close-record');await page.locator('[data-service=select-record][data-id=demo-record-1]').click();await field('leaseReason').fill('走查 DEMO：检查真实定时过期');await service('lease');assert.equal(await page.locator('.service-sensitive').count(),1);
   await page.clock.fastForward(300001);assert.equal(await page.locator('.service-sensitive').count(),0);assert((await page.locator('#service-feedback').innerText()).includes('自动到期'));
  });
  await fresh();

@@ -2,199 +2,199 @@ TAP version 13
 # Subtest: empty conditions preserve the draft and deny dispatch
 ok 1 - empty conditions preserve the draft and deny dispatch
   ---
-  duration_ms: 2.4348
+  duration_ms: 2.116
   type: 'test'
   ...
 # Subtest: completion awaits user verification
 ok 2 - completion awaits user verification
   ---
-  duration_ms: 0.4425
+  duration_ms: 0.3253
   type: 'test'
   ...
 # Subtest: user confirmation targets the current result revision
 ok 3 - user confirmation targets the current result revision
   ---
-  duration_ms: 0.3425
+  duration_ms: 0.1955
   type: 'test'
   ...
 # Subtest: reopen preserves result and verifier history
 ok 4 - reopen preserves result and verifier history
   ---
-  duration_ms: 0.5063
+  duration_ms: 0.3355
   type: 'test'
   ...
 # Subtest: duplicate start cannot create a second execution
 ok 5 - duplicate start cannot create a second execution
   ---
-  duration_ms: 0.1956
+  duration_ms: 0.224
   type: 'test'
   ...
 # Subtest: not_found does not free ownership or enable another node
 ok 6 - not_found does not free ownership or enable another node
   ---
-  duration_ms: 0.2936
+  duration_ms: 0.1714
   type: 'test'
   ...
 # Subtest: found submission recovers the original binding without start
 ok 7 - found submission recovers the original binding without start
   ---
-  duration_ms: 0.2896
+  duration_ms: 0.1401
   type: 'test'
   ...
 # Subtest: final admission fence allows a new binding, never reopens old key
 ok 8 - final admission fence allows a new binding, never reopens old key
   ---
-  duration_ms: 1.5923
+  duration_ms: 1.2248
   type: 'test'
   ...
 # Subtest: changing defaults leaves running binding immutable
 ok 9 - changing defaults leaves running binding immutable
   ---
-  duration_ms: 1.3174
+  duration_ms: 1.1178
   type: 'test'
   ...
 # Subtest: disconnect does not clear ownership
 ok 10 - disconnect does not clear ownership
   ---
-  duration_ms: 0.2987
+  duration_ms: 0.3606
   type: 'test'
   ...
 # Subtest: cancel request and confirmation are separate
 ok 11 - cancel request and confirmation are separate
   ---
-  duration_ms: 0.3324
+  duration_ms: 0.2801
   type: 'test'
   ...
 # Subtest: completion may win a cancellation race, still awaits user verification
 ok 12 - completion may win a cancellation race, still awaits user verification
   ---
-  duration_ms: 0.2168
+  duration_ms: 0.1717
   type: 'test'
   ...
 # Subtest: unknown submission cannot be represented as cancelled
 ok 13 - unknown submission cannot be represented as cancelled
   ---
-  duration_ms: 0.2045
+  duration_ms: 0.1305
   type: 'test'
   ...
 # Subtest: approval checkbox and reason are required
 ok 14 - approval checkbox and reason are required
   ---
-  duration_ms: 0.3557
+  duration_ms: 0.2395
   type: 'test'
   ...
 # Subtest: approval alone does not send or execute
 ok 15 - approval alone does not send or execute
   ---
-  duration_ms: 0.1872
+  duration_ms: 0.1342
   type: 'test'
   ...
 # Subtest: delivery alone is not an execution receipt
 ok 16 - delivery alone is not an execution receipt
   ---
-  duration_ms: 0.2063
+  duration_ms: 0.1932
   type: 'test'
   ...
 # Subtest: native request expiry invalidates approval and prevents old option replay
 ok 17 - native request expiry invalidates approval and prevents old option replay
   ---
-  duration_ms: 0.1301
+  duration_ms: 0.1515
   type: 'test'
   ...
 # Subtest: safe resume preserves owner, old decision, and requires new approval
 ok 18 - safe resume preserves owner, old decision, and requires new approval
   ---
-  duration_ms: 0.2805
+  duration_ms: 0.3595
   type: 'test'
   ...
 # Subtest: business expiry prevents sending
 ok 19 - business expiry prevents sending
   ---
-  duration_ms: 0.1626
+  duration_ms: 0.1917
   type: 'test'
   ...
 # Subtest: plan drift requires evidence revalidation and fresh approval
 ok 20 - plan drift requires evidence revalidation and fresh approval
   ---
-  duration_ms: 0.3156
+  duration_ms: 0.2878
   type: 'test'
   ...
 # Subtest: permission delivery unknown cannot be resent or cancelled as safe
 ok 21 - permission delivery unknown cannot be resent or cancelled as safe
   ---
-  duration_ms: 0.2106
+  duration_ms: 0.2954
   type: 'test'
   ...
 # Subtest: late permission delivery observation cannot erase a stop request
 ok 22 - late permission delivery observation cannot erase a stop request
   ---
-  duration_ms: 0.1635
+  duration_ms: 0.1889
   type: 'test'
   ...
 # Subtest: inner policy deny overrides the business allow
 ok 23 - inner policy deny overrides the business allow
   ---
-  duration_ms: 0.1302
+  duration_ms: 0.1452
   type: 'test'
   ...
 # Subtest: unsupported approval bridge never sends
 ok 24 - unsupported approval bridge never sends
   ---
-  duration_ms: 0.1145
+  duration_ms: 0.2139
   type: 'test'
   ...
 # Subtest: one operation consumes approval once
 ok 25 - one operation consumes approval once
   ---
-  duration_ms: 0.135
+  duration_ms: 0.371
   type: 'test'
   ...
 # Subtest: sent permissions cannot be renewed on an assumption of no effect
 ok 26 - sent permissions cannot be renewed on an assumption of no effect
   ---
-  duration_ms: 0.1274
+  duration_ms: 0.2916
   type: 'test'
   ...
 # Subtest: unknown capability and mismatch block dispatch
 ok 27 - unknown capability and mismatch block dispatch
   ---
-  duration_ms: 0.1383
+  duration_ms: 0.1996
   type: 'test'
   ...
 # Subtest: unknown usage blocks new billable work but allows observation and cancel
 ok 28 - unknown usage blocks new billable work but allows observation and cancel
   ---
-  duration_ms: 0.1756
+  duration_ms: 0.2703
   type: 'test'
   ...
 # Subtest: evidence mismatch and corrupt artifacts deny deterministic delivery
 ok 29 - evidence mismatch and corrupt artifacts deny deterministic delivery
   ---
-  duration_ms: 0.1665
+  duration_ms: 0.3053
   type: 'test'
   ...
 # Subtest: integrity failure after delivery blocks confirmation without re-execution
 ok 30 - integrity failure after delivery blocks confirmation without re-execution
   ---
-  duration_ms: 0.178
+  duration_ms: 0.1503
   type: 'test'
   ...
 # Subtest: duplicate events have no repeated projection or charge
 ok 31 - duplicate events have no repeated projection or charge
   ---
-  duration_ms: 0.1229
+  duration_ms: 0.2491
   type: 'test'
   ...
 # Subtest: handoff keeps unresolved ownership and full evidence
 ok 32 - handoff keeps unresolved ownership and full evidence
   ---
-  duration_ms: 0.1052
+  duration_ms: 0.1733
   type: 'test'
   ...
 # Subtest: simulation never mutates input and all layer states are declared
 ok 33 - simulation never mutates input and all layer states are declared
   ---
-  duration_ms: 0.3528
+  duration_ms: 0.5076
   type: 'test'
   ...
 1..33
@@ -205,4 +205,4 @@ ok 33 - simulation never mutates input and all layer states are declared
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 26.2511
+# duration_ms 23.4237

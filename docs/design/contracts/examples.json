@@ -78,7 +78,9 @@
         "estimatedAmount": "0.10",
         "currency": "DEMO",
         "unknownUsagePolicy": "block_new_billable_actions",
-        "callLimitEnforcement": "unknown"
+        "callLimitEnforcement": "unknown",
+        "modelQuotaSnapshotRef": "demo-model-quota-snapshot-1",
+        "modelQuotaSnapshotHash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
       },
       "deadline": "2026-10-25T08:00:00Z",
       "outputContract": {
@@ -98,8 +100,14 @@
         "authorizationRevision": 1,
         "inputRevision": 1,
         "configurationSnapshotRevision": 1,
-        "admissionPolicyRevision": 1
-      }
+        "admissionPolicyRevision": 1,
+        "environmentResourcesRef": "demo-environment-resources-1",
+        "environmentResourcesHash": "7777777777777777777777777777777777777777777777777777777777777777",
+        "executionPolicyDecisionRef": "demo-execution-policy-decision-1",
+        "effectiveWorkflowRef": "demo-effective-workflow-1",
+        "effectiveWorkflowHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "primaryRepositoryId": "demo-orders-code"
     }
   },
   "accepted": {

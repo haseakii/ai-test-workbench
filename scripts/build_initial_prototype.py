@@ -11,11 +11,19 @@ def build():
     html = (BASE / 'shell.html').read_text(encoding='utf-8')
     tables = json.loads((ROOT / 'docs/design/contracts/state-transitions.json').read_text(encoding='utf-8'))
     parts = {
-        'STYLES': (BASE / 'style.css').read_text(encoding='utf-8') + '\n' + (BASE / 'chat.css').read_text(encoding='utf-8') + '\n' + (BASE / 'admin.css').read_text(encoding='utf-8') + '\n' + (BASE / 'service-design.css').read_text(encoding='utf-8'),
+        'STYLES': (BASE / 'style.css').read_text(encoding='utf-8') + '\n' + (BASE / 'chat.css').read_text(encoding='utf-8') + '\n' + (BASE / 'admin.css').read_text(encoding='utf-8') + '\n' + (BASE / 'service-design.css').read_text(encoding='utf-8') + '\n' + (BASE / 'management-theme.css').read_text(encoding='utf-8') + '\n' + (BASE / 'onboarding.css').read_text(encoding='utf-8'),
+        'ONBOARDING': (BASE / 'onboarding.js').read_text(encoding='utf-8'),
+        'EXECUTION_MANAGEMENT': (BASE / 'execution-management.js').read_text(encoding='utf-8'),
         'SERVICE_DESIGN': (BASE / 'service-design.js').read_text(encoding='utf-8'),
         'JOURNEY': (BASE / 'journey.js').read_text(encoding='utf-8'),
+        'CODE_SOURCE': (BASE / 'code-source.js').read_text(encoding='utf-8'),
+        'RESOURCE_DESIGN': (BASE / 'resource-design.js').read_text(encoding='utf-8'),
+        'FLOW_DESIGN': (BASE / 'flow-design.js').read_text(encoding='utf-8'),
+        'CONTEXT_QUOTA': (BASE / 'context-quota.js').read_text(encoding='utf-8'),
+        'GOVERNANCE': (BASE / 'governance.js').read_text(encoding='utf-8'),
         'CONFIGURATION': (BASE / 'configuration.js').read_text(encoding='utf-8'),
         'ADMIN': (BASE / 'admin.js').read_text(encoding='utf-8'),
+        'TASK_TITLE': (BASE / 'task-title.js').read_text(encoding='utf-8'),
         'CHAT': (BASE / 'chat.js').read_text(encoding='utf-8'),
         'TABLES': 'window.REVIEW_TABLES=' + json.dumps(tables, ensure_ascii=False) + ';',
         'MODEL': (BASE / 'model.js').read_text(encoding='utf-8'),

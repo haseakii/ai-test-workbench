@@ -90,3 +90,17 @@ cancel requested 仅为命令登记，stopping 表示收敛；confirmed 须有�
 ## 7. 共同契约验收
 
 两个真实 Provider 均须通过[共同用例目录](contracts/conformance-cases.json)。当前模拟只验证设计和交互，不计为 Provider 通过。待评审项包括保留期、检查点能力、身份映射及预算执行等级。
+
+## 可扩展资源与执行策略补充
+
+preparation 固定 environmentResourcesRef / hash 和 executionPolicyDecisionRef；资源快照列出每个 Git 项目的请求 ref / 实际 commit，或本地目录项目的执行节点与内容快照摘要，以及 MCP schema 与 Skill 内容哈希。primaryRepositoryId 及顶层 codeCommit / deployedCommit 只摘要主项目，多项目证据以逐项快照为准，不以主项目 commit 代表全部。
+
+业务决定的 authority 支持 human / policy。policy 仍需具体范围、期限、限额、签发与匹配证明；模式开关不是资源授权。所有真实未知能力保持阻断，接口数目和唯一拥有者规则不变。
+
+有效流程清单由 `effectiveWorkflowRef / effectiveWorkflowHash` 绑定，关联已发布流程、获权环境 / 角色、模型连接及限定工具 / Skill；审批与提交前按同一清单复查，不能把所有环境工具直接交给 Agent。详见[用户到执行](USER-FLOW-AND-CONFIG.md)。
+
+本地目录项目的 codeCommit 可以为 null，但读取代码必须有经过验证的不可变文件快照及内容清单摘要，不能以“无 commit”跳过证据与准入检查。多项目 CodeSourceSnapshot 放在 runtime / environment 清单中并由已有清单哈希绑定；顶层主仓库字段不替代本地来源或逐项目证明。
+
+## 配置背景与用户模型额度的交接
+
+上下文清单引用固定的系统 / 项目 / 环境背景和结构化资源快照；背景不是权限或事实证明。ExecutionSpec.budget 绑定模型额度快照引用与哈希，预占范围必须覆盖实际 subject / connection / Agent / canonicalModelId 与周期。实际模型、内部调用拦截或用量报告能力未知时，不能宣称硬限额通过。流程与故障处理见[系统上下文及额度](SYSTEM-CONTEXT-QUOTAS.md)。

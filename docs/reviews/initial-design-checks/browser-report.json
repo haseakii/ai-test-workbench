@@ -1,5 +1,5 @@
 {
-  "time": "2026-10-25T08:29:41.659Z",
+  "time": "2026-10-25T13:28:14.084Z",
   "scope": "offline synthetic prototype, not real Provider acceptance",
   "method": "Playwright on local file:// plus DOM actions",
   "cases": [
@@ -44,7 +44,7 @@
       "result": "pass"
     },
     {
-      "name": "management entry shows four configuration sections, with secondary diagnostics",
+      "name": "management entry shows expandable configuration sections, with secondary diagnostics",
       "result": "pass"
     },
     {
@@ -236,6 +236,374 @@
       "result": "pass"
     },
     {
+      "name": "resource registry can add and bind custom Git projects MCP and Skills to one environment",
+      "result": "pass"
+    },
+    {
+      "name": "resource addresses reject embedded credentials and Skill dependency mismatch",
+      "result": "pass"
+    },
+    {
+      "name": "prepared resource revisions remain fixed and a later plan adopts new published resources",
+      "result": "pass"
+    },
+    {
+      "name": "resource directory supports trusted stdio templates and repository Skill versions",
+      "result": "pass"
+    },
+    {
+      "name": "user-level automatic readonly mode executes only as a policy-backed synthetic run",
+      "result": "pass"
+    },
+    {
+      "name": "execution management displays the same request and its run history",
+      "result": "pass"
+    },
+    {
+      "name": "environment approval ceiling overrides user automatic execution",
+      "result": "pass"
+    },
+    {
+      "name": "dedicated approval management reviews the current plan and does not resolve the issue",
+      "result": "pass"
+    },
+    {
+      "name": "approval rejects without execution and operator cannot approve",
+      "result": "pass"
+    },
+    {
+      "name": "collect-only user mode records requests without creating approvals or executions",
+      "result": "pass"
+    },
+    {
+      "name": "automatic user mode cannot bypass a role that disallows automatic checks",
+      "result": "pass"
+    },
+    {
+      "name": "non-readonly resource prevents execution even when the user requests automatic mode",
+      "result": "pass"
+    },
+    {
+      "name": "operator stop cancels only the selected synthetic execution and no late result arrives",
+      "result": "pass"
+    },
+    {
+      "name": "approval landing shows a table and sample pending items without opening details",
+      "result": "pass"
+    },
+    {
+      "name": "approval search environment and status filters include an actionable empty state",
+      "result": "pass"
+    },
+    {
+      "name": "approval drawer keeps daily content simple and restores focus and entered opinion on close",
+      "result": "pass"
+    },
+    {
+      "name": "example decisions update only the example list and never create a conversation execution",
+      "result": "pass"
+    },
+    {
+      "name": "list examples and approval actions remain restricted by the selected review role",
+      "result": "pass"
+    },
+    {
+      "name": "members and records start as lists and open settings only for a selected row",
+      "result": "pass"
+    },
+    {
+      "name": "approval history rows retain their own frozen plan and cannot approve an older context",
+      "result": "pass"
+    },
+    {
+      "name": "daily lists and fixed drawer actions fit desktop tablet and mobile viewports",
+      "result": "pass"
+    },
+    {
+      "name": "execution landing uses a summary list with details behind one action",
+      "result": "pass"
+    },
+    {
+      "name": "configuration actions stay visible on long pages and do not apply drafts before confirmation",
+      "result": "pass"
+    },
+    {
+      "name": "cross-page configuration errors navigate to the exact resource without publishing unrelated drafts",
+      "result": "pass"
+    },
+    {
+      "name": "environment resource shortcuts return to the same environment and preserve the whole draft",
+      "result": "pass"
+    },
+    {
+      "name": "configuration checkboxes retain keyboard focus after updating dependent controls",
+      "result": "pass"
+    },
+    {
+      "name": "member search and account filters are explicit and easy to reset",
+      "result": "pass"
+    },
+    {
+      "name": "member drafts survive close and navigation while saved permissions change only after confirmation",
+      "result": "pass"
+    },
+    {
+      "name": "member settings expose all existing environment grants and reason-only drafts can be discarded",
+      "result": "pass"
+    },
+    {
+      "name": "unsaved member drafts are isolated by reviewer identity and cannot grant access",
+      "result": "pass"
+    },
+    {
+      "name": "approval details show frozen user conditions and retain the approved review comment",
+      "result": "pass"
+    },
+    {
+      "name": "daily list search buttons trim keywords and status controls reflect the active execution tab",
+      "result": "pass"
+    },
+    {
+      "name": "record search and return preserve filters while body access stays separately authorized",
+      "result": "pass"
+    },
+    {
+      "name": "automatic authorization history keeps original user conditions after a later execution",
+      "result": "pass"
+    },
+    {
+      "name": "configuration actions and member draft footer stay usable at narrow widths",
+      "result": "pass"
+    },
+    {
+      "name": "user sees configured check scope and question status without technical execution fields",
+      "result": "pass"
+    },
+    {
+      "name": "workflow draft is isolated and publishing invalidates the old confirmation without replay",
+      "result": "pass"
+    },
+    {
+      "name": "environment workflow restrictions remove quick entries and block typed requests",
+      "result": "pass"
+    },
+    {
+      "name": "role workflow permissions limit checks even inside an authorized environment",
+      "result": "pass"
+    },
+    {
+      "name": "missing environment MCP prevents the related workflow while other checks remain configured",
+      "result": "pass"
+    },
+    {
+      "name": "qualified tool identity prevents another MCP with the same tool name from substituting silently",
+      "result": "pass"
+    },
+    {
+      "name": "workflow Skill must be explicitly bound to the chosen environment",
+      "result": "pass"
+    },
+    {
+      "name": "a workflow requiring code cannot start without an environment code project",
+      "result": "pass"
+    },
+    {
+      "name": "unclear goals attachment analysis and writes do not fall through to a default check",
+      "result": "pass"
+    },
+    {
+      "name": "a new check goal produces a new frozen workflow and only its required tools",
+      "result": "pass"
+    },
+    {
+      "name": "management uses the historical task list pattern with representative isolated examples",
+      "result": "pass"
+    },
+    {
+      "name": "user can review range progress and result without leaving the conversation",
+      "result": "pass"
+    },
+    {
+      "name": "historical task workflow and chat reference remain separate read-only comparison fixtures",
+      "result": "pass"
+    },
+    {
+      "name": "first use keeps deployment and identity evidence explicitly unverified",
+      "result": "pass"
+    },
+    {
+      "name": "unregistered and pending members cannot submit or discover environment options",
+      "result": "pass"
+    },
+    {
+      "name": "join request remains one request across navigation and does not grant membership",
+      "result": "pass"
+    },
+    {
+      "name": "member opening requires an authorized administrator and an explicit environment",
+      "result": "pass"
+    },
+    {
+      "name": "new member follows configured approval policy through delivery and separate user verification",
+      "result": "pass"
+    },
+    {
+      "name": "administrator can inspect the same newly opened member result using a scoped content lease",
+      "result": "pass"
+    },
+    {
+      "name": "first use cannot reset an existing conversation owner and narrow layout stays usable",
+      "result": "pass"
+    },
+    {
+      "name": "task title summarizes the first question without copying sensitive identifiers or claims",
+      "result": "pass"
+    },
+    {
+      "name": "an unclear title improves once after clarification and remains stable across new turns",
+      "result": "pass"
+    },
+    {
+      "name": "attachment-only title does not copy filenames or pretend contents were read",
+      "result": "pass"
+    },
+    {
+      "name": "manual rename updates all live titles without changing the pending approval or execution plan",
+      "result": "pass"
+    },
+    {
+      "name": "manual title stays fixed through later replies and rename after delivery preserves verification",
+      "result": "pass"
+    },
+    {
+      "name": "rename validates length and sensitive patterns while cancellation preserves drafts and focus",
+      "result": "pass"
+    },
+    {
+      "name": "same titles are allowed for different conversations and stale title revisions cannot overwrite changes",
+      "result": "pass"
+    },
+    {
+      "name": "rename dialog stays usable on mobile and revoked users cannot view or rename task titles",
+      "result": "pass"
+    },
+    {
+      "name": "code projects default to GitLab and token entry is write-only offline simulation",
+      "result": "pass"
+    },
+    {
+      "name": "token rotation creates a new reference and removal blocks required HTTPS credentials",
+      "result": "pass"
+    },
+    {
+      "name": "local directories support host paths without Git refs or credentials in the execution snapshot",
+      "result": "pass"
+    },
+    {
+      "name": "local path guards reject relative roots traversal and network paths but allow POSIX directories",
+      "result": "pass"
+    },
+    {
+      "name": "switching a code source invalidates pending plans while preserving the old source snapshot",
+      "result": "pass"
+    },
+    {
+      "name": "token authentication rejects SSH and embedded credentials while other Git supports explicit SSH references",
+      "result": "pass"
+    },
+    {
+      "name": "unsaved token text is never published and code source forms fit narrow screens",
+      "result": "pass"
+    },
+    {
+      "name": "environment management is nested under the selected system with parent navigation",
+      "result": "pass"
+    },
+    {
+      "name": "adding an environment keeps its parent and requires an explicit user grant",
+      "result": "pass"
+    },
+    {
+      "name": "execution context includes authorized background and structural references without credentials",
+      "result": "pass"
+    },
+    {
+      "name": "changing context background expires pending confirmation and preserves its original snapshot",
+      "result": "pass"
+    },
+    {
+      "name": "global default quotas are draft-only until published and validate nonnegative integers",
+      "result": "pass"
+    },
+    {
+      "name": "member quotas target one agent model and only apply after confirmed save",
+      "result": "pass"
+    },
+    {
+      "name": "restoring inheritance picks up current global defaults without changing other users",
+      "result": "pass"
+    },
+    {
+      "name": "quota keys survive display renames and alias presets share the same model bucket",
+      "result": "pass"
+    },
+    {
+      "name": "governance entry offers connection list and next steps with diagnostics collapsed",
+      "result": "pass"
+    },
+    {
+      "name": "new agent requires synthetic discovery and changed connection invalidates that observation",
+      "result": "pass"
+    },
+    {
+      "name": "discovered model preset needs explicit environment and role binding before user selection",
+      "result": "pass"
+    },
+    {
+      "name": "revoking an environment model binding blocks old confirmation without changing its snapshot",
+      "result": "pass"
+    },
+    {
+      "name": "stopping a connection blocks its default rather than silently selecting another agent",
+      "result": "pass"
+    },
+    {
+      "name": "agent identity changes cannot reuse an existing model preset or its quota identity",
+      "result": "pass"
+    },
+    {
+      "name": "runtime configuration rejects broad access and only publishes reviewed draft scope",
+      "result": "pass"
+    },
+    {
+      "name": "context policy applies per environment while personal memory requires owner and reviewed source",
+      "result": "pass"
+    },
+    {
+      "name": "MCP endpoint or tool changes require explicit renewed range review before publication",
+      "result": "pass"
+    },
+    {
+      "name": "governance changes cannot be published by a permissions reviewer",
+      "result": "pass"
+    },
+    {
+      "name": "member effective access preview reacts to draft scope without applying it",
+      "result": "pass"
+    },
+    {
+      "name": "record review displays frozen execution setup while keeping conversation content leased",
+      "result": "pass"
+    },
+    {
+      "name": "governance forms and explicit publication remain usable on a narrow viewport",
+      "result": "pass"
+    },
+    {
+      "name": "continuous custom setup survives member opening approval delivery and administrator review",
+      "result": "pass"
+    },
+    {
       "name": "actual file navigation loads self-contained prototype",
       "result": "pass"
     },
@@ -332,6 +700,36 @@
   "networkAttempts": [],
   "layouts": [
     {
+      "route": "getting-started",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-workflows",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-resources",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-executions",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-approvals",
+      "width": 1440,
+      "height": 1000,
+      "bodyHorizontalOverflow": false
+    },
+    {
       "route": "admin-integrations",
       "width": 1440,
       "height": 1000,
@@ -434,6 +832,36 @@
       "bodyHorizontalOverflow": false
     },
     {
+      "route": "getting-started",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-workflows",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-resources",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-executions",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-approvals",
+      "width": 1366,
+      "height": 768,
+      "bodyHorizontalOverflow": false
+    },
+    {
       "route": "admin-integrations",
       "width": 1366,
       "height": 768,
@@ -536,6 +964,36 @@
       "bodyHorizontalOverflow": false
     },
     {
+      "route": "getting-started",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-workflows",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-resources",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-executions",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-approvals",
+      "width": 1024,
+      "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
       "route": "admin-integrations",
       "width": 1024,
       "height": 900,
@@ -635,6 +1093,36 @@
       "route": "exceptions",
       "width": 1024,
       "height": 900,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "getting-started",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-workflows",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-resources",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-executions",
+      "width": 390,
+      "height": 844,
+      "bodyHorizontalOverflow": false
+    },
+    {
+      "route": "admin-approvals",
+      "width": 390,
+      "height": 844,
       "bodyHorizontalOverflow": false
     },
     {
@@ -741,28 +1229,48 @@
     }
   ],
   "sourceHashes": {
-    "docs/prototype/index.html": "eefce4eb3db3d7061e8723be2701004509e3c47d5ef88ee507b46d0b7fe545a4",
+    "docs/prototype/tests/complete-journey-checks.cjs": "9a725c2bcdf64e6fce56b57665a4bae014cf4d7d416eedade333926a68923591",
+    "docs/prototype/governance.js": "e44c98ec9317e461ee9a8fc00eaac740cb47e2b6acb7ab2874734a07ab3ba8ad",
+    "docs/prototype/tests/governance-checks.cjs": "ca3bb36baa6d9c083be2d5b1ae18ceb1d186a29de2e09e7786fb44716c785557",
+    "docs/prototype/context-quota.js": "2f1a1338cba70944798baec3359c02417da0023270cad12368c170a0913c3578",
+    "docs/prototype/tests/context-quota-checks.cjs": "8e35fa56880b8df69ed1dd60904c67e226717b10efe88900dae66673dee18b65",
+    "docs/prototype/code-source.js": "bd5e476f76bde16c5c2d1478e388dd013a9b287f730bb647a30e4d352d7e8b1c",
+    "docs/prototype/tests/code-source-checks.cjs": "d489ff2af1b6b7dca41b814d8d3faaea45de1a4e216a2b2a51c11440e2d8ef3f",
+    "docs/prototype/task-title.js": "7d873a0837a75251c5c75b55633da2a014b75d93cdedd1ceaf360cb09f7d007e",
+    "docs/prototype/tests/title-checks.cjs": "ee5a715d76dae759aec6fa215e8cb18e49887ed290e165298d5ee6f7b04be6a9",
+    "docs/prototype/onboarding.js": "e245f805711fb2589edbf527e5785d010edef36ebb8a0e9ab7944b0d2555c51c",
+    "docs/prototype/onboarding.css": "3ffe6e7682d92365b54fde4db2dd2ea929c72ca503298522475fb9e0bd471d17",
+    "docs/prototype/tests/onboarding-checks.cjs": "136669899d034606deca53644c0a9bf3bdc3d2bfab3b2c51d071830d57d9ef1e",
+    "docs/prototype/tests/flow-links-checks.cjs": "9f1d784e82511b79410acdabdf0fc631fcb46fb7dfd3083f8049a0e8ed849330",
+    "docs/prototype/flow-design.js": "3019d76c690be7c3f0b52bffd4f34768f5ef894115f056fd46d720a23c77175e",
+    "docs/prototype/management-theme.css": "f65dea54b9388ff31b03ca527d349cafda5f1025ae7a0011dde1419a0d2ce593",
+    "docs/prototype/tests/usability-checks.cjs": "c248c59ab262cfb59bf4e70785d15fba7a6c73595babcb215bf9ada60583cf28",
+    "docs/prototype/tests/management-list-checks.cjs": "e7633649f5cc59e66d0ac7dc9da411513c541741048b4018c4a84ba19b3cc404",
+    "docs/prototype/index.html": "23081ca2a8a59cf4124666cba065c1d7700e0efa94dba95603e6a66c331881bf",
     "docs/prototype/model.js": "e017dd22d08a535310fb26b317c22c48f0e5e12324c1732a7c62d13048988cab",
-    "docs/prototype/app.js": "a3cfc178c23258f83661008142c4d28e825dbd03d067d0ef21adde254ab4e873",
-    "docs/prototype/journey.js": "5c82ae7d296be460a91ffcb72eee79bf51febd39292142b4d9482935ba8bb287",
-    "docs/prototype/tests/walkthrough-checks.cjs": "4594ce877a206898cd4d94a230bf3611bfd9321bda955bfd288e0596f77630ee",
-    "docs/prototype/service-design.js": "d4a8ca67cfe25346426db48ae943ce0da9631baa896cefad9b65be36c86bb56d",
-    "docs/prototype/service-design.css": "790540e014cd9b0fd9e7c67b8d59393dd54cf80ad9b303124d87608467dc7cff",
-    "docs/prototype/tests/service-design-checks.cjs": "c290bc9cd7c1f84bbfecbf455bb24f54bbba5c2f6b116064451f9530c08d9e68",
-    "docs/prototype/configuration.js": "2c0575ce2b2c1d00bba32c08396851949e51eb2ca16392ff1392682d917ac34d",
-    "docs/prototype/admin.js": "836c1966a9ccec89229485ba20885626d297a00c31d4dee365e3c1affc198155",
-    "docs/prototype/admin.css": "d1d130ff5a528989078d5686bb87603b638bee86f78b90419e6ead2bc97d73ed",
-    "docs/prototype/tests/admin-checks.cjs": "35d5733da7631575744b1463abd7e4cb6b1d6c5886b432640bcc7c7fd831942f",
-    "docs/prototype/chat.js": "aa97b303556b24f08759321803aea25214448c9361b6b059d202af6024cf7d42",
-    "docs/prototype/chat.css": "f47cab50c8fe31691e447696f178fc87a20968b9b1397d5c3133c5187fbac6e8",
-    "docs/prototype/tests/chat-checks.cjs": "a5d9079e42eb3014a1cfc5e51a498f21d9d29256a13c47d7e4f671073205aa53",
+    "docs/prototype/app.js": "8a5d994d705c01f9fb8842d4db999635e1bfc7a8eb7cb06a77e977955dc53f27",
+    "docs/prototype/tests/execution-resource-checks.cjs": "0b11c3c9128966dfeebfed4e8668e215936ad9a5efca5fa50c9ac0478e5452bc",
+    "docs/prototype/resource-design.js": "2664f27303473a8b860cdbaefe6f5e7ea0896b7258aac9b16bd5d10c3144e5d6",
+    "docs/prototype/execution-management.js": "43ac7c01b312c479d3e513e7dfed6355d97921c6139331868eeba0c75a0a8c50",
+    "docs/prototype/journey.js": "89ae4ad54c0d0d5e53ba12bc5a3cc19567666b99146d5ff5e89df73e259e0efa",
+    "docs/prototype/tests/walkthrough-checks.cjs": "961c1d7fcfb4b5e62be08cac5d4371382a1792131991f3742e79230753aabb29",
+    "docs/prototype/service-design.js": "5c0050f962a1e03d081a0e0b5ae99e95bf641b5b0f8e92f0fb71a2120ff58cdc",
+    "docs/prototype/service-design.css": "3f977018bc9b4ff33833a7c4e623ac64a1b1cb7c1493b687171f8b8a9f16e1e4",
+    "docs/prototype/tests/service-design-checks.cjs": "af369d11265604827235c21bc629ac2019e79dab8f15c869079ee1a1ba9ccae1",
+    "docs/prototype/configuration.js": "be8115c76b4a5873f3288b80a3955b7c5090a9f2ac28415b589f9c47028bd1bc",
+    "docs/prototype/admin.js": "953cf4a11dcbfbd332ddcb423f6e2a0008e77c0123f6b750815415dbe09dc3dd",
+    "docs/prototype/admin.css": "99a58448655725fb68019fa4bd4ffab2f3d42d6dee2aff773cba033b1fb25cc6",
+    "docs/prototype/tests/admin-checks.cjs": "d416c1f9a50a51737ef22b69495c222d8faf59703e110ac74f248621b4206cdd",
+    "docs/prototype/chat.js": "4091218d326c4f30b43903219aa3e27fcef413c3bac919095cf5aa97cc8adab5",
+    "docs/prototype/chat.css": "a71f96117dac39087ebf47d62704f0cbc8c8172ca2e222f575bb655d20638844",
+    "docs/prototype/tests/chat-checks.cjs": "1bce8a6b1403c304b417c5a20c4e05ddef2f67301b34be100f132b7e477b67f4",
     "docs/prototype/style.css": "27c15a3287c8e8d145f081086d1ac9a1d083ccecfa07ef5fa1997b336bc0eba3",
-    "docs/prototype/shell.html": "bfdc0f6c04127e316ed395e6165916238e10b57472e1b523c2b115f9d0baa95b",
-    "docs/design/contracts/state-transitions.json": "a92395cfb2c713493a3d1f2fd9e9b1396182291ffb8b3028b03550b78f3edc19",
-    "docs/prototype/tests/browser-check.cjs": "85b0b1401083e271c6f572254efe6b7c7a249cbbe77c8fe219159a3238d19fe6"
+    "docs/prototype/shell.html": "796fc0aed5c156fd9a71345585ba34d246619d481cdceb262304f4ea1923dd62",
+    "docs/design/contracts/state-transitions.json": "728d83fa1bf05d33f80c0707f660ad05e51778c9819bf7f39976655e6be72486",
+    "docs/prototype/tests/browser-check.cjs": "abdcb444f418f371443ab7f84f0a202b68d8005a3af9e6dd22a30569d5779bc0"
   },
   "browser": "156.0.4314.42",
-  "passed": 81,
-  "total": 81,
+  "passed": 173,
+  "total": 173,
   "overflows": []
 }

@@ -8,9 +8,9 @@ module.exports=async({page,check,nav,out})=>{
  const chat=()=>page.evaluate(()=>ChatPrototype.inspect());
  const apply=async()=>{await action('publish');await page.waitForSelector('#admin-dialog[open]');await action('confirm');};
  const select=async id=>page.locator('[data-record="'+id+'"]').click();
- await check('management entry shows four configuration sections, with secondary diagnostics',async()=>{
+ await check('management entry shows expandable configuration sections, with secondary diagnostics',async()=>{
   await page.locator('.chat-sidebar-bottom a').click();await page.waitForSelector('#configuration-root h1');
-  assert.equal(await page.locator('#configuration-root h1').textContent(),'系统配置');
+  assert.equal(await page.locator('#configuration-root h1').textContent(),'系统设置');
   assert.equal(await page.locator('.admin-config-nav a').count(),4);
   assert(!await page.locator('#review-root').isVisible());
  });
@@ -54,7 +54,7 @@ module.exports=async({page,check,nav,out})=>{
   await nav('chat');await page.locator('#chat-system').selectOption('支付系统');
   await page.locator('#chat-input').fill('检查接口异常');await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});
   const before=await chat();assert.equal(before.snapshot.models[0].provider,'control');
-  await nav('admin-models');await select('general');await field('provider').selectOption('direct');await apply();
+  await nav('admin-models');await select('general');await field('connectionId').selectOption('demo-direct');await apply();
   assert.equal((await config()).models[0].provider,'direct');assert.deepEqual((await chat()).snapshot,before.snapshot);
  });
  await check('revoking an environment blocks continuation and preserves the original scope',async()=>{
@@ -94,13 +94,13 @@ module.exports=async({page,check,nav,out})=>{
   await page.locator('#chat-system').selectOption('库存系统');assert.deepEqual(await page.locator('#chat-environment option').allTextContents(),['库存测试']);
  });
  await check('environment default model is selected on a new conversation scope',async()=>{
-  await nav('admin-environments');await select('payments-test');await field('defaultModel').selectOption('analysis');await apply();await nav('chat');
+  await nav('admin-environments');await page.locator('#environment-system-filter').selectOption('payments');await select('payments-test');await field('defaultModel').selectOption('analysis');await apply();await nav('chat');
   await page.locator('#chat-system').selectOption('支付系统');assert.equal(await page.locator('#chat-model').inputValue(),'分析模型');
   await page.locator('#chat-input').fill('支付检查');await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});
   assert.equal((await chat()).modelId,'analysis');
  });
  await check('reparenting an environment never silently changes an existing conversation system',async()=>{
-  await nav('admin-environments');await select('payments-test');await field('name').fill('支付迁移测试');await field('system').selectOption('reports');await apply();await nav('chat');
+  await nav('admin-environments');await page.locator('#environment-system-filter').selectOption('payments');await select('payments-test');await field('name').fill('支付迁移测试');await field('system').selectOption('reports');await apply();await nav('chat');
   assert.equal((await chat()).systemId,'payments');assert((await page.locator('#chat-notice').innerText()).includes('权限范围'));
  });
  await check('invalid limit blocks apply and keeps the number for correction',async()=>{

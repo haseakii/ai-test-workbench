@@ -54,7 +54,7 @@ module.exports=async({page,check,out})=>{
   assert(!await page.locator('#chat-model').isDisabled());
  });
  await check('new context invalidates pending permission',async()=>{
-  await send('继续');await send('补充时间范围');assert.equal(await page.locator('[data-chat=allow]').count(),1);
+  await send('继续核对报表');await send('补充时间范围');assert.equal(await page.locator('[data-chat=allow]').count(),1);
   await send('改为另外一天');assert.equal(await page.locator('[data-chat=allow]').count(),1);
   assert((await page.locator('.inline-permission').first().innerText()).includes('替代'));
   await click('deny');assert.equal(await page.locator('.result-choice').count(),0);

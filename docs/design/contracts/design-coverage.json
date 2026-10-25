@@ -16,13 +16,26 @@
         {
           "path": "docs/design/END-TO-END-WALKTHROUGH.md",
           "section": "## 一份问题记录贯穿各层"
+        },
+        {
+          "path": "docs/design/USER-FLOW-AND-CONFIG.md",
+          "section": "## 对话中如何确定功能"
+        },
+        {
+          "path": "docs/design/INTERACTION-SPEC.md",
+          "section": "## 任务自动命名与手动重命名"
         }
       ],
       "prototypeCases": [
         "chat is the default with no technical dashboard",
         "permission and verification stay inside conversation",
         "walkthrough conversation delivers a clearly synthetic deterministic file",
-        "walkthrough older result cannot confirm a newer question or result version"
+        "walkthrough older result cannot confirm a newer question or result version",
+        "user sees configured check scope and question status without technical execution fields",
+        "user can review range progress and result without leaving the conversation",
+        "task title summarizes the first question without copying sensitive identifiers or claims",
+        "manual rename updates all live titles without changing the pending approval or execution plan",
+        "manual title stays fixed through later replies and rename after delivery preserves verification"
       ],
       "implementationStatus": "not_started"
     },
@@ -37,11 +50,30 @@
         {
           "path": "docs/design/RUNTIME-RESOURCES.md",
           "section": "## 系统接入合同"
+        },
+        {
+          "path": "docs/design/RUNTIME-RESOURCES.md",
+          "section": "## 代码项目来源：本地目录与在线 Git"
+        },
+        {
+          "path": "docs/design/SYSTEM-CONTEXT-QUOTAS.md",
+          "section": "## 系统设置中的环境"
+        },
+        {
+          "path": "docs/design/ACCESS-GOVERNANCE.md",
+          "section": "## 发布与执行衔接"
         }
       ],
       "prototypeCases": [
         "new system and environment require an explicit role grant before appearing",
-        "model mapping changes do not overwrite existing conversation snapshot"
+        "model mapping changes do not overwrite existing conversation snapshot",
+        "code projects default to GitLab and token entry is write-only offline simulation",
+        "local directories support host paths without Git refs or credentials in the execution snapshot",
+        "switching a code source invalidates pending plans while preserving the old source snapshot",
+        "environment management is nested under the selected system with parent navigation",
+        "adding an environment keeps its parent and requires an explicit user grant",
+        "revoking an environment model binding blocks old confirmation without changing its snapshot",
+        "governance forms and explicit publication remain usable on a narrow viewport"
       ],
       "implementationStatus": "not_started"
     },
@@ -89,11 +121,20 @@
         {
           "path": "docs/design/END-TO-END-WALKTHROUGH.md",
           "section": "## 一份问题记录贯穿各层"
+        },
+        {
+          "path": "docs/design/ACCESS-GOVERNANCE.md",
+          "section": "## Agent 接入与模型管理"
         }
       ],
       "prototypeCases": [
         "connection preflight never upgrades unknown capabilities to verified",
-        "walkthrough model change invalidates pending plan without rewriting prior snapshot"
+        "walkthrough model change invalidates pending plan without rewriting prior snapshot",
+        "governance entry offers connection list and next steps with diagnostics collapsed",
+        "new agent requires synthetic discovery and changed connection invalidates that observation",
+        "discovered model preset needs explicit environment and role binding before user selection",
+        "stopping a connection blocks its default rather than silently selecting another agent",
+        "agent identity changes cannot reuse an existing model preset or its quota identity"
       ],
       "implementationStatus": "not_started"
     },
@@ -132,10 +173,15 @@
         {
           "path": "docs/design/RUNTIME-RESOURCES.md",
           "section": "## 文件与网络出口"
+        },
+        {
+          "path": "docs/design/ACCESS-GOVERNANCE.md",
+          "section": "## 运行配置与业务环境的区别"
         }
       ],
       "prototypeCases": [
-        "runtime blocks writes, arbitrary terminal, network and mismatched code versions"
+        "runtime blocks writes, arbitrary terminal, network and mismatched code versions",
+        "runtime configuration rejects broad access and only publishes reviewed draft scope"
       ],
       "implementationStatus": "not_started"
     },
@@ -154,11 +200,22 @@
         {
           "path": "docs/design/END-TO-END-WALKTHROUGH.md",
           "section": "## 一份问题记录贯穿各层"
+        },
+        {
+          "path": "docs/design/SYSTEM-CONTEXT-QUOTAS.md",
+          "section": "## 结构化资源与背景说明共同进入执行"
+        },
+        {
+          "path": "docs/design/ACCESS-GOVERNANCE.md",
+          "section": "## 上下文策略与记忆条目"
         }
       ],
       "prototypeCases": [
         "context requires valid output reservation and preserves unknown model window",
-        "walkthrough context includes only eligible memory with original source authority"
+        "walkthrough context includes only eligible memory with original source authority",
+        "execution context includes authorized background and structural references without credentials",
+        "changing context background expires pending confirmation and preserves its original snapshot",
+        "context policy applies per environment while personal memory requires owner and reviewed source"
       ],
       "implementationStatus": "not_started"
     },
@@ -222,11 +279,16 @@
         {
           "path": "docs/design/END-TO-END-WALKTHROUGH.md",
           "section": "## 一份问题记录贯穿各层"
+        },
+        {
+          "path": "docs/design/ACCESS-GOVERNANCE.md",
+          "section": "## MCP 与环境绑定"
         }
       ],
       "prototypeCases": [
         "MCP schema changes and expired authentication have explicit blocking reasons",
-        "walkthrough MCP observation change expires the current plan with no replay"
+        "walkthrough MCP observation change expires the current plan with no replay",
+        "MCP endpoint or tool changes require explicit renewed range review before publication"
       ],
       "implementationStatus": "not_started"
     },
@@ -245,6 +307,14 @@
         {
           "path": "docs/design/END-TO-END-WALKTHROUGH.md",
           "section": "## 一份问题记录贯穿各层"
+        },
+        {
+          "path": "docs/design/ADMIN-DAILY-UI.md",
+          "section": "## 页面结构"
+        },
+        {
+          "path": "docs/design/ACCESS-GOVERNANCE.md",
+          "section": "## 用户权限与记录排查"
         }
       ],
       "prototypeCases": [
@@ -254,7 +324,118 @@
         "valid user grant change applies only after confirmation and advances authorization revision",
         "walkthrough administrator finds this same conversation, context and result revision",
         "walkthrough live user grant changes update model and approval rights on the same identity",
-        "walkthrough content lease expires automatically without a manual button"
+        "walkthrough content lease expires automatically without a manual button",
+        "members and records start as lists and open settings only for a selected row",
+        "member drafts survive close and navigation while saved permissions change only after confirmation",
+        "unsaved member drafts are isolated by reviewer identity and cannot grant access",
+        "member settings expose all existing environment grants and reason-only drafts can be discarded",
+        "member effective access preview reacts to draft scope without applying it",
+        "record review displays frozen execution setup while keeping conversation content leased",
+        "governance changes cannot be published by a permissions reviewer"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D12",
+      "requirement": "执行及审批管理，用户执行方式与策略上限",
+      "designEvidence": [
+        {
+          "path": "docs/design/EXECUTION-APPROVAL-RESOURCES.md",
+          "section": "## 执行方式"
+        },
+        {
+          "path": "docs/design/EXECUTION-APPROVAL-RESOURCES.md",
+          "section": "## 管理端入口"
+        },
+        {
+          "path": "docs/design/ADMIN-DAILY-UI.md",
+          "section": "## 审批列表和详情"
+        },
+        {
+          "path": "docs/design/USER-FLOW-AND-CONFIG.md",
+          "section": "## 对话中如何确定功能"
+        },
+        {
+          "path": "docs/design/SYSTEM-CONTEXT-QUOTAS.md",
+          "section": "## 用户按 Agent 和模型分配额度"
+        }
+      ],
+      "prototypeCases": [
+        "user-level automatic readonly mode executes only as a policy-backed synthetic run",
+        "execution management displays the same request and its run history",
+        "environment approval ceiling overrides user automatic execution",
+        "dedicated approval management reviews the current plan and does not resolve the issue",
+        "approval rejects without execution and operator cannot approve",
+        "collect-only user mode records requests without creating approvals or executions",
+        "automatic user mode cannot bypass a role that disallows automatic checks",
+        "operator stop cancels only the selected synthetic execution and no late result arrives",
+        "approval landing shows a table and sample pending items without opening details",
+        "approval history rows retain their own frozen plan and cannot approve an older context",
+        "example decisions update only the example list and never create a conversation execution",
+        "daily lists and fixed drawer actions fit desktop tablet and mobile viewports",
+        "approval details show frozen user conditions and retain the approved review comment",
+        "automatic authorization history keeps original user conditions after a later execution",
+        "workflow draft is isolated and publishing invalidates the old confirmation without replay",
+        "environment workflow restrictions remove quick entries and block typed requests",
+        "role workflow permissions limit checks even inside an authorized environment",
+        "unclear goals attachment analysis and writes do not fall through to a default check",
+        "global default quotas are draft-only until published and validate nonnegative integers",
+        "member quotas target one agent model and only apply after confirmed save",
+        "restoring inheritance picks up current global defaults without changing other users",
+        "quota keys survive display renames and alias presets share the same model bucket"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D13",
+      "requirement": "环境可扩展代码项目、MCP 与 Skill 目录",
+      "designEvidence": [
+        {
+          "path": "docs/design/EXECUTION-APPROVAL-RESOURCES.md",
+          "section": "## 可扩展资源目录"
+        },
+        {
+          "path": "docs/design/EXECUTION-APPROVAL-RESOURCES.md",
+          "section": "## 环境与计划冻结"
+        },
+        {
+          "path": "docs/design/USER-FLOW-AND-CONFIG.md",
+          "section": "## 对话中如何确定功能"
+        }
+      ],
+      "prototypeCases": [
+        "resource registry can add and bind custom Git projects MCP and Skills to one environment",
+        "resource addresses reject embedded credentials and Skill dependency mismatch",
+        "prepared resource revisions remain fixed and a later plan adopts new published resources",
+        "resource directory supports trusted stdio templates and repository Skill versions",
+        "non-readonly resource prevents execution even when the user requests automatic mode",
+        "cross-page configuration errors navigate to the exact resource without publishing unrelated drafts",
+        "environment resource shortcuts return to the same environment and preserve the whole draft",
+        "missing environment MCP prevents the related workflow while other checks remain configured",
+        "qualified tool identity prevents another MCP with the same tool name from substituting silently",
+        "workflow Skill must be explicitly bound to the chosen environment",
+        "a workflow requiring code cannot start without an environment code project"
+      ],
+      "implementationStatus": "not_started"
+    },
+    {
+      "id": "D14",
+      "requirement": "首次部署、成员开通和完整场景试验",
+      "designEvidence": [
+        {
+          "path": "docs/design/FIRST-USE-AND-TRIAL.md",
+          "section": "## 首次部署与管理员引导"
+        },
+        {
+          "path": "docs/design/FIRST-USE-AND-TRIAL.md",
+          "section": "## 完整场景与证据门槛"
+        }
+      ],
+      "prototypeCases": [
+        "unregistered and pending members cannot submit or discover environment options",
+        "member opening requires an authorized administrator and an explicit environment",
+        "new member follows configured approval policy through delivery and separate user verification",
+        "continuous custom setup survives member opening approval delivery and administrator review"
       ],
       "implementationStatus": "not_started"
     }

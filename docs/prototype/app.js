@@ -58,12 +58,16 @@
     return states()+'<div class="grid"><div class="stack">'+card('当前阻塞与证据','<p>'+esc(state.message)+'</p>'+kv([['能力状态',state.capability==='simulation_only'?'仅合成演示，实际 unknown':state.capability],['用量门禁',state.usageBlocked?'新增计费阻断':'真实费用未上报；仅演示计数'],['证据一致性',state.evidenceConsistent?'合成版本与时点可比':'版本或时点不一致，限制结论'],['产物完整性',labels[state.artifact]||state.artifact],['未知拥有权',state.binding.ownerOccupied?'仍保留，不可替代执行':'无未关闭执行占用']]),'warning')+card('失效路径演示',actions(btn('usage_unknown','用量未上报')+btn('evidence_mismatch','证据版本不一致')+btn('artifact_corrupt','产物完整性失败')+btn('handoff','转人工接管',!['resolved','archived_unconfirmed'].includes(state.issue))))+'</div>'+card('人工接管材料','<ul class="checklist"><li>问题、条件、固定系统环境</li><li>唯一 Binding、外部运行引用、未知接纳和副作用</li><li>审批、原生请求及送达历史</li><li>最后事件水位、证据及文件状态</li><li>预算挂账、下一步核查与负责人</li></ul><p>接管责任人：<strong>合成测试负责人</strong></p><p class="help">接管不会清除未决拥有权。包仅包含合成材料，真实导出仍须逐项授权。</p>'+actions(ui('download-handoff','下载合成接管包')) )+'</div>';
   }
   function render(focus=false) {
+    const onboarding=route==='getting-started';
+    document.querySelector('#onboarding-root').hidden=!onboarding;
     const chat = !route || route === 'chat';
     const admin = route.startsWith('admin-');
+    if(!chat)window.ChatPrototype.hide();
     if(route!=='admin-records')window.ServiceDesignPrototype.hide();
     document.querySelector('#configuration-root').hidden=!admin;
     document.querySelector('#chat-root').hidden=!chat;
-    document.querySelector('#review-root').hidden=chat||admin;
+    document.querySelector('#review-root').hidden=chat||admin||onboarding;
+    if(onboarding){window.OnboardingPrototype.render(focus);return;}
     if(admin){window.AdminPrototype.render(route.slice(6),focus);return;}
     if(chat){window.ChatPrototype.render(focus);return;}
     if(!pages[route])route='workbench';

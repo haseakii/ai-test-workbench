@@ -619,8 +619,8 @@
           ],
           "event": "approve",
           "to": "approved",
-          "actor": "合格审批人",
-          "guard": "CAS、当前映射、计划/期限/权限有效",
+          "actor": "合格审批人 / 策略决策服务",
+          "guard": "CAS、当前映射、计划/期限/权限有效；策略决定须匹配只读自动授权及证明",
           "atomic": "T_DECIDE"
         },
         {

@@ -1,0 +1,64 @@
+{
+  "status": "discarded_source_changed_during_run",
+  "scope": "Not valid acceptance; new navigation test loaded after start while built HTML was from previous source",
+  "time": "2026-10-25T10:49:15.050Z",
+  "failedCases": [
+    {
+      "name": "unregistered and pending members cannot submit or discover environment options",
+      "result": "fail",
+      "detail": "TimeoutError: locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#chat-root a[href=\"#getting-started\"]')\u001b[22m\n"
+    },
+    {
+      "name": "join request remains one request across navigation and does not grant membership",
+      "result": "fail",
+      "detail": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- 'demo-join-001'\n"
+    },
+    {
+      "name": "member opening requires an authorized administrator and an explicit environment",
+      "result": "fail",
+      "detail": "TimeoutError: locator.selectOption: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-service-field=actor]')\u001b[22m\n"
+    },
+    {
+      "name": "new member follows configured approval policy through delivery and separate user verification",
+      "result": "fail",
+      "detail": "TimeoutError: locator.fill: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#chat-input')\u001b[22m\n\u001b[2m    - locator resolved to <textarea rows=\"2\" id=\"chat-input\" placeholder=\"描述你遇到的问题，也可以附上截图或文件…\"></textarea>\u001b[22m\n\u001b[2m    - fill(\"核对订单报表与明细差异\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    10 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "name": "administrator can inspect the same newly opened member result using a scoped content lease",
+      "result": "fail",
+      "detail": "TimeoutError: locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-service=select-record][data-id=demo-chat-1]')\u001b[22m\n"
+    }
+  ],
+  "sourceHashesAtStart": {
+    "docs/prototype/onboarding.js": "8241e513af6ad44ed74d3bd33179cde96c78149dfb66c39177532c0dbda812df",
+    "docs/prototype/onboarding.css": "6b4367bb6f748327b15d87fa1bba6f9875ab662b16567b25019cb56b15e6a0f2",
+    "docs/prototype/tests/onboarding-checks.cjs": "941866164a211bf705f25b046fbf54609f515947a238594aa15459828e2d513b",
+    "docs/prototype/tests/flow-links-checks.cjs": "5a8f7f1a29fff92ff5036e0c4318eebd4919a28ff1b56bac84d5453e86538454",
+    "docs/prototype/flow-design.js": "605bf86a313a778259f599152d3bc0f55323265d663c1457de4aa24f0274c593",
+    "docs/prototype/management-theme.css": "2104bf935c239eef635b2edf0611c0e735cc19bbf997b597b6b0e43520d4993f",
+    "docs/prototype/tests/usability-checks.cjs": "c248c59ab262cfb59bf4e70785d15fba7a6c73595babcb215bf9ada60583cf28",
+    "docs/prototype/tests/management-list-checks.cjs": "e7633649f5cc59e66d0ac7dc9da411513c541741048b4018c4a84ba19b3cc404",
+    "docs/prototype/index.html": "e0ba69f1ea4e6a6980a2a4f6f1476ce0490cd4207d65bfb6b1ec45501826484f",
+    "docs/prototype/model.js": "e017dd22d08a535310fb26b317c22c48f0e5e12324c1732a7c62d13048988cab",
+    "docs/prototype/app.js": "78e5a495b5c89a606889c11816e9d46c3a76da83c8c76b6eb5a32570cef97dc7",
+    "docs/prototype/tests/execution-resource-checks.cjs": "29f80fce730e9ff87ccabbb8532286f813f0ab6c10bb5be90c3ca519a0863375",
+    "docs/prototype/resource-design.js": "e4d1575816c52d9b646cbd7fb35e145f7e9f08fd783108f9d2e2eb7a485bc28f",
+    "docs/prototype/execution-management.js": "ea927181b84d2828ee57685ae71276cf4f3dcc1708ae57fc9c095292020a8f48",
+    "docs/prototype/journey.js": "4b406bf6b325299205bc7841381801b58d9f53788e62ff4dde1a81f2c0cabbc1",
+    "docs/prototype/tests/walkthrough-checks.cjs": "4206c99f938d0b5ac0359f8d58399e7b071fd13dc24b53c85a896bc8244bd605",
+    "docs/prototype/service-design.js": "c38161dc7d4ad83204a745ced2224874c0a98459f8f9a668cdb7aa484b097fec",
+    "docs/prototype/service-design.css": "3f977018bc9b4ff33833a7c4e623ac64a1b1cb7c1493b687171f8b8a9f16e1e4",
+    "docs/prototype/tests/service-design-checks.cjs": "7af016b2708eaf0098fab177ffbc61dcba5b138eddce0750b2b1d5354551b824",
+    "docs/prototype/configuration.js": "422040b4fc8ed0bc3f84068fe07eca7370af73927af4270b1dc117f6d255c2c1",
+    "docs/prototype/admin.js": "fe2cb65f371ff5d42128fb08b9233be88e2ed893133ec0efaef1156faabbc91d",
+    "docs/prototype/admin.css": "99a58448655725fb68019fa4bd4ffab2f3d42d6dee2aff773cba033b1fb25cc6",
+    "docs/prototype/tests/admin-checks.cjs": "1f6c19dd132134168d3a5e39e474087485c309c2a9b363da4109454bd8a4215f",
+    "docs/prototype/chat.js": "a22d2d8da89925d6ae160956e7c1bd3573e8c2d86661b870d54849925d10d922",
+    "docs/prototype/chat.css": "d566836373290e19787151b3874e8193b7b2a165b056f70437a8a9cc5f7c6dc6",
+    "docs/prototype/tests/chat-checks.cjs": "1bce8a6b1403c304b417c5a20c4e05ddef2f67301b34be100f132b7e477b67f4",
+    "docs/prototype/style.css": "27c15a3287c8e8d145f081086d1ac9a1d083ccecfa07ef5fa1997b336bc0eba3",
+    "docs/prototype/shell.html": "7b961d537c82ec027721105400e85f2c45dd3a5657314fe24e4805213a408733",
+    "docs/design/contracts/state-transitions.json": "728d83fa1bf05d33f80c0707f660ad05e51778c9819bf7f39976655e6be72486",
+    "docs/prototype/tests/browser-check.cjs": "d7ef12d2af14fcf224f574803d0c768138d4048bc7582ee784828d6d61e0e22a"
+  }
+}

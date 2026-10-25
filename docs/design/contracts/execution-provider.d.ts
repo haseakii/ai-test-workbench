@@ -59,6 +59,7 @@ export interface ExecutionSpec {
   agentId: Id;
   systemId: Id;
   environmentId: Id;
+  primaryRepositoryId: Id | null;
   deployedCommit: string | null;
   codeCommit: string | null;
   objective: string;
@@ -68,6 +69,11 @@ export interface ExecutionSpec {
     admissionPolicyRevision: number;
     integrationSnapshotRef: Id;
     integrationSnapshotHash: Sha256;
+    environmentResourcesRef: Id;
+    environmentResourcesHash: Sha256;
+    executionPolicyDecisionRef: Id;
+    effectiveWorkflowRef: Id;
+    effectiveWorkflowHash: Sha256;
     runtimeManifestRef: Id;
     runtimeManifestHash: Sha256;
     contextManifestRef: Id;
@@ -81,6 +87,8 @@ export interface ExecutionSpec {
   modelRequest: { modelId: Id; presetId: Id; presetRevision: number };
   skills: Array<{ skillId: Id; revision: number; sha256: Sha256 }>;
   budget: {
+    modelQuotaSnapshotRef: Id;
+    modelQuotaSnapshotHash: Sha256; // binds subject / connection / agent / canonical model / policy / period
     reservationId: Id;
     scopeId: Id; // descendants share this scope; no parent/child double billing
     maxNewCalls: number;
@@ -253,7 +261,11 @@ export interface ApprovedOperation extends OperationPlan {
   authorizationProofRef: Id;
   validUntil: Instant;
 }
+export type DecisionAuthority =
+  | { kind: 'human'; subjectId: Id; qualificationRef: Id }
+  | { kind: 'policy'; grantId: Id; grantRevision: number; grantHash: Sha256; issuerId: Id; serviceIdentityRef: Id; evaluationProofRef: Id };
 export interface BusinessApprovalRecord {
+  authority: DecisionAuthority;
   id: Id;
   binding: BindingRef;
   planRevision: number;

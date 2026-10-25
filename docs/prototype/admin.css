@@ -35,3 +35,19 @@
 @media(max-width:760px){#configuration-root{grid-template-columns:minmax(0,1fr)}.admin-sidebar{position:static;height:auto;padding:17px}.admin-brand{padding:0 0 10px}.admin-back{padding:0 0 13px}.admin-sidebar nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}.admin-sidebar nav a{font-size:12px;padding:9px 6px;text-align:center}.admin-nav-title,.admin-secondary small{display:none}.admin-secondary{margin:0;padding:14px 0 0;display:flex;gap:20px;font-size:11px}.admin-main{padding:22px 14px}.admin-heading{align-items:start}.admin-heading h1{font-size:23px}.admin-heading p{max-width:240px;font-size:11px}.admin-badge{display:none}.admin-toolbar{align-items:start;flex-direction:column;gap:12px}.admin-form{padding:20px}.admin-check-grid{grid-template-columns:1fr}.admin-resource{grid-template-columns:70px minmax(0,1fr)}.admin-two{gap:10px}.admin-columns{gap:16px}}
 
 #configuration-root .admin-primary:hover{background:#4f6549;color:#fff}
+
+#configuration-root .admin-field textarea{width:100%;border:1px solid #dce4d4;border-radius:8px;padding:10px;font:inherit;resize:vertical}
+.resource-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.resource-tabs [aria-pressed=true]{background:#e8efdf!important}.admin-operations-nav{display:grid;gap:4px}.admin-operations-nav a{font-size:13px}
+@media(max-width:760px){.admin-sidebar .admin-config-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.admin-sidebar .admin-operations-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.ops-toolbar{display:flex;gap:22px;align-items:center;flex-wrap:wrap}.ops-toolbar .admin-field{flex:1;min-width:180px}#configuration-root button:disabled{cursor:default;opacity:.45}
+
+.admin-sidebar{overflow-y:auto}@media(max-width:760px){.admin-sidebar{overflow:visible}}
+
+/* Keep configuration actions within reach while editing long forms. */
+#configuration-root[data-mode=configuration] .admin-main{align-self:start;margin:0 auto}
+#configuration-root[data-mode=configuration] .admin-toolbar{position:sticky;top:0;z-index:20;background:#fbfcfaf5;backdrop-filter:blur(9px);border-bottom:1px solid #e9ede3;padding:14px 0;margin-bottom:12px}
+#configuration-root [data-field]{scroll-margin-top:120px}#configuration-root [aria-invalid=true]{border-color:#c88367!important;box-shadow:0 0 0 2px #c8836715}
+.config-validation{border:1px solid #ead6c7;border-radius:10px;background:#fffaf5;padding:16px 20px;margin:15px 0 22px;color:#946044;font-size:12px}.config-validation strong{font-size:13px}.config-validation ul{list-style:none;padding:0;margin:8px 0 0}.config-validation li{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:9px 0;border-top:1px solid #f0e4d8}.config-validation li span{overflow-wrap:anywhere}.config-validation button{font-size:11px!important;border:0!important;background:transparent!important;color:#966243!important;white-space:nowrap!important;flex-shrink:0}
+.resource-shortcuts{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}.resource-shortcuts button{font-size:11px!important;padding:6px 10px!important}.config-return{border:0!important;background:#f4f7ef!important;color:#69805b!important;font-size:12px!important;margin-bottom:24px}
+@media(max-width:760px){#configuration-root[data-mode=configuration] .admin-toolbar{gap:9px;align-items:stretch}#configuration-root[data-mode=configuration] .admin-toolbar>div{justify-content:flex-end}.config-validation{padding:14px}.config-validation li{align-items:start}.config-validation button{padding:4px 0!important}}

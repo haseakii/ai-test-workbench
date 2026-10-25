@@ -1,0 +1,27 @@
+{
+  "scope": "One continuous offline UI path from seeded registry; not empty deployment, identity or Provider acceptance",
+  "documentReloads": 0,
+  "configurationRevision": 7,
+  "subjectId": "demo-live-tester",
+  "recordId": "demo-chat-1",
+  "title": "订单报表金额差异",
+  "preparationId": "demo-context-1-2",
+  "connectionId": "demo-agentConnections-3",
+  "modelPresetId": "demo-models-3",
+  "runtimeId": "demo-runtimeProfiles-2",
+  "contextPolicyId": "demo-contextPolicies-2",
+  "mcpId": "demo-mcps-3",
+  "skillId": "demo-skills-2",
+  "projectId": "demo-projects-4",
+  "quotaPairKey": "demo-agentConnections-3/demo-agentConnections-3-agent/demo-model-general",
+  "bindingId": "demo-chat-binding-1-2",
+  "actualExecution": "not_run",
+  "realAdmission": "unknown",
+  "actualModelId": null,
+  "verification": {
+    "resultRevision": 1,
+    "inputRevision": 2,
+    "subjectId": "demo-live-tester"
+  },
+  "csvDifference": 2530
+}

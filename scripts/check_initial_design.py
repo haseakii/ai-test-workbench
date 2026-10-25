@@ -34,7 +34,7 @@ check('prototype build matches sources', (ROOT / 'docs/prototype/index.html').re
 
 files = [ROOT / name for name in ['README.md', 'CONTEXT.md', 'docs/README.md', 'docs/architecture/ADR-001.md', 'docs/reviews/DECISIONS-20261025.md']]
 files += list((ROOT / 'docs/design').glob('*.md'))
-files += [ROOT / 'docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md', ROOT / 'docs/reviews/END-TO-END-REVIEW-20261025.md']
+files += [ROOT / 'docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md', ROOT / 'docs/reviews/END-TO-END-REVIEW-20261025.md', ROOT / 'docs/reviews/EXECUTION-RESOURCE-REVIEW-20261025.md', ROOT / 'docs/reviews/USABILITY-REVIEW-20261025.md', ROOT / 'docs/reviews/INITIAL-DRAFT-REVIEW.md']
 for file in files:
     for raw in re.findall(r'\]\(([^)]+)\)', file.read_text(encoding='utf-8')):
         if '://' in raw or raw.startswith('#'):
@@ -53,8 +53,8 @@ check('examples use matching identity', examples['startRequest']['spec']['bindin
 check('not_found never proves nonacceptance', examples['notFound']['authoritativeNonAcceptance'] is False)
 check('unknown usage is null, not zero', examples['usageUnreported']['amount'] is None)
 preparation = examples['startRequest']['spec']['preparation']
-check('preparation refs are frozen', all(preparation.get(k) for k in ['inputRevision', 'configurationSnapshotRevision', 'admissionPolicyRevision', 'integrationSnapshotRef', 'runtimeManifestRef', 'contextManifestRef', 'authorizationRevision']))
-check('preparation hashes are shaped', all(re.fullmatch(r'[0-9a-f]{64}', preparation[k]) for k in ['integrationSnapshotHash', 'runtimeManifestHash', 'contextManifestHash']))
+check('preparation refs are frozen', all(preparation.get(k) for k in ['inputRevision', 'configurationSnapshotRevision', 'admissionPolicyRevision', 'integrationSnapshotRef', 'environmentResourcesRef', 'executionPolicyDecisionRef', 'effectiveWorkflowRef', 'runtimeManifestRef', 'contextManifestRef', 'authorizationRevision']))
+check('preparation hashes are shaped', all(re.fullmatch(r'[0-9a-f]{64}', preparation[k]) for k in ['effectiveWorkflowHash', 'integrationSnapshotHash', 'environmentResourcesHash', 'runtimeManifestHash', 'contextManifestHash']))
 check('unknown code versions stay nullable', 'codeCommit: string | null;' in decl and 'deployedCommit: string | null;' in decl)
 
 manifest = json.loads((ROOT / 'SOURCE_MANIFEST.json').read_text(encoding='utf-8'))

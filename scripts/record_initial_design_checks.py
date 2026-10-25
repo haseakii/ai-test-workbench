@@ -28,7 +28,7 @@ for command, output in commands:
 
 sources = [ROOT / rel for rel in ['README.md', 'CONTEXT.md', 'docs/README.md', 'docs/architecture/ADR-001.md',
            'docs/reviews/DECISIONS-20261025.md', 'docs/roadmap/design-to-build.md',
-           'docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md', 'docs/reviews/END-TO-END-REVIEW-20261025.md', '.github/workflows/design-check.yml',
+           'docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md', 'docs/reviews/END-TO-END-REVIEW-20261025.md', 'docs/reviews/EXECUTION-RESOURCE-REVIEW-20261025.md', 'docs/reviews/USABILITY-REVIEW-20261025.md', 'docs/reviews/INITIAL-DRAFT-REVIEW.md', '.github/workflows/design-check.yml',
            'scripts/check_initial_design.py', 'scripts/build_initial_prototype.py',
            'scripts/audit_design_scope.py', 'scripts/record_initial_design_checks.py']]
 sources += [p for folder in ['docs/design', 'docs/prototype'] for p in (ROOT / folder).rglob('*')

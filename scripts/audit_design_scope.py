@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--browser', action='store_true')
 args = parser.parse_args()
 catalog = json.loads((ROOT / 'docs/design/contracts/design-coverage.json').read_text(encoding='utf-8'))
-assert [r['id'] for r in catalog['requirements']] == [f'D{i:02d}' for i in range(1, 12)]
+assert [r['id'] for r in catalog['requirements']] == [f'D{i:02d}' for i in range(1, 15)]
 browser = None
 if args.browser:
     browser = json.loads((ROOT / 'docs/reviews/initial-design-checks/browser-report.json').read_text(encoding='utf-8'))

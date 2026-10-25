@@ -91,7 +91,7 @@
 
 | ID | 从 | 触发 | 到 | 责任主体 | 守卫条件 | 原子组 |
 | --- | --- | --- | --- | --- | --- | --- |
-| A01 | pending | approve | approved | 合格审批人 | CAS、当前映射、计划/期限/权限有效 | T_DECIDE |
+| A01 | pending | approve | approved | 合格审批人 / 策略决策服务 | CAS、当前映射、计划/期限/权限有效；策略决定须匹配只读自动授权及证明 | T_DECIDE |
 | A02 | pending | deny | denied | 合格审批人 | 意见必填、CAS | T_DECIDE |
 | A03 | pending | request_changes | changes_requested | 合格审批人 | 意见必填，新计划另建审批 | T_DECIDE |
 | A04 | pending / approved | business_expired | expired | 服务端时钟 | validUntil 已过，未开始动作不可再消费 | T_EXPIRE |
