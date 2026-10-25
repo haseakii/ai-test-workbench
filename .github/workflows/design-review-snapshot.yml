@@ -1,0 +1,24 @@
+name: Export fixed design baseline
+on:
+  push:
+    branches: [design/usability-refinement-20261025]
+    paths: [.github/workflows/design-review-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: b2a700f0f00d343d5db55c7ba66ba34e52b1e6db
+          persist-credentials: false
+      - name: Archive tracked design baseline only
+        run: git archive --format=zip --output="$RUNNER_TEMP/design-baseline.zip" HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: design-baseline-b2a700f
+          path: ${{ runner.temp }}/design-baseline.zip
+          retention-days: 3
+          if-no-files-found: error
