@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 module.exports=async({page,check,nav,out})=>{
  const gf=n=>page.locator(`[data-gov-field=${n}]`),af=n=>page.locator(`[data-field=${n}]`),sf=n=>page.locator(`[data-service-field=${n}]`);
  const g=n=>page.locator(`[data-gov=${n}]`).click(),a=n=>page.locator(`[data-admin=${n}]`).click(),s=n=>page.locator(`[data-service=${n}]`).click(),o=n=>page.locator(`[data-ops=${n}]`).click();
- const apply=async()=>{await a('publish');await a('confirm');},publish=async()=>{await g('publish');await g('confirm');};
+ const apply=async()=>{await a('publish-set');await page.locator('#admin-dialog [data-config-entry]').evaluateAll(xs=>xs.forEach(x=>x.checked=true));await a('confirm');},publish=async()=>{await g('publish');await g('confirm');};
  const send=async text=>{await page.locator('#chat-input').fill(text);await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});};
  const inspect=()=>page.evaluate(()=>ChatPrototype.inspect());
  await nav('admin-runtime');await page.reload();await page.waitForSelector('#configuration-root h1');

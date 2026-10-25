@@ -1,21 +1,21 @@
-// Local file:// and DOM checks only. No application service or real execution backend.
+// Loopback static HTML and DOM checks only. No business service or real execution backend.
 const fs = require('node:fs');
 const path = require('node:path');
-const {pathToFileURL} = require('node:url');
 const assert = require('node:assert/strict');
 const {createHash} = require('node:crypto');
 const {chromium} = require('playwright');
 const root=path.resolve(__dirname,'../../..');
 const file=path.join(root,'docs/prototype/index.html');
-const out=path.join(root,'docs/reviews/initial-design-checks');
-const report={time:new Date().toISOString(),scope:'offline synthetic prototype, not real Provider acceptance',method:'Playwright on local file:// plus DOM actions',cases:[],pageErrors:[],networkAttempts:[],layouts:[]};
-report.sourceHashes=Object.fromEntries(['docs/prototype/tests/complete-journey-checks.cjs','docs/prototype/governance.js','docs/prototype/tests/governance-checks.cjs','docs/prototype/context-quota.js','docs/prototype/tests/context-quota-checks.cjs','docs/prototype/code-source.js','docs/prototype/tests/code-source-checks.cjs','docs/prototype/task-title.js','docs/prototype/tests/title-checks.cjs','docs/prototype/onboarding.js','docs/prototype/onboarding.css','docs/prototype/tests/onboarding-checks.cjs','docs/prototype/tests/flow-links-checks.cjs','docs/prototype/flow-design.js','docs/prototype/management-theme.css','docs/prototype/tests/usability-checks.cjs','docs/prototype/tests/management-list-checks.cjs','docs/prototype/index.html','docs/prototype/model.js','docs/prototype/app.js','docs/prototype/tests/execution-resource-checks.cjs','docs/prototype/resource-design.js','docs/prototype/execution-management.js','docs/prototype/journey.js','docs/prototype/tests/walkthrough-checks.cjs','docs/prototype/service-design.js','docs/prototype/service-design.css','docs/prototype/tests/service-design-checks.cjs','docs/prototype/configuration.js','docs/prototype/admin.js','docs/prototype/admin.css','docs/prototype/tests/admin-checks.cjs','docs/prototype/chat.js','docs/prototype/chat.css','docs/prototype/tests/chat-checks.cjs','docs/prototype/style.css','docs/prototype/shell.html','docs/design/contracts/state-transitions.json','docs/prototype/tests/browser-check.cjs'].map(rel=>[rel,createHash('sha256').update(fs.readFileSync(path.join(root,rel))).digest('hex')]));
+const out=process.env.REVIEW_OUTPUT?path.resolve(process.env.REVIEW_OUTPUT):path.join(root,'docs/reviews/initial-design-checks');
+const report={time:new Date().toISOString(),scope:'offline synthetic prototype, not real Provider acceptance',method:'Playwright on a loopback static page; external requests blocked; DOM actions only',cases:[],pageErrors:[],networkAttempts:[],layouts:[]};
+report.sourceHashes=Object.fromEntries(['docs/prototype/tests/refinement-checks.cjs','docs/prototype/tests/complete-journey-checks.cjs','docs/prototype/governance.js','docs/prototype/tests/governance-checks.cjs','docs/prototype/context-quota.js','docs/prototype/tests/context-quota-checks.cjs','docs/prototype/code-source.js','docs/prototype/tests/code-source-checks.cjs','docs/prototype/task-title.js','docs/prototype/tests/title-checks.cjs','docs/prototype/onboarding.js','docs/prototype/onboarding.css','docs/prototype/tests/onboarding-checks.cjs','docs/prototype/tests/flow-links-checks.cjs','docs/prototype/flow-design.js','docs/prototype/management-theme.css','docs/prototype/tests/usability-checks.cjs','docs/prototype/tests/management-list-checks.cjs','docs/prototype/index.html','docs/prototype/model.js','docs/prototype/app.js','docs/prototype/tests/execution-resource-checks.cjs','docs/prototype/resource-design.js','docs/prototype/execution-management.js','docs/prototype/journey.js','docs/prototype/tests/walkthrough-checks.cjs','docs/prototype/service-design.js','docs/prototype/service-design.css','docs/prototype/tests/service-design-checks.cjs','docs/prototype/configuration.js','docs/prototype/admin.js','docs/prototype/admin.css','docs/prototype/tests/admin-checks.cjs','docs/prototype/chat.js','docs/prototype/chat.css','docs/prototype/tests/chat-checks.cjs','docs/prototype/style.css','docs/prototype/shell.html','docs/design/contracts/state-transitions.json','docs/prototype/tests/browser-check.cjs'].map(rel=>[rel,createHash('sha256').update(fs.readFileSync(path.join(root,rel))).digest('hex')]));
 (async()=>{
  fs.mkdirSync(path.join(out,'screenshots'),{recursive:true});
+ const server=require('node:http').createServer((req,res)=>{if(req.url!=='/'){res.writeHead(404);res.end();return;}res.setHeader('Content-Type','text/html; charset=utf-8');res.end(fs.readFileSync(file));});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const prototypeUrl='http://127.0.0.1:'+server.address().port+'/';
  const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{})});
  report.browser=browser.version();
  const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});
- await context.route(/^https?:/,async r=>{report.networkAttempts.push(r.request().url());await r.abort();});
+ await context.route(/^https?:/,async r=>{if(r.request().url()===prototypeUrl)return r.continue();report.networkAttempts.push(r.request().url());await r.abort();});
  const page=await context.newPage();page.setDefaultTimeout(5000);
  page.on('pageerror',e=>report.pageErrors.push(String(e)));
  const nav=async route=>{await page.evaluate(r=>location.hash=r,route);await page.waitForTimeout(50);};
@@ -26,16 +26,18 @@ report.sourceHashes=Object.fromEntries(['docs/prototype/tests/complete-journey-c
  const approve=async()=>{await page.locator('#approval-check').check();await action('approve');};
  async function check(name,fn){try{await fn();report.cases.push({name,result:'pass'});}catch(e){report.cases.push({name,result:'fail',detail:String(e)});console.log('FAIL '+name+' '+String(e).slice(0,300));}}
  try{
- await page.goto(pathToFileURL(file).href);await page.waitForSelector('#chat-root h1');
+ await page.goto(prototypeUrl);await page.waitForSelector('#chat-root h1');
+ await require('./refinement-checks.cjs')({page,check,nav,out});
+ await page.goto(prototypeUrl);
  await require('./chat-checks.cjs')({page,check,out});
  await require('./admin-checks.cjs')({page,check,nav,out});
  await require('./service-design-checks.cjs')({page,check,nav,out});
  await require('./walkthrough-checks.cjs')({page,check,nav,out});
  await require('./execution-resource-checks.cjs')({page,check,nav,out});
- const dailyContext=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});await dailyContext.route(/^https?:/,async r=>{report.networkAttempts.push(r.request().url());await r.abort();});const dailyPage=await dailyContext.newPage();dailyPage.setDefaultTimeout(5000);dailyPage.on('pageerror',e=>report.pageErrors.push(String(e)));await dailyPage.goto(pathToFileURL(file).href);
+ const dailyContext=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});await dailyContext.route(/^https?:/,async r=>{if(r.request().url()===prototypeUrl)return r.continue();report.networkAttempts.push(r.request().url());await r.abort();});const dailyPage=await dailyContext.newPage();dailyPage.setDefaultTimeout(5000);dailyPage.on('pageerror',e=>report.pageErrors.push(String(e)));await dailyPage.goto(prototypeUrl);
  try{const dailyNav=async route=>{await dailyPage.evaluate(r=>location.hash=r,route);await dailyPage.waitForTimeout(50);};await require('./management-list-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./usability-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./flow-links-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./onboarding-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./title-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./code-source-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./context-quota-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./governance-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});await require('./complete-journey-checks.cjs')({page:dailyPage,check,nav:dailyNav,out});}finally{await dailyContext.close();}
  await nav('workbench');
- await check('actual file navigation loads self-contained prototype',async()=>{assert.equal(await page.locator('#review-root h1').textContent(),'闭环演练');assert((await page.locator('body').innerText()).includes('离线演示'));});
+ await check('loopback navigation loads self-contained prototype',async()=>{assert.equal(await page.locator('#review-root h1').textContent(),'闭环演练');assert((await page.locator('body').innerText()).includes('离线演示'));});
  await check('empty conditions block with visible feedback',async()=>{await action('conditions');assert.equal((await state()).run,'draft');assert((await page.locator('#feedback').textContent()).includes('操作被阻止'));});
  await check('normal execution awaits explicit user verification',async()=>{await conditions();await action('start');await action('complete');assert.equal((await state()).issue,'awaiting_verification');await nav('result');await action('verify');assert.equal((await state()).issue,'resolved');});
  await check('synthetic CSV download includes clear provenance and deterministic difference',async()=>{const promise=page.waitForEvent('download');await page.locator('[data-ui=download-sample]').click();const d=await promise;const target=path.join(out,'synthetic-difference.csv');await d.saveAs(target);const text=fs.readFileSync(target,'utf8');assert(text.includes('2530'));assert(text.includes('非业务结果'));assert(d.suggestedFilename().includes('合成'));});
@@ -64,7 +66,7 @@ report.sourceHashes=Object.fromEntries(['docs/prototype/tests/complete-journey-c
   await page.setViewportSize({width,height});
   for(const route of routes){await nav(route);const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);report.layouts.push({route,width,height,bodyHorizontalOverflow:overflow});if(width===1440&&['chat','workbench','connections','approval','binding'].includes(route))await page.screenshot({path:path.join(out,'screenshots',route+'.png'),fullPage:true});if(width===390&&route==='admin-systems')await page.screenshot({path:path.join(out,'screenshots','admin-mobile.png'),fullPage:true});}
  }
- }finally{report.passed=report.cases.filter(x=>x.result==='pass').length;report.total=report.cases.length;report.overflows=report.layouts.filter(x=>x.bodyHorizontalOverflow);fs.writeFileSync(path.join(out,'browser-report.json'),JSON.stringify(report,null,2));await browser.close();}
+ }finally{report.passed=report.cases.filter(x=>x.result==='pass').length;report.total=report.cases.length;report.overflows=report.layouts.filter(x=>x.bodyHorizontalOverflow);fs.writeFileSync(path.join(out,'browser-report.json'),JSON.stringify(report,null,2));await browser.close();await new Promise(resolve=>server.close(resolve));}
  console.log(JSON.stringify({passed:report.passed,total:report.total,layouts:report.layouts.length,overflows:report.overflows.length,pageErrors:report.pageErrors,networkAttempts:report.networkAttempts,browser:report.browser},null,2));
  if(report.passed!==report.total||report.pageErrors.length||report.networkAttempts.length||report.overflows.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),path=require('node:path');
 module.exports=async({page,check,nav,out})=>{
  const field=n=>page.locator(`[data-field=${n}]`),admin=n=>page.locator(`[data-admin=${n}]`).click(),service=n=>page.locator(`[data-service=${n}]`).click();
  const fresh=async route=>{await nav(route);await page.reload();await page.waitForSelector('#configuration-root h1');};
- const apply=async()=>{await admin('publish');await admin('confirm');};
+ const apply=async()=>{await admin('publish-set');await page.locator('#admin-dialog [data-config-entry]').evaluateAll(xs=>xs.forEach(x=>x.checked=true));await admin('confirm');};
  const openEnvironment=async id=>{await page.locator(`[data-open-environment=${id}]`).click();await page.locator(`[data-record=${id}][aria-pressed=true]`).waitFor();await field('system').waitFor();};
  const parentSystem=async id=>{await page.locator('[data-parent-system]').click();await page.locator(`[data-add-environment=${id}]`).waitFor();};
  const send=async text=>{await page.locator('#chat-input').fill(text);await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});};
@@ -22,7 +22,7 @@ module.exports=async({page,check,nav,out})=>{
  });
  await fresh('admin-permissions');
  await check('global default quotas are draft-only until published and validate nonnegative integers',async()=>{
-  await page.locator('.admin-details').first().evaluate(d=>d.open=true);await page.locator('[data-quota-default=dailyCalls]').fill('200');assert.equal((await page.evaluate(()=>ConfigurationPrototype.current())).quotaDefaults[0].dailyCalls,100);await page.locator('[data-quota-default=dailyTokens]').fill('-1');await admin('publish');assert.equal(await page.locator('#admin-dialog[open]').count(),0);await page.locator('[data-quota-default=dailyTokens]').fill('200000');await apply();const q=await page.evaluate(()=>ContextQuota.resolve(ConfigurationPrototype.current(),ReviewJourney.subject('tester'),'analysis'));assert.equal(q.limits.dailyCalls,200);assert.equal(q.source,'全局默认');assert.equal(q.actualUsage,'unknown');await page.locator('.admin-details').first().evaluate(d=>d.open=true);await page.screenshot({path:path.join(out,'screenshots/global-model-quotas.png'),fullPage:true});
+  await page.locator('.admin-details').first().evaluate(d=>d.open=true);await page.locator('[data-quota-default=dailyCalls]').fill('200');assert.equal((await page.evaluate(()=>ConfigurationPrototype.current())).quotaDefaults[0].dailyCalls,100);await page.locator('[data-quota-default=dailyTokens]').fill('-1');await admin('publish-quota');assert.equal(await page.locator('#admin-dialog[open]').count(),0);await page.locator('[data-quota-default=dailyTokens]').fill('200000');await apply();const q=await page.evaluate(()=>ContextQuota.resolve(ConfigurationPrototype.current(),ReviewJourney.subject('tester'),'analysis'));assert.equal(q.limits.dailyCalls,200);assert.equal(q.source,'全局默认');assert.equal(q.actualUsage,'unknown');await page.locator('.admin-details').first().evaluate(d=>d.open=true);await page.screenshot({path:path.join(out,'screenshots/global-model-quotas.png'),fullPage:true});
  });
  const member=async()=>{await nav('admin-users');await page.locator('[data-service-field=actor]').selectOption('access');await page.locator('[data-service=select-user][data-id=demo-live-tester]').click();await page.locator('.member-quotas').evaluate(d=>d.open=true);};
  await check('member quotas target one agent model and only apply after confirmed save',async()=>{

@@ -9,7 +9,7 @@ module.exports=async({page,check,nav,out})=>{
  const ops=name=>page.locator('[data-ops="'+name+'"]').click();
  const chat=()=>page.evaluate(()=>ChatPrototype.inspect());
  const send=async text=>{await page.locator('#chat-input').fill(text);await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});};
- const apply=async()=>{await admin('publish');await page.locator('#admin-dialog[open]').waitFor();await admin('confirm');};
+ const apply=async()=>{await admin('publish-set');await page.locator('#admin-dialog[open]').waitFor();await page.locator('#admin-dialog [data-config-entry]').evaluateAll(xs=>xs.forEach(x=>x.checked=true));await admin('confirm');};
  const fresh=async()=>{await nav('chat');await page.reload();await page.waitForSelector('#chat-root h1');};
  const mode=async(value,id='demo-live-tester')=>{await nav('admin-users');await sf('actor').selectOption('access');await page.locator('[data-service=select-user][data-id="'+id+'"]').click();await sf('userExecutionMode').selectOption(value);await sf('reason').fill('资源执行设计走查：调整演示用户方式');await service('save-user');assert((await page.locator('#service-dialog').innerText()).includes('执行方式'));await service('confirm-save');};
  await fresh();

@@ -78,3 +78,7 @@ multi-agent    ACP Agent
 环境现位于「系统设置 → 所属环境」。系统 / 项目 / 环境说明作为有来源的执行背景，结构化资源配置限定真实访问；「权限配置」设置全局默认额度，「用户与权限」可为成员的 Agent / 模型单独设置额度，见[衔接设计](docs/design/SYSTEM-CONTEXT-QUOTAS.md)。
 
 接入管理按「运行配置 → Agent 连接 → 模型预设 → 系统环境绑定 → 成员授权 → 本轮执行记录」整理，见[接入与治理操作设计](docs/design/ACCESS-GOVERNANCE.md)；原型入口为 [Agent 与模型接入](docs/prototype/index.html#admin-integrations)。
+
+## 独立评审后的五项收敛
+
+[本轮设计与原型优化记录](docs/reviews/USABILITY-REFINEMENT-20261025.md)：会话不因导航停止、按对象发布、额度能力分级、理解与取证权限分离、按风险开通。原始历史报告保持历史含义，本轮结果单独记录；尚无真实业务后端。

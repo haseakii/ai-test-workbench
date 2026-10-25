@@ -6,7 +6,7 @@ module.exports=async({page,check,nav,out})=>{
  const action=name=>page.locator('[data-admin="'+name+'"]').click();
  const config=()=>page.evaluate(()=>ConfigurationPrototype.current());
  const chat=()=>page.evaluate(()=>ChatPrototype.inspect());
- const apply=async()=>{await action('publish');await page.waitForSelector('#admin-dialog[open]');await action('confirm');};
+ const apply=async()=>{await action('publish-set');await page.waitForSelector('#admin-dialog[open]');await page.locator('#admin-dialog [data-config-entry]').evaluateAll(xs=>xs.forEach(x=>x.checked=true));await action('confirm');};
  const select=async id=>page.locator('[data-record="'+id+'"]').click();
  await check('management entry shows expandable configuration sections, with secondary diagnostics',async()=>{
   await page.locator('.chat-sidebar-bottom a').click();await page.waitForSelector('#configuration-root h1');
@@ -68,10 +68,10 @@ module.exports=async({page,check,nav,out})=>{
   assert.equal((await chat()).snapshot.models[0].provider,'control');assert(await page.locator('.assistant').count()>0);
   await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.inline-permission');
  });
- await check('published configuration invalidates a pending permission card',async()=>{
+ await check('unrelated published configuration preserves a pending permission card',async()=>{
   await nav('admin-systems');await select('orders');await field('description').fill('新的合成说明');await apply();await nav('chat');
-  assert.equal(await page.locator('[data-chat=allow]').count(),0);
-  assert((await page.locator('.inline-permission').innerText()).includes('配置已更新'));
+  assert.equal(await page.locator('[data-chat=allow]').count(),1);
+  assert(!(await page.locator('.inline-permission').innerText()).includes('配置已更新')); // orders is unrelated to the payment conversation
  });
  await check('empty grants produce an explicit empty user state and no send',async()=>{
   await nav('admin-permissions');await select('observer');
