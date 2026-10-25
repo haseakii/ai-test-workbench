@@ -1,5 +1,7 @@
 # 初始设计与原型
 
+技术设计新增：[Java 开发方案](../development/README.md)和[整体复审](../reviews/OVERALL-SOLUTION-REVIEW-20261026.md)，供用户评审，不代表开始实施。
+
 统一评审入口：[初稿评审单](../reviews/INITIAL-DRAFT-REVIEW.md)。先确认产品与首批范围，再按其中列出的剩余证据安排真实验证。
 
 新增评审入口：[首次开通与完整使用试验](FIRST-USE-AND-TRIAL.md)，串起部署、成员开通、配置、对话、审批与交付，并集中列出待统一审批事项。
@@ -40,7 +42,7 @@
 - [ACP v1 权限请求](https://agentclientprotocol.com/protocol/v1/tool-calls#requesting-permission)：权限请求可选；该定义没有统一固定超时。取消、断连及实现自身超时必须分别处理。
 - [ACP 迁移说明](https://agentclientprotocol.com/protocol/v2/migration)：页面仍将 v2 整体标为 Draft，需按连接协商版本。本文不要求升级协议。
 
-以上为源码和规范观察，不是已运行证明。具体资源隔离、账号、模型、能力、硬预算及审批桥接均待真实接入后验收。Node/TypeScript/React 仍是候选路线，数据库、服务端实现与部署拓扑未冻结。
+以上为源码和规范观察，不是已运行证明。具体资源隔离、账号、模型、能力、硬预算及审批桥接均待真实接入后验收。此前 Node/TypeScript 后端仅为候选；现按用户偏好提出 Java 21 / Spring Boot / PostgreSQL 与 React 前端方案，见开发设计。具体依赖、部署和真实适配仍未冻结。
 
 日常管理界面：[审批、执行、成员与记录的列表和详情设计](ADMIN-DAILY-UI.md)。
 

@@ -1,0 +1,21 @@
+{
+  "scope": "Offline merge-review reproduction on a1ad45d",
+  "cases": [
+    {
+      "name": "merge review: expired queued approval cannot start when a slot becomes free",
+      "result": "fail",
+      "detail": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n"
+    },
+    {
+      "name": "merge review: relevant change invalidates queued work but preserves already active execution",
+      "result": "fail",
+      "detail": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n"
+    },
+    {
+      "name": "merge review: queued work rechecks revised user quota before dispatch",
+      "result": "fail",
+      "detail": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n"
+    }
+  ],
+  "network": []
+}

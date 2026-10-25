@@ -251,6 +251,7 @@ export interface ModelQuotaKey {
   canonicalModelId: Id;
 }
 export interface ModelQuotaLimits {
+  dailyTurns: number; // Platform-dispatched model-purpose requests; not internal model calls.
   dailyCalls: number;
   dailyTokens: number;
   maxCallsPerTurn: number;
@@ -267,7 +268,18 @@ export interface ModelQuotaSnapshot {
   period: { timezone: string; start: Instant; end: Instant };
   reservationId: Id | null;
   usageState: 'known' | 'partially_reported' | 'unknown';
-  enforcement: 'verified' | 'unsupported' | 'unknown';
+  enforcement: 'verified' | 'unsupported' | 'unknown'; // Derived for the required metrics, never from ACP alone.
+  requireHardModelLimits: boolean;
+  userTotalAccountRef: Id;
+  usageCapability: 'unreported' | 'reported' | 'enforced';
+  metricEvidence: Array<{
+    metric: 'model_calls' | 'tokens' | 'cost';
+    reporting: 'verified' | 'unsupported' | 'unknown';
+    enforcement: 'verified' | 'unsupported' | 'unknown';
+    evidenceRef: Id | null;
+  }>;
+  unknownUsagePolicy: 'block_new_billable_actions' | 'allow_with_platform_limits';
+  riskAcceptanceRef: Id | null;
   // Current spend/reservations are not reset by changing a limit or display name.
 }
 export interface ConversationCommand {

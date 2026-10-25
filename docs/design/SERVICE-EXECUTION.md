@@ -17,7 +17,7 @@
 | 资源网关 | 代码、数据、日志、MCP、文件真实访问控制 | 不靠提示词落实只读 |
 | 审计与用量 | 操作事实、计量来源、配置与访问审计 | 不把估算当实际费用 |
 
-平台关系库保存业务记录、事件与事务 outbox；对象存储保存隔离的附件和产物；检索索引仅为可重建投影。数据库产品与身份提供方留待技术评审。总控数据独立，平台只保存其外部引用。候选表：subjects、memberships、grants、configuration_revisions、conversations、messages、workflow_runs、node_runs、bindings、commands、events、approvals、attachments、artifacts、context_manifests、memory_items、usage_ledger、outbox、audit_entries。每个业务表包含 tenantId；查询索引以租户及权限范围开头。
+平台关系库保存业务记录、事件与事务 outbox；对象存储保存隔离的附件和产物；检索索引仅为可重建投影。本轮建议 PostgreSQL，具体版本和身份提供方仍待技术评审。总控数据独立，平台只保存其外部引用。候选表：subjects、memberships、grants、configuration_revisions、conversations、messages、workflow_runs、node_runs、bindings、commands、events、approvals、attachments、artifacts、context_manifests、memory_items、usage_ledger、outbox、audit_entries。每个业务表包含 tenantId；查询索引以租户及权限范围开头。
 
 ## 一条消息如何执行
 
@@ -114,4 +114,8 @@ SSE 断开不取消后台执行；重连从持久游标恢复。游标过期返�
 
 理解中的模型调用和自动标题也记用途账本；仅收集不调用模型，不显示“正在分析”或生成根因结论。资源审批只批准固定取证 / 操作计划，不追溯授权此前数据外发。服务事件至少区分 `message.saved`、`understanding.queued`、`understanding.completed`、`investigation.awaiting_approval`，并投影为用户能理解的状态。新的消息或范围使旧计划失效，不能让迟到理解回调替换新计划。
 
-切换、新建或关闭浏览器视图不产生取消命令。并发槽只在执行拥有者已接纳且未确定结束时占用；未知接收不得释放槽另投。等待用户 / 审批不产生模型请求，但保留的外部进程单独计量。原型仅用本地计时队列验证导航和排队交互，不证明服务重启、外部取消或计费停止。
+切换、新建或关闭浏览器视图不产生取消命令。并发槽在平台将待执行项转为分派中、创建 start outbox 的事务内预占，先于外部发送；接纳后延续同一占用。平台纯排队不占活跃执行槽，未知接收不得释放槽另投。等待用户 / 审批不产生模型请求，但保留的外部进程单独计量。原型仅用本地计时队列验证导航和排队交互，不证明服务重启、外部取消或计费停止。
+
+## Java 实施规划补充
+
+[开发文档](../development/README.md)提出 JDK 21、Java 模块化单体与独立受控宿主的评审方案，补事务、数据库约束、API 与工程分层。正式 start 明确用途，额度声明补平台轮次、跨连接总账及显式未知用量策略；它们仍是待评审合同。不能将当前离线原型直接作为服务端授权实现。

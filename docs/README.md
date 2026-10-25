@@ -1,5 +1,7 @@
 # 设计、原型与走查索引
 
+本轮技术评审：[Java 开发设计](development/README.md) · [整体方案复核与复审](reviews/OVERALL-SOLUTION-REVIEW-20261026.md)。仍只做设计和离线原型，等待用户评审。
+
 当前重点：[接入与治理操作路径](design/ACCESS-GOVERNANCE.md) · [Agent / 模型接入原型](prototype/index.html#admin-integrations)。
 
 新增：[本地目录与在线 Git](design/RUNTIME-RESOURCES.md#代码项目来源本地目录与在线-git) · [GitLab Access Token](design/EXECUTION-APPROVAL-RESOURCES.md#gitlab-access-token-配置)。
@@ -65,8 +67,9 @@
 | 执行资源补充走查 | [用户策略与可扩展环境](reviews/EXECUTION-RESOURCE-REVIEW-20261025.md) |
 | 完整变更 | [初始设计变更说明](reviews/INITIAL-DESIGN-CHANGELOG-20261025.md) |
 | 新配置到交付的连续走查 | [跨页配置、计划与结果引用](reviews/initial-design-checks/complete-journey.json)；离线样例目录起步，不是部署或真实执行证据 |
-| 验证总览 | [检查说明](reviews/initial-design-checks/README.md)：173 项浏览器交互、33 项状态模拟、88 个视口组合 |
-| 当前证据 | [浏览器报告](reviews/initial-design-checks/browser-report.json) · [静态报告](reviews/initial-design-checks/static-report.json) · [范围核查](reviews/initial-design-checks/scope-audit.json) |
+| 历史验证总览 | [检查说明](reviews/initial-design-checks/README.md)：173 项浏览器交互、33 项状态模拟、88 个视口组合 |
+| 2026-10-26 复核证据 | [195 项浏览器回归](reviews/merge-review-20261026/browser-report.json) · [复核记录与验证边界](reviews/OVERALL-SOLUTION-REVIEW-20261026.md) |
+| 历史 173 项证据 | [浏览器报告](reviews/initial-design-checks/browser-report.json) · [静态报告](reviews/initial-design-checks/static-report.json) · [范围核查](reviews/initial-design-checks/scope-audit.json) |
 | 交付摘要 | [文件与 SHA-256 清单](reviews/initial-design-checks/delivery-manifest.json) |
 | 复核脚本 | [静态一致性](../scripts/check_initial_design.py) · [需求映射](../scripts/audit_design_scope.py) · [记录交付证据](../scripts/record_initial_design_checks.py) |
 

@@ -57,8 +57,32 @@
     const scroll=root.querySelector('.chat-scroll');scroll.scrollTop=scroll.scrollHeight;
   }
   function refreshHistory(s){const node=root.querySelector('[data-chat="session"][data-id="'+s.id+'"] .chat-history-state');if(node)node.textContent=userStatus(s);}
-  function runnable(s,p){return !denied(s)&&(!p||(s.phase==='executing'?(!C.executionAccess(s,p)&&J.sourceCurrent(p)&&p.integrationRevision===J.integration().revision):J.planCurrent(s,p)));}
-  function drainReplies(){for(const [id,job] of replyQueue){const {s,fn,preparation}=job;const active=[...replyTimers.keys()].filter(id=>sessions.find(x=>x.id===id)?.subjectId===s.subjectId).length;const limit=C.understandingPolicy(s).quota.limits?.concurrency||1;if(active>=limit)continue;replyQueue.delete(id);s.queued=false;if(s.binding?.state==='queued_simulation')s.binding.state='active_simulation';J.sync(s);if(currentId===id)render();else refreshHistory(s);const handle=setTimeout(()=>{replyTimers.delete(id);s.busy=false;s.queued=false;if(runnable(s,preparation))fn();else{if(s.binding)s.binding.state='stopped_simulation';s.phase='details';J.event(s,'权限或上下文变化，本地模拟停止；真实在途执行需核查');s.messages.push({role:'assistant',text:'范围、权限或上下文已变化，已停止本次模拟回复。'});}J.sync(s);if(currentId===id)render(false);else refreshHistory(s);drainReplies();},650);replyTimers.set(id,handle);}}
+  function runnable(s,p){
+    if(denied(s))return false;
+    if(!p)return C.understandingPolicy(s).allowed;
+    if(s.phase!=='executing')return J.planCurrent(s,p)&&C.understandingPolicy(s).allowed;
+    if(s.binding?.state==='queued_simulation')return J.planCurrent(s,p)&&!C.executionAccess(s,p)&&!['blocked','collect_only'].includes(C.executionPolicy(s).mode);
+    return !C.executionAccess(s,p)&&J.sourceCurrent(p)&&p.integrationRevision===J.integration().revision;
+  }
+  function rejectQueued(s){
+    s.busy=false;s.queued=false;s.phase='details';if(s.binding?.contextRef===s.preparation?.id&&s.binding.state==='queued_simulation')s.binding.state='stopped_simulation';
+    J.event(s,'排队计划已失效，未开始检查；需要重新准备并确认');
+    s.messages.push({role:'system',text:'排队期间计划已过期或授权、额度、检查范围发生变化。本次检查尚未开始，请补充信息后重新确认。'});
+    J.sync(s);if(currentId===s.id)render();else refreshHistory(s);
+  }
+  function drainReplies(){
+    for(const [id,job] of replyQueue){
+      const {s,fn,preparation}=job;
+      if(!runnable(s,preparation)){replyQueue.delete(id);rejectQueued(s);continue;}
+      const active=[...replyTimers.keys()].filter(id=>sessions.find(x=>x.id===id)?.subjectId===s.subjectId).length;
+      const limit=C.understandingPolicy(s).quota.limits?.concurrency||1;if(active>=limit)continue;
+      replyQueue.delete(id);s.queued=false;
+      if(s.binding?.state==='queued_simulation'){s.binding.state='active_simulation';s.binding.dispatchedAt=new Date().toISOString();}
+      J.sync(s);if(currentId===id)render();else refreshHistory(s);
+      const handle=setTimeout(()=>{replyTimers.delete(id);s.busy=false;s.queued=false;if(runnable(s,preparation))fn();else{if(s.binding?.contextRef===preparation?.id)s.binding.state='stopped_simulation';s.phase='details';J.event(s,'权限或上下文变化，本地模拟停止；真实在途执行需核查');s.messages.push({role:'assistant',text:'范围、权限或上下文已变化，已停止本次模拟回复。'});}J.sync(s);if(currentId===id)render(false);else refreshHistory(s);drainReplies();},650);
+      replyTimers.set(id,handle);
+    }
+  }
   function reply(s,fn,preparation=null){s.busy=true;s.queued=true;replyQueue.set(s.id,{s,fn,preparation});if(s.phase==='executing'&&s.binding)s.binding.state='queued_simulation';J.sync(s);if(currentId===s.id)render();drainReplies();}
   function send() {
     const s=current(); if(s.busy||(!s.draft.trim()&&!s.files.length)||!check(s))return;
@@ -131,7 +155,7 @@
     if(s.roleId!==C.role()){if(s.busy){clearTimeout(replyTimers.get(s.id));replyTimers.delete(s.id);replyQueue.delete(s.id);s.busy=false;s.queued=false;queueMicrotask(drainReplies);s.messages.push({role:'assistant',text:'预览身份已切换，本次模拟回复已停止。'});}create();}
     for(const item of sessions){
       for(const m of item.messages)if(m.kind==='permission'&&(!m.decision||m.pendingReview)&&!J.planCurrent(item,m.preparation)){m.pendingReview=false;m.decision='配置已更新，请补充信息重新确认';J.event(item,'配置、授权或记忆修订使旧计划失效');}
-      if(item.busy&&(!runnable(item,item.preparation)||item.phase!=='executing'&&!C.understandingPolicy(item).allowed)){clearTimeout(replyTimers.get(item.id));replyTimers.delete(item.id);replyQueue.delete(item.id);item.busy=false;item.queued=false;queueMicrotask(drainReplies);if(item.binding)item.binding.state='stopped_simulation';J.event(item,'撤权停止本地模拟；真实执行未发生');}
+      if(item.busy&&!runnable(item,item.preparation)){const wasQueued=item.queued;clearTimeout(replyTimers.get(item.id));replyTimers.delete(item.id);replyQueue.delete(item.id);if(wasQueued)rejectQueued(item);else{item.busy=false;item.queued=false;item.phase='details';if(item.binding?.contextRef===item.preparation?.id)item.binding.state='stopped_simulation';J.event(item,'撤权停止本地模拟；真实执行未发生');}queueMicrotask(drainReplies);}
       J.sync(item);
     }
     if(!root.hidden)render();

@@ -34,6 +34,8 @@ check('prototype build matches sources', (ROOT / 'docs/prototype/index.html').re
 
 files = [ROOT / name for name in ['README.md', 'CONTEXT.md', 'docs/README.md', 'docs/architecture/ADR-001.md', 'docs/reviews/DECISIONS-20261025.md']]
 files += list((ROOT / 'docs/design').glob('*.md'))
+files += list((ROOT / 'docs/development').glob('*.md'))
+files += [ROOT / 'docs/architecture/ADR-002.md', ROOT / 'docs/reviews/OVERALL-SOLUTION-REVIEW-20261026.md']
 files += [ROOT / 'docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md', ROOT / 'docs/reviews/END-TO-END-REVIEW-20261025.md', ROOT / 'docs/reviews/EXECUTION-RESOURCE-REVIEW-20261025.md', ROOT / 'docs/reviews/USABILITY-REVIEW-20261025.md', ROOT / 'docs/reviews/INITIAL-DRAFT-REVIEW.md']
 for file in files:
     for raw in re.findall(r'\]\(([^)]+)\)', file.read_text(encoding='utf-8')):
@@ -56,6 +58,11 @@ preparation = examples['startRequest']['spec']['preparation']
 check('preparation refs are frozen', all(preparation.get(k) for k in ['inputRevision', 'configurationSnapshotRevision', 'admissionPolicyRevision', 'integrationSnapshotRef', 'environmentResourcesRef', 'executionPolicyDecisionRef', 'effectiveWorkflowRef', 'runtimeManifestRef', 'contextManifestRef', 'authorizationRevision']))
 check('preparation hashes are shaped', all(re.fullmatch(r'[0-9a-f]{64}', preparation[k]) for k in ['effectiveWorkflowHash', 'integrationSnapshotHash', 'environmentResourcesHash', 'runtimeManifestHash', 'contextManifestHash']))
 check('unknown code versions stay nullable', 'codeCommit: string | null;' in decl and 'deployedCommit: string | null;' in decl)
+spec = examples['startRequest']['spec']
+check('example execution purpose explicit', spec['purpose'] == 'investigation' and 'purpose: ExecutionPurpose;' in decl)
+check('hard-limit accepted example assumes enforced calls', not spec['budget']['requireHardModelLimits'] or spec['budget']['callLimitEnforcement'] == 'verified')
+check('unknown usage exception requires explicit acceptance', spec['budget']['unknownUsagePolicy'] != 'allow_with_platform_limits' or bool(spec['budget']['riskAcceptanceRef']))
+check('example binds both quota accounts and platform turn', bool(spec['budget']['userTotalAccountRef']) and bool(spec['budget']['platformTurnReservationId']))
 
 manifest = json.loads((ROOT / 'SOURCE_MANIFEST.json').read_text(encoding='utf-8'))
 git = ['git', '-c', 'safe.directory=' + ROOT.as_posix(), '-C', str(ROOT)]

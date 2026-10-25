@@ -10,6 +10,7 @@
 
 | 内容 | 入口 |
 | --- | --- |
+| Java 开发设计评审 | [技术选型、架构、代码层级与开发计划](docs/development/README.md) · [整体复审](docs/reviews/OVERALL-SOLUTION-REVIEW-20261026.md) |
 | 初稿统一评审 | [操作顺序、完成边界与待决定事项](docs/reviews/INITIAL-DRAFT-REVIEW.md) |
 | 当前决策与待审批事项 | [决策记录](docs/reviews/DECISIONS-20261025.md) |
 | 全部资料导航 | [设计文档索引](docs/README.md) |

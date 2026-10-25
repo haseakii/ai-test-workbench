@@ -81,7 +81,7 @@ cancel requested 仅为命令登记，stopping 表示收敛；confirmed 须有�
 | SUBMISSION_CLOSED | 原提交最终封闭 | 旧命令永久拒绝，新节点需安全关闭证据。 |
 | CURSOR_EXPIRED / EVENT_GAP | 游标失效/事件缺口 | 取权威快照补齐，不据缺失判成功。 |
 | PERMISSION_STALE / APPROVAL_EXPIRED / PRECONDITION_CHANGED | 请求/批准失效或漂移 | 冻结动作，新请求及新审批。 |
-| BUDGET_BLOCKED / USAGE_UNKNOWN | 额度耗尽/未知 | 禁止新增计费，仅不计费核查与停止。 |
+| BUDGET_BLOCKED / USAGE_UNKNOWN | 额度耗尽，或当前策略不能接受未知用量 | 禁止新增计费，仅不计费核查与停止；显式非硬限额例外须在准入前固定，不能借错误恢复静默降级。 |
 | ARTIFACT_UNAVAILABLE / INTEGRITY_MISMATCH | 文件不可用/哈希不符 | 不给下载票据，不自动重跑生成。 |
 | RESULT_UNKNOWN | 接纳/送达/副作用未知 | 保留占用与挂账，只核查或人工接管。 |
 
@@ -104,3 +104,9 @@ preparation 固定 environmentResourcesRef / hash 和 executionPolicyDecisionRef
 ## 配置背景与用户模型额度的交接
 
 上下文清单引用固定的系统 / 项目 / 环境背景和结构化资源快照；背景不是权限或事实证明。ExecutionSpec.budget 绑定模型额度快照引用与哈希，预占范围必须覆盖实际 subject / connection / Agent / canonicalModelId 与周期。实际模型、内部调用拦截或用量报告能力未知时，不能宣称硬限额通过。流程与故障处理见[系统上下文及额度](SYSTEM-CONTEXT-QUOTAS.md)。
+
+## 开发评审补齐的字段
+
+ExecutionSpec.purpose 显式区分 understanding / investigation / title / summary；understanding、title、summary 不附业务工具授权，相关辅助用途也须计量。budget 固定用户跨连接总账、平台轮次预占和是否要求内部硬限额。默认 unknownUsagePolicy=block_new_billable_actions；只有有效风险接受记录、非硬限额流程和平台轮次 / 并发门禁齐备时才允许 allow_with_platform_limits。该例外仅针对未上报费用/用量，绝不允许对接纳未知或副作用未知的执行另投。
+
+接纳示例假设强制能力已验证，只表达合成合同预期，不是实际能力证据；示例摘要是占位字符串，不是可验签报文。Java DTO 映射、可复算哈希和错误恢复见[接入与 API 开发设计](../development/INTEGRATION-AND-API.md)。
