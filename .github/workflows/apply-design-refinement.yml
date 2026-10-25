@@ -1,0 +1,108 @@
+name: Verify and test design refinement
+on:
+  push:
+    branches: [design/usability-refinement-20261025]
+    paths: [.github/workflows/apply-design-refinement.yml, '.review-stage/**', 'docs/prototype/**']
+permissions:
+  contents: write
+concurrency:
+  group: design-refinement-transfer
+  cancel-in-progress: false
+jobs:
+  refinement:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify and apply bounded source edits
+        shell: python
+        run: |
+          import base64, gzip, hashlib, io, json, pathlib
+          root = pathlib.Path.cwd()
+          if not (root/'.review-stage/0').exists():
+              print('Transfer already applied; run tests only.')
+              raise SystemExit(0)
+          expected = ['3e3c8dbbbd3d0ceebef29ca234b4252169083b6b924a492f2824a2402b61173f','c1305e817d84d76974ee48c64030c5ff15788bb34023917b47bd9bda32cb1ef8','817b687713785bb228f4d0622a02cbb2154532bd3528a1c984e87229fabc8581','6905851a6017a3dd84b5eef0b2b33d0c2470dd34fc6de3ee221d8e8fc60a12cd','b76c71a667a8c12d81dcf69b538adffb76b595d14a45fd486e6618635311fe6f','a823f41ef13876ed918649de783ad2fdb0cb4e285a9ef6f1fea9ad625e25e392','080378dda745c0047affdf0fcd77f4bfd89356d1ddf4f879a407db007fbecbf7','ebadf7eaf17c8113d465c35fb04091f7547cc6fc6e0eddd8c773680e03a8a275']
+          chunks=[]
+          bad=[]
+          for i,want in enumerate(expected):
+              value=''.join((root/f'.review-stage/{i}').read_text().split())
+              actual=hashlib.sha256(value.encode()).hexdigest()
+              print('chunk',i,'length',len(value),'sha256',actual)
+              if actual != want: bad.append(i)
+              chunks.append(value)
+          assert not bad, f'Transfer mismatch in chunks {bad}; no design files changed'
+          packed=''.join(chunks)
+          assert len(packed)==31336
+          with gzip.GzipFile(fileobj=io.BytesIO(base64.b64decode(packed,validate=True))) as stream:
+              raw=stream.read(200001)
+          assert len(raw)==58931
+          assert hashlib.sha256(raw).hexdigest()=='f515af5267e38918311968b3fbce6cd14116fa1973f3b25abc45034206976fc1'
+          data=json.loads(raw)
+          assert data['base']=='b2a700f0f00d343d5db55c7ba66ba34e52b1e6db'
+          changes=[]
+          for spec in data['files']:
+              p=pathlib.PurePosixPath(spec['path'])
+              assert not p.is_absolute() and '..' not in p.parts
+              assert str(p) in ['README.md','docs/README.md'] or str(p).startswith(('docs/design/','docs/prototype/','docs/reviews/'))
+              target=root/p
+              assert not target.is_symlink()
+              old=target.read_text(encoding='utf-8') if target.exists() else ''
+              assert hashlib.sha256(old.encode()).hexdigest()==spec['before'], f'Changed base: {p}'
+              ops=spec['ops']
+              last=0
+              for start,end,text in ops:
+                  assert last<=start<=end<=len(old)
+                  last=end
+              revised=old
+              for start,end,text in reversed(ops): revised=revised[:start]+text+revised[end:]
+              assert hashlib.sha256(revised.encode()).hexdigest()==spec['after'], f'Bad result: {p}'
+              changes.append((target,revised))
+          for target,revised in changes:
+              target.parent.mkdir(parents=True,exist_ok=True)
+              target.write_text(revised,encoding='utf-8',newline='\n')
+          print('Verified and applied',len(changes),'source files; archive untouched.')
+      - name: Rebuild and validate offline sources
+        run: |
+          python3 scripts/build_initial_prototype.py
+          python3 scripts/verify_sources.py
+          python3 scripts/check_initial_design.py
+          python3 scripts/audit_design_scope.py
+          node docs/prototype/tests/model.test.cjs
+          find docs/prototype -name '*.js' -o -name '*.cjs' | while read file; do node --check "$file"; done
+      - name: Commit validated source edits on review branch only
+        run: |
+          test "$GITHUB_REF_NAME" = 'design/usability-refinement-20261025'
+          rm -rf .review-stage .review-transfer
+          rm -f .github/workflows/design-review-snapshot.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md docs .review-stage .review-transfer .github/workflows/design-review-snapshot.yml
+          if ! git diff --cached --quiet; then
+            git commit -m 'design: refine conversation continuity, scoped configuration and admission tiers'
+            git push origin HEAD:design/usability-refinement-20261025
+          fi
+      - name: Install fixed browser test dependencies
+        run: |
+          npm install --prefix "$RUNNER_TEMP/refinement-tools" --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/refinement-tools/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Run all synthetic browser regressions
+        env:
+          NODE_PATH: ${{ runner.temp }}/refinement-tools/node_modules
+          REVIEW_OUTPUT: ${{ runner.temp }}/refinement-results
+        run: node docs/prototype/tests/browser-check.cjs
+      - name: Export reviewed source and results
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/refinement-results"
+          git archive --format=zip --output="$RUNNER_TEMP/refinement-results/review-source.zip" HEAD
+          git rev-parse HEAD > "$RUNNER_TEMP/refinement-results/source-commit.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refinement-results
+          path: ${{ runner.temp }}/refinement-results
+          retention-days: 5
+          if-no-files-found: error
