@@ -49,20 +49,35 @@ jobs:
           print('Verified and unpacked original UTF-8 sources. No model or business resource was called.')
       - name: Verify source snapshots
         run: python scripts/verify_sources.py
-      - name: Install document-only rendering dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends fonts-noto-cjk libreoffice-writer
-          python -m pip install --disable-pip-version-check python-docx playwright
-          python -m playwright install --with-deps chromium
-      - name: Render prototype screenshots and document reading copies
-        run: python scripts/render_design.py
-      - name: Commit design documents only
+      - name: Commit verified design sources
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md AGENTS.md CONTEXT.md SOURCE_MANIFEST.json docs scripts
           if ! git diff --cached --quiet; then
-            git commit -m "docs: import reviewed source baseline and generate design reading copies"
+            git commit -m "docs: archive exact design sources and record accepted architecture direction"
+            git push origin HEAD:main
+          fi
+      - name: Install document-only rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk libreoffice-writer poppler-utils
+          python -m pip install --disable-pip-version-check python-docx playwright
+          python -m playwright install --with-deps chromium
+      - name: Render prototype screenshots and document reading copies
+        run: python scripts/render_design.py
+      - name: Upload generated reading copies for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-reading-copies
+          path: docs/generated/v0.2/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit generated reading copies
+        run: |
+          git add docs/generated
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: generate prototype previews and document reading copies"
             git push origin HEAD:main
           fi

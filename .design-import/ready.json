@@ -1,0 +1,8 @@
+{
+  "size_bytes": 95272,
+  "sha256": "4da15f54683a4b3e141da6cf931d5e48683c680e6e0c5c37696a32d02a145cb9",
+  "chunks": ["part-00.txt", "part-01.txt", "part-02.txt", "part-03.txt", "part-04.txt", "part-05.txt", "part-06.txt", "part-07.txt"],
+  "files": 31,
+  "original_text_count": 20,
+  "original_binaries_not_imported": 29
+}
