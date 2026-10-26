@@ -6,6 +6,7 @@ export type Sha256 = string; // 64 lowercase hex characters.
 export type Decimal = string; // finite non-negative decimal, no floating-point currency.
 export type KnownBoolean = boolean | 'unknown';
 export type EffectStatus = 'none' | 'verified' | 'unknown';
+export type ExecutionPurpose = 'understanding' | 'investigation' | 'title' | 'summary';
 export type EvidenceLevel = 'advertised' | 'adapter_supported' | 'verified' | 'unknown' | 'unsupported';
 
 export interface CallContext {
@@ -39,7 +40,8 @@ export interface CapabilitySnapshot {
   validUntil: Instant;
   capabilities: Array<{
     name: 'image_input' | 'resume_checkpoint' | 'permission_bridge' | 'binary_artifact'
-      | 'durable_events' | 'idempotent_start' | 'submission_fence' | 'hard_call_limit';
+      | 'durable_events' | 'idempotent_start' | 'submission_fence' | 'hard_call_limit'
+      | 'usage_reporting' | 'hard_token_limit';
     level: EvidenceLevel;
     evidenceRef: Id | null;
   }>;
@@ -47,6 +49,7 @@ export interface CapabilitySnapshot {
 }
 export interface ExecutionSpec {
   contractVersion: ContractVersion;
+  purpose: ExecutionPurpose; // Understanding/title/summary carry no business-tool grants.
   tenantId: Id;
   conversationId: Id;
   workflowRunId: Id;
@@ -95,7 +98,11 @@ export interface ExecutionSpec {
     maxConcurrency: number;
     estimatedAmount: Decimal | null;
     currency: string | null;
-    unknownUsagePolicy: 'block_new_billable_actions';
+    unknownUsagePolicy: 'block_new_billable_actions' | 'allow_with_platform_limits';
+    riskAcceptanceRef: Id | null; // Required for the latter; never authorizes unknown execution replay.
+    userTotalAccountRef: Id; // Same subject/period across all Agent connections.
+    platformTurnReservationId: Id;
+    requireHardModelLimits: boolean;
     callLimitEnforcement: 'verified' | 'adapter_only' | 'unknown';
   };
   deadline: Instant;

@@ -1,0 +1,41 @@
+✔ empty conditions preserve the draft and deny dispatch (1.4544ms)
+✔ completion awaits user verification (0.2221ms)
+✔ user confirmation targets the current result revision (0.1645ms)
+✔ reopen preserves result and verifier history (0.1918ms)
+✔ duplicate start cannot create a second execution (0.3792ms)
+✔ not_found does not free ownership or enable another node (0.1608ms)
+✔ found submission recovers the original binding without start (0.1148ms)
+✔ final admission fence allows a new binding, never reopens old key (0.6931ms)
+✔ changing defaults leaves running binding immutable (0.7005ms)
+✔ disconnect does not clear ownership (0.2275ms)
+✔ cancel request and confirmation are separate (0.1596ms)
+✔ completion may win a cancellation race, still awaits user verification (0.1074ms)
+✔ unknown submission cannot be represented as cancelled (0.1725ms)
+✔ approval checkbox and reason are required (0.2629ms)
+✔ approval alone does not send or execute (0.1394ms)
+✔ delivery alone is not an execution receipt (0.1673ms)
+✔ native request expiry invalidates approval and prevents old option replay (0.1311ms)
+✔ safe resume preserves owner, old decision, and requires new approval (0.2324ms)
+✔ business expiry prevents sending (0.122ms)
+✔ plan drift requires evidence revalidation and fresh approval (0.1777ms)
+✔ permission delivery unknown cannot be resent or cancelled as safe (0.2921ms)
+✔ late permission delivery observation cannot erase a stop request (0.2041ms)
+✔ inner policy deny overrides the business allow (0.1289ms)
+✔ unsupported approval bridge never sends (0.1398ms)
+✔ one operation consumes approval once (0.1232ms)
+✔ sent permissions cannot be renewed on an assumption of no effect (0.1947ms)
+✔ unknown capability and mismatch block dispatch (0.1863ms)
+✔ unknown usage blocks new billable work but allows observation and cancel (0.17ms)
+✔ evidence mismatch and corrupt artifacts deny deterministic delivery (0.1961ms)
+✔ integrity failure after delivery blocks confirmation without re-execution (0.1383ms)
+✔ duplicate events have no repeated projection or charge (0.1799ms)
+✔ handoff keeps unresolved ownership and full evidence (0.1476ms)
+✔ simulation never mutates input and all layer states are declared (0.4336ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15.1608

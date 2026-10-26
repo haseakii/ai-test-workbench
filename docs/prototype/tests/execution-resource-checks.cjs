@@ -9,7 +9,7 @@ module.exports=async({page,check,nav,out})=>{
  const ops=name=>page.locator('[data-ops="'+name+'"]').click();
  const chat=()=>page.evaluate(()=>ChatPrototype.inspect());
  const send=async text=>{await page.locator('#chat-input').fill(text);await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});};
- const apply=async()=>{await admin('publish');await page.locator('#admin-dialog[open]').waitFor();await admin('confirm');};
+ const apply=async()=>{await admin('publish-set');await page.locator('#admin-dialog[open]').waitFor();await page.locator('#admin-dialog [data-config-entry]').evaluateAll(xs=>xs.forEach(x=>x.checked=true));await admin('confirm');};
  const fresh=async()=>{await nav('chat');await page.reload();await page.waitForSelector('#chat-root h1');};
  const mode=async(value,id='demo-live-tester')=>{await nav('admin-users');await sf('actor').selectOption('access');await page.locator('[data-service=select-user][data-id="'+id+'"]').click();await sf('userExecutionMode').selectOption(value);await sf('reason').fill('资源执行设计走查：调整演示用户方式');await service('save-user');assert((await page.locator('#service-dialog').innerText()).includes('执行方式'));await service('confirm-save');};
  await fresh();
@@ -25,9 +25,9 @@ module.exports=async({page,check,nav,out})=>{
   await nav('admin-resources');await page.locator('[data-resource-tab=projects]').click();await page.locator('[data-record=demo-projects-4]').click();await field('address').fill('https://demo:not-a-secret@git.example.invalid/repo.git');await admin('publish');assert((await page.locator('#admin-feedback').innerText()).includes('项目地址'));await admin('discard');await admin('confirm-discard');await field('paths').fill('C:/outside');await admin('publish');assert((await page.locator('#admin-feedback').innerText()).includes('只读路径'));await admin('discard');await admin('confirm-discard');
   await nav('admin-environments');await page.locator('[data-record=orders-test]').click();await page.locator('[data-grant=mcpIds][value=demo-mcps-3]').uncheck();await admin('publish');assert((await page.locator('#admin-feedback').innerText()).includes('Skill 要求的 MCP'));await admin('discard');await admin('confirm-discard');
  });
- await check('prepared resource revisions remain fixed and a later plan adopts new published resources',async()=>{
+ await check('unused code project edit preserves approval while a later plan adopts new published resources',async()=>{
   await nav('chat');await send('请检查报表差异');await send('昨天全天，已完成订单。');const before=(await chat()).preparation.resources;assert(before.projects.some(x=>x.id==='demo-projects-4'));
-  await nav('admin-resources');await page.locator('[data-record=demo-projects-4]').click();await field('address').fill('https://git.example.invalid/custom/check-v2.git');await apply();await nav('chat');assert.equal(await page.locator('[data-chat=allow]').count(),0);assert.deepEqual((await chat()).preparation.resources,before);
+  await nav('admin-resources');await page.locator('[data-record=demo-projects-4]').click();await field('address').fill('https://git.example.invalid/custom/check-v2.git');await apply();await nav('chat');assert.equal(await page.locator('[data-chat=allow]').count(),1);assert.equal((await chat()).preparation.flowDecision.codeProjects.length,0);assert.deepEqual((await chat()).preparation.resources,before);
   await send('按新配置重新准备本次检查');const after=(await chat()).preparation.resources;assert(after.configurationRevision>before.configurationRevision);assert.equal(after.projects.find(x=>x.id==='demo-projects-4').revision,2);
  });
  await check('resource directory supports trusted stdio templates and repository Skill versions',async()=>{
@@ -72,7 +72,7 @@ module.exports=async({page,check,nav,out})=>{
    }
    await p.evaluate(()=>location.hash='admin-approvals');await p.locator('[data-service-field=actor]').selectOption('approver');
    for(const id of ['demo-chat-1','demo-chat-2']){await p.locator('[data-ops=select][data-id="'+id+'"]').click();await p.locator('[data-ops=approve]').click();await p.locator('[data-ops=confirm-approve]').click();}
-   assert.equal(await p.evaluate(()=>ReviewJourney.records().filter(x=>x.binding?.state==='active_simulation').length),2);
+   assert.equal(await p.evaluate(()=>ReviewJourney.records().filter(x=>x.binding?.state==='active_simulation').length),1);assert.equal(await p.evaluate(()=>ReviewJourney.records().filter(x=>x.binding?.state==='queued_simulation').length),1);
    await p.evaluate(()=>location.hash='admin-executions');await p.locator('[data-service-field=actor]').selectOption('operator');await p.locator('[data-ops=select][data-id=demo-chat-1]').click();await p.locator('[data-ops=stop]').click();await p.locator('[data-ops=confirm-stop]').click();await p.clock.runFor(2000);
    const records=await p.evaluate(()=>ReviewJourney.records());assert.equal(records.find(x=>x.id==='demo-chat-1').resultRevision,0);assert.equal(records.find(x=>x.id==='demo-chat-1').binding.state,'stopped_simulation');assert.equal(records.find(x=>x.id==='demo-chat-2').resultRevision,1);assert.equal(records.find(x=>x.id==='demo-chat-2').binding.state,'terminal_simulation');assert.deepEqual(errors,[]);
   }finally{await p.close();}

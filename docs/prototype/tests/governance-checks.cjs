@@ -3,7 +3,7 @@ module.exports=async({page,check,nav,out})=>{
  const f=n=>page.locator(`[data-gov-field=${n}]`),af=n=>page.locator(`[data-field=${n}]`),g=n=>page.locator(`[data-gov=${n}]`).click(),a=n=>page.locator(`[data-admin=${n}]`).click();
  const fresh=async(route='admin-integrations')=>{await nav(route);await page.reload();await page.waitForSelector('#configuration-root h1');};
  const publish=async()=>{await g('publish');await g('confirm');};
- const apply=async()=>{await a('publish');await a('confirm');};
+ const apply=async()=>{await a('publish-set');await page.locator('#admin-dialog [data-config-entry]').evaluateAll(xs=>xs.forEach(x=>x.checked=true));await a('confirm');};
  const send=async text=>{await page.locator('#chat-input').fill(text);await page.locator('[aria-label="发送消息"]').click();await page.waitForSelector('.replying',{state:'hidden'});};
  await fresh();
  await check('governance entry offers connection list and next steps with diagnostics collapsed',async()=>{

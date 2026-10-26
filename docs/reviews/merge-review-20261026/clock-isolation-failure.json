@@ -1,0 +1,188 @@
+{
+  "time": "2026-10-25T16:49:43.504Z",
+  "scope": "offline synthetic prototype, not real Provider acceptance",
+  "method": "Playwright on a loopback static page; external requests blocked; DOM actions only",
+  "cases": [
+    {
+      "name": "refinement: navigation never stops a running response or loses drafts",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: cross-conversation model work queues without blocking browsing",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: cancelling queued work does not cancel the other conversation",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: narrow history navigation stays enabled during work",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: object publication ignores unrelated invalid drafts and preserves them",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: discard restores only the selected object",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: dependent change set is atomic and requires explicit selection",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: unrelated configuration changes do not invalidate approval",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: presentation rename preserves the pending operation",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: relevant context change invalidates only the old plan",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: ordinary configuration edits do not cancel an accepted binding",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: actual scope revocation still stops local progress",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: understanding authorization is distinct from resource approval",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: no understanding grant means static receipt, no AI activity",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: collection-only never claims a model response or comprehension",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: unknown usage is usable only under an explicitly non-hard policy",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: hard-limit workflow rejects both unknown and merely reported capability",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: per-model accounting references the same cross-connection user total",
+      "result": "pass"
+    },
+    {
+      "name": "refinement: bootstrap risk profiles do not grant permissions by toggling a demo",
+      "result": "pass"
+    },
+    {
+      "name": "merge review: expired queued approval cannot start when a slot becomes free",
+      "result": "pass"
+    },
+    {
+      "name": "merge review: relevant change invalidates queued work but preserves already active execution",
+      "result": "pass"
+    },
+    {
+      "name": "merge review: queued work rechecks revised user quota before dispatch",
+      "result": "pass"
+    },
+    {
+      "name": "chat is the default with no technical dashboard",
+      "result": "pass"
+    },
+    {
+      "name": "system selection narrows environments",
+      "result": "pass"
+    },
+    {
+      "name": "quick questions populate composer without sending",
+      "result": "pass"
+    },
+    {
+      "name": "attachment metadata can be added and removed without upload",
+      "result": "pass"
+    },
+    {
+      "name": "chat sends text safely and fixes system and environment",
+      "result": "fail",
+      "detail": "TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.replying') to be hidden\u001b[22m\n\u001b[2m    14 × locator resolved to visible <div role=\"status\" class=\"replying\">…</div>\u001b[22m\n"
+    },
+    {
+      "name": "permission and verification stay inside conversation",
+      "result": "fail",
+      "detail": "TimeoutError: locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[aria-label=\"发送消息\"]')\u001b[22m\n"
+    },
+    {
+      "name": "new conversations and history preserve previous context",
+      "result": "pass"
+    },
+    {
+      "name": "stopping a simulated reply prevents later result",
+      "result": "pass"
+    },
+    {
+      "name": "new context invalidates pending permission",
+      "result": "fail",
+      "detail": "TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.replying') to be hidden\u001b[22m\n\u001b[2m    14 × locator resolved to visible <div role=\"status\" class=\"replying\">…</div>\u001b[22m\n"
+    },
+    {
+      "name": "shift enter inserts newline and mobile retains new conversation",
+      "result": "pass"
+    }
+  ],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "layouts": [],
+  "sourceHashes": {
+    "docs/prototype/tests/merge-review-checks.cjs": "194d3573e34b1f0174527474a8835a96b892bd4ed2cfa5fb8924f64e8c6411de",
+    "docs/prototype/tests/refinement-checks.cjs": "e795e2b04a8901d6e415cbb9ca3d2fe89f8d74cf69d989211db3d4f1e449598f",
+    "docs/prototype/tests/complete-journey-checks.cjs": "395ea69f564e229a189c41d0e6f2cbf4079cc2d988f057e571f97f620af49f6f",
+    "docs/prototype/governance.js": "426e5206b3ef3d18d44a1fbadd6bc2eca3007aecadc31d573631c8aef7895152",
+    "docs/prototype/tests/governance-checks.cjs": "30e29583c39787438685b27569d265bea6d567a74f4f23961203060281ae134e",
+    "docs/prototype/context-quota.js": "acb32ffb4693d2f34f3eff7df58ca7c8c7d4982490afbef6389debc4a403d6c1",
+    "docs/prototype/tests/context-quota-checks.cjs": "2c38eda7c8b28af14613f1dd994b8186d1209709a708a17d62f98c1b0f242619",
+    "docs/prototype/code-source.js": "bd5e476f76bde16c5c2d1478e388dd013a9b287f730bb647a30e4d352d7e8b1c",
+    "docs/prototype/tests/code-source-checks.cjs": "76bad853523a952d561cdbce97c60c6ed5bd547d82e01fc6c79580bbf60878b8",
+    "docs/prototype/task-title.js": "7d873a0837a75251c5c75b55633da2a014b75d93cdedd1ceaf360cb09f7d007e",
+    "docs/prototype/tests/title-checks.cjs": "ee5a715d76dae759aec6fa215e8cb18e49887ed290e165298d5ee6f7b04be6a9",
+    "docs/prototype/onboarding.js": "f703a8820f879ffb3769f5940f8e35946eaa509e015cf7fc4590beb6d287843a",
+    "docs/prototype/onboarding.css": "3ffe6e7682d92365b54fde4db2dd2ea929c72ca503298522475fb9e0bd471d17",
+    "docs/prototype/tests/onboarding-checks.cjs": "136669899d034606deca53644c0a9bf3bdc3d2bfab3b2c51d071830d57d9ef1e",
+    "docs/prototype/tests/flow-links-checks.cjs": "35fe14dae643cd2435fb3f515277b10f71ebc3368cec72bb231d188374e81ae4",
+    "docs/prototype/flow-design.js": "3019d76c690be7c3f0b52bffd4f34768f5ef894115f056fd46d720a23c77175e",
+    "docs/prototype/management-theme.css": "f65dea54b9388ff31b03ca527d349cafda5f1025ae7a0011dde1419a0d2ce593",
+    "docs/prototype/tests/usability-checks.cjs": "af9dedb0759a3b6f9f3deba8cafdbe3b229b5b21406323a01b087e1f117cb355",
+    "docs/prototype/tests/management-list-checks.cjs": "e7633649f5cc59e66d0ac7dc9da411513c541741048b4018c4a84ba19b3cc404",
+    "docs/prototype/index.html": "519e7ee17a19dd613683bbfb9e93f52491c9174765f6f11b10e68ca7fcdece4b",
+    "docs/prototype/model.js": "e017dd22d08a535310fb26b317c22c48f0e5e12324c1732a7c62d13048988cab",
+    "docs/prototype/app.js": "8a5d994d705c01f9fb8842d4db999635e1bfc7a8eb7cb06a77e977955dc53f27",
+    "docs/prototype/tests/execution-resource-checks.cjs": "44289a1bf627936bb91b0f82039f665d830a67e51695f10069b5a5b8065ed639",
+    "docs/prototype/resource-design.js": "2664f27303473a8b860cdbaefe6f5e7ea0896b7258aac9b16bd5d10c3144e5d6",
+    "docs/prototype/execution-management.js": "43ac7c01b312c479d3e513e7dfed6355d97921c6139331868eeba0c75a0a8c50",
+    "docs/prototype/journey.js": "7897a79e39e1b52b04fc9d902500af00d3cb9221337290d236ffe3daba8f1bf1",
+    "docs/prototype/tests/walkthrough-checks.cjs": "961c1d7fcfb4b5e62be08cac5d4371382a1792131991f3742e79230753aabb29",
+    "docs/prototype/service-design.js": "5c0050f962a1e03d081a0e0b5ae99e95bf641b5b0f8e92f0fb71a2120ff58cdc",
+    "docs/prototype/service-design.css": "3f977018bc9b4ff33833a7c4e623ac64a1b1cb7c1493b687171f8b8a9f16e1e4",
+    "docs/prototype/tests/service-design-checks.cjs": "af369d11265604827235c21bc629ac2019e79dab8f15c869079ee1a1ba9ccae1",
+    "docs/prototype/configuration.js": "540ec69bd843bcf4218b8cfcdefdb8af98bb8fb10ec6ef440c0f88326bc61f4d",
+    "docs/prototype/admin.js": "0334d4704065448b539cd18e61ff7bee67ef430f53dac8d60b2165a2b9d8a550",
+    "docs/prototype/admin.css": "dc8e0e46471fc699c2ad6d2819a84d3ca5fe6e2bb51b03aaaa229073a72a5f34",
+    "docs/prototype/tests/admin-checks.cjs": "7eacf769a4d41b28e3a0bdfd520f3e64613d7b97669f0696f6cfaf2b97b1dbad",
+    "docs/prototype/chat.js": "f32a8aac223606708af4dcffd68ca09d8a53b4095f7fffa6da9ecc6d19fe1a28",
+    "docs/prototype/chat.css": "a71f96117dac39087ebf47d62704f0cbc8c8172ca2e222f575bb655d20638844",
+    "docs/prototype/tests/chat-checks.cjs": "1bce8a6b1403c304b417c5a20c4e05ddef2f67301b34be100f132b7e477b67f4",
+    "docs/prototype/style.css": "27c15a3287c8e8d145f081086d1ac9a1d083ccecfa07ef5fa1997b336bc0eba3",
+    "docs/prototype/shell.html": "796fc0aed5c156fd9a71345585ba34d246619d481cdceb262304f4ea1923dd62",
+    "docs/design/contracts/state-transitions.json": "728d83fa1bf05d33f80c0707f660ad05e51778c9819bf7f39976655e6be72486",
+    "docs/prototype/tests/browser-check.cjs": "8a87557f8fe4f848fd864736d7651ac7132044647ea9eabf8f8d63e1eddd25cb"
+  },
+  "browser": "156.0.4314.42",
+  "passed": 29,
+  "total": 32,
+  "overflows": []
+}
