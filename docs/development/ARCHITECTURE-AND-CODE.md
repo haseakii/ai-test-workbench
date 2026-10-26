@@ -1,18 +1,18 @@
 # 架构与代码层级规划
 
-状态：待评审。继承 [ADR-001](../architecture/ADR-001.md) 的独立平台方向，以一个业务单体、一个受控执行节点起步。
+状态：开发实现待评审；平台数据库方向已确认为 MySQL 8.4 LTS / InnoDB。继承 [ADR-001](../architecture/ADR-001.md) 的独立平台方向，以一个业务单体、一个受控执行节点起步。本轮不改产品职责、执行契约或已认可的页面。
 
 ## 进程与信任边界
 
 ```mermaid
 flowchart TD
   U[React 用户对话 / 管理列表] -->|REST + 平台 SSE| A[Java 平台服务]
-  A --> D[(PostgreSQL 业务 schema)]
+  A --> D[(MySQL 8.4 / 平台业务 database)]
   A --> B[BlobStore 附件 / 产物]
   A -->|ExecutionProvider| C[总控适配器]
   C --> X[外部总控：内部任务 / 尝试 / 会话]
   A -->|ExecutionProvider| H[受控 Java Runner / ACP Client]
-  H --> J[(Runner 独立 schema / 接纳日志)]
+  H --> J[(MySQL 8.4 / Runner 接纳日志 database)]
   H -->|stdio| G[隔离 Agent 进程]
   X -->|限定凭据 / 固定计划| R[资源网关]
   G -->|限定凭据 / 固定计划| R
@@ -22,7 +22,9 @@ flowchart TD
 
 资源网关首批作为平台服务的独立模块和内部入口，不另建一套管理服务；它持有受控资源访问能力，Agent 仅拿绑定本轮的短效授权。Java Runner 为单独进程，Agent 为隔离子进程。两者与 Web 服务不共用管理员 OS 身份、家目录、数据库凭据或任意文件访问。
 
-同机部署不等于同权限。Runner 的数据库角色只访问自己的接纳日志 schema；它不能修改会话、审批或账本。业务库与 Runner 日志可在同一个 PostgreSQL 实例中以不同角色隔离，恢复时必须同时保留两者。外部总控仍拥有独立数据库，平台不读取其 SQLite。
+同机部署不等于同权限。平台业务库和 Runner 日志可在同一个 MySQL 实例中以**独立 database、独立账号、独立 Flyway 历史**隔离，也可分实例；示例名称为 `workbench_platform` / `workbench_runner`，不是现有资源名称。MySQL database/schema 为同一级命名空间，不照搬 PostgreSQL 库内 schema 模型。平台运行账号只访问平台库；Runner 运行账号只访问其接纳日志库，不能修改会话、审批和账本。迁移账号另行授予必要 DDL 权限，运行进程不持有管理员或跨库权限。
+
+两库之间不做跨库 JOIN、外键、直接读写或跨进程共享事务；即使同实例具备跨库技术能力，也以 Provider 契约传递事实。备份恢复需覆盖两库及相关外部执行，不能只恢复一库就认定另一方没有接纳任务。外部总控保持独立数据库，平台不读取其 SQLite；被排查系统的 MySQL 等数据源通过资源网关接入，不与平台状态库共用凭据和事务。
 
 Agent 不能访问 Runner 数据库或平台内部管理接口。允许的出口只包含指定模型端点和受控工具入口；文件只挂载本轮快照及输出目录。对无法禁用自带网络、MCP、终端、用户记忆的 Agent，能力标为不适用并拒绝该环境准入。容器 / 受限 OS 身份的具体组合须实测，不以目录或 worktree 代替隔离。
 
@@ -45,6 +47,8 @@ Agent 不能访问 Runner 数据库或平台内部管理接口。允许的出口
 
 审批、额度、执行的协调归 `execution.application`；它们不互相循环调用。审批决定提交后发 outbox，由执行用例重新准入；资源调用通过短效许可引用检查决定，无需让审批模块知道某个 MCP SDK。
 
+MySQL 方言和类型转换止于基础设施层：统一 UUID 二进制映射、UTC/微秒时间映射、BigDecimal 和精确标识符绑定；Controller、领域和 provider-contract 不出现 JDBC 驱动或 JSON 列类型。运行时查询不接受用户任意表名 / SQL，不设置以总控数据库为数据源的 Repository。
+
 ## 计划目录（尚不存在业务工程）
 
 ```text
@@ -59,14 +63,14 @@ ai-test-workbench/
         bootstrap/                # 启动与装配
         identity/ configuration/ conversation/
         execution/ approval/ quota/ material/ resource/ audit/
-        infrastructure/           # outbox、共享技术设施，保持小规模
-      src/main/resources/db/migration/
-      src/test/                   # 领域、事务、HTTP、模块依赖测试
+        infrastructure/           # MySQL/JDBC、outbox、共享技术设施，保持小规模
+      src/main/resources/db/migration/ # 仅平台 MySQL 库的迁移
+      src/test/                   # 领域、MySQL 事务、HTTP、模块依赖测试
     execution-runner/
       src/main/java/io/aitest/runner/
         admission/ journal/ acp/ sandbox/ artifact/
-      src/main/resources/db/migration/ # Runner 自己的 schema 与角色
-      src/test/                   # 子进程、协议与恢复测试
+      src/main/resources/db/migration/ # Runner MySQL 库，独立历史表和账号
+      src/test/                   # MySQL 接纳日志、子进程、协议与恢复测试
   frontend/
     src/app/                      # 路由、登录边界、全局壳
     src/features/conversation/    # 消息、材料、审批卡、结果、标题
