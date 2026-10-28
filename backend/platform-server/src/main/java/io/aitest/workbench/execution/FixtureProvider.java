@@ -29,8 +29,10 @@ public class FixtureProvider implements ExecutionProvider {
     private final String bootHash;
     public FixtureProvider(Store db,PreparationService preparation,Materials materials,SyntheticCheckpoints checkpoints){
         this.db=db;this.preparation=preparation;this.materials=materials;this.checkpoints=checkpoints;
-        try{bootHash=CanonicalJson.hashBytes(Files.readAllBytes(Path.of("/proc/sys/kernel/random/boot_id")));}
-        catch(java.io.IOException failure){throw new IllegalStateException("Local process identity unavailable");}
+        String boot=null;
+        try{Path p=Path.of("/proc/sys/kernel/random/boot_id");if(Files.isReadable(p))boot=CanonicalJson.hashBytes(Files.readAllBytes(p));}catch(Exception ignored){}
+        if(boot==null){String host=Objects.toString(System.getenv("COMPUTERNAME"),Objects.toString(System.getenv("HOSTNAME"),"localhost"));boot=CanonicalJson.hashBytes((host+":"+ownerStarted).getBytes(StandardCharsets.UTF_8));}
+        bootHash=boot;
     }
     public static class LostReceipt extends RuntimeException {}
     private String time(){return ContextManifests.time(db.now());}
