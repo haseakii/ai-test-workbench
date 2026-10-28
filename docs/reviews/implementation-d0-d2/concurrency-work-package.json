@@ -1,0 +1,143 @@
+{
+  "scope": "A04 only, complete local synthetic scope; no new empty MySQL instance/accounts/DB privileges",
+  "observedAt": "2026-10-26T09:35:17.022207+00:00",
+  "branch": "work",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "mysqlVersion": "8.4.13",
+  "artifactSha256": "77adbdc14fe9868f0dc3f9dc721bd5192a911e6ff27e80ba9373ca0d87b62b0d",
+  "beforeFix": "concurrency-before-fix.json",
+  "newActualTests": [
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "sameClientMessageIdAndChangedTextCannotOverwriteCommittedMessage",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "differentMessagesWithSameRevisionRequireExplicitConflictRebase",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "sameCommandKeyAndBodyReturnOneCommittedReceiptWhileFirstTransactionIsUncommitted",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "sameCommandKeyAndDifferentBodiesCommitOneAndRejectOtherHash",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "sameClientMessageIdAndDifferentKeysSaveExactlyOneMessage",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "concurrentTerminalDeliveriesConsumeFrozenPairAndReleaseSlotOnlyOnce",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "lateEventCommitAndConcurrentSnapshotResumeAtCommittedContiguousWatermark",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "rolledBackLeaderDoesNotConsumeMessageSequenceOrCommandKeyBeforeConcurrentRetry",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.ConcurrentTransactionsTest",
+      "name": "sameNodeRunUniqueIndexAllowsOneOpenOwnerAndRetainsClosedHistory",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.EventTerminalConsistencyTest",
+      "name": "closedTerminalSameEventChangedContentIsExplicitConflict",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.EventTerminalConsistencyTest",
+      "name": "eventInsertFailureRollsBackWatermarkAndRetryReusesSequence",
+      "result": "pass"
+    }
+  ],
+  "overlapProofs": "concurrency-overlap-proofs.json",
+  "productionChanges": {
+    "Store.event": "counter and INSERT in the same joining transaction, including standalone publishers",
+    "ExecutionWorker.finish": "compare existing same-event canonical payload hash before returning for a closed Binding; original hash domain preserved"
+  },
+  "retainedGuards": [
+    "tenant row guard and per-conversation event counter lock",
+    "uq_binding_open and uq_conversation_execution",
+    "uq_command tenant/subject/kind/key",
+    "uq_message tenant/conversation/clientMessageId",
+    "A07+A02 frozen total/model account keys and UTC periods unchanged",
+    "A08 original-key recovery and A01 schema gate unchanged"
+  ],
+  "verification": {
+    "java": {
+      "passed": 80,
+      "total": 80,
+      "skipped": 0,
+      "command": "/workspace/scratch/toolchain/apache-maven-3.9.11/bin/mvn -s /workspace/scratch/development-start-20261026/maven-settings.xml -Dmaven.repo.local=/workspace/scratch/maven-cache -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -f backend/pom.xml clean verify -B -ntp",
+      "evidence": "java-concurrency-tests.json"
+    },
+    "typescriptContracts": 10,
+    "typescriptSubmissions": 9,
+    "ui": {
+      "passed": 13,
+      "evidence": "ui-concurrency-checks.json"
+    },
+    "http": {
+      "service": 15,
+      "hardening": 15,
+      "evidence": [
+        "service-concurrency-checks.json",
+        "hardening-concurrency-checks.json"
+      ],
+      "schemaReplies": 405
+    },
+    "process": {
+      "passed": 5,
+      "evidence": "process-concurrency-checks.json",
+      "scope": "five existing owned service process windows on this same final artifact; not A05 COMMIT transport failures"
+    }
+  },
+  "regressionFailureEvidence": [
+    "concurrency-first-http-regression.json",
+    "concurrency-first-ui-regression.json"
+  ],
+  "fixtureQuotaPrecondition": {
+    "reason": "retained synthetic Alice usage reached 100/100; admission correctly blocked",
+    "safeClosureEvidence": "concurrency-exhausted-quota-fixtures.json",
+    "adjustments": [
+      {
+        "subject": "alice",
+        "period": "2026-10-26",
+        "beforeLimit": 100,
+        "afterLimit": 200,
+        "consumedAndReservedUnchanged": true,
+        "reason": "synthetic repeat-run fixture headroom via audited admin API; no DB privileges or real resources"
+      }
+    ],
+    "countsReset": false,
+    "productDefaultChanged": false,
+    "databasePrivilegesChanged": false,
+    "realModelCallsOrFees": false
+  },
+  "failedProbeRollback": "concurrency-prefixed-failure-fixture.json",
+  "runtimeState": "database-concurrency-state.json",
+  "artifactEvidence": "concurrency-artifact.json",
+  "scopeLimits": [
+    "Coarse tenant serialization correctness, not throughput or fine-grained lock performance",
+    "Raw Binding constraint probes were never approved/queued/accepted; closed history retained",
+    "No A03 runtime Provider adapter, A05 queue/deadlock/COMMIT connection matrix, A06 admission races or A09-A11 implementation",
+    "A01 original full cold chain remains unrun; extra instance authorization not received",
+    "No real adapters/resources/models, commit/push/deployment"
+  ],
+  "newContainersAccountsOrDbPrivileges": false,
+  "A04EnvironmentOrPermissionBlocker": null,
+  "next": "safe checkpoint for parent review; A01 remains separately pending approval and other local packages remain scheduled"
+}

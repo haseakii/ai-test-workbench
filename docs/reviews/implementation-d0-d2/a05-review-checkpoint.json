@@ -1,0 +1,70 @@
+{
+  "recordedAt": "2026-10-26T10:43:25.735102+00:00",
+  "scope": "A05 independent test first checkpoint; parent owns core fixes/final integration",
+  "testSource": "backend/platform-server/src/test/java/io/aitest/workbench/execution/QueueCommitFaultTest.java",
+  "testSourceSha256": "0e8f8f746b787c47e9f956c377cc0de36efe0d6cc6220d478bfe5ac95bf33dd3",
+  "compiledClassesAfterRun": {
+    "backend/platform-server/target/classes/io/aitest/workbench/execution/ExecutionWorker.class": "27c58c6af53206e7240aed1bdb6ba9bdd93281dbf680dc406026e5a399a7ddce",
+    "backend/platform-server/target/classes/io/aitest/workbench/execution/QuotaLedger.class": "396fb058d623b2141cfb8b508a311b97071645b133b94f818483525af24a9e1f",
+    "backend/platform-server/target/classes/io/aitest/workbench/infrastructure/Store.class": "90f1d56ab61e4a907b3a65dd2a2294be19f2756c0556b66a9ae104e0957989f3",
+    "backend/platform-server/target/test-classes/io/aitest/workbench/execution/QueueCommitFaultTest.class": "f6c4bf6e680d8f4b8af8f16da4bdcf8fe7a5abe3352d7b67b7b488044b421dee"
+  },
+  "mysqlVersion": "8.4.13",
+  "firstRun": {
+    "tests": 8,
+    "passed": 6,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "findings": [
+    {
+      "id": "A05-F01",
+      "status": "reproduced_unfixed",
+      "test": "leaseHandoffAfterOwnerReadPreventsOldWorkerFromDispatching",
+      "actual": "A newer queue owner committed before old dispatch continued, but the old worker returned true and persisted a quota reservation.",
+      "recommendation": "At final dispatch transition CAS tenant/id/expected owner/unchanged unexpired lease/claimed state; on zero affected rows throw an internal lease-loss signal so the entire dispatch transaction rolls back, catch outside and return false. Merely returning false after reserve would commit reservations/ticket. Keep claim/business lock order separate. Update direct-dispatch test helper to simulate real claimed+unexpired lease state if requiring claimed."
+    },
+    {
+      "id": "A05-F02",
+      "status": "reproduced_unfixed",
+      "test": "lockedOldestQueueItemIsSkippedThenClaimedAfterRelease",
+      "actual": "Actual production claim SQL, first consumer held LIMIT1 uncommitted, second SKIP LOCKED got zero of remaining 2 candidates. EXPLAIN uses ix_outbox range plus filesort.",
+      "recommendation": "Guarantee an ordered access path before LIMIT1 (minimal candidate FORCE INDEX(PRIMARY), verified no filesort in read-only EXPLAIN). Rerun real dual consumer test and assert selected row-only locking; forced primary may scan tenant history and is not a performance qualification. Do not change the test to manual single-row locking or add an IN filter that changes its optimizer."
+    }
+  ],
+  "passedBoundaries": [
+    "queue claim rollback retains attempt/owner/lease",
+    "real MySQL1205 quota-row wait rolls back complete business transaction; whole retry creates one reservation",
+    "real MySQL1213 victim rolls back both prior row mutation and audit",
+    "physical owned connection closes before COMMIT request, original approval key retries once",
+    "actual COMMIT then own connection closed/lost response; original authenticated receipt replay creates no duplicate outbox/audit",
+    "dispatch COMMIT response lost retains exact frozen account pair/day/slot across original-submission reads until authoritative close"
+  ],
+  "limitations": [
+    "JDBC commit-boundary fault injection, not transparent packet-level TLS/network proxy validation",
+    "Current compiled pre-Provider-integration classes; parent must rerun on final same artifact after core fixes",
+    "Remote CI not run; no push/deploy/resources/accounts created"
+  ],
+  "postRunStateRef": "docs/reviews/implementation-d0-d2/a05-index-analysis.json",
+  "databaseWrites": "Only unique synthetic test identities/configs/conversations and ordinary audited business operations; closed owned test bindings, retained data. Existing one stopped binding was not touched.",
+  "processState": "All owned javac/Maven test sessions exited; no background DB writer or open owned test transaction.",
+  "startupFailures": [
+    "direct surefire before local contract install could not resolve dependency",
+    "offline install lacked two official Maven plugin dependencies; trusted Central online install subsequently passed",
+    "skip-main lifecycle encountered concurrent new ExecutionSpecsTest before its class existed; no DB tests ran",
+    "direct surefire could not find Queue class after failed batch testCompile; isolated javac of only Queue test succeeded before actual8 tests"
+  ],
+  "remaining": "Parent same-artifact compilation and8-test rerun after Provider/V7 integration; first failed proof remains unchanged.",
+  "updatedAt": "2026-10-26T10:45:38.034955+00:00",
+  "revisedTestSourceSha256": "02065b2f963bc8a60bae33d2cea9d6c633324b7481ba0bdeaead3031302949ea",
+  "revisedTestStatus": "not_run_waiting_parent_same_artifact_regression",
+  "parentReportedCoreFixes": [
+    "ExecutionWorker.CLAIM_SQL FORCE INDEX(PRIMARY)",
+    "final sending/requeue owner+lease CAS; ClaimLost rolls back entire transaction"
+  ],
+  "testRevisions": [
+    "CLAIM_SQL consumes production constant, including EXPLAIN",
+    "lease test pauses after initial lease guard, advances injected clock, commits successor claim, then verifies full reserve/ticket/binding rollback"
+  ]
+}

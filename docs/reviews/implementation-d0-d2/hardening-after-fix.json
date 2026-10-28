@@ -1,0 +1,131 @@
+{
+  "scope": "actual Java/MySQL synthetic service audit regressions",
+  "passed": 15,
+  "total": 15,
+  "cases": [
+    {
+      "name": "R01 mutation receipt replay checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "5f2b5f55-5aba-45ea-a677-7f62563fe579",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R02 commandId lookup checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "a155cf74-e987-4de5-b032-8bf31f2cef7a",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R03 idempotency-key lookup checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "8b17858a-2c17-445c-9e7d-2ad21cddf977",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R04 fractional configuration quota is rejected",
+      "result": "pass",
+      "evidence": {
+        "fractionRejectedBeforePersistence": true
+      }
+    },
+    {
+      "name": "R05 new input invalidates old current result",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "be4b90de-c290-4d5d-9220-38f6473f1cde",
+        "oldResultExcluded": true
+      }
+    },
+    {
+      "name": "R06 clientMessageId deduplicates across command keys",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "f0b17489-6fd3-4075-8aa2-e2644c423484",
+        "savedMessages": 1
+      }
+    },
+    {
+      "name": "R07 synthetic configuration rejects real backend claims",
+      "result": "pass",
+      "evidence": {
+        "realBackendConfigurationRejected": true
+      }
+    },
+    {
+      "name": "R08 new attachment supersedes old result and download",
+      "result": "pass",
+      "evidence": {
+        "attachmentAdvancesInputRevision": true,
+        "oldDownloadDenied": true
+      }
+    },
+    {
+      "name": "R09 clientMessageId rejects changed content",
+      "result": "pass",
+      "evidence": {
+        "sameClientIdDifferentContentRejected": true
+      }
+    },
+    {
+      "name": "R10 publishing environment invalidates old plan",
+      "result": "pass",
+      "evidence": {
+        "environmentRevision": 2,
+        "oldApprovalRejected": true
+      }
+    },
+    {
+      "name": "R11 SSE snapshot W reconnects W+1 and revocation ends access",
+      "result": "pass",
+      "evidence": {
+        "snapshotWatermark": 1,
+        "resumedSequences": [
+          2,
+          3
+        ],
+        "revocationStopsBodyEvents": true
+      }
+    },
+    {
+      "name": "R12 subject namespace prevents foreign-key existence and receipt disclosure",
+      "result": "pass",
+      "evidence": {
+        "foreignSubjectCollisionDoesNotReturn409": true,
+        "foreignReceiptDenied": true,
+        "sameKeySeparateReceipts": true,
+        "ownChangedBodyReturns409": true
+      }
+    },
+    {
+      "name": "R13 command kind namespaces identical keys and lookups",
+      "result": "pass",
+      "evidence": {
+        "sameKeyDifferentKindsAreIndependent": true,
+        "lookupsRespectKind": true
+      }
+    },
+    {
+      "name": "R14 authentication precedes known idempotency key",
+      "result": "pass",
+      "evidence": {
+        "knownKeyWithoutIdentityReturns401": true,
+        "cachedResponseUnavailable": true
+      }
+    },
+    {
+      "name": "R15 cached artifact receipt rechecks current source permission",
+      "result": "pass",
+      "evidence": {
+        "equalArtifactCommandReauthorized": true,
+        "cachedArtifactReceiptReadReauthorized": true,
+        "sourceRevoked": true
+      }
+    }
+  ]
+}

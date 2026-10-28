@@ -1,0 +1,17 @@
+{
+  "scope": "actual local service and MySQL with synthetic identities/backend/CSV",
+  "environment": "UI订单测试-1792988050150",
+  "conversationId": "8cc794f0-1827-4f42-ae84-d583c7c34706",
+  "artifactId": "a66657e2-9a8d-422d-b1bd-c9d0ede968f6",
+  "csvSha256": "04606b19bbd97f15118ac35a0b760fbff6b47293a4bc301fa98a34469e0ba0f2",
+  "differenceCount": 2,
+  "totalDifference": "10.00",
+  "initialMembershipState": "pending",
+  "requestSubmitted": true,
+  "outsideRequests": [],
+  "pageErrors": [],
+  "viewportWidths": [
+    1440,
+    390
+  ]
+}

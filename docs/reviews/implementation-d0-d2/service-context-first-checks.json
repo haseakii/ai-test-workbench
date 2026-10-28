@@ -1,0 +1,74 @@
+{
+  "scope": "actual synthetic HTTP/MySQL context preparation; no model or external resources",
+  "cases": [
+    {
+      "name": "collect_only_understanding_without_execution",
+      "result": "pass"
+    },
+    {
+      "name": "recomputable_plan_context_owner_acl_and_new_input_invalidation",
+      "result": "fail",
+      "error": "('timed_out', {'id': 'f15bc76b-641e-403a-a4a8-f9dff62e91e2', 'title': '报表与明细金额不一致，请检查合成订单。', 'state': 'awaiting_user', 'revision': 6, 'titleRevision': 2, 'inputRevision': 4, 'eventWatermark': 9, 'resumeCursor': 'ZjE1YmM3NmItNjQxZS00MDNhLWE0YTgtZjlkZmY2MmU5MWUyOjAwMDAwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAxMjo5', 'environmentId': '9824771a-3f66-45b4-85d6-bf3107b78b59', 'environmentName': '订单测试-b992b8cc', 'verifications': [], 'messages': [{'text': '报表与明细金额不一致，请检查合成订单。', 'inputRevision': 1}, {'text': 'New synthetic scope input', 'inputRevision': 4}], 'attachments': [{'id': '5542eade-bae9-46af-babd-fc858f71ad89', 'state': 'ready', 'name': 'report.csv', 'sha256': '46d8ba3d24fd13a0c63d00a5b979bc5f6e23e7d3f1193e19e99ec8a1a9c1d807', 'bytes': 188}, {'id': 'b59fe244-e286-462f-ae32-cb04b505517a', 'state': 'ready', 'name': 'detail.csv', 'sha256': 'fb4426da2b80072b862abc00081f20f243808d334638ed25a77ec793a7d4e79a', 'bytes': 188}], 'approvals': [{'state': 'superseded', 'operationHash': '8aee09702524564377670738dbf0b7b96a79a97bb889c3f89acc0e72982450ce', 'id': 'd98cab05-888b-46b1-95a4-72db7b90b7ff', 'revision': 2, 'plan': {'to': '2026-10-26T00:00:00.000000Z', 'from': '2026-10-25T00:00:00.000000Z', 'model': 'fixture-v1', 'output': 'difference.csv', 'status': 'completed', 'purpose': 'investigation', 'currency': 'EUR', 'timeZone': 'Asia/Shanghai', 'operation': 'reconcile_csv_readonly_v1', 'validUntil': '2026-10-26T11:04:59.931781Z', 'environmentId': '9824771a-3f66-45b4-85d6-bf3107b78b59', 'inputRevision': 3, 'understandingRef': '24089c27-4368-48d0-9cc3-cedbcac5d934', 'understandingHash': '888c4a7522a365f5298869d4cac43eb6fa88c8480032d362dbdba721d7f58319', 'contextManifestRef': '0a96738d-13a0-4623-b1e9-2d3934a7e41c', 'detailAttachmentId': 'b59fe244-e286-462f-ae32-cb04b505517a', 'reportAttachmentId': '5542eade-bae9-46af-babd-fc858f71ad89', 'contextManifestHash': 'f4d433ad9083982f69bf73aa723c7110cdabfe190bb491b7df556615b2b7ccb5', 'dependencyRevisions': {'037762ac-ce58-4f60-b178-b0f4e6183d76': 1, '39248e52-b430-4dca-98a8-8f90f504a9fe': 1}, 'environmentRevision': 1, 'authorizationRevision': 375, 'detailAttachmentIdHash': 'fb4426da2b80072b862abc00081f20f243808d334638ed25a77ec793a7d4e79a', 'reportAttachmentIdHash': '46d8ba3d24fd13a0c63d00a5b979bc5f6e23e7d3f1193e19e99ec8a1a9c1d807'}, 'validUntil': '2026-10-26T11:04:59.931781'}], 'executions': [{'id': '65dc7978-2e8f-407b-adf4-4bed04f00b6f', 'state': 'rejected', 'accepted_at': None, 'closed_at': '2026-10-26T10:55:00.089588', 'stopped': True}], 'artifacts': []})"
+    }
+  ],
+  "passed": 1,
+  "total": 2,
+  "apiResponseValidation": {
+    "checked": 104,
+    "operations": [
+      "quota",
+      "newConfiguration",
+      "publish",
+      "grant",
+      "create",
+      "understand",
+      "context",
+      "snapshot",
+      "message",
+      "upload",
+      "prepare",
+      "stop"
+    ],
+    "responseCounts": {
+      "quota": {
+        "200": 1
+      },
+      "newConfiguration": {
+        "200": 3
+      },
+      "publish": {
+        "200": 1
+      },
+      "grant": {
+        "200": 2
+      },
+      "create": {
+        "200": 2
+      },
+      "understand": {
+        "200": 2
+      },
+      "context": {
+        "200": 2,
+        "404": 3,
+        "409": 1
+      },
+      "snapshot": {
+        "200": 81
+      },
+      "message": {
+        "200": 2
+      },
+      "upload": {
+        "200": 2
+      },
+      "prepare": {
+        "200": 1
+      },
+      "stop": {
+        "200": 1
+      }
+    }
+  },
+  "recordedAt": "2026-10-26T10:55:12.122542+00:00"
+}

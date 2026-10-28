@@ -1,0 +1,170 @@
+{
+  "scope": "actual current integrated Java/MySQL 8.4.13 test run; platform migration V7",
+  "command": "python /workspace/scratch/development-start-20261026/verify-context-port-final.py",
+  "suiteTimestamp": null,
+  "passed": 13,
+  "total": 13,
+  "cases": [
+    {
+      "name": "acceptedReceiptSurvivesConcurrentRevocationButNoNextToolStarts",
+      "result": "pass"
+    },
+    {
+      "name": "dispatchChecksExclusiveExpiryAfterWaitingForTheGuard",
+      "result": "pass"
+    },
+    {
+      "name": "firstAcceptanceChecksExclusiveExpiryAfterWaitingForTheGuard",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[1]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[2]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[3]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[4]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[5]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[6]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[7]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[8]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[9]",
+      "result": "pass"
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[10]",
+      "result": "pass"
+    }
+  ],
+  "transactionProofs": [
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "first-acceptance-before-revocation",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48048,
+      "leaderConnection": 48044,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "expiry-while-waiting-for-DISPATCH",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48138,
+      "leaderConnection": 48137,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "expiry-while-waiting-for-FIRST_ACCEPTANCE",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48226,
+      "leaderConnection": 48225,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "ENVIRONMENT_PUBLICATION-before-DISPATCH",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48317,
+      "leaderConnection": 48316,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "ENVIRONMENT_PUBLICATION-before-FIRST_ACCEPTANCE",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48410,
+      "leaderConnection": 48409,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "DEPENDENCY_PUBLICATION-before-DISPATCH",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48502,
+      "leaderConnection": 48501,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "DEPENDENCY_PUBLICATION-before-FIRST_ACCEPTANCE",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48596,
+      "leaderConnection": 48595,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "GRANT_REVOCATION-before-DISPATCH",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48685,
+      "leaderConnection": 48684,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "GRANT_REVOCATION-before-FIRST_ACCEPTANCE",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48780,
+      "leaderConnection": 48779,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "QUOTA_REDUCTION-before-DISPATCH",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48873,
+      "leaderConnection": 48872,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "QUOTA_REDUCTION-before-FIRST_ACCEPTANCE",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 48965,
+      "leaderConnection": 48964,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "STOP-before-DISPATCH",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 49053,
+      "leaderConnection": 49052,
+      "followerWaited": true
+    },
+    {
+      "leaderHeldBeforeCommit": true,
+      "case": "STOP-before-FIRST_ACCEPTANCE",
+      "activeTransactionsOverlapped": true,
+      "followerConnection": 49144,
+      "leaderConnection": 49143,
+      "followerWaited": true
+    }
+  ],
+  "source": "backend/platform-server/src/test/java/io/aitest/workbench/execution/AdmissionRaceTest.java",
+  "sourceSha256": "742d2aa82c2525d7ce1586d6bce982ed5cb8866827761c89e95192d32ea595de",
+  "limits": "actual different-connection barriers; dispatch false needs lost/expired sending authority and no side effects; first acceptance keeps exact errors"
+}

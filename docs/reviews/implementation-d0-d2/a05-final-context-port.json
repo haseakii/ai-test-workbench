@@ -1,0 +1,168 @@
+{
+  "scope": "actual current integrated Java/MySQL 8.4.13 test run; platform migration V7",
+  "command": "python /workspace/scratch/development-start-20261026/verify-context-port-final.py",
+  "suiteTimestamp": null,
+  "passed": 8,
+  "total": 8,
+  "cases": [
+    {
+      "name": "mysqlDeadlockVictimRollsBackItsEntireOwnedTransaction",
+      "result": "pass"
+    },
+    {
+      "name": "lostDispatchCommitResponseRetainsFrozenOccupationsUntilAuthoritativeClosure",
+      "result": "pass"
+    },
+    {
+      "name": "lockedOldestQueueItemIsSkippedThenClaimedAfterRelease",
+      "result": "pass"
+    },
+    {
+      "name": "commitResponseLostFindsDurableOriginalReceiptWithoutSecondOutbox",
+      "result": "pass"
+    },
+    {
+      "name": "quotaRowWaitCannotBeSkippedAndTimeoutRollsBackBeforeWholeDispatchRetry",
+      "result": "pass"
+    },
+    {
+      "name": "leaseHandoffAfterOwnerReadPreventsOldWorkerFromDispatching",
+      "result": "pass"
+    },
+    {
+      "name": "commitRequestNotSentRollsBackAndOriginalApprovalKeyRetriesOnce",
+      "result": "pass"
+    },
+    {
+      "name": "rolledBackQueueClaimDoesNotConsumeLeaseAttemptOrOwner",
+      "result": "pass"
+    }
+  ],
+  "transactionProofs": [
+    {
+      "case": "mysql-deadlock-entire-transaction-rollback",
+      "bothSlotLimits": 2,
+      "connections": [
+        49304,
+        49305
+      ],
+      "committedAudits": 1,
+      "victimError": 1213,
+      "externalActions": 0
+    },
+    {
+      "case": "dispatch-commit-response-lost-keeps-unknown-occupation",
+      "reservedPerAccount": 1,
+      "reconcileReads": 2,
+      "reexecuted": false,
+      "providerAcceptances": 0,
+      "slotOccupation": 1,
+      "sameFrozenAccountPair": true,
+      "ticketRows": 1
+    },
+    {
+      "case": "queue-claim-lock-range-before-release",
+      "secondConsumerRows": 1,
+      "leaderConnection": 49475,
+      "candidateRows": 3,
+      "leaderHeldBeforeCommit": true
+    },
+    {
+      "case": "queue-skip-then-oldest",
+      "holderConnection": 49475,
+      "explain": {
+        "query_block": {
+          "select_id": 1,
+          "cost_info": {
+            "query_cost": "88.97"
+          },
+          "ordering_operation": {
+            "using_filesort": false,
+            "table": {
+              "table_name": "outbox",
+              "access_type": "ref",
+              "possible_keys": [
+                "PRIMARY"
+              ],
+              "key": "PRIMARY",
+              "used_key_parts": [
+                "tenant_id"
+              ],
+              "key_length": "16",
+              "ref": [
+                "const"
+              ],
+              "rows_examined_per_scan": 880,
+              "rows_produced_per_join": 105,
+              "filtered": "12.00",
+              "cost_info": {
+                "read_cost": "0.98",
+                "eval_cost": "10.56",
+                "prefix_cost": "88.98",
+                "data_read_per_join": "18K"
+              },
+              "used_columns": [
+                "tenant_id",
+                "id",
+                "binding_id",
+                "state",
+                "worker_id",
+                "lease_until",
+                "attempt"
+              ],
+              "attached_condition": "((`workbench_platform`.`outbox`.`tenant_id` = 0x00000000000040008000000000000001) and (`workbench_platform`.`outbox`.`state` in ('queued','claimed','sending')) and ((`workbench_platform`.`outbox`.`lease_until` is null) or (`workbench_platform`.`outbox`.`lease_until` <= TIMESTAMP'2026-10-26 11:07:31.913386')))"
+            }
+          }
+        }
+      },
+      "afterRelease": "7851a971-2b17-4362-889f-fe2e20b2b8fc",
+      "selected": "89c65cda-c753-4767-ba43-1b906da364de",
+      "skipped": "7851a971-2b17-4362-889f-fe2e20b2b8fc",
+      "indexColumns": [
+        "state",
+        "lease_until",
+        "id"
+      ]
+    },
+    {
+      "case": "commit-committed_response_lost",
+      "outboxRows": 1,
+      "durableBeforeReconcile": true,
+      "sameCommandReceipt": true,
+      "injectionBoundary": "owned JDBC Connection.commit",
+      "quotaReservations": 0,
+      "packetLevelProxyValidated": false,
+      "providerAcceptances": 0,
+      "approvalAudits": 1
+    },
+    {
+      "case": "quota-lock-timeout-whole-transaction-retry",
+      "rollbackAccounts": true,
+      "queueLockReleased": true,
+      "mysqlError": 1205,
+      "retryReservations": 1,
+      "providerAcceptances": 0
+    },
+    {
+      "case": "lease-handoff-after-owner-read",
+      "takeoverCommitted": true,
+      "reservations": 0,
+      "newOwnerRetained": true,
+      "oldWorkerDispatched": false
+    },
+    {
+      "case": "commit-request_not_sent",
+      "outboxRows": 1,
+      "durableBeforeReconcile": false,
+      "sameCommandReceipt": true,
+      "injectionBoundary": "owned JDBC Connection.commit",
+      "quotaReservations": 0,
+      "packetLevelProxyValidated": false,
+      "providerAcceptances": 0,
+      "approvalAudits": 1
+    }
+  ],
+  "source": "backend/platform-server/src/test/java/io/aitest/workbench/execution/QueueCommitFaultTest.java",
+  "sourceSha256": "02065b2f963bc8a60bae33d2cea9d6c633324b7481ba0bdeaead3031302949ea",
+  "limits": "JDBC owned-connection COMMIT fault injection, not TLS/proxy packet-level qualification"
+}

@@ -1,0 +1,37 @@
+{
+  "status": "proposed_not_executed_approval_required",
+  "reason": "The two approved MySQL schemas contain retained data. Prefix histories prove partial DDL/readiness behavior, not the untouched original full empty schema migration chain.",
+  "container": {
+    "name": "workbench-mysql-a01",
+    "image": "mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69",
+    "publish": "127.0.0.1:ephemeral->3306/tcp",
+    "data": "private task directory under /workspace/scratch/a01-empty-mysql; retain container and evidence at checkpoint",
+    "privileged": false,
+    "hostNetwork": false,
+    "useExistingContainerOrData": false
+  },
+  "databases": [
+    "workbench_platform",
+    "workbench_runner"
+  ],
+  "temporaryAccounts": {
+    "workbench": "SELECT,INSERT,UPDATE,DELETE on this new container platform DB only",
+    "workbench_runner": "SELECT,INSERT,UPDATE,DELETE on this new container runner DB only",
+    "workbench_migration": "migration permissions on these two new test DBs only, no GRANT OPTION"
+  },
+  "rootUse": "Bootstrap only inside the new container; never Web/runtime",
+  "credentials": "Random task-only values in a private directory; no passwords in repository, arguments or reports",
+  "checks": [
+    "Before migration both original histories and business tables absent",
+    "Apply unchanged platform V1-V5 and runner V1 with independent migration identity",
+    "Runtime schema gate and account cross-DB/DDL denial",
+    "Second migration applies zero changes; graceful container restart preserves history and data"
+  ],
+  "boundaries": [
+    "No deletion/reset of current two schemas or original history",
+    "No repair or baseline of the original full migration chain",
+    "No change to existing accounts/network/security settings",
+    "No real resources/models/deployment/push"
+  ],
+  "execution": "Not started; explicit approval required for this additional container, schemas, users and scoped privileges."
+}

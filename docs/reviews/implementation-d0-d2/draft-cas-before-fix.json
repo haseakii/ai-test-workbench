@@ -1,0 +1,10 @@
+{
+  "scope": "real MySQL stale draft overwrite before A08 CAS fix",
+  "cases": [
+    {
+      "name": "staleDraftCannotOverwriteAnotherTabsSavedContent",
+      "result": "fail",
+      "failure": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown."
+    }
+  ]
+}

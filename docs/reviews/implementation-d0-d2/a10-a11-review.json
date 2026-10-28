@@ -1,0 +1,88 @@
+{
+  "scope": "A10 projection and A11 matrix preparation delegated to child agent; shared integration owned by root.",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "files": [
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverPackage.java",
+    "backend/platform-server/src/test/java/io/aitest/workbench/handover/HandoverPackageTest.java",
+    "backend/platform-server/src/test/java/io/aitest/workbench/execution/AuthorizationMatrixTest.java",
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverService.java",
+    "backend/platform-server/src/test/java/io/aitest/workbench/execution/HandoverServiceTest.java"
+  ],
+  "sourceSha256": {
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverPackage.java": "283c9c3806b63c8d13414f665e9abba5e2716ac643c8058e7555ccaef82bd6b0",
+    "backend/platform-server/src/test/java/io/aitest/workbench/handover/HandoverPackageTest.java": "1df51b879245ae615bd3dc739d00af07ac85c972ee0cc000e60a6b17997c2291",
+    "backend/platform-server/src/test/java/io/aitest/workbench/execution/AuthorizationMatrixTest.java": "a55825ffd087e019bf2a1c12d16790c87e80228af9fa4eba34a6f0f4ebbb958c",
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverService.java": "3b7fb93f67fa66e948bb62e151ef50cdb5bddcacc6dbb4b0b2504e6dde225b8b",
+    "backend/platform-server/src/test/java/io/aitest/workbench/execution/HandoverServiceTest.java": "d46cae305df8a6815ffba20a1e36c99ff35c5f3a8662a5ec8961525b354664ac"
+  },
+  "A10": {
+    "status": "pure_projection_passed_service_source_prepared_integration_not_run",
+    "evidence": "docs/reviews/implementation-d0-d2/a10-a11-pure-tests.json",
+    "implemented": [
+      "Immutable typed projection of explicitly supplied facts; no database/authorization/provider calls",
+      "UTC microsecond normalization, safe-integer and exact Decimal validation, deterministic set sorting and JCS SHA-256",
+      "Explicit unknown/null provenance, frozen original-period account pair, stale context representation",
+      "Package hash distinct from approved operation/context hashes; no invented workflow/provider/usage facts",
+      "Owner-only HandoverService export source: same business transaction authorizes attachments/artifacts, verifies original plan/context/configuration/blob hashes, projects V7 typed facts and frozen ledger scope, and writes export audit only",
+      "Nine integration test sources prepared; no Maven/DB/HTTP execution after automatic review rejection"
+    ],
+    "notImplemented": [
+      "Root-owned API route/response Schema/OpenAPI and existing detail-dialog action not verified by this child",
+      "Final stable A09/A03 artifact compile and actual export integration verification not run"
+    ],
+    "requiredIntegration": [
+      "Within one current authorization transaction, owner scope plus per-input/source/context/artifact grants; admin metadata and messages-only lease are not export grants",
+      "Validate original immutable plan and context hashes before supplying projections; stale/unknown facts may be labeled without treating them as executable",
+      "Do not change bindings/reservations or start replacement execution while exporting",
+      "Include only actually available backend refs; missing legacy refs remain null",
+      "Export audit contains purpose, package hash, conversation/ref watermark; never raw body, bytes, credentials, private paths or URLs"
+    ],
+    "serviceSignature": "public Map<String,Object> export(Scope.Actor actor, UUID conversation)",
+    "envelope": {
+      "package": "HandoverPackage typed record",
+      "packageSha256": "JCS SHA-256 of package projection"
+    },
+    "operationSelection": "Open binding first, then descending input revision and closure time, UUID only breaks ties; this is the primary scope projection, not an assertion of creation chronology. All bindings/reservations remain included.",
+    "privacy": "No messages, source/artifact bytes, filenames, private paths, raw spec/config/provider-event bodies, credentials or URLs. Superseded result bodies and verification content are omitted. Any revoked source denies whole package.",
+    "integrationTestSources": [
+      "completedFixedCsvFlowExportsAuthorizedFactsHashesVerificationAndAudit",
+      "unknownSubmissionAcrossUtcRolloverExportsFrozenOldPairWithoutReleaseOrNewExecution",
+      "legacyUnknownFrozenPairStaysUnknownAndDoesNotGuessCurrentAccounts",
+      "newInputExportsStalePlanAndOriginalContextHashWithoutOldResultBody",
+      "peerReviewerBodyLeaseAndAdminMetadataDoNotAuthorizeOwnerExport",
+      "revokedOwnerCannotReuseOldActorForExportAndDeniedAttemptIsNotAuditedAsExport",
+      "revokedSourceBlocksEntireDerivedPackageAndRetainsUnknownOccupation",
+      "planContextAndArtifactTamperingPreventExportWithoutPublishingAudit",
+      "auditFailureReturnsNoPackageAndRollsBackItsOnlyWrite"
+    ],
+    "integrationTestsExecuted": false,
+    "verificationBlocker": "Root reported that the one A10/A11 integrated-command retry was rejected by automatic approval review and requested direct user authorization. Child did not run Maven/DB/HTTP or alternative integration."
+  },
+  "A11": {
+    "status": "test_source_prepared_not_run",
+    "serviceMatrixTests": [
+      "sameEnvironmentPeerCannotUploadReadContextEventsOrDownloadOwnerArtifact",
+      "reviewerBodyLeaseGrantsMessagesOnlyAndDoesNotGrantContextEventsUploadOrArtifact",
+      "sameEnvironmentForeignAttachmentCannotBeAssociatedWithAnotherOwnedConversation",
+      "anotherValidEnvironmentGrantCannotExposeOwnerEnvironmentOrItsContent",
+      "resumeCursorCannotCrossSubjectOrConversationAndPagesRecheckCurrentGrant",
+      "ownerRevocationBlocksOldActorArtifactContextUploadReceiptAndReviewerLease",
+      "sourceRevocationAndNewInputBlockOldDerivedMaterialWithoutRewritingHistoricFacts"
+    ],
+    "isolation": "New synthetic subject/environment via existing fixture; all scenario rows inside rollback-only transaction. Artifact rows are explicitly ACL-only fixtures, not proof of Provider execution. Only approved existing DB/account if test window is later granted.",
+    "remaining": [
+      "Run matrix on stable migrated A09/A03 artifact in serialized DB test window",
+      "Capture actual HTTP operations/statuses and SSE permission loss on live service",
+      "Run the prepared HandoverService export authorization/denial tests once direct authorization and the root-owned serialized window exist"
+    ],
+    "notACheck": "There is no original attachment-download route; a 404 for an invented route is not authorization evidence."
+  },
+  "resourceChanges": "None: no database account/grant/instance/container/network/production resource changes",
+  "noCommitPushOrDeployment": true,
+  "checkPerformedThisFollowup": {
+    "type": "read-only source inspection and whitespace scan only",
+    "mainSourceCompiled": false,
+    "testsRun": false,
+    "sourceFilesStable": true
+  }
+}

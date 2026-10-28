@@ -1,0 +1,114 @@
+{
+  "scope": "official public text metadata review only; no ZIP/EXE payload fetched or executed",
+  "observedAt": "2026-10-27T02:30:08.781316+00:00",
+  "sources": {
+    "adoptium_home": {
+      "url": "https://github.com/adoptium/temurin21-binaries/blob/main/README.md",
+      "type": "official_repository_text",
+      "checked": true,
+      "finding": "Official repository says it is the home for releases/nightlies for all Temurin21 variants/platforms; it does not pin this Windows artifact or its checksum."
+    },
+    "adoptium_release": {
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/tag/jdk-21.0.9%2B10",
+      "type": "official_release_page",
+      "checked": false,
+      "finding": "Reference version matches the existing Linux toolchain; Windows binary availability and SHA are not established by the reads performed."
+    },
+    "mysql_windows_build": {
+      "url": "https://github.com/mysql/mysql-server/blob/mysql-8.4.0/cmake/os/Windows.cmake",
+      "type": "official_source_build_requirements",
+      "checked": true,
+      "quotes": [
+        "We require at least Visual Studio 2019 Update 11 (aka 16.11), which has version nr 1929.",
+        "OPTION(LINK_STATIC_RUNTIME_LIBRARIES \"Link with /MT\" OFF)",
+        "32 bit Windows builds are not supported."
+      ],
+      "finding": "MySQL8.4.0 source reference builds x64 server and defaults to dynamic MSVC runtime; this is not proof of the actual Windows8.4.13 ZIP dependency closure or supported OS list."
+    },
+    "mysql_downloads": {
+      "url": "https://dev.mysql.com/downloads/mysql/8.4.html",
+      "type": "official_download_page",
+      "checked": false,
+      "finding": "MySQL8.4 series official page; exact Windows8.4.13 package availability, signature/checksum and dependency closure remain unknown."
+    },
+    "mysql_windows_manual": {
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/windows-installation.html",
+      "type": "official_installation_manual",
+      "checked": false,
+      "finding": "Access from current executor denied by proxy403; no attempt to bypass or fetch software."
+    },
+    "msvc_deployment": {
+      "url": "https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/windows/redistributing-visual-cpp-files.md",
+      "type": "official_microsoft_documentation",
+      "checked": true,
+      "quotes": [
+        "Distribution of the Visual C++ Runtime Redistributable package, merge modules, and individual binaries is limited to licensed Visual Studio users and is subject to Microsoft Software License Terms.",
+        "It's also possible to directly install the Redistributable DLLs in the application local folder.",
+        "For servicing reasons, we don't recommend that you use this installation location."
+      ],
+      "finding": "App-local DLL deployment exists, but rights/REDIST list and maintenance duty must be checked. Do not copy arbitrary DLLs fromSystem32 or promise zero prerequisites."
+    },
+    "msvc_supported": {
+      "url": "https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/windows/latest-supported-vc-redist.md",
+      "type": "official_microsoft_documentation",
+      "checked": true,
+      "quotes": [
+        "The version of the Redistributable installed on the machine must be the same or later than the version of the MSVC Build Tools used to create your application.",
+        "The latest version of the Visual C++ v14 Redistributable included with Visual Studio 2026 supports only the following operating systems:"
+      ],
+      "finding": "Architecture must match. Official latest permalink is mutable and page intentionally does not freeze a version; inspect/pin the selected approved package later. Latest MSVC OS statement is not the MySQL8.4.13 support matrix.",
+      "documentedLatestRuntimeOsList": [
+        "Windows10",
+        "Windows11",
+        "Windows Server2016",
+        "Windows Server2019",
+        "Windows Server2022",
+        "Windows Server2025"
+      ]
+    },
+    "openjdk_license_reference": {
+      "url": "https://github.com/openjdk/jdk21u/blob/master/LICENSE",
+      "type": "official_license_reference_not_read_this_batch",
+      "checked": false,
+      "finding": "Expected OpenJDK GPLv2 with Classpath Exception/additional notices must be checked against the exact selected Temurin runtime archive before redistribution. temurin-build Apache2 license is build-system licensing, not runtime archive licensing."
+    }
+  },
+  "attempts": [
+    {
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/expanded_assets/jdk-21.0.9%2B10",
+      "status": 200,
+      "contentType": "text/html",
+      "result": "Exceeded256KiB bounded text read; discarded as incomplete asset inventory; no artifact availability or checksum conclusion"
+    },
+    {
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jre_x64_windows_hotspot_21.0.9_10.zip.sha256.txt",
+      "via": "GitHub text connector",
+      "status": 404,
+      "result": "Text checksum endpoint not found by connector; did not request.zip payload or follow a binary redirect"
+    },
+    {
+      "url": "https://api.github.com/repos/adoptium/temurin21-binaries/releases/tags/jdk-21.0.9%2B10",
+      "status": "proxy403",
+      "error": "Tunnel connection failed:403 Forbidden",
+      "result": "Stopped; not bypassed"
+    },
+    {
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/windows-installation.html",
+      "status": "proxy403",
+      "error": "Tunnel connection failed:403 Forbidden",
+      "result": "Stopped; not bypassed"
+    },
+    {
+      "url": "https://github.com/mysql/mysql-server/blob/mysql-8.4.0/LICENSE",
+      "result": "Connector returned oversized license text; full text not retained as bounded evidence. Only the official8.4.0 source header and introductory license family used; exact Windows binary license remains unverified."
+    }
+  ],
+  "windowsArtifactSha256": {
+    "java": null,
+    "mysql": null,
+    "msvc": null
+  },
+  "softwarePayloadDownloads": 0,
+  "actualWindowsTests": 0,
+  "catalog": "backend/distribution/setup/dependencies.json"
+}

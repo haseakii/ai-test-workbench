@@ -1,0 +1,10 @@
+{
+  "scope": "startup synthetic marker without migration validation before A01 fix",
+  "cases": [
+    {
+      "name": "syntheticMarkerAloneCannotAuthorizeMissingMigrationHistory",
+      "result": "fail",
+      "failure": "Expected java.lang.IllegalStateException to be thrown, but nothing was thrown."
+    }
+  ]
+}

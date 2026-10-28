@@ -1,0 +1,8 @@
+{
+  "scope": "actual browser trace after A08 cache reset exposed stale admin refresh closure",
+  "result": "fail",
+  "selectedEnvironmentId": "44b4e0de-2317-43f9-98b4-501356fb2807",
+  "submittedEnvironmentId": "c4211688-d8b9-488f-894a-70f866f4f476",
+  "test": "正式界面正文资格、用途租约、撤权后清除正文",
+  "fix": "functional state update keeps an explicitly chosen still-valid environment; no stale closure default overwrite"
+}

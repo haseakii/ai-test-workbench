@@ -1,0 +1,563 @@
+{
+  "config": {
+    "configFile": "/workspace/ai-test-workbench/frontend/playwright.config.ts",
+    "rootDir": "/workspace/ai-test-workbench/frontend/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-final-ui-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/ai-test-workbench/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "journey.spec.ts",
+      "file": "journey.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "正式界面完成配置开通审批计算下载与用户确认",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10995,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "管理员创建并显式发布配置",
+                      "duration": 1048
+                    },
+                    {
+                      "title": "开通测试成员并分配负责人环境权限",
+                      "duration": 828
+                    },
+                    {
+                      "title": "成员保存问题和真实上传两份CSV",
+                      "duration": 5003
+                    },
+                    {
+                      "title": "负责人从列表审阅固定计划并批准",
+                      "duration": 1950
+                    },
+                    {
+                      "title": "成员下载实际差异文件并确认当前结果",
+                      "duration": 1457
+                    },
+                    {
+                      "title": "管理员按同一问题查元数据且无正文权限",
+                      "duration": 302
+                    }
+                  ],
+                  "startTime": "2026-10-26T08:29:58.017Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-77184bcd9fc353be2d09",
+          "file": "journey.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "配置弹窗支持Escape和焦点返回",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 890,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:09.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-91fa08e02bb240f6ed7b",
+          "file": "journey.spec.ts",
+          "line": 274,
+          "column": 1
+        },
+        {
+          "title": "身份切换清除正文且未获权用户无法打开他人结果",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 321,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:10.063Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-5d8c8ba00b8cb53ad8a1",
+          "file": "journey.spec.ts",
+          "line": 295,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "recovery-and-content.spec.ts",
+      "file": "recovery-and-content.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "正式界面正文资格、用途租约、撤权后清除正文",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:10.398Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e750dd4fd3fffca1b5-3e17c91ded98fcd06c9e",
+          "file": "recovery-and-content.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "正式对话在事件连接断开后恢复期间新增的输入",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1969,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:13.405Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82e750dd4fd3fffca1b5-9dd3631cb242db27c6cb",
+          "file": "recovery-and-content.spec.ts",
+          "line": 158,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "submission-recovery.spec.ts",
+      "file": "submission-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "已到服务端但回执丢失：刷新后查原回执且消息只保存一次",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 931,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:15.388Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-c4989920891affe4224f",
+          "file": "submission-recovery.spec.ts",
+          "line": 90,
+          "column": 1
+        },
+        {
+          "title": "请求未到达：刷新保留原键和消息 ID，查不到回执才原键重试",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:16.324Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-b6c5db731cc45ac624ad",
+          "file": "submission-recovery.spec.ts",
+          "line": 136,
+          "column": 1
+        },
+        {
+          "title": "环境草稿取消不发送，分步保存丢回执后刷新沿用已完成步骤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1572,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:19.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-3afbc84b081de625f3c1",
+          "file": "submission-recovery.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "身份与环境切换不自动重发，清除旧正文缓存且返回后仅核查原回执",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 934,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:20.634Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-97b72e70a4dff4dd56dd",
+          "file": "submission-recovery.spec.ts",
+          "line": 257,
+          "column": 1
+        },
+        {
+          "title": "两个标签重命名冲突保留输入，明确载入最新基础后再保存",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:21.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-6fb1c1871e3e5b3174d6",
+          "file": "submission-recovery.spec.ts",
+          "line": 312,
+          "column": 1
+        },
+        {
+          "title": "两个标签保存配置以草稿哈希 CAS 防覆盖，冲突后保留输入并重新比较",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2499,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:22.755Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-e056f6158027a3c8fa4b",
+          "file": "submission-recovery.spec.ts",
+          "line": 371,
+          "column": 1
+        },
+        {
+          "title": "后台刷新晚返回不会覆盖管理员刚选择的授权环境",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 787,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:25.262Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-edd32c785ef97e95ae13",
+          "file": "submission-recovery.spec.ts",
+          "line": 426,
+          "column": 1
+        },
+        {
+          "title": "两个标签审批冲突可载入已批准状态，保留一个 Binding 和一次接纳",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1823,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:30:26.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-e92e7a47cef8082f2fa0",
+          "file": "submission-recovery.spec.ts",
+          "line": 472,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T08:29:57.671Z",
+    "duration": 30309.075,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "artifactSha256": "73ff5c7551ac2c06e5ba757f79e49664590d2e877c07c0b8c3c3c50a0f9e31d2"
+}

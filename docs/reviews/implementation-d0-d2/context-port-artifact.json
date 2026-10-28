@@ -1,0 +1,32 @@
+{
+  "scope": "byte identity of final compiled classes, immutable runtime jar and served frontend; compilation/byte identity does not validate unexecuted A10/A11 service tests",
+  "observedAt": "2026-10-26T11:12:52.318414+00:00",
+  "jarSha256": "84869024bf8ce5fa7bded1ce2739b96dc25e57576e7905ed4fd4e169400f7b2e",
+  "immutableRuntimeMatchesJar": true,
+  "platformClassesMatched": 74,
+  "providerContractJarMatches": true,
+  "servedStaticAssetsMatchCurrentDist": true,
+  "assets": [
+    {
+      "path": "index.html",
+      "sha256": "db7d803b3a72d5193524e6b7682ca9805e431073c74037db9b18651dbd4d65ff"
+    },
+    {
+      "path": "assets/index-jGg4TAyt.css",
+      "sha256": "fed529af0a8d978428e035cc05d4908ca810f93efed50873a9e1bbffc1daa602"
+    },
+    {
+      "path": "assets/index-DKzqX9l1.js",
+      "sha256": "59ebb7534fcb4f6c3045156b05e5ae83bae578b2e76de37e5e47f65c70544f6d"
+    }
+  ],
+  "unverifiedModules": [
+    "HandoverService integration and AuthorizationMatrix tests blocked pending direct user approval"
+  ],
+  "mainClassHashes": {
+    "io/aitest/workbench/execution/ExecutionWorker.class": "f1209ef7778991232e98c84a4b423275444cfaaa85b83599b30c34bc207389fb",
+    "io/aitest/workbench/execution/FixtureProvider.class": "cbc5528072e139f20c0e44407d5d8bd1e4215ce488d84201888b66984649479c",
+    "io/aitest/workbench/execution/ExecutionSpecs.class": "43cf164c1b1d5803ef9e6fbc8665d7ee3c717884db9fe20ed914d1f9853095c1",
+    "io/aitest/workbench/execution/ContextManifests.class": "bdc8e440d0b5ebb58d2087b779033954482cad0fe2557e231d8e602ae676b7ad"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "state": {
+    "slots": 0,
+    "outbox": 0,
+    "version": 7,
+    "reserved": 0,
+    "openBindings": 0
+  },
+  "priorRejectedActionsNotExecuted": true,
+  "noA10A11SurefireReports": true,
+  "priorJarSha256": "84869024bf8ce5fa7bded1ce2739b96dc25e57576e7905ed4fd4e169400f7b2e",
+  "recordedPid": 52965,
+  "authorization": "direct user permission Sentinel_e5ffa8a1f3c081918a8b91ce6ad5f085, relayed with exact requested A10/A11 scope; no new instance/account permission"
+}

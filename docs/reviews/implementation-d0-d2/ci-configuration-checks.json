@@ -1,0 +1,60 @@
+{
+  "scope": "local CI configuration review; GitHub workflow not executed",
+  "observedAt": "2026-10-26T09:35:17.022207+00:00",
+  "yamlParsePassed": true,
+  "loopbackMysqlPort": true,
+  "repositoryPermission": "contents: read",
+  "checkoutPersistsCredentials": false,
+  "officialActionRefsVerifiedBy": "git ls-remote https://github.com/actions/<name>.git refs/tags/<tag>",
+  "actions": {
+    "checkout": {
+      "tag": "v4",
+      "immutableRef": "11d5960a326750d5838078e36cf38b85af677262"
+    },
+    "setup-node": {
+      "tag": "v4",
+      "immutableRef": "49933ea5288caeca8642d1e84afbd3f7d6820020"
+    },
+    "setup-java": {
+      "tag": "v4",
+      "immutableRef": "cf277c60eb25467037889841efdb72551f06f6c3"
+    },
+    "setup-python": {
+      "tag": "v5",
+      "immutableRef": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    },
+    "upload-artifact": {
+      "tag": "v4",
+      "immutableRef": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+    }
+  },
+  "localBootstrapGuardPassed": true,
+  "hostedDatabaseProvisioningExecuted": false,
+  "remoteCiExecuted": false,
+  "notes": "Current local checks use the same final A04 artifact. Original cold chain still awaits explicit isolated instance approval. Hosted provisioning and remote workflow remain unrun; no push.",
+  "workflowSha256": "16cfca46d08ec61f1dee07491a11a62e94f1c9d549e9b256c4950da464770333",
+  "localEquivalentChecks": {
+    "java": 80,
+    "typescriptContracts": 10,
+    "typescriptSubmissions": 9,
+    "http": 15,
+    "hardening": 15,
+    "ui": 13,
+    "processWindows": 5
+  },
+  "schemaJsonRepliesValidated": 405,
+  "previousLocalEquivalentChecks": {
+    "java": 69,
+    "typescriptContracts": 10,
+    "typescriptSubmissions": 9,
+    "http": 15,
+    "hardening": 15,
+    "ui": 13
+  },
+  "executionProcessWindows": {
+    "passed": 5,
+    "scope": "Current final A04 artifact 77adbdc14fe9868f0dc3f9dc721bd5192a911e6ff27e80ba9373ca0d87b62b0d"
+  },
+  "newGate": "required ConcurrentTransactionsTest (9) and EventTerminalConsistencyTest (2), final complete Java 80/80 with no skipped cases",
+  "officialActionRefsUnchangedSincePreviousReview": true
+}

@@ -1,0 +1,9 @@
+{
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "branch": "work",
+  "trackedModified": 18,
+  "untrackedFiles": 277,
+  "diffStatTrackedOnly": " .gitignore                                        |  10 ++\n README.md                                         |  12 ++-\n docs/README.md                                    |   8 ++\n docs/design/ADMIN-CONFIGURATION.md                |   4 +\n docs/design/EXECUTION-PROVIDER.md                 |   4 +\n docs/design/STATE-MACHINES.md                     |  10 +-\n docs/design/contracts/conformance-cases.json      |  63 ++++++++++++\n docs/design/contracts/examples.json               |  13 ++-\n docs/design/contracts/execution-provider.d.ts     | 114 +++++++++++++---------\n docs/design/contracts/state-transitions.json      |  15 ++-\n docs/development/ARCHITECTURE-AND-CODE.md         |  10 +-\n docs/development/DATA-AND-TRANSACTIONS.md         |  10 +-\n docs/development/IMPLEMENTATION-PLAN.md           |   4 +-\n docs/development/README.md                        |   8 +-\n docs/development/TECH-STACK.md                    |   2 +-\n docs/prototype/index.html                         |   2 +-\n docs/reviews/DECISIONS-20261025.md                |  28 ++++++\n docs/reviews/INITIAL-DESIGN-CHANGELOG-20261025.md |  34 +++++++\n 18 files changed, 281 insertions(+), 70 deletions(-)\n",
+  "note": "backend/frontend/contracts and most evidence remain untracked local work; tracked stat omits them",
+  "noCommitPushMergeDeployment": true
+}

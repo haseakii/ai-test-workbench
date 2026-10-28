@@ -1,0 +1,402 @@
+{
+  "scope": "actual final Jar setup inspection from Chinese/spaced extraction on Linux; no software/init/Windows/native execution",
+  "passed": 3,
+  "total": 3,
+  "machineOutput": {
+    "format": "workbench-portable-review-v1",
+    "code": "SETUP_PREPARATION_ONLY",
+    "readOnly": true,
+    "canInitialize": false,
+    "executionAuthorized": false,
+    "recommendedRoute": "portable-private-mysql",
+    "proposedDataPath": "<not-selected Windows path; temporary offline test target redacted>",
+    "hostOs": "Linux",
+    "javaFeature": 21,
+    "checks": [
+      {
+        "id": "java-files",
+        "state": "MISSING",
+        "message": "尚未包含受信Windows依赖；不会下载或运行。"
+      },
+      {
+        "id": "java-artifact",
+        "state": "BLOCKED",
+        "message": "官方Windows精确版本、包摘要及重分发确认尚未完成；参考Linux版本不能代替。"
+      },
+      {
+        "id": "mysql-files",
+        "state": "MISSING",
+        "message": "尚未包含受信Windows依赖；不会下载或运行。"
+      },
+      {
+        "id": "mysql-artifact",
+        "state": "BLOCKED",
+        "message": "官方Windows精确版本、包摘要及重分发确认尚未完成；参考Linux版本不能代替。"
+      },
+      {
+        "id": "native-runtime",
+        "state": "UNVERIFIED",
+        "message": "MSVC/UCRT 是否已具备、所选MySQL是否含所需DLL尚未实机确认；不能自动安装或复制System32。"
+      },
+      {
+        "id": "windows-host",
+        "state": "MISSING",
+        "message": "需要用户指定的Windows验收机器；本次方案输出不证明主机、NTFS权限或进程能力已验收。"
+      },
+      {
+        "id": "data-filesystem",
+        "state": "UNVERIFIED",
+        "message": "目标需本地NTFS/私有ACL；只读观察到的文件系统为 overlay，未修改任何权限。"
+      },
+      {
+        "id": "new-data",
+        "state": "UNVERIFIED",
+        "message": "当前建议路径不存在；未创建，也未选择或批准用户的某台机器。"
+      },
+      {
+        "id": "secret-storage",
+        "state": "UNVERIFIED",
+        "message": "新凭据须Windows当前用户DPAPI和私有ACL；系统PowerShell/策略需可用，失败不回落明文。"
+      },
+      {
+        "id": "bootstrap",
+        "state": "BLOCKED",
+        "message": "初始化执行器未接通，模板不可直接运行；新实例/账号/TLS/凭据/端口范围均待明确批准。"
+      }
+    ],
+    "inputs": [
+      {
+        "file": "dependencies.json",
+        "bytes": 16424,
+        "sha256": "afd615c6d0e528e402d0baa26cdc316ebe62e1af8c3c184dca7ccf55b23df339"
+      },
+      {
+        "file": "bootstrap-actions.json",
+        "bytes": 14641,
+        "sha256": "a7bb0a5316bbc41a671342c895e9f3e0e82e1b8b72bcae3a97f4948de6ee8e4e"
+      },
+      {
+        "file": "bootstrap.sql.template",
+        "bytes": 2018,
+        "sha256": "f99de20e7de08fca08120c57e39841771e401b543eadb07cabdb6c56454f4556"
+      },
+      {
+        "file": "initialize.ini.template",
+        "bytes": 619,
+        "sha256": "71ce76c68d45b6663b07f96c91ea6ed332129095c71454249e41007876b6b8b6"
+      },
+      {
+        "file": "my.ini.template",
+        "bytes": 1260,
+        "sha256": "33528bd9ecc1d34778cc72891b5225ec3a8feb862616b2cad5655a4c731e18c0"
+      }
+    ],
+    "routes": {
+      "portable-private-mysql": {
+        "role": "recommended single primary first-install path after explicit approvals and implementation/Windows acceptance",
+        "status": "prepared_design_not_executed",
+        "plannedUserActions": [
+          "Extract a complete approved bundle in a local writable/private location",
+          "Double-click Workbench.cmd",
+          "Review and confirm first local-instance scope, then wait for actual readiness"
+        ],
+        "plannedActionCount": 3,
+        "plannedRequiredDatabasePasswordInputs": 0,
+        "automationOnlyAfterApproval": [
+          "Verify every bundled dependency digest and native prerequisites",
+          "Use private Java/MySQL paths without modifying PATH/service/firewall/global registry settings",
+          "Create only a new private data directory and fixed local schemas/scoped users",
+          "Generate secrets/TLS only within the approved scope and store using DPAPI CurrentUser plus owner ACL",
+          "Run independent migration identity and then start runtime with only platform DML credentials"
+        ],
+        "currentGaps": [
+          "No approved/bundled Windows Java/MySQL/native binaries",
+          "No actual native dependency closure proof",
+          "No selected Windows machine",
+          "No authorization to create the local DB instance/users/secrets",
+          "DPAPI and secure bootstrap/recovery not Windows-executed"
+        ]
+      },
+      "existing-authorized-mysql": {
+        "role": "compatibility path for administrators with an already prepared environment, not a second automatic installer",
+        "status": "current_preview_path",
+        "currentPrompts": 6,
+        "requiredIndependentExistingInputs": 4,
+        "defaultedInputs": 2,
+        "requiredValues": [
+          "Existing PKCS12 trust store path",
+          "Existing trust store password",
+          "Existing platform runtime password",
+          "Existing migration password"
+        ],
+        "hiddenAdministratorPreworkNotCountedAsZero": [
+          "Provision compatibleJava/MySQL/TLS",
+          "Create/verify the two scoped databases and three scoped runtime/migration users"
+        ],
+        "tradeoff": "Reuses resources but retains administrator prework and four required inputs; cannot be labeled simple first-install completion"
+      }
+    },
+    "fixedScope": {
+      "schemas": [
+        "workbench_platform",
+        "workbench_runner"
+      ],
+      "accounts": [
+        {
+          "user": "workbench",
+          "host": "127.0.0.1",
+          "schemas": [
+            "workbench_platform"
+          ],
+          "privileges": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ],
+          "requireTls": true
+        },
+        {
+          "user": "workbench_runner",
+          "host": "127.0.0.1",
+          "schemas": [
+            "workbench_runner"
+          ],
+          "privileges": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ],
+          "requireTls": true
+        },
+        {
+          "user": "workbench_migration",
+          "host": "127.0.0.1",
+          "schemas": [
+            "workbench_platform",
+            "workbench_runner"
+          ],
+          "privileges": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "CREATE",
+            "ALTER",
+            "INDEX",
+            "REFERENCES"
+          ],
+          "requireTls": true
+        }
+      ],
+      "administrativeIdentity": "vendor-created root@localhost, only for this new private instance; never a Web or Runner identity",
+      "mysqlBind": "127.0.0.1",
+      "mysqlPort": 13306,
+      "uiBind": "127.0.0.1",
+      "uiPort": 18080,
+      "newSystemService": false,
+      "systemPathChange": false,
+      "firewallOrGlobalPermissionChange": false,
+      "existingDatabaseReuse": false
+    },
+    "actions": [
+      {
+        "id": "inspect",
+        "effect": "read_only",
+        "executionApprovalRequired": false,
+        "description": "Inspect verified dependency manifests, local host capability, free loopback ports, target ownership and absence without creating directories.",
+        "argv": [],
+        "mustNotWrite": true
+      },
+      {
+        "id": "prepare_private_files",
+        "effect": "new_private_files_and_credential_material",
+        "executionApprovalRequired": true,
+        "description": "After explicit scope approval only, create new private directories and phase journal; prepare MySQL options, cryptographic secrets and protected storage. Never modify an existing shared directory or generated old config.",
+        "argv": [],
+        "requires": [
+          "verified-third-party-artifacts",
+          "selected-windows-host",
+          "new-private-instance",
+          "private-secrets-and-local-processes"
+        ]
+      },
+      {
+        "id": "initialize_data",
+        "effect": "new_private_datadir",
+        "executionApprovalRequired": true,
+        "description": "Run vendor secure initialization only once with a separate minimal non-listening config, never the normal TLS config. Capture the generated temporary expired root password solely in owner-private initialization log/working memory.",
+        "argv": [
+          "{{MYSQL_HOME}}/bin/mysqld.exe",
+          "--defaults-file={{PRIVATE_RENDERED_INITIALIZE_INI}}",
+          "--initialize",
+          "--console"
+        ],
+        "requires": [
+          "owned_new_empty_datadir",
+          "durable_initialization_intent",
+          "private_capture_log",
+          "separate_minimal_initialize_config_with_no_tls_file_references"
+        ],
+        "onUnknown": "freeze; inspect original PID/files/journal; never repeat --initialize, clear data or infer rollback"
+      },
+      {
+        "id": "verify_tls_material",
+        "effect": "read_only",
+        "executionApprovalRequired": true,
+        "description": "Verify vendor initialization produced usable private ca.pem/server-cert.pem/server-key.pem. If absent or incompatible stop; never disable TLS.",
+        "argv": [],
+        "actualWindowsBehaviorVerified": false
+      },
+      {
+        "id": "start_bootstrap_memory_only",
+        "effect": "owned_temporary_mysql_process",
+        "executionApprovalRequired": true,
+        "description": "Start the exact new private instance without TCP networking, with authenticated Windows shared-memory transport. No unauthenticated initialization mode.",
+        "argv": [
+          "{{MYSQL_HOME}}/bin/mysqld.exe",
+          "--defaults-file={{PRIVATE_RENDERED_MY_INI}}",
+          "--skip-networking",
+          "--shared-memory",
+          "--shared-memory-base-name={{PRIVATE_SHARED_MEMORY_NAME}}",
+          "--console"
+        ],
+        "requires": [
+          "original_owned_server_pid_and_start_identity",
+          "private_capture_log",
+          "private_tls_material_existence_and_ownership_verified_before_normal_config_is_loaded"
+        ],
+        "actualWindowsBehaviorVerified": false,
+        "onUnknown": "retain original ownership and evidence; do not start another server"
+      },
+      {
+        "id": "bootstrap_fixed_sql",
+        "effect": "two_schemas_three_scoped_accounts_and_root_rotation",
+        "executionApprovalRequired": true,
+        "description": "Use the vendor-created localhost administrative identity only in this private instance. Rotate its expired temporary password before CREATE/GRANT; feed approved SQL through stdin, with no client --force.",
+        "argv": [
+          "{{MYSQL_HOME}}/bin/mysql.exe",
+          "--defaults-extra-file={{PRIVATE_BOOTSTRAP_CLIENT_OPTIONS}}",
+          "--protocol=MEMORY",
+          "--shared-memory-base-name={{PRIVATE_SHARED_MEMORY_NAME}}",
+          "--connect-expired-password",
+          "--batch"
+        ],
+        "stdinTemplate": "bootstrap.sql.template",
+        "secretTransport": "owner-private client option file and stdin only; not argv, MYSQL_PWD, public logs or source",
+        "requires": [
+          "exact_new_private_server_identity",
+          "approved_bound_template_hash",
+          "temporary_root_secret_verified"
+        ],
+        "onUnknown": "freeze and inspect exact account/schema state under this original instance; never rerun CREATE/GRANT blindly or adopt IF NOT EXISTS"
+      },
+      {
+        "id": "import_private_ca",
+        "effect": "new_private_jdbc_trust_store",
+        "executionApprovalRequired": true,
+        "description": "Import this instance CA into a new private PKCS12 store using the portable approved JDK21 keytool. Never download a trust store or expose store password in argv.",
+        "argv": [
+          "{{JAVA_HOME}}/bin/keytool.exe",
+          "-importcert",
+          "-noprompt",
+          "-alias",
+          "workbench-private-mysql-ca",
+          "-file",
+          "{{PRIVATE_CA_PEM}}",
+          "-keystore",
+          "{{PRIVATE_TRUST_STORE}}",
+          "-storetype",
+          "PKCS12",
+          "-storepass:file",
+          "{{PRIVATE_TRUST_STORE_PASSWORD_FILE}}"
+        ],
+        "requires": [
+          "approved_portable_jdk_contains_keytool",
+          "owner_private_secret_file",
+          "new_trust_store_target"
+        ]
+      },
+      {
+        "id": "stop_bootstrap_mysql",
+        "effect": "graceful_stop_owned_private_server",
+        "executionApprovalRequired": true,
+        "description": "Request authenticated shutdown over the original private memory transport, then confirm the original PID/start identity exited. No force kill.",
+        "argv": [
+          "{{MYSQL_HOME}}/bin/mysqladmin.exe",
+          "--defaults-extra-file={{PRIVATE_ROTATED_ADMIN_CLIENT_OPTIONS}}",
+          "--protocol=MEMORY",
+          "--shared-memory-base-name={{PRIVATE_SHARED_MEMORY_NAME}}",
+          "shutdown"
+        ],
+        "onUnknown": "retain ownership and occupied instance; do not start replacement"
+      },
+      {
+        "id": "start_private_tls_mysql",
+        "effect": "owned_loopback_mysql_process",
+        "executionApprovalRequired": true,
+        "description": "Start only after bootstrap exit is confirmed. Normal options disable shared memory/named pipes/MySQLX, bind IPv4 loopback, require verified TLS and preserve durable logs.",
+        "argv": [
+          "{{MYSQL_HOME}}/bin/mysqld.exe",
+          "--defaults-file={{PRIVATE_RENDERED_MY_INI}}",
+          "--console"
+        ],
+        "requires": [
+          "bootstrap_owned_pid_exit_confirmed",
+          "protected_secrets_verified",
+          "normal_tls_options_verified"
+        ]
+      },
+      {
+        "id": "verify_scopes_and_migrate",
+        "effect": "read_checks_then_authorized_schema_migrations",
+        "executionApprovalRequired": true,
+        "description": "Verify TLS/server identity, exact schemas, runtime cross-schema/DDL denial, migration no global/grant rights; execute existing platform V1-V7 and Runner V1 with separate migration credentials.",
+        "argv": [],
+        "requires": [
+          "original_private_server_identity",
+          "certificate_hash_and_server_uuid_recorded",
+          "separate_short_lived_migration_process",
+          "actual_privilege_negative_tests"
+        ],
+        "onUnknown": "freeze incomplete migration state; no clean, repair or DDL rollback assumption"
+      },
+      {
+        "id": "start_platform_and_confirm",
+        "effect": "owned_platform_jvm",
+        "executionApprovalRequired": true,
+        "description": "Give the Web process only platform DML configuration. Confirm precise histories, actual private readiness and usable synthetic UI before claiming ready; real identity is a later phase.",
+        "argv": [],
+        "requires": [
+          "exact_platform_v7_and_runner_v1_histories",
+          "private_per_run_process_control",
+          "no_admin_migration_runner_secret_in_web_environment"
+        ]
+      }
+    ],
+    "requiredApprovals": [
+      {
+        "id": "verified-third-party-artifacts",
+        "scope": "exact official Windows Java21/MySQL8.4 artifacts, versions, source URLs, digests, license and native-runtime requirements; no auto latest or unverified bundling"
+      },
+      {
+        "id": "selected-windows-host",
+        "scope": "a user-selected Windows host and concrete local private instance/data/log/TLS/secret-store paths; no guessed machine"
+      },
+      {
+        "id": "new-private-instance",
+        "scope": "initialize only a proven absent/empty owned private datadir; create these two schemas and three scoped accounts; rotate this instance initial root password"
+      },
+      {
+        "id": "private-secrets-and-local-processes",
+        "scope": "cryptographic credentials/TLS/trust generation, current-user protected storage, foreground owned processes and loopback-only ports; no system services or PATH/firewall changes"
+      }
+    ],
+    "planSha256": "bdb5ecbd27ebb9d38497c1bc1d1e0d7c7d67f150a6d753f87fdd3a8c162f7a42",
+    "temporaryTargetPathRedacted": true
+  },
+  "humanReadableOnly": true,
+  "noRuntimeDirectoryCreated": true,
+  "planShaBeforePathRedaction": "bdb5ecbd27ebb9d38497c1bc1d1e0d7c7d67f150a6d753f87fdd3a8c162f7a42"
+}

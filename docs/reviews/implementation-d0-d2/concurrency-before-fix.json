@@ -1,0 +1,16 @@
+{
+  "scope": "actual MySQL before A04 event atomicity/closed terminal conflict fix",
+  "suiteTimestamp": null,
+  "cases": [
+    {
+      "name": "closedTerminalSameEventChangedContentIsExplicitConflict",
+      "result": "fail",
+      "failure": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown."
+    },
+    {
+      "name": "eventInsertFailureRollsBackWatermarkAndRetryReusesSequence",
+      "result": "fail",
+      "failure": "failed event must not commit a counter without its row ==> expected: <1> but was: <2>"
+    }
+  ]
+}

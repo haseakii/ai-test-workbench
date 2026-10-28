@@ -1,0 +1,65 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "检 检验台 AI 测试协作平台" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 检
+      - generic [ref=e7]:
+        - text: 检验台
+        - generic [ref=e8]: AI 测试协作平台
+    - paragraph [ref=e9]: 工作空间
+    - navigation [ref=e10]:
+      - button "问题对话" [ref=e11] [cursor=pointer]
+    - generic [ref=e12]:
+      - text: 本地服务已连接
+      - generic [ref=e14]: 合成数据验证环境
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - text: 开发验证环境
+        - heading "问题对话" [level=1] [ref=e18]
+      - generic [ref=e19]:
+        - text: 测试身份
+        - combobox "测试身份" [ref=e20]:
+          - option "alice"
+          - option "reviewer"
+          - option "admin"
+          - option "bob" [selected]
+          - option "pending"
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - heading "我的问题" [level=2] [ref=e24]
+        - generic [ref=e25]:
+          - text: 新问题环境
+          - combobox "所属环境" [ref=e26]:
+            - option "请选择可用环境"
+            - option "订单测试-97029690" [selected]
+            - option "订单测试-f0bf32b3"
+            - option "订单测试-bba432aa"
+            - option "订单测试-1a67ac8b"
+            - option "订单测试-77b3f4c5"
+            - option "订单测试-190be638"
+            - option "订单测试-d8052dee"
+        - button "新建问题" [ref=e27] [cursor=pointer]
+        - generic [ref=e28]:
+          - button "新问题 待补充" [ref=e29] [cursor=pointer]:
+            - strong [ref=e30]: 新问题
+            - generic [ref=e31]: 待补充
+          - button "新问题 待补充" [ref=e32] [cursor=pointer]:
+            - strong [ref=e33]: 新问题
+            - generic [ref=e34]: 待补充
+          - button "Separate authorized conversation 待接管" [ref=e35] [cursor=pointer]:
+            - strong [ref=e36]: Separate authorized conversation
+            - generic [ref=e37]: 待接管
+      - generic [ref=e39]:
+        - generic [ref=e40]: ◎
+        - heading "从一个具体问题开始" [level=2] [ref=e41]
+        - paragraph [ref=e42]: 选择系统环境，持续补充材料，得到可复核的检查结果。
+        - generic [ref=e43]:
+          - strong [ref=e44]: 报表与明细金额不一致
+          - generic [ref=e45]: 上传两份 CSV，确认范围后执行只读核对。
+        - paragraph [ref=e46]: 本环境使用合成执行后端，不调用真实模型或业务资源。
+    - generic [ref=e47]: 合成数据开发验证 · 执行完成后仍需用户确认
+```

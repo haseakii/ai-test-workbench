@@ -1,0 +1,35 @@
+# OFFLINE TEMPLATE ONLY. Not a defaults file for a running server.
+# The unknown non-loose option is an additional refusal guard. An approved
+# coordinator must remove it only after validating all paths/tokens/approvals.
+# No actual database initialization or credential generation is implemented here.
+[mysqld]
+workbench-template-not-rendered=REFUSE_UNAPPROVED_TEMPLATE
+basedir="{{MYSQL_BASEDIR_MYSQL_PATH}}"
+datadir="{{PRIVATE_DATA_DIRECTORY_MYSQL_PATH}}"
+tmpdir="{{PRIVATE_TEMP_DIRECTORY_MYSQL_PATH}}"
+pid-file="{{PRIVATE_PID_FILE_MYSQL_PATH}}"
+log-error="{{PRIVATE_ERROR_LOG_MYSQL_PATH}}"
+bind-address=127.0.0.1
+port=13306
+skip-name-resolve=ON
+mysqlx=OFF
+named-pipe=OFF
+shared-memory=OFF
+local-infile=OFF
+secure-file-priv=NULL
+general-log=OFF
+slow-query-log=OFF
+require-secure-transport=ON
+tls-version=TLSv1.2,TLSv1.3
+ssl-ca="{{PRIVATE_CA_PEM_MYSQL_PATH}}"
+ssl-cert="{{PRIVATE_SERVER_CERT_PEM_MYSQL_PATH}}"
+ssl-key="{{PRIVATE_SERVER_KEY_PEM_MYSQL_PATH}}"
+default-time-zone="+00:00"
+transaction-isolation=READ-COMMITTED
+default-storage-engine=InnoDB
+sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+innodb-flush-log-at-trx-commit=1
+server-id=1
+log-bin="{{PRIVATE_BINARY_LOG_PREFIX_MYSQL_PATH}}"
+binlog-format=ROW
+sync-binlog=1

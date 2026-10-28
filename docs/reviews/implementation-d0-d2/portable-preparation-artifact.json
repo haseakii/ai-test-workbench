@@ -1,0 +1,12 @@
+{
+  "scope": "new setup preparation archive without third-party runtime/server payload or initialization executor",
+  "archivePath": "backend/target/portable-setup-preparation/ai-test-workbench-0.1.0-SNAPSHOT-synthetic.zip",
+  "archiveSha256": "0b373297dde0b4b3f9ae1ffde0b5547cee049084ee5d7daaa71dfe51eda72da8",
+  "archiveBytes": 26383341,
+  "jarSha256": "6ade73ac4bcab9f8bc60b13cfda4d1870d3765b57c2664effaf627094899d40f",
+  "files": 17,
+  "previousPreviewSha256Unchanged": "a71f61adb819d078c20ace7c5c3282766a7dcd96d0968fa235c23a9e55fe0fc7",
+  "vendorSoftwareIncluded": false,
+  "executorIncluded": false,
+  "actualWindowsVerified": false
+}

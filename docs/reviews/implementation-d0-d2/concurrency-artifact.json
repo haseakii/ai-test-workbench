@@ -1,0 +1,14 @@
+{
+  "jarSha256": "77adbdc14fe9868f0dc3f9dc721bd5192a911e6ff27e80ba9373ca0d87b62b0d",
+  "pid": 37536,
+  "runningImmutableArtifactMatchesFinalJar": true,
+  "servedAssetHashes": {
+    "index.html": "86adaf30747652b9fdf879d5d7e22819ed5978f19ac9be8a875cfc27f718c9cf",
+    "assets/index-jGg4TAyt.css": "fed529af0a8d978428e035cc05d4908ca810f93efed50873a9e1bbffc1daa602",
+    "assets/index-Z4wxWxZI.js": "ede6cea33f8a9edc8d2e3cc811f64faa7d29b0e1357b40e91321e976913083db"
+  },
+  "packagedStaticFilesExactlyMatchFrontendDist": true,
+  "platformClassesMatchTestedBuild": 46,
+  "providerContractJarMatchesTestedBuild": true,
+  "observedAt": "2026-10-26T09:35:17.022207+00:00"
+}

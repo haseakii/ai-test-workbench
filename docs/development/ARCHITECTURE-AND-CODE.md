@@ -1,6 +1,10 @@
 # 架构与代码层级规划
 
-状态：开发实现待评审；平台数据库方向已确认为 MySQL 8.4 LTS / InnoDB。继承 [ADR-001](../architecture/ADR-001.md) 的独立平台方向，以一个业务单体、一个受控执行节点起步。本轮不改产品职责、执行契约或已认可的页面。
+状态：隔离 D0–D2 已开始实施；平台数据库方向已确认为 MySQL 8.4 LTS / InnoDB。继承 [ADR-001](../architecture/ADR-001.md) 的独立平台方向，以一个业务单体、一个受控执行节点起步。本轮不改产品职责、执行契约或已认可的页面。
+
+当前合成实现中，`ExecutionWorker` 已消费生成的 Java `ExecutionProvider` 端口；`FixtureProvider` 实际实现 12 方法，输入续接和权限恢复等未支持操作明确返回 `UNSUPPORTED`。替身与平台仍在同一进程、同一获准平台测试库；这不代表下图的真实适配器、独立 Runner 或 Agent 隔离已实现。完整执行清单、能力/预算快照与 Provider 事实已持久化，不从替身的内部 Map 直接推进 Worker。
+
+固定 CSV 的理解记录和调查上下文按用途独立保存；规范哈希覆盖输入轮次、消息/附件摘要、不可变配置、授权引用和运行代码摘要。新输入和撤权在后端使旧清单失效。原“确认检查范围”弹窗呈现规则建议并要求确认，没有新增工作流页面或模型调用。逐项实测与剩余项以[实施记录](../reviews/IMPLEMENTATION-PROGRESS-20261026.md)为准。
 
 ## 进程与信任边界
 
@@ -49,7 +53,9 @@ Agent 不能访问 Runner 数据库或平台内部管理接口。允许的出口
 
 MySQL 方言和类型转换止于基础设施层：统一 UUID 二进制映射、UTC/微秒时间映射、BigDecimal 和精确标识符绑定；Controller、领域和 provider-contract 不出现 JDBC 驱动或 JSON 列类型。运行时查询不接受用户任意表名 / SQL，不设置以总控数据库为数据源的 Repository。
 
-## 计划目录（尚不存在业务工程）
+## 工程目录与后续规划
+
+下面同时列出已建工程与后续目录；实际实现及未完成项见[实施记录](../reviews/IMPLEMENTATION-PROGRESS-20261026.md)。
 
 ```text
 ai-test-workbench/

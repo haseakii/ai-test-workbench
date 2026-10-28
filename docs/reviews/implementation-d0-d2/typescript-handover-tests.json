@@ -1,0 +1,39 @@
+{
+  "commands": [
+    "npm --prefix frontend run test:contracts",
+    "npm --prefix frontend run test:submissions",
+    "npm --prefix frontend run test:handover"
+  ],
+  "results": [
+    {
+      "log": "handover-ts-contracts.log",
+      "summary": [
+        "ℹ tests 10",
+        "ℹ pass 10",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "log": "handover-ts-submissions.log",
+      "summary": [
+        "ℹ tests 9",
+        "ℹ pass 9",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "log": "handover-ts-schema.log",
+      "summary": [
+        "ℹ tests 9",
+        "ℹ pass 9",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    }
+  ],
+  "passed": 28,
+  "failed": 0,
+  "frontendBuild": "passed"
+}

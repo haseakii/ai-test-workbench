@@ -1,0 +1,11 @@
+{
+  "scope": "read-only identity verification of pre-existing synthetic JVM; no HTTP/DB operation or process signal in this batch",
+  "observedAt": "2026-10-27T02:13:43.764816+00:00",
+  "ownedProcess": {
+    "pid": 75021,
+    "sha256": "60d85b5844a67850271784133387bbc7fa8b6ccaca62f5e721ac55bf98e01654",
+    "startTicks": 8165745
+  },
+  "candidateArtifactRunning": false,
+  "previousServiceRestartedByThisBatch": false
+}

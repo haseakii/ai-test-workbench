@@ -1,0 +1,42 @@
+{
+  "scope": "actual Java/MySQL synthetic service audit regressions",
+  "passed": 0,
+  "total": 7,
+  "cases": [
+    {
+      "name": "R01 mutation receipt replay checks current object scope",
+      "result": "fail",
+      "error": "('alice', '/conversations', 200, '{\"id\":\"8910ca2d-b11c-413a-b0b8-3f9e233414d0\",\"revision\":1,\"commandId\":\"2954d9b2-e554-40a0-aea6-690dd269c2ed\"}')"
+    },
+    {
+      "name": "R02 commandId lookup checks current object scope",
+      "result": "fail",
+      "error": "('alice', '/commands/9fd54cb2-9168-4954-96ac-f7197483226c', 200, '{\"id\":\"5f76478f-b51d-4d92-9976-1748a89e94c7\",\"revision\":1,\"commandId\":\"9fd54cb2-9168-4954-96ac-f7197483226c\"}')"
+    },
+    {
+      "name": "R03 idempotency-key lookup checks current object scope",
+      "result": "fail",
+      "error": "('alice', '/command-lookups', 200, '{\"id\":\"6b607822-8809-49f4-8ab7-ecba8aedc090\",\"revision\":1,\"commandId\":\"c77e8b69-ce29-45c5-b986-f273bd48e6e5\"}')"
+    },
+    {
+      "name": "R04 fractional configuration quota is rejected",
+      "result": "fail",
+      "error": "('admin', '/admin/configurations', 200, '{\"id\":\"e494dd30-402a-4bba-87f5-0c7df7184a40\",\"draftBase\":0,\"revision\":0,\"commandId\":\"85496576-a7c1-4f47-93b1-f019f5feb081\"}')"
+    },
+    {
+      "name": "R05 new input invalidates old current result",
+      "result": "fail",
+      "error": "{'id': 'a79ec6da-e0d8-461e-8880-a313068f16b0', 'title': '报表与明细金额不一致，请检查合成订单。', 'state': 'awaiting_user', 'revision': 5, 'titleRevision': 2, 'inputRevision': 2, 'eventWatermark': 10, 'resumeCursor': 'YTc5ZWM2ZGEtZTBkOC00NjFlLTg4ODAtYTMxMzA2OGYxNmIwOjAwMDAwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAxMjoxMA', 'environmentId': '98b30f7d-4ef9-414c-b5ac-52fa6eb06194', 'environmentName': '订单测试-e7d2302d', 'verifications': [], 'messages': [{'text': '报表与明细金额不一致，请检查合成订单。', 'inputRevision': 1}, {'text': '新增材料改变当前输入修订', 'inputRevision': 2}], 'attachments': [{'bytes': 188, 'sha256': '46d8ba3d24fd13a0c63d00a5b979bc5f6e23e7d3f1193e19e99ec8a1a9c1d807', 'name': 'report.csv', 'state': 'ready', 'id': '055fb976-fddb-4a3b-9853-98bda955bad9'}, {'bytes': 188, 'sha256': 'fb4426da2b80072b862abc00081f20f243808d334638ed25a77ec793a7d4e79a', 'name': 'detail.csv', 'state': 'ready', 'id': '34f482c3-155f-41c4-8680-97b3b796d79c'}], 'approvals': [{'validUntil': '2026-10-26T05:05:43.853191', 'plan': {'to': '2026-10-26T00:00:00.000000Z', 'from': '2026-10-25T00:00:00.000000Z', 'model': 'fixture-v1', 'output': 'difference.csv', 'status': 'completed', 'purpose': 'investigation', 'currency': 'EUR', 'timeZone': 'Asia/Shanghai', 'operation': 'reconcile_csv_readonly_v1', 'validUntil': '2026-10-26T05:05:43.853191Z', 'environmentId': '98b30f7d-4ef9-414c-b5ac-52fa6eb06194', 'inputRevision': 1, 'detailAttachmentId': '34f482c3-155f-41c4-8680-97b3b796d79c', 'reportAttachmentId': '055fb976-fddb-4a3b-9853-98bda955bad9', 'dependencyRevisions': {'ad888b84-9031-46c5-a7ec-c6711451699f': 1, 'b44d747e-bb03-41e6-a77b-eb8714eff5dd': 1}, 'environmentRevision': 1, 'authorizationRevision': 39, 'detailAttachmentIdHash': 'fb4426da2b80072b862abc00081f20f243808d334638ed25a77ec793a7d4e79a', 'reportAttachmentIdHash': '46d8ba3d24fd13a0c63d00a5b979bc5f6e23e7d3f1193e19e99ec8a1a9c1d807'}, 'revision': 2, 'id': 'c0f07281-8661-4ec2-b664-3db4e2b728e1', 'operationHash': 'ec45cd3e0d0443b201942a4f625234c8699b4920d061aeb67415682b58177099', 'state': 'approved'}], 'executions': [{'id': 'de77786c-4dbc-45ad-86e8-4cb063b3e461', 'state': 'terminal', 'accepted_at': '2026-10-26T04:55:43.986511', 'closed_at': '2026-10-26T04:55:43.999061', 'stopped': False}], 'artifacts': [{'resultRevision': 1, 'summary': {'plan': {'to': '2026-10-26T00:00:00.000000Z', 'from': '2026-10-25T00:00:00.000000Z', 'model': 'fixture-v1', 'output': 'difference.csv', 'status': 'completed', 'purpose': 'investigation', 'currency': 'EUR', 'timeZone': 'Asia/Shanghai', 'operation': 'reconcile_csv_readonly_v1', 'validUntil': '2026-10-26T05:05:43.853191Z', 'environmentId': '98b30f7d-4ef9-414c-b5ac-52fa6eb06194', 'inputRevision': 1, 'detailAttachmentId': '34f482c3-155f-41c4-8680-97b3b796d79c', 'reportAttachmentId': '055fb976-fddb-4a3b-9853-98bda955bad9', 'dependencyRevisions': {'ad888b84-9031-46c5-a7ec-c6711451699f': 1, 'b44d747e-bb03-41e6-a77b-eb8714eff5dd': 1}, 'environmentRevision': 1, 'authorizationRevision': 39, 'detailAttachmentIdHash': 'fb4426da2b80072b862abc00081f20f243808d334638ed25a77ec793a7d4e79a', 'reportAttachmentIdHash': '46d8ba3d24fd13a0c63d00a5b979bc5f6e23e7d3f1193e19e99ec8a1a9c1d807'}, 'scope': 'synthetic_fixture_service', 'usage': {'modelCalls': 0, 'costQuality': 'not_applicable', 'platformTurns': 1}, 'currency': 'EUR', 'algorithm': 'report-minus-detail-v1', 'detailTotal': '350.00', 'reportTotal': '360.00', 'differenceCount': 2, 'totalDifference': '10.00'}, 'sha256': '04606b19bbd97f15118ac35a0b760fbff6b47293a4bc301fa98a34469e0ba0f2', 'id': '3010f16d-e6c4-4e75-b376-7703f4dace04', 'state': 'ready', 'inputRevision': 1}]}"
+    },
+    {
+      "name": "R06 clientMessageId deduplicates across command keys",
+      "result": "fail",
+      "error": "('alice', '/conversations/a7cfe096-f2f4-43b4-b51d-5e8c6c5de22c/messages', 409, '{\"error\":{\"retryAdvice\":\"reconcile\",\"code\":\"REVISION_CONFLICT\"},\"correlationId\":\"85ec6dfc-89c6-4aa4-8c18-1f5e1ba3e594\"}')"
+    },
+    {
+      "name": "R07 synthetic configuration rejects real backend claims",
+      "result": "fail",
+      "error": "('admin', '/admin/configurations', 200, '{\"id\":\"0857a32c-0b95-4a43-8907-7c6c19062d61\",\"draftBase\":0,\"revision\":0,\"commandId\":\"ec25dbe2-8c13-4156-ade5-ac8bffb0fdac\"}')"
+    }
+  ]
+}

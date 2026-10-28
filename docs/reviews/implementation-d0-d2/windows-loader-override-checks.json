@@ -1,0 +1,49 @@
+{
+  "scope": "actual harmless classloader canary in private Chinese/spaced cwd, no service/DB; unprotected former command shape vs protected current form",
+  "cases": [
+    {
+      "main": "RuntimeLauncher",
+      "fixed": false,
+      "exit": 0,
+      "canaryExecuted": true,
+      "stdoutPrefix": "HARMLESS_LOADER_CANARY\n"
+    },
+    {
+      "main": "RuntimeLauncher",
+      "fixed": true,
+      "exit": 0,
+      "canaryExecuted": false,
+      "stdoutPrefix": "AI Test Workbench Windows 合成预览入口（真实 Windows 首装/停启仍待验收）\n操作：configure / doctor / u"
+    },
+    {
+      "main": "RuntimeProbe",
+      "fixed": false,
+      "exit": 0,
+      "canaryExecuted": true,
+      "stdoutPrefix": "HARMLESS_LOADER_CANARY\n"
+    },
+    {
+      "main": "RuntimeProbe",
+      "fixed": true,
+      "exit": 2,
+      "canaryExecuted": false,
+      "stdoutPrefix": "{\"ok\":false,\"code\":\"CONFIG_MISSING\",\"message\":\"缺少数据库运行配置；请按模板填写仓库外的私有配置。\",\"stage"
+    },
+    {
+      "main": "Migrate",
+      "fixed": false,
+      "exit": 0,
+      "canaryExecuted": true,
+      "stdoutPrefix": "HARMLESS_LOADER_CANARY\n"
+    },
+    {
+      "main": "Migrate",
+      "fixed": true,
+      "exit": 1,
+      "canaryExecuted": false,
+      "stdoutPrefix": ""
+    }
+  ],
+  "protectedAllRejectCanary": true,
+  "unprotectedAllDemonstrateOverride": true
+}

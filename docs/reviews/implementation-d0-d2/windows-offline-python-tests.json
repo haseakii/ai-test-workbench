@@ -1,0 +1,251 @@
+{
+  "scope": "Linux offline release/CLI/classloader regressions and private loopback sockets; no actual Windows/service/DB",
+  "observedAt": "2026-10-27T02:06:31.088675+00:00",
+  "total": 60,
+  "passed": 60,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_archive_payload_byte_tamper_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_checksums_and_archive_sidecar_match_actual_bytes",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_duplicate_case_collision_and_archive_symlink_are_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_extracted_bundle_verifies_from_unicode_spaced_directory_and_arbitrary_cwd",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_filled_or_extended_template_is_rejected_without_echoing_private_value",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_known_good_directory_and_archive_verify",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_manifest_independently_matches_exact_allowlisted_bytes",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_manifest_or_checksum_tamper_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_missing_and_extra_payloads_are_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_missing_mysql_dependency_is_rejected_before_bundle_creation",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_missing_or_corrupt_jar_does_not_create_output",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_missing_probe_class_is_rejected_before_bundle_creation",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_output_cannot_overwrite_existing_empty_or_populated_directory",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_oversized_archive_manifest_is_rejected_before_decompression",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_oversized_directory_manifest_is_rejected_before_reading",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_payload_byte_tamper_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_private_adjacent_input_data_and_caches_are_not_copied",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_rebuilding_same_inputs_produces_identical_zip",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_symlink_payload_is_rejected_even_when_bytes_match",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_unlisted_high_compression_entry_is_rejected_without_expansion",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_bundle.ReleaseBundleTest.test_unsafe_archive_paths_are_rejected_without_extracting",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_java_offline.ReleaseJavaOfflineTest.test_actual_python_migration_rejects_cwd_loader_override_without_credentials",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_java_offline.ReleaseJavaOfflineTest.test_actual_python_probe_rejects_cwd_loader_override_before_any_database_connection",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_java_offline.ReleaseJavaOfflineTest.test_real_jar_launcher_missing_configuration_is_redacted_and_does_not_create_runtime",
+      "result": "pass"
+    },
+    {
+      "name": "test_release_java_offline.ReleaseJavaOfflineTest.test_unprotected_loader_canary_positive_control_and_protected_windows_equivalent_help",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_default_artifact_uses_distribution_app_path_without_source_tree",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_distribution_help_is_available_without_java_or_configuration",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_distribution_templates_resolve_from_chinese_spaced_unpacked_directory",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_explicit_artifact_override_is_not_rewritten_in_distribution",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_missing_distribution_template_reports_repairable_error",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_missing_java_in_unpacked_distribution_leaves_runtime_absent",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.DistributionRuntimeLayoutTest.test_repository_layout_default_and_templates_are_preserved",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_database_failure_during_doctor_leaves_runtime_and_blob_directories_absent",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_duplicate_json_password_key_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_existing_operation_lock_rejects_a_second_operation",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_failed_doctor_does_not_create_a_runtime_directory",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_failed_migration_preserves_data_and_does_not_start_or_echo_private_log",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_group_or_world_readable_config_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_inactive_synthetic_identity_does_not_count_as_ready",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_java_version_probe_cannot_load_agents_from_inherited_environment",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_legacy_cli_flags_remain_in_help",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_listener_with_reuseaddr_still_blocks_a_second_service",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_malformed_json_does_not_echo_input",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_migration_process_receives_only_explicit_migration_credentials",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_missing_pid_is_not_a_managed_service",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_missing_required_configuration_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_non_string_password_does_not_reach_process_environment",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_occupied_port_is_reported_without_stopping_owner",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_parent_environment_cannot_override_service_or_leak_privileged_passwords",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_platform_target_accepts_only_its_synthetic_scope",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_private_runtime_and_migration_configs_are_accepted",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_ready_marker_requires_the_original_nonce_pid_port_and_synthetic_mode",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_recently_closed_owned_tcp_connection_does_not_block_restart",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_status_does_not_trust_a_listener_owned_by_another_process",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_stop_rechecks_identity_after_pidfd_open_before_signalling",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_stop_with_unverified_metadata_never_opens_or_signals_a_pidfd",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_unconfirmed_start_keeps_its_identity_without_restarting_or_signalling",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_unverified_live_pid_metadata_never_authorizes_a_signal",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_up_checks_database_migrates_both_scopes_checks_schema_then_starts",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_up_refuses_migration_while_a_managed_service_is_running",
+      "result": "pass"
+    }
+  ]
+}

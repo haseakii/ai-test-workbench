@@ -1,0 +1,13 @@
+{
+  "before": {
+    "alias": "tx-probe-1fcbaa6e-39a3-4135-9c24-1b4fbd5911c7",
+    "binding": "bcbe90f5-2ce7-45ed-9a38-4d0513df5ea2",
+    "accepted": false,
+    "environment": "61d72296-0cfb-4c43-ac55-448b61844fdc",
+    "conversation": "5f5e5408-34ee-46ca-966b-2800e88e130c",
+    "providerRows": 0
+  },
+  "action": "existing audited admin membership.revoke re-enqueues stopped pending binding; no SQL business/financial mutation",
+  "commandId": "4e052e3d-3bd3-4add-bbdc-16c0aac7f2b3",
+  "result": "authoritatively closed, no acceptance, no charge; confirmed in database-context-port-state.json"
+}

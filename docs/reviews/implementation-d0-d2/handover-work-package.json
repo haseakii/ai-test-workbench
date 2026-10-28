@@ -1,0 +1,89 @@
+{
+  "scope": "A10/A11 completed in existing synthetic environment; no real integration/deployment",
+  "branch": "work",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "authorization": "direct user approval Sentinel_e5ffa8a1f3c081918a8b91ce6ad5f085; prior rejected actions remained unexecuted before authorized retry",
+  "endpoint": "GET /api/conversations/{id}/handover",
+  "ui": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "implementation": [
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverPackage.java",
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverService.java",
+    "backend/platform-server/src/main/java/io/aitest/workbench/api/WorkbenchApi.java",
+    "frontend/src/shared/api.ts",
+    "frontend/src/main.tsx",
+    "scripts/generate_handover_schema.mjs",
+    "contracts/platform-responses.schema.json"
+  ],
+  "firstFailures": [
+    "handover-authorized-baseline.json",
+    "handover-integrity-before-fix.json",
+    "handover-artifact-ready-before-fix.json",
+    "ui-csv-revocation-before-fix.json",
+    "ui-handover-first-checks.json",
+    "ui-handover-pre-fixture-checks.json"
+  ],
+  "fixedFailures": [
+    "unanchored platform summary",
+    "self-consistent context hash with wrong approved scope/input/source relation",
+    "mutable Blob/metadata disagreeing with immutable ArtifactReady",
+    "CSV late response delivered after UI observed source withdrawal"
+  ],
+  "fixtureCorrections": [
+    "qualified r.state in rollback probe SQL",
+    "metadata row lookup uses unique scoped title instead of first-100 assumption",
+    "identity negative accepts legal peer environments but still forbids foreign object/body",
+    "late response test observes actual response rather than requiring discarded fetch body to finish"
+  ],
+  "java": {
+    "passed": 156,
+    "failed": 0,
+    "skipped": 0,
+    "A10DtoCases": 11,
+    "A10ServiceCases": 17,
+    "A11ServiceMatrixCases": 7
+  },
+  "typescript": {
+    "contracts": 10,
+    "submissions": 9,
+    "handoverSchema": 9
+  },
+  "http": {
+    "service": 15,
+    "context": 3,
+    "existingHardening": 15,
+    "authorizationMatrix": 9,
+    "jsonRepliesSchemaValidated": 953
+  },
+  "processWindows": 6,
+  "finalJarSha256": "1e1e87e20a4a5dbf1b838b06d0577659f4ce599ce02b63eb2ae416da7de2abb7",
+  "schema": {
+    "providerMethods": 12,
+    "providerDefinitions": 76,
+    "handoverRecords": 15,
+    "handoverDefinitions": 16,
+    "openapiPaths": 37,
+    "openapiOperations": 39,
+    "responseValidators": 349
+  },
+  "evidence": [
+    "java-handover-final.json",
+    "http-authorization-checks.json",
+    "ui-handover-checks.json",
+    "process-handover-checks.json",
+    "handover-artifact.json",
+    "database-handover-state.json",
+    "typescript-handover-tests.json"
+  ],
+  "remaining": {
+    "A01": "Original empty-install migration chain waits separate new-instance approval; no instance/DB/account created",
+    "B01": "Remote hosted CI not run; local equivalent commands passed; no push",
+    "C": "D3/D4 real identity/adapters/resources/Runner not included or claimed"
+  },
+  "noCommitPushDeployment": true,
+  "recordedAt": "2026-10-26T13:09:20.832412+00:00"
+}

@@ -1,0 +1,92 @@
+{
+  "test:contracts": {
+    "passed": 10,
+    "total": 10,
+    "command": "npm --prefix frontend run test:contracts",
+    "cases": [
+      {
+        "name": "Java/TypeScript shared vector: decimal_unicode_safe_integer",
+        "result": "pass"
+      },
+      {
+        "name": "Java/TypeScript shared vector: microsecond_time_and_null",
+        "result": "pass"
+      },
+      {
+        "name": "Java/TypeScript shared vector: array_order_and_unicode_preserved",
+        "result": "pass"
+      },
+      {
+        "name": "safe integers reject the database-only larger range",
+        "result": "pass"
+      },
+      {
+        "name": "policy identity cannot masquerade as a human signature",
+        "result": "pass"
+      },
+      {
+        "name": "admission schema binds scope and six-digit UTC time",
+        "result": "pass"
+      },
+      {
+        "name": "state catalogue covers fast terminal and cancellation before active",
+        "result": "pass"
+      },
+      {
+        "name": "all twelve full Provider request and response vectors satisfy the generated schema",
+        "result": "pass"
+      },
+      {
+        "name": "full start vectors share content, complete spec and command hash domains",
+        "result": "pass"
+      },
+      {
+        "name": "full schema refuses false nonacceptance proof, unknown coercion and unsafe revisions",
+        "result": "pass"
+      }
+    ]
+  },
+  "test:submissions": {
+    "passed": 9,
+    "total": 9,
+    "command": "npm --prefix frontend run test:submissions",
+    "cases": [
+      {
+        "name": "lost committed reply reload queries same receipt without another message POST",
+        "result": "pass"
+      },
+      {
+        "name": "request never arrived uses same command and clientMessageId after lookup not_found",
+        "result": "pass"
+      },
+      {
+        "name": "identity switch redacts body, never replays and equal re-entry preserves frozen IDs",
+        "result": "pass"
+      },
+      {
+        "name": "scope change cannot substitute a new logical command for unresolved original",
+        "result": "pass"
+      },
+      {
+        "name": "definite CAS rejection permits a distinct corrected command while unknown 5xx does not",
+        "result": "pass"
+      },
+      {
+        "name": "storage unavailable fails before sending and concurrent clicks cannot replace one ID",
+        "result": "pass"
+      },
+      {
+        "name": "route namespace matches actual title, decision and configuration command kinds",
+        "result": "pass"
+      },
+      {
+        "name": "revoked lookup keeps original identity reference but removes sensitive retry body",
+        "result": "pass"
+      },
+      {
+        "name": "switch away and back while lookup is in flight does not resume the old request",
+        "result": "pass"
+      }
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "scope": "actual local Java service and MySQL, synthetic identity/backend/data only",
+  "cases": [
+    {
+      "name": "actual service synthetic CSV to user verification",
+      "result": "pass",
+      "seconds": 0.544,
+      "evidence": {
+        "conversationId": "35057e1b-6715-49ab-988d-9602c279ed21",
+        "bindingId": "80ac55b4-6a4c-47b6-8b81-f6d6b9f56212",
+        "artifactId": "8f2da2f7-1f80-42b8-9bf5-4a068046618e",
+        "csvSha256": "04606b19bbd97f15118ac35a0b760fbff6b47293a4bc301fa98a34469e0ba0f2",
+        "differenceCount": 2,
+        "totalDifference": "10.00"
+      }
+    },
+    {
+      "name": "independent object authorization and pending member boundary",
+      "result": "pass",
+      "seconds": 0.038,
+      "evidence": {
+        "cross_user_objects_denied": 3,
+        "pending_environment_count": 0
+      }
+    },
+    {
+      "name": "stable command receipt and changed-content conflict",
+      "result": "pass",
+      "seconds": 0.018,
+      "evidence": {
+        "conversationId": "a996295a-e54c-479b-b4be-e3f8ac797723",
+        "sameReceipt": true,
+        "changedBodyRejected": true
+      }
+    },
+    {
+      "name": "atomic snapshot cursor resumes after watermark",
+      "result": "pass",
+      "seconds": 0.031,
+      "evidence": {
+        "snapshotWatermark": 10,
+        "nextSequence": 11
+      }
+    },
+    {
+      "name": "fixed scope approval and stop before external acceptance",
+      "result": "pass",
+      "seconds": 0.264,
+      "evidence": {
+        "tamperedHashRejected": true,
+        "selfApprovalRejected": true,
+        "stoppedBinding": "de34af61-44d4-42ac-bc56-50eee438508d"
+      }
+    },
+    {
+      "name": "queued approval expiry cannot start after waiting for a slot",
+      "result": "pass",
+      "seconds": 2.728,
+      "evidence": {
+        "heldBinding": "64f86672-f7a2-443c-b50b-6be0cbed898d",
+        "expiredBinding": "e407f6f5-a92c-40c1-8ebb-ff5cd2976694",
+        "expiredTaskAccepted": false
+      }
+    },
+    {
+      "name": "lost acceptance receipt reconciles one execution and one charge",
+      "result": "pass",
+      "seconds": 1.176,
+      "evidence": {
+        "bindingId": "bb1beffd-f4fd-4c08-ab33-1b643eca6234",
+        "acceptedEvents": 1,
+        "duplicateCharge": false
+      }
+    },
+    {
+      "name": "corrupt output is closed without artifact delivery or regeneration",
+      "result": "pass",
+      "seconds": 0.228,
+      "evidence": {
+        "bindingId": "c7c6679c-d44f-4a1f-85cd-dc6db723dd92",
+        "artifactReady": false,
+        "reason": "INTEGRITY_MISMATCH"
+      }
+    },
+    {
+      "name": "source revocation blocks derived content and preserves old decision",
+      "result": "fail",
+      "seconds": 0.244,
+      "error": "('alice', '/artifacts/2a8730f7-019f-4522-81d3-bbb105bb0482/download', 409, '{\"error\":{\"retryAdvice\":\"reconcile\",\"code\":\"SOURCE_REVOKED_OR_CHANGED\"},\"correlationId\":\"202c1fe3-505c-47ff-98ec-a1649f07626d\"}')"
+    },
+    {
+      "name": "metadata administration does not grant body or download rights",
+      "result": "pass",
+      "seconds": 0.007,
+      "evidence": {
+        "metadataVisible": true,
+        "bodyAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "dependency CAS conflicts preserve drafts and emergency guard",
+      "result": "pass",
+      "seconds": 0.083,
+      "evidence": {
+        "environmentId": "dfb6a454-d1cb-4f35-82ab-7c2cc6d0eb28",
+        "publicationConflict": true,
+        "unpublishedDraftPreserved": true,
+        "emergencyDisableEffective": true
+      }
+    },
+    {
+      "name": "manual title priority and independent revision conflict",
+      "result": "pass",
+      "seconds": 0.063,
+      "evidence": {
+        "manualPlaceholderNamePreserved": true,
+        "staleTitleRevisionRejected": true
+      }
+    },
+    {
+      "name": "membership revocation blocks each object interface",
+      "result": "pass",
+      "seconds": 0.4,
+      "evidence": {
+        "environmentId": "5620a956-7b94-410c-964e-a9fdaaeeeab5",
+        "conversationEventsAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "service restart restores original execution and artifact",
+      "result": "pass",
+      "seconds": 2.357,
+      "evidence": {
+        "conversationId": "35057e1b-6715-49ab-988d-9602c279ed21",
+        "sameBindingAfterRestart": true,
+        "sameArtifactAfterRestart": true
+      }
+    }
+  ],
+  "passed": 13,
+  "total": 14
+}

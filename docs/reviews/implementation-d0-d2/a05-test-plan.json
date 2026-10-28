@@ -1,0 +1,59 @@
+{
+  "scope": "A05 only; independent tests, parent owns core integration",
+  "recordedAt": "2026-10-26T10:33:24.973020+00:00",
+  "testFile": "backend/platform-server/src/test/java/io/aitest/workbench/execution/QueueCommitFaultTest.java",
+  "sourceSha256": "0e8f8f746b787c47e9f956c377cc0de36efe0d6cc6220d478bfe5ac95bf33dd3",
+  "status": "first_mysql_run_completed_6_pass_2_fail",
+  "tests": [
+    {
+      "name": "mysqlDeadlockVictimRollsBackItsEntireOwnedTransaction",
+      "status": "passed"
+    },
+    {
+      "name": "lostDispatchCommitResponseRetainsFrozenOccupationsUntilAuthoritativeClosure",
+      "status": "passed"
+    },
+    {
+      "name": "lockedOldestQueueItemIsSkippedThenClaimedAfterRelease",
+      "status": "failed"
+    },
+    {
+      "name": "commitResponseLostFindsDurableOriginalReceiptWithoutSecondOutbox",
+      "status": "passed"
+    },
+    {
+      "name": "quotaRowWaitCannotBeSkippedAndTimeoutRollsBackBeforeWholeDispatchRetry",
+      "status": "passed"
+    },
+    {
+      "name": "leaseHandoffAfterOwnerReadPreventsOldWorkerFromDispatching",
+      "status": "failed"
+    },
+    {
+      "name": "commitRequestNotSentRollsBackAndOriginalApprovalKeyRetriesOnce",
+      "status": "passed"
+    },
+    {
+      "name": "rolledBackQueueClaimDoesNotConsumeLeaseAttemptOrOwner",
+      "status": "passed"
+    }
+  ],
+  "resourceBoundary": {
+    "existingMySQLOnly": true,
+    "newSchemasAccountsPermissions": false,
+    "ownConnectionsOnly": true,
+    "networkTLSChanges": false,
+    "sharedConnectionsTerminated": false
+  },
+  "commitFaultBoundary": "test DataSource Connection wrapper; physical MySQL rollback by closing before COMMIT, or actual COMMIT then close and injected lost-response SQLException; not packet proxy validation",
+  "coreCandidate": "prepareDispatch reads queue worker without locking and finishes without owner/lease CAS; lease handoff test is not yet executed",
+  "commandsRun": [
+    "read-only repository/file inspection",
+    "apply_patch QueueCommitFaultTest.java",
+    "write this not-run manifest"
+  ],
+  "mavenOrDatabaseTestsRun": true,
+  "resultsRef": "docs/reviews/implementation-d0-d2/a05-before-fix.json",
+  "revisedSourceSha256": "02065b2f963bc8a60bae33d2cea9d6c633324b7481ba0bdeaead3031302949ea",
+  "revisedSourceStatus": "not_run_parent_integrating"
+}

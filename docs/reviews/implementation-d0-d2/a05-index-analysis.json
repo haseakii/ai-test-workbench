@@ -1,0 +1,102 @@
+{
+  "recordedAt": "2026-10-26T10:42:08.311286+00:00",
+  "databaseState": {
+    "version": "8.4.13",
+    "openBindings": 1,
+    "occupiedSlots": 0,
+    "pendingOutbox": 0,
+    "reservedTurns": 0
+  },
+  "existingClaimPlan": {
+    "query_block": {
+      "select_id": 1,
+      "cost_info": {
+        "query_cost": "2.11"
+      },
+      "ordering_operation": {
+        "using_filesort": true,
+        "table": {
+          "table_name": "outbox",
+          "access_type": "range",
+          "possible_keys": [
+            "PRIMARY",
+            "uq_outbox_binding",
+            "ix_outbox"
+          ],
+          "key": "ix_outbox",
+          "used_key_parts": [
+            "state",
+            "lease_until"
+          ],
+          "key_length": "107",
+          "rows_examined_per_scan": 3,
+          "rows_produced_per_join": 3,
+          "filtered": "100.00",
+          "index_condition": "((`workbench_platform`.`outbox`.`tenant_id` = <cache>(unhex('00000000000040008000000000000001'))) and (`workbench_platform`.`outbox`.`state` in ('queued','claimed','sending')) and ((`workbench_platform`.`outbox`.`lease_until` is null) or (`workbench_platform`.`outbox`.`lease_until` <= <cache>(utc_timestamp(6)))))",
+          "cost_info": {
+            "read_cost": "1.81",
+            "eval_cost": "0.30",
+            "prefix_cost": "2.11",
+            "data_read_per_join": "528"
+          },
+          "used_columns": [
+            "tenant_id",
+            "id",
+            "binding_id",
+            "state",
+            "worker_id",
+            "lease_until",
+            "attempt"
+          ]
+        }
+      }
+    }
+  },
+  "forcePrimaryCandidatePlan": {
+    "query_block": {
+      "select_id": 1,
+      "cost_info": {
+        "query_cost": "62.21"
+      },
+      "ordering_operation": {
+        "using_filesort": false,
+        "table": {
+          "table_name": "outbox",
+          "access_type": "ref",
+          "possible_keys": [
+            "PRIMARY"
+          ],
+          "key": "PRIMARY",
+          "used_key_parts": [
+            "tenant_id"
+          ],
+          "key_length": "16",
+          "ref": [
+            "const"
+          ],
+          "rows_examined_per_scan": 614,
+          "rows_produced_per_join": 73,
+          "filtered": "12.00",
+          "cost_info": {
+            "read_cost": "0.81",
+            "eval_cost": "7.37",
+            "prefix_cost": "62.21",
+            "data_read_per_join": "12K"
+          },
+          "used_columns": [
+            "tenant_id",
+            "id",
+            "binding_id",
+            "state",
+            "worker_id",
+            "lease_until",
+            "attempt"
+          ],
+          "attached_condition": "((`workbench_platform`.`outbox`.`tenant_id` = <cache>(unhex('00000000000040008000000000000001'))) and (`workbench_platform`.`outbox`.`state` in ('queued','claimed','sending')) and ((`workbench_platform`.`outbox`.`lease_until` is null) or (`workbench_platform`.`outbox`.`lease_until` <= <cache>(utc_timestamp(6)))))"
+        }
+      }
+    }
+  },
+  "readOnly": true,
+  "candidateNotAppliedOrConcurrencyTested": true
+}

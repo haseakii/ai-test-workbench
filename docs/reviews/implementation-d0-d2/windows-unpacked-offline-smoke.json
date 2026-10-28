@@ -1,0 +1,49 @@
+{
+  "scope": "actual Jar/standalone verifier from Chinese/spaced extracted directory and unrelated cwd on Linux; no CMD/Windows/DB/service execution",
+  "passed": 7,
+  "total": 7,
+  "cases": [
+    {
+      "action": "help",
+      "result": "pass",
+      "exit": 0,
+      "code": null
+    },
+    {
+      "action": "doctor",
+      "result": "pass",
+      "exit": 2,
+      "code": "CONFIG_MISSING"
+    },
+    {
+      "action": "up",
+      "result": "pass",
+      "exit": 2,
+      "code": "CONFIG_MISSING"
+    },
+    {
+      "action": "status",
+      "result": "pass",
+      "exit": 0,
+      "code": "STOPPED"
+    },
+    {
+      "action": "stop",
+      "result": "pass",
+      "exit": 0,
+      "code": "STOPPED"
+    },
+    {
+      "action": "configure",
+      "result": "pass",
+      "exit": 2,
+      "code": "CONSOLE_REQUIRED"
+    },
+    {
+      "action": "standalone verifier",
+      "result": "pass"
+    }
+  ],
+  "runtimeDirectoryCreated": false,
+  "archiveSha256": "a71f61adb819d078c20ace7c5c3282766a7dcd96d0968fa235c23a9e55fe0fc7"
+}

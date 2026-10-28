@@ -1,0 +1,26 @@
+{
+  "activeSlots": 0,
+  "mysqlVersion": "8.4.13",
+  "reservedTurns": 0,
+  "foreignTenants": 0,
+  "outboxInProgress": 0,
+  "unclosedBindings": 0,
+  "platformMigration": 7,
+  "knownFixtureClosed": 1,
+  "knownFixtureAccepted": 0,
+  "unresolvedLegacyOpen": 0,
+  "eventGapConversations": 0,
+  "eventCounterMismatches": 0,
+  "originalFailedMigrations": 0,
+  "knownFixtureProviderStatus": "closed",
+  "providerExecutingOrUnknown": 0,
+  "observedAt": "2026-10-26T11:15:10.339711+00:00",
+  "runnerMigration": 1,
+  "ownedMigrationChildrenStillRunning": [],
+  "knownMysqlContainers": [
+    "workbench-mysql-d0"
+  ],
+  "newEmptyInstanceCreated": false,
+  "financialHistoryRetained": true,
+  "noBusinessDataDeleted": true
+}

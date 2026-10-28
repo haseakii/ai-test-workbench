@@ -1,0 +1,297 @@
+{
+  "scope": "actual local Java service and MySQL, synthetic identity/backend/data only",
+  "cases": [
+    {
+      "name": "actual service synthetic CSV to user verification",
+      "result": "pass",
+      "seconds": 2.421,
+      "evidence": {
+        "conversationId": "03cb6930-53c1-49e4-83d1-2488a6197c1f",
+        "bindingId": "5cf0470d-06f9-4fa3-a2a9-b07a051101bd",
+        "artifactId": "77211871-d7c0-43f9-a4e6-d084202ff267",
+        "csvSha256": "04606b19bbd97f15118ac35a0b760fbff6b47293a4bc301fa98a34469e0ba0f2",
+        "differenceCount": 2,
+        "totalDifference": "10.00"
+      }
+    },
+    {
+      "name": "independent object authorization and pending member boundary",
+      "result": "pass",
+      "seconds": 0.024,
+      "evidence": {
+        "cross_user_objects_denied": 3,
+        "unassigned_environment_absent": true,
+        "membershipState": "active",
+        "allowedEnvironmentCount": 16
+      }
+    },
+    {
+      "name": "stable command receipt and changed-content conflict",
+      "result": "pass",
+      "seconds": 0.012,
+      "evidence": {
+        "conversationId": "39022caa-d48d-4323-994f-7642356c05af",
+        "sameReceipt": true,
+        "changedBodyRejected": true
+      }
+    },
+    {
+      "name": "atomic snapshot cursor resumes after watermark",
+      "result": "pass",
+      "seconds": 0.024,
+      "evidence": {
+        "snapshotWatermark": 11,
+        "nextSequence": 12
+      }
+    },
+    {
+      "name": "fixed scope approval and stop before external acceptance",
+      "result": "pass",
+      "seconds": 0.403,
+      "evidence": {
+        "tamperedHashRejected": true,
+        "selfApprovalRejected": true,
+        "stoppedBinding": "cc581cac-bed0-4229-9fe8-9ecc967f3036"
+      }
+    },
+    {
+      "name": "queued approval expiry cannot start after waiting for a slot",
+      "result": "pass",
+      "seconds": 3.126,
+      "evidence": {
+        "heldBinding": "94708128-9201-4e99-b225-2f91320ca3db",
+        "expiredBinding": "913aed22-763e-4fe9-b9f4-1d0d1feda636",
+        "expiredTaskAccepted": false
+      }
+    },
+    {
+      "name": "lost acceptance receipt reconciles one execution and one charge",
+      "result": "fail",
+      "seconds": 1.264,
+      "error": ""
+    },
+    {
+      "name": "corrupt output is closed without artifact delivery or regeneration",
+      "result": "pass",
+      "seconds": 1.361,
+      "evidence": {
+        "bindingId": "5b758c11-1349-4011-b7fc-467e13084e57",
+        "artifactReady": false,
+        "reason": "INTEGRITY_MISMATCH"
+      }
+    },
+    {
+      "name": "source revocation blocks derived content and preserves old decision",
+      "result": "pass",
+      "seconds": 1.473,
+      "evidence": {
+        "artifactId": "58392b87-d111-44a5-ba79-960a315df786",
+        "derivedResultHidden": true,
+        "downloadDenied": true,
+        "historicalDecisionPreserved": true,
+        "agentSession": "not_applicable_fixture_backend"
+      }
+    },
+    {
+      "name": "metadata administration does not grant body or download rights",
+      "result": "pass",
+      "seconds": 0.025,
+      "evidence": {
+        "metadataVisible": true,
+        "listedConversationId": "03cb6930-53c1-49e4-83d1-2488a6197c1f",
+        "boundedMetadataTitleFilter": true,
+        "literalQueryNotSql": true,
+        "bodyAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "dependency CAS conflicts preserve drafts and emergency guard",
+      "result": "pass",
+      "seconds": 0.342,
+      "evidence": {
+        "environmentId": "c5e43c21-73ae-42ee-a419-9b6ba2074b70",
+        "publicationConflict": true,
+        "unpublishedDraftPreserved": true,
+        "emergencyDisableEffective": true
+      }
+    },
+    {
+      "name": "manual title priority and independent revision conflict",
+      "result": "pass",
+      "seconds": 0.084,
+      "evidence": {
+        "manualPlaceholderNamePreserved": true,
+        "staleTitleRevisionRejected": true
+      }
+    },
+    {
+      "name": "membership revocation blocks each object interface",
+      "result": "pass",
+      "seconds": 1.417,
+      "evidence": {
+        "environmentId": "6109c294-2330-4edb-b1f9-1211ab7fb7aa",
+        "conversationEventsAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "explicit content qualification and expiring message-only lease",
+      "result": "pass",
+      "seconds": 1.16,
+      "evidence": {
+        "defaultDenied": true,
+        "scopedReadSucceeded": true,
+        "eventsAndDownloadStillDenied": true,
+        "expiryDenied": true,
+        "revocationDenied": true
+      }
+    },
+    {
+      "name": "service restart restores original execution and artifact",
+      "result": "pass",
+      "seconds": 3.923,
+      "evidence": {
+        "conversationId": "03cb6930-53c1-49e4-83d1-2488a6197c1f",
+        "sameBindingAfterRestart": true,
+        "sameArtifactAfterRestart": true
+      }
+    }
+  ],
+  "passed": 14,
+  "total": 15,
+  "fixtureQuotaAdjustments": [],
+  "apiContract": {
+    "checked": 244,
+    "operations": [
+      "quota",
+      "newConfiguration",
+      "publish",
+      "grant",
+      "create",
+      "message",
+      "upload",
+      "snapshot",
+      "prepare",
+      "decide",
+      "verify",
+      "events",
+      "download",
+      "session",
+      "options",
+      "title",
+      "stop",
+      "handover",
+      "revokeSource",
+      "approvals",
+      "records",
+      "executions",
+      "configurations",
+      "draft",
+      "disable",
+      "revoke",
+      "lease",
+      "eligibility",
+      "content"
+    ],
+    "responseCounts": {
+      "quota": {
+        "200": 10
+      },
+      "newConfiguration": {
+        "200": 24
+      },
+      "publish": {
+        "200": 9,
+        "409": 1
+      },
+      "grant": {
+        "200": 16
+      },
+      "create": {
+        "200": 11,
+        "409": 1
+      },
+      "message": {
+        "200": 9
+      },
+      "upload": {
+        "200": 16
+      },
+      "snapshot": {
+        "200": 84,
+        "404": 3
+      },
+      "prepare": {
+        "200": 8
+      },
+      "decide": {
+        "200": 7,
+        "409": 1,
+        "403": 1
+      },
+      "verify": {
+        "200": 1,
+        "409": 1
+      },
+      "events": {
+        "404": 3,
+        "200": 3
+      },
+      "download": {
+        "404": 4,
+        "409": 1
+      },
+      "session": {
+        "200": 3
+      },
+      "options": {
+        "200": 2
+      },
+      "title": {
+        "200": 2,
+        "409": 1
+      },
+      "stop": {
+        "200": 2
+      },
+      "handover": {
+        "200": 1
+      },
+      "revokeSource": {
+        "200": 1
+      },
+      "approvals": {
+        "200": 1
+      },
+      "records": {
+        "200": 2
+      },
+      "executions": {
+        "200": 1
+      },
+      "configurations": {
+        "200": 2
+      },
+      "draft": {
+        "200": 2
+      },
+      "disable": {
+        "200": 1
+      },
+      "revoke": {
+        "200": 1
+      },
+      "lease": {
+        "403": 1,
+        "200": 2
+      },
+      "eligibility": {
+        "200": 2
+      },
+      "content": {
+        "200": 1,
+        "403": 2
+      }
+    }
+  },
+  "diagnosis": "The revised period assertion expected consumed instead of final settled after authoritative terminal closure. Tightened to exact settled before final rerun; no product ledger change."
+}

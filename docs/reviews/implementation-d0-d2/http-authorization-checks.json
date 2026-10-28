@@ -1,0 +1,6360 @@
+{
+  "scope": "Actual local HTTP synthetic identity/provider/CSV authorization matrix; no real identity or Agent claim",
+  "passed": 9,
+  "total": 9,
+  "cases": [
+    {
+      "name": "ACL01 owner positives and same-environment object denial",
+      "result": "pass",
+      "evidence": {
+        "environmentId": "58b1b20b-8be7-4265-84e9-8fdf5ad42ef8",
+        "conversationId": "e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+        "bindingId": "119e289f-4739-4cc0-9f16-951be57b4f7f",
+        "artifactId": "78d5c174-ef9a-429a-b5e1-b3416596c323",
+        "packageSha256": "aaf0167d6df965720c773b24222b5c7bea9c1d90c9f770f5feefc7df8535a421",
+        "sameEnvironmentPeerStillDenied": true
+      },
+      "seconds": 2.363,
+      "requestCount": 85,
+      "jsonSchemaChecks": 83,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 16,
+            "jsonSchemaChecks": 16
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "decide": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "events": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "context": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "download": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "handover": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "stream": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "understand": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "verify": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "command": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "title": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "stop": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL02 valid other environment does not grant foreign objects",
+      "result": "pass",
+      "evidence": {
+        "ownerEnvironmentId": "9f1eb8bc-90fc-4274-b5ed-3719fc98bca5",
+        "peerEnvironmentId": "b5149634-4d9d-4630-80e2-8ecd4772be54",
+        "validOtherEnvironmentDoesNotAuthorizeOwner": true
+      },
+      "seconds": 1.396,
+      "requestCount": 50,
+      "jsonSchemaChecks": 48,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 6,
+            "jsonSchemaChecks": 6
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 5,
+            "jsonSchemaChecks": 5
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 15,
+            "jsonSchemaChecks": 15
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "options": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "decide": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "events": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "context": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "download": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "handover": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "stream": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "result": "pass",
+      "evidence": {
+        "originalConversationId": "e6cccd6a-3511-4909-b178-4350ed88309e",
+        "sameOwnerForeignConversationDenied": true,
+        "peerForeignSourceDenied": true
+      },
+      "seconds": 0.676,
+      "requestCount": 42,
+      "jsonSchemaChecks": 42,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 6,
+            "jsonSchemaChecks": 6
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 14,
+            "jsonSchemaChecks": 14
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "404": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "stop": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "2d27acde-6bad-470a-8890-f512e524ea2f",
+        "leaseMessagesOnly": true,
+        "qualificationWithdrawalReauthorizesCachedReceipt": true
+      },
+      "seconds": 1.496,
+      "requestCount": 75,
+      "jsonSchemaChecks": 73,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 13,
+            "jsonSchemaChecks": 13
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "decide": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "events": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "context": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "download": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "handover": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "stream": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "lease": {
+          "403": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          },
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "session": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "eligibility": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "content": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "403": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "contentLease": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "403": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "command": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "403": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL05 expired body lease denies content and status",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "00515370-3783-4d31-8491-6970219d3ee7",
+        "expiredBodyAndLeaseStatusDenied": true
+      },
+      "seconds": 2.179,
+      "requestCount": 19,
+      "jsonSchemaChecks": 19,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "session": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "eligibility": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "lease": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "content": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "403": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "contentLease": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "403": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+        "existingSseEndsWithoutMoreBodyEvents": true,
+        "revokedOwnerBlocksDerivedInterfacesAndReviewerLease": true
+      },
+      "seconds": 1.975,
+      "requestCount": 58,
+      "jsonSchemaChecks": 55,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 14,
+            "jsonSchemaChecks": 14
+          },
+          "404": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "decide": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "events": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "context": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "download": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "handover": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "stream": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "verify": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "command": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "404": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "403": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "session": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "eligibility": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "lease": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "content": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "403": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "revoke": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL07 source withdrawal and new input invalidate derived material",
+      "result": "pass",
+      "evidence": {
+        "sourceRevokedConversationId": "dcae4781-eb05-45de-9cdc-8473e7524bb4",
+        "newInputConversationId": "9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+        "oldContextAndResultUnusable": true,
+        "handoverLabelsStaleContextAndOmitsOldResult": true
+      },
+      "seconds": 2.736,
+      "requestCount": 89,
+      "jsonSchemaChecks": 86,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 4,
+            "jsonSchemaChecks": 4
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 24,
+            "jsonSchemaChecks": 24
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "decide": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "events": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "context": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "409": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "download": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "409": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "handover": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          },
+          "409": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "stream": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 0
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "verify": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "409": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "command": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "409": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "revokeSource": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "3800ed1b-fd44-467d-96ee-c8c43aedab14",
+        "snapshotWatermark": 1,
+        "resumedSequences": [
+          2,
+          3
+        ],
+        "foreignCursorsDenied": true
+      },
+      "seconds": 1.114,
+      "requestCount": 29,
+      "jsonSchemaChecks": 27,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 5,
+            "jsonSchemaChecks": 5
+          }
+        },
+        "events": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          },
+          "404": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "410": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "stream": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 0
+          },
+          "410": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "409": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        }
+      }
+    },
+    {
+      "name": "ACL09 admin metadata does not grant body or context",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "a4de062d-0fa6-474f-9008-d29e5383cba4",
+        "boundedMetadataQueryFindsOwnFixture": true,
+        "metadataDoesNotAuthorizeBodyOrContext": true
+      },
+      "seconds": 0.253,
+      "requestCount": 27,
+      "jsonSchemaChecks": 27,
+      "operationStatusCounts": {
+        "quota": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "newConfiguration": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "publish": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "grant": {
+          "200": {
+            "responses": 3,
+            "jsonSchemaChecks": 3
+          }
+        },
+        "create": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "message": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "upload": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "snapshot": {
+          "200": {
+            "responses": 5,
+            "jsonSchemaChecks": 5
+          },
+          "404": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "prepare": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "title": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        },
+        "records": {
+          "200": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "context": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          },
+          "404": {
+            "responses": 2,
+            "jsonSchemaChecks": 2
+          }
+        },
+        "stop": {
+          "200": {
+            "responses": 1,
+            "jsonSchemaChecks": 1
+          }
+        }
+      }
+    }
+  ],
+  "operationStatusCounts": {
+    "quota": {
+      "200": {
+        "responses": 10,
+        "jsonSchemaChecks": 10
+      }
+    },
+    "newConfiguration": {
+      "200": {
+        "responses": 30,
+        "jsonSchemaChecks": 30
+      }
+    },
+    "publish": {
+      "200": {
+        "responses": 10,
+        "jsonSchemaChecks": 10
+      }
+    },
+    "grant": {
+      "200": {
+        "responses": 28,
+        "jsonSchemaChecks": 28
+      }
+    },
+    "create": {
+      "200": {
+        "responses": 14,
+        "jsonSchemaChecks": 14
+      },
+      "404": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      }
+    },
+    "message": {
+      "200": {
+        "responses": 14,
+        "jsonSchemaChecks": 14
+      },
+      "404": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      }
+    },
+    "upload": {
+      "200": {
+        "responses": 20,
+        "jsonSchemaChecks": 20
+      },
+      "404": {
+        "responses": 4,
+        "jsonSchemaChecks": 4
+      }
+    },
+    "snapshot": {
+      "200": {
+        "responses": 107,
+        "jsonSchemaChecks": 107
+      },
+      "404": {
+        "responses": 14,
+        "jsonSchemaChecks": 14
+      }
+    },
+    "prepare": {
+      "200": {
+        "responses": 10,
+        "jsonSchemaChecks": 10
+      },
+      "404": {
+        "responses": 5,
+        "jsonSchemaChecks": 5
+      }
+    },
+    "decide": {
+      "200": {
+        "responses": 6,
+        "jsonSchemaChecks": 6
+      }
+    },
+    "events": {
+      "200": {
+        "responses": 7,
+        "jsonSchemaChecks": 7
+      },
+      "404": {
+        "responses": 13,
+        "jsonSchemaChecks": 13
+      },
+      "410": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      }
+    },
+    "context": {
+      "200": {
+        "responses": 7,
+        "jsonSchemaChecks": 7
+      },
+      "404": {
+        "responses": 14,
+        "jsonSchemaChecks": 14
+      },
+      "409": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      }
+    },
+    "download": {
+      "200": {
+        "responses": 6,
+        "jsonSchemaChecks": 0
+      },
+      "404": {
+        "responses": 12,
+        "jsonSchemaChecks": 12
+      },
+      "409": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      }
+    },
+    "handover": {
+      "200": {
+        "responses": 8,
+        "jsonSchemaChecks": 8
+      },
+      "404": {
+        "responses": 12,
+        "jsonSchemaChecks": 12
+      },
+      "409": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      }
+    },
+    "stream": {
+      "200": {
+        "responses": 8,
+        "jsonSchemaChecks": 0
+      },
+      "404": {
+        "responses": 14,
+        "jsonSchemaChecks": 14
+      },
+      "410": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      },
+      "409": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      }
+    },
+    "understand": {
+      "200": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      },
+      "404": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      }
+    },
+    "verify": {
+      "200": {
+        "responses": 4,
+        "jsonSchemaChecks": 4
+      },
+      "404": {
+        "responses": 4,
+        "jsonSchemaChecks": 4
+      },
+      "409": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      }
+    },
+    "command": {
+      "200": {
+        "responses": 7,
+        "jsonSchemaChecks": 7
+      },
+      "404": {
+        "responses": 5,
+        "jsonSchemaChecks": 5
+      },
+      "403": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      },
+      "409": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      }
+    },
+    "title": {
+      "200": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      },
+      "404": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      }
+    },
+    "stop": {
+      "200": {
+        "responses": 5,
+        "jsonSchemaChecks": 5
+      },
+      "404": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      }
+    },
+    "options": {
+      "200": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      }
+    },
+    "lease": {
+      "403": {
+        "responses": 4,
+        "jsonSchemaChecks": 4
+      },
+      "200": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      }
+    },
+    "session": {
+      "200": {
+        "responses": 6,
+        "jsonSchemaChecks": 6
+      }
+    },
+    "eligibility": {
+      "200": {
+        "responses": 6,
+        "jsonSchemaChecks": 6
+      }
+    },
+    "content": {
+      "200": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      },
+      "403": {
+        "responses": 6,
+        "jsonSchemaChecks": 6
+      }
+    },
+    "contentLease": {
+      "200": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      },
+      "403": {
+        "responses": 5,
+        "jsonSchemaChecks": 5
+      }
+    },
+    "revoke": {
+      "200": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      }
+    },
+    "revokeSource": {
+      "200": {
+        "responses": 1,
+        "jsonSchemaChecks": 1
+      },
+      "404": {
+        "responses": 3,
+        "jsonSchemaChecks": 3
+      }
+    },
+    "records": {
+      "200": {
+        "responses": 2,
+        "jsonSchemaChecks": 2
+      }
+    }
+  },
+  "requests": [
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "decide",
+      "method": "POST",
+      "path": "/approvals/e35ba7b2-53cb-4f26-8ecd-c36dae983ac7/decision",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/ed6e3665-e5d7-4c1a-af2e-23b8488ec395",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/ed6e3665-e5d7-4c1a-af2e-23b8488ec395",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/ed6e3665-e5d7-4c1a-af2e-23b8488ec395",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/ed6e3665-e5d7-4c1a-af2e-23b8488ec395",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/78d5c174-ef9a-429a-b5e1-b3416596c323/download",
+      "status": 200,
+      "media": "csv",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/78d5c174-ef9a-429a-b5e1-b3416596c323/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/78d5c174-ef9a-429a-b5e1-b3416596c323/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/78d5c174-ef9a-429a-b5e1-b3416596c323/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/attachments",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/messages",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "understand",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/understanding",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "understand",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/understanding",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/prepare",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/attachments",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/messages",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "understand",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/understanding",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "understand",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/understanding",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/prepare",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/attachments",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/messages",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "understand",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/understanding",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "understand",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/understanding",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/prepare",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/78d5c174-ef9a-429a-b5e1-b3416596c323/verification",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/78d5c174-ef9a-429a-b5e1-b3416596c323/verification",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/78d5c174-ef9a-429a-b5e1-b3416596c323/verification",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/78d5c174-ef9a-429a-b5e1-b3416596c323/verification",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/014e0054-1469-4fc9-bb63-c0213d8186a8",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/014e0054-1469-4fc9-bb63-c0213d8186a8",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/014e0054-1469-4fc9-bb63-c0213d8186a8",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/014e0054-1469-4fc9-bb63-c0213d8186a8",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "title",
+      "method": "PATCH",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/title",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stop",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "title",
+      "method": "PATCH",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/title",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "bob",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stop",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "title",
+      "method": "PATCH",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/title",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "reviewer",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stop",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "title",
+      "method": "PATCH",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/title",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "admin",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/stop",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL01 owner positives and same-environment object denial:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/05c1cff8-5c3e-429d-8f85-49579223d299",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "options",
+      "method": "GET",
+      "path": "/workbench/options",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "reviewer",
+      "operation": "decide",
+      "method": "POST",
+      "path": "/approvals/93f57e23-da95-42d0-982f-73a2deeac3c3/decision",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/9d6ac2b8-9a48-4665-b2a5-f114b6e62044",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/9d6ac2b8-9a48-4665-b2a5-f114b6e62044",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccca5c3d-54ad-4c83-aa48-3572f5070d49/download",
+      "status": 200,
+      "media": "csv",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccca5c3d-54ad-4c83-aa48-3572f5070d49/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects",
+      "subject": "bob",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects:cleanup",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/05c1cff8-5c3e-429d-8f85-49579223d299",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL02 valid other environment does not grant foreign objects:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/d835a57c-017f-4858-8326-8bb35741cc6c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6/stop",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6/prepare",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615/stop",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615/prepare",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope:cleanup",
+      "subject": "alice",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e/stop",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/e6cccd6a-3511-4909-b178-4350ed88309e",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope:cleanup",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/49a18567-54b0-48f3-afd5-f4d08d789615",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL03 foreign-conversation CSV cannot enter fixed scope:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/4c889d2b-7a4a-46d0-b6b5-81819ae468a6",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "decide",
+      "method": "POST",
+      "path": "/approvals/e3fcad1b-a868-4169-8db1-074a647b38f1/decision",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/36cfdf6a-a6a2-4a81-afb8-cd38458ef00a",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/36cfdf6a-a6a2-4a81-afb8-cd38458ef00a",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/36cfdf6a-a6a2-4a81-afb8-cd38458ef00a",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/36cfdf6a-a6a2-4a81-afb8-cd38458ef00a",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/f5591eb2-25ee-4054-be52-4d34bf108667/download",
+      "status": 200,
+      "media": "csv",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/f5591eb2-25ee-4054-be52-4d34bf108667/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/f5591eb2-25ee-4054-be52-4d34bf108667/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/f5591eb2-25ee-4054-be52-4d34bf108667/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "session",
+      "method": "GET",
+      "path": "/session",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "eligibility",
+      "method": "POST",
+      "path": "/admin/content-reviewers",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content-lease",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content-lease",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "alice",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content-lease",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "bob",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content-lease",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/36cfdf6a-a6a2-4a81-afb8-cd38458ef00a",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/f5591eb2-25ee-4054-be52-4d34bf108667/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/a934414a-ece6-4c43-b508-3b2cfa8e273f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "session",
+      "method": "GET",
+      "path": "/session",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "admin",
+      "operation": "eligibility",
+      "method": "POST",
+      "path": "/admin/content-reviewers",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/2d27acde-6bad-470a-8890-f512e524ea2f/content-lease",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts",
+      "subject": "reviewer",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/a934414a-ece6-4c43-b508-3b2cfa8e273f",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL04 reviewer lease is messages-only and withdrawal rechecks receipts:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/2d27acde-6bad-470a-8890-f512e524ea2f",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/00515370-3783-4d31-8491-6970219d3ee7/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "reviewer",
+      "operation": "session",
+      "method": "GET",
+      "path": "/session",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "admin",
+      "operation": "eligibility",
+      "method": "POST",
+      "path": "/admin/content-reviewers",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "reviewer",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "reviewer",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/00515370-3783-4d31-8491-6970219d3ee7/content",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "reviewer",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/00515370-3783-4d31-8491-6970219d3ee7/content-lease",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "reviewer",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/00515370-3783-4d31-8491-6970219d3ee7/content",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status",
+      "subject": "reviewer",
+      "operation": "contentLease",
+      "method": "GET",
+      "path": "/admin/records/00515370-3783-4d31-8491-6970219d3ee7/content-lease",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/00515370-3783-4d31-8491-6970219d3ee7",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status:cleanup",
+      "subject": "reviewer",
+      "operation": "session",
+      "method": "GET",
+      "path": "/session",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL05 expired body lease denies content and status:cleanup",
+      "subject": "admin",
+      "operation": "eligibility",
+      "method": "POST",
+      "path": "/admin/content-reviewers",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "decide",
+      "method": "POST",
+      "path": "/approvals/b1d7a8d0-bb10-40a3-b60d-47403510be27/decision",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/b01ce8be-af92-4ab3-9f93-60fe72638974",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/c1cc2836-e976-4876-ab47-fb928bcbba9c/download",
+      "status": 200,
+      "media": "csv",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/c1cc2836-e976-4876-ab47-fb928bcbba9c/verification",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/dfde1f2f-f82c-4bcd-8d5d-07020908e5ad",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "session",
+      "method": "GET",
+      "path": "/session",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "eligibility",
+      "method": "POST",
+      "path": "/admin/content-reviewers",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "lease",
+      "method": "POST",
+      "path": "/admin/content-leases",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/content",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/49925555-404c-4bfd-9cc6-70a04f8296ac",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/ea654a21-d56e-4792-867c-b57c594bae2c",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "admin",
+      "operation": "revoke",
+      "method": "POST",
+      "path": "/admin/grants/revoke",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/b01ce8be-af92-4ab3-9f93-60fe72638974",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/c1cc2836-e976-4876-ab47-fb928bcbba9c/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/ea654a21-d56e-4792-867c-b57c594bae2c",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/dfde1f2f-f82c-4bcd-8d5d-07020908e5ad",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/c1cc2836-e976-4876-ab47-fb928bcbba9c/verification",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/attachments",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "content",
+      "method": "GET",
+      "path": "/admin/records/9582bac4-c0bd-4053-98ed-92b78d0dd3bc/content",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access",
+      "subject": "reviewer",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/49925555-404c-4bfd-9cc6-70a04f8296ac",
+      "status": 403,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access:cleanup",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access:cleanup",
+      "subject": "reviewer",
+      "operation": "session",
+      "method": "GET",
+      "path": "/session",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL06 owner grant withdrawal ends active SSE and derived access:cleanup",
+      "subject": "admin",
+      "operation": "eligibility",
+      "method": "POST",
+      "path": "/admin/content-reviewers",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "decide",
+      "method": "POST",
+      "path": "/approvals/25065e5f-8bb1-48b2-890d-d4ee7250215c/decision",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/e7404073-b5c4-44ad-85c7-018345bfcfec",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/e7404073-b5c4-44ad-85c7-018345bfcfec",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/e7404073-b5c4-44ad-85c7-018345bfcfec",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/e7404073-b5c4-44ad-85c7-018345bfcfec",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccab59d0-e9e9-48d1-a733-30afcf049442/download",
+      "status": 200,
+      "media": "csv",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccab59d0-e9e9-48d1-a733-30afcf049442/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccab59d0-e9e9-48d1-a733-30afcf049442/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccab59d0-e9e9-48d1-a733-30afcf049442/download",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/handover",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/ccab59d0-e9e9-48d1-a733-30afcf049442/verification",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/da0a2e23-a31d-47a0-8508-44081f02ac51",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "revokeSource",
+      "method": "POST",
+      "path": "/attachments/163e324a-2834-45fa-b4a8-18640798e130/revoke",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "bob",
+      "operation": "revokeSource",
+      "method": "POST",
+      "path": "/attachments/163e324a-2834-45fa-b4a8-18640798e130/revoke",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "revokeSource",
+      "method": "POST",
+      "path": "/attachments/163e324a-2834-45fa-b4a8-18640798e130/revoke",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "admin",
+      "operation": "revokeSource",
+      "method": "POST",
+      "path": "/attachments/163e324a-2834-45fa-b4a8-18640798e130/revoke",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/e7404073-b5c4-44ad-85c7-018345bfcfec",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/ccab59d0-e9e9-48d1-a733-30afcf049442/download",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/ccab59d0-e9e9-48d1-a733-30afcf049442/verification",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/da0a2e23-a31d-47a0-8508-44081f02ac51",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4/handover",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "reviewer",
+      "operation": "decide",
+      "method": "POST",
+      "path": "/approvals/11ab2fb7-8297-4751-9982-2cdeb79b371f/decision",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/87a02927-8bf1-4a5b-a7e4-088fb35808c9",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/63cfcc88-a41e-4077-a8a3-3a9f7b2b4d32/download",
+      "status": 200,
+      "media": "csv",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/63cfcc88-a41e-4077-a8a3-3a9f7b2b4d32/verification",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/248c2b4d-09d6-41b2-85db-720cece0a517",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/87a02927-8bf1-4a5b-a7e4-088fb35808c9",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "download",
+      "method": "GET",
+      "path": "/artifacts/63cfcc88-a41e-4077-a8a3-3a9f7b2b4d32/download",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "verify",
+      "method": "POST",
+      "path": "/results/63cfcc88-a41e-4077-a8a3-3a9f7b2b4d32/verification",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "command",
+      "method": "GET",
+      "path": "/commands/248c2b4d-09d6-41b2-85db-720cece0a517",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material",
+      "subject": "alice",
+      "operation": "handover",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614/handover",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL07 source withdrawal and new input invalidate derived material:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "bob",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/90660ef9-fa11-467f-a805-2c54685aa4e3",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/events",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/90660ef9-fa11-467f-a805-2c54685aa4e3/events",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "bob",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/90660ef9-fa11-467f-a805-2c54685aa4e3/events",
+      "status": 410,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "events",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/events",
+      "status": 410,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 200,
+      "media": "event-stream",
+      "schemaValidated": false
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 410,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "alice",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 409,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "bob",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "reviewer",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1",
+      "subject": "admin",
+      "operation": "stream",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14/stream",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1:cleanup",
+      "subject": "bob",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/90660ef9-fa11-467f-a805-2c54685aa4e3",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL08 cursors bind subject and conversation and SSE resumes W+1:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/3800ed1b-fd44-467d-96ee-c8c43aedab14",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "quota",
+      "method": "GET",
+      "path": "/quota",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "newConfiguration",
+      "method": "POST",
+      "path": "/admin/configurations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "publish",
+      "method": "POST",
+      "path": "/admin/config-publications",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "grant",
+      "method": "POST",
+      "path": "/admin/grants",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "create",
+      "method": "POST",
+      "path": "/conversations",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "message",
+      "method": "POST",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4/messages",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "upload",
+      "method": "POST",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4/attachments",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "prepare",
+      "method": "POST",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4/prepare",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "title",
+      "method": "PATCH",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4/title",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "records",
+      "method": "GET",
+      "path": "/admin/records",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "reviewer",
+      "operation": "records",
+      "method": "GET",
+      "path": "/admin/records",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "alice",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/f2a57547-4ce3-427d-9d92-a354021f7c2a",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "admin",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/f2a57547-4ce3-427d-9d92-a354021f7c2a",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "reviewer",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context",
+      "subject": "reviewer",
+      "operation": "context",
+      "method": "GET",
+      "path": "/contexts/f2a57547-4ce3-427d-9d92-a354021f7c2a",
+      "status": 404,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context:cleanup",
+      "subject": "alice",
+      "operation": "stop",
+      "method": "POST",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4/stop",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    },
+    {
+      "case": "ACL09 admin metadata does not grant body or context:cleanup",
+      "subject": "alice",
+      "operation": "snapshot",
+      "method": "GET",
+      "path": "/conversations/a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "status": 200,
+      "media": "json",
+      "schemaValidated": true
+    }
+  ],
+  "cleanup": [
+    {
+      "conversationId": "e5e73732-ffe1-4b3b-88f6-6e23ba38b428",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "05c1cff8-5c3e-429d-8f85-49579223d299",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "d835a57c-017f-4858-8326-8bb35741cc6c",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "e6cccd6a-3511-4909-b178-4350ed88309e",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "49a18567-54b0-48f3-afd5-f4d08d789615",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "4c889d2b-7a4a-46d0-b6b5-81819ae468a6",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "2d27acde-6bad-470a-8890-f512e524ea2f",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "00515370-3783-4d31-8491-6970219d3ee7",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "action": "restore_only_own_fixture_grant_for_cleanup"
+    },
+    {
+      "conversationId": "9582bac4-c0bd-4053-98ed-92b78d0dd3bc",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "9c2c5b3d-e6a5-41f9-bc52-05cea9f09614",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "dcae4781-eb05-45de-9cdc-8473e7524bb4",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "90660ef9-fa11-467f-a805-2c54685aa4e3",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "3800ed1b-fd44-467d-96ee-c8c43aedab14",
+      "openBindings": 0,
+      "historyDeleted": false
+    },
+    {
+      "conversationId": "a4de062d-0fa6-474f-9008-d29e5383cba4",
+      "openBindings": 0,
+      "historyDeleted": false
+    }
+  ],
+  "jsonSchemaChecks": 460,
+  "nonJsonResponses": {
+    "csv": 6,
+    "sseConnections": 8
+  },
+  "fixtureQuotaAdjustments": [],
+  "excluded": [
+    "No original attachment download route exists; it is not counted as an ACL test.",
+    "No independent body-lease revoke route exists; real eligibility withdrawal, source grant withdrawal and lease expiry invalidate access.",
+    "No production identity, real Provider/Agent session sanitation or business resources.",
+    "SSE framing and CSV SHA checks are not counted as JSON response-schema validation."
+  ]
+}

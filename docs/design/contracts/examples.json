@@ -112,7 +112,18 @@
         "effectiveWorkflowHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       },
       "primaryRepositoryId": "demo-orders-code",
-      "purpose": "investigation"
+      "purpose": "investigation",
+      "admission": {
+        "ticketId": "demo-admission-ticket",
+        "bindingId": "demo-binding-1",
+        "executionContentHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "authorizationRevision": 1,
+        "approvalRef": "demo-approval",
+        "approvalRevision": 1,
+        "notBefore": "2026-10-25T07:00:00Z",
+        "notAfter": "2026-10-25T08:00:00Z",
+        "authorityRef": "demo-admission-authority"
+      }
     }
   },
   "accepted": {

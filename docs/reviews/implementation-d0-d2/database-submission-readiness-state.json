@@ -1,0 +1,11 @@
+{
+  "activeSlots": 0,
+  "mysqlVersion": "8.4.13",
+  "reservedTurns": 0,
+  "outboxInProgress": 0,
+  "unclosedBindings": 0,
+  "platformMigration": 5,
+  "unresolvedLegacyOpen": 0,
+  "originalFailedMigrations": 0,
+  "observedAt": "2026-10-26T08:34:42.035996+00:00"
+}

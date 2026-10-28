@@ -1,0 +1,150 @@
+{
+  "scope": "simple setup delivery preparation in existing synthetic environment; final user install is not accepted",
+  "status": "completed_current_synthetic_preparation",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "branch": "work",
+  "artifactSha256": "60d85b5844a67850271784133387bbc7fa8b6ccaca62f5e721ac55bf98e01654",
+  "entry": "scripts/synthetic_runtime.py",
+  "implemented": [
+    "single existing entry with template/doctor/up/status/stop/restart and old start/migrate compatibility",
+    "private runtime/platform-migration/Runner-migration templates; placeholders rejected",
+    "read-only bounded Java/MySQL/precise schema probe, no Spring/worker or DDL",
+    "automatic separate platform then bundled Runner migration when explicit scoped configurations supplied",
+    "process start identity and pidfd shutdown, same-directory operation lock",
+    "real WebServer readiness acknowledgement correlated by nonce/PID/port and HTTP active identity",
+    "sanitized fixed JSON errors and least-privilege subprocess environment",
+    "no replacement on uncertain start/stop; preserved original data and evidence"
+  ],
+  "unitResults": {
+    "java": {
+      "passed": 182,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "setup-java-final.json"
+    },
+    "scripts": {
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "setup-script-tests.json"
+    },
+    "actualLifecycle": {
+      "passed": 11,
+      "failed": 0,
+      "evidence": "setup-lifecycle-checks.json"
+    }
+  },
+  "migrationValidation": {
+    "existingPlatformVersion": 7,
+    "existingRunnerVersion": 1,
+    "newPlatformMigrationsApplied": 0,
+    "newRunnerMigrationsApplied": 0,
+    "runnerLocation": "classpath:db/runner-migration",
+    "completeEmptyInstall": false
+  },
+  "failuresPreserved": [
+    {
+      "evidence": "setup-first-java.json",
+      "reason": "3 prior DB concurrency tests failed with original scheduled JVM still active; exclusive final clean verify 182 passed; no core code weakened"
+    },
+    {
+      "evidence": "setup-first-script-checks.json",
+      "reason": "initial incomplete UTC fixture and loopback sandbox error"
+    },
+    {
+      "evidence": "setup-intermediate-script-checks.json",
+      "reason": "four fake-Jar fixtures needed new readiness class"
+    },
+    {
+      "evidence": "setup-lifecycle-before-port-fix.json",
+      "reason": "real immediate restart blocked by TIME_WAIT misclassified as live port; SO_REUSEADDR without SO_REUSEPORT fixed, active-listener refusal preserved"
+    },
+    {
+      "evidence": "setup-service-before-period-assertion-fix.json",
+      "reason": "old HTTP assertion ignored account period despite retained cross-day history"
+    },
+    {
+      "evidence": "setup-service-before-settlement-assertion-fix.json",
+      "reason": "revised assertion expected consumed before acknowledging final settled state; now strict settled + exact original account pair/period"
+    }
+  ],
+  "readOnlyProcessInspectionLimitation": "Existing JVM /proc fd readlinks denied by kernel. No permission bypass. New launches use private after-ApplicationReadyEvent acknowledgement plus HTTP; original legacy JVM stopped only after exact cmdline/hash/start identity using pidfd.",
+  "notRun": [
+    "A01 original empty migration chain; separate instance not approved",
+    "remote hosted CI and job provisioning; no push",
+    "new environment or user-facing installer, administrator login and nondeveloper setup acceptance",
+    "real-environment software install/upgrade/backup restore",
+    "new credentials/accounts/database permissions/resources; none created",
+    "real model/company data/D3-D4 adapters/independent Runner"
+  ],
+  "prerequisites": [
+    "existing approved local MySQL8.4 and scoped accounts/TLS",
+    "prebuilt Java/frontend Jar",
+    "current development entry uses Linux/Java21/Python3.12; final target/package undecided"
+  ],
+  "inputBudget": {
+    "actualRuntimeTopLevelKeys": 6,
+    "connectionParametersCountSeparately": true,
+    "proposedMaximumThreeFrozen": false,
+    "proposedMaximumThreeMet": false
+  },
+  "runtimeUnits": {
+    "existingSyntheticTotal": 2,
+    "managedByThisEntry": [
+      "platform JVM including frontend and fixture"
+    ],
+    "existingMysqlLifecycleManaged": false,
+    "newInfrastructureAdded": false
+  },
+  "nextIndependentWork": "Choose primary distribution once target-host prerequisites are known; extend safe package/config/upgrade-backup preparation without running operations in real environments. A01 remains separately gated.",
+  "safety": {
+    "noDatabaseOrBlobDeleted": true,
+    "noAccountOrPermissionChange": true,
+    "noInstallDeployCommitPush": true,
+    "coreHashEvidence": "setup-protected-core-checks.json",
+    "credentialScan": "setup-private-scan.json",
+    "knownApprovedDatabaseUsersEnforced": true
+  },
+  "observedAt": "2026-10-27T01:29:10.827262+00:00",
+  "httpResults": {
+    "passed": 42,
+    "total": 42,
+    "schemaValidatedJsonReplies": 963,
+    "evidence": [
+      "setup-service-checks.json",
+      "setup-context-checks.json",
+      "setup-hardening-checks.json",
+      "setup-authorization-checks.json"
+    ]
+  },
+  "uiResults": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "evidence": "setup-ui-checks.json"
+  },
+  "processInterruptionResults": {
+    "passed": 6,
+    "total": 6,
+    "evidence": "setup-process-checks.json"
+  },
+  "finalStateEvidence": "setup-database-state.json",
+  "artifactEvidence": "setup-artifact.json",
+  "documentationChecks": {
+    "localLinks": 139,
+    "brokenLinks": 0,
+    "badAnchors": 0,
+    "staticConsistency": 491,
+    "historicalShaMatches": 20,
+    "gitDiffCheck": "passed"
+  },
+  "gitStateEvidence": "setup-git-state.json",
+  "securityReview": [
+    "known scoped runtime/migration usernames cannot be swapped",
+    "Java -version uses sanitized env as well as application/probe/migration subprocesses",
+    "inactive synthetic session cannot report ready",
+    "nonce/metadata PID/port/identity mode must all match",
+    "TIME_WAIT allowed while actual existing listener is still rejected"
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "scope": "A07+A02 only; final local checkpoint for parent review",
+  "observedAt": "2026-10-26T07:33:01.427496+00:00",
+  "branch": "work",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "reproducedFailures": "quota-clock-before-fix.json",
+  "changes": {
+    "QuotaLedger": "exact frozen total/model account pair and original UTC date; selected pair only for reserve/consume/release; unknown old reservations retained; idempotent terminal settlement",
+    "Clock": "Spring UTC Clock injected through Store; business timestamps, admission/approval/content/queue leases use microseconds; submicro plan scope rejected and exact 366-day limit",
+    "V5": "persist account keys + composite foreign keys/CHECK; deterministic legacy backfill only, no balances/states/periods/slots changed",
+    "ciGate": "collect_java_results.py requires all three new test classes; remote workflow not executed"
+  },
+  "newActualTests": [
+    {
+      "class": "io.aitest.workbench.execution.QuotaIsolationTest",
+      "name": "terminalReplayDoesNotChargeAnotherModelAccount",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaIsolationTest",
+      "name": "dispatchDoesNotReserveOrReleaseAnotherModelAccount",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaIsolationTest",
+      "name": "exhaustedUnselectedModelDoesNotBlockSelectedModel",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "safeIntegerMaximumBlocksAnotherReservationWithoutOverflow",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "frozenPairAndPeriodSurviveMidnightAndRejectChangedModel",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "acceptanceAndRepeatedTerminalAfterMidnightSettleOnlyTheOldPair",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "legacyUnresolvedPairCannotConsumeOrReleaseUnknownBalances",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "differentModelConnectionBindingsCannotBypassOneTotalOrCreateItTwice",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "oldUnknownReservationIsNotReleasedAtUtcRollover",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "unacceptedSubmissionAtExactApprovalExpiryCannotConsumeBudget",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "queueLeaseUsesInjectedMicrosecondBoundary",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "injectedClockNormalizesMicrosAndUtcPeriodRegardlessOfClockZone",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "csvAmountAndRowLimitsRejectExponentsPrecisionLossAndOverflow",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "subMicrosecondPlanScopeIsRejectedRatherThanTruncated",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "dstDaysPreserveBothRepeatedHoursAndExclusiveEndWithExactMoney",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "planRangeLimitIsExactAndNotFlooredToWholeDays",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "firstAcceptanceWindowIsExclusiveButAcceptedLookupSurvivesExpiry",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "messageLeaseExpiresAtInjectedMicrosecondWithoutSleeping",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "maximumCsvAmountsAggregateAsDecimalStringsWithoutTruncation",
+      "result": "pass"
+    }
+  ],
+  "verification": {
+    "java": {
+      "passed": 63,
+      "total": 63,
+      "skipped": 0,
+      "command": "/workspace/scratch/toolchain/apache-maven-3.9.11/bin/mvn -s /workspace/scratch/development-start-20261026/maven-settings.xml -Dmaven.repo.local=/workspace/scratch/maven-cache -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -f backend/pom.xml verify -B -ntp",
+      "launcher": "/workspace/scratch/development-start-20261026/verify-backend.py; injects existing approved DB credentials without printing them"
+    },
+    "service": {
+      "passed": 15,
+      "total": 15,
+      "evidence": "service-quota-clock-checks.json"
+    },
+    "hardening": {
+      "passed": 15,
+      "total": 15,
+      "evidence": "hardening-quota-clock-checks.json"
+    },
+    "processInterruption": {
+      "passed": 5,
+      "total": 5,
+      "evidence": "process-quota-clock-checks.json"
+    },
+    "apiRepliesValidated": 385,
+    "staticChecks": 484,
+    "originalArchiveSha": 20,
+    "gitDiffCheck": "pass"
+  },
+  "mysqlVersion": "8.4.13",
+  "platformMigration": "V5",
+  "runnerMigration": "V1",
+  "jarSha256": "7a10852102c03ff9f8d9bf2f82725abcf51ed72fc6bd0ca7d2b65a74de726a81",
+  "databaseState": "database-quota-clock-state.json",
+  "migrationEvidence": "quota-v5-migration.json",
+  "notRerun": [
+    "TypeScript contracts and UI tests: frontend unchanged; previous results retained with scope",
+    "Remote hosted CI/job-specific preparation: no push",
+    "Original full empty-database migration chain: A01, not inherently dependent on remote CI"
+  ],
+  "limits": [
+    "Second connection/model choices are synthetic canonical identifiers at ledger boundary, not real Provider adapters",
+    "Coarse tenant guard proves correctness, not throughput",
+    "Two closed ambiguous legacy rows retain NULL keys; no open unresolved reservation",
+    "Only five existing process windows; executing-unknown and COMMIT transport failures remain A03/A05"
+  ],
+  "remainingA": [
+    "A01",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A08",
+    "A09",
+    "A10",
+    "A11"
+  ],
+  "nextAfterParentReview": [
+    "A08 stable logical command/message identity and receipt recovery",
+    "A01 migration readiness/interruption and concrete authorized local empty-chain environment"
+  ],
+  "scopeProtection": {
+    "newAccounts": false,
+    "newDatabases": false,
+    "privilegeChanges": false,
+    "commitPushMergeDeployment": false,
+    "realModelsResources": false,
+    "existingDataRetained": true
+  },
+  "environmentOrPermissionBlocker": null,
+  "A01ResourceNote": "Existing two databases contain retained data. Readiness/prefixed interruption tests can proceed under existing authorization. If no approved empty instance can be reused, original cold chain needs separately authorized private temporary MySQL container, only two same-named synthetic DBs, three scoped accounts and loopback port; no such resource created/requested in this package."
+}

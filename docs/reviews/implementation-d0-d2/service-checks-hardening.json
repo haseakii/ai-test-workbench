@@ -1,0 +1,162 @@
+{
+  "scope": "actual local Java service and MySQL, synthetic identity/backend/data only",
+  "cases": [
+    {
+      "name": "actual service synthetic CSV to user verification",
+      "result": "pass",
+      "seconds": 0.503,
+      "evidence": {
+        "conversationId": "71f54f9e-60c0-4823-902c-50d0a21ed0fd",
+        "bindingId": "805b9532-baa0-416b-8c06-74603107fa52",
+        "artifactId": "4b7daff8-0622-4c8d-bd3a-69c737f294a6",
+        "csvSha256": "04606b19bbd97f15118ac35a0b760fbff6b47293a4bc301fa98a34469e0ba0f2",
+        "differenceCount": 2,
+        "totalDifference": "10.00"
+      }
+    },
+    {
+      "name": "independent object authorization and pending member boundary",
+      "result": "pass",
+      "seconds": 0.02,
+      "evidence": {
+        "cross_user_objects_denied": 3,
+        "unassigned_environment_absent": true,
+        "membershipState": "active",
+        "allowedEnvironmentCount": 4
+      }
+    },
+    {
+      "name": "stable command receipt and changed-content conflict",
+      "result": "pass",
+      "seconds": 0.015,
+      "evidence": {
+        "conversationId": "871bdfed-754f-4d8f-913a-4871e6bb8146",
+        "sameReceipt": true,
+        "changedBodyRejected": true
+      }
+    },
+    {
+      "name": "atomic snapshot cursor resumes after watermark",
+      "result": "pass",
+      "seconds": 0.025,
+      "evidence": {
+        "snapshotWatermark": 10,
+        "nextSequence": 11
+      }
+    },
+    {
+      "name": "fixed scope approval and stop before external acceptance",
+      "result": "pass",
+      "seconds": 0.261,
+      "evidence": {
+        "tamperedHashRejected": true,
+        "selfApprovalRejected": true,
+        "stoppedBinding": "f81e7348-a65c-40b7-bdb0-a91d2e02e5a2"
+      }
+    },
+    {
+      "name": "queued approval expiry cannot start after waiting for a slot",
+      "result": "pass",
+      "seconds": 2.765,
+      "evidence": {
+        "heldBinding": "11799c79-90a2-437a-a3dd-052dbcfcbcdf",
+        "expiredBinding": "d4317764-3b27-4b5a-8e77-a1aa2897bcfd",
+        "expiredTaskAccepted": false
+      }
+    },
+    {
+      "name": "lost acceptance receipt reconciles one execution and one charge",
+      "result": "pass",
+      "seconds": 1.214,
+      "evidence": {
+        "bindingId": "97846d2d-241b-47f3-8818-d35ff7d69337",
+        "acceptedEvents": 1,
+        "duplicateCharge": false
+      }
+    },
+    {
+      "name": "corrupt output is closed without artifact delivery or regeneration",
+      "result": "pass",
+      "seconds": 0.273,
+      "evidence": {
+        "bindingId": "8f8118bd-a378-472e-8059-d9e8b0856751",
+        "artifactReady": false,
+        "reason": "INTEGRITY_MISMATCH"
+      }
+    },
+    {
+      "name": "source revocation blocks derived content and preserves old decision",
+      "result": "pass",
+      "seconds": 0.288,
+      "evidence": {
+        "artifactId": "b4e5d62b-871f-4306-8906-62e87d678fbd",
+        "derivedResultHidden": true,
+        "downloadDenied": true,
+        "historicalDecisionPreserved": true,
+        "agentSession": "not_applicable_fixture_backend"
+      }
+    },
+    {
+      "name": "metadata administration does not grant body or download rights",
+      "result": "pass",
+      "seconds": 0.013,
+      "evidence": {
+        "metadataVisible": true,
+        "bodyAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "dependency CAS conflicts preserve drafts and emergency guard",
+      "result": "pass",
+      "seconds": 0.093,
+      "evidence": {
+        "environmentId": "d5c7957d-c4c2-4abb-a72f-ffa048d89da0",
+        "publicationConflict": true,
+        "unpublishedDraftPreserved": true,
+        "emergencyDisableEffective": true
+      }
+    },
+    {
+      "name": "manual title priority and independent revision conflict",
+      "result": "pass",
+      "seconds": 0.057,
+      "evidence": {
+        "manualPlaceholderNamePreserved": true,
+        "staleTitleRevisionRejected": true
+      }
+    },
+    {
+      "name": "membership revocation blocks each object interface",
+      "result": "pass",
+      "seconds": 0.246,
+      "evidence": {
+        "environmentId": "6a3718d1-74a8-4aba-b061-1cb11517ad77",
+        "conversationEventsAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "explicit content qualification and expiring message-only lease",
+      "result": "pass",
+      "seconds": 1.158,
+      "evidence": {
+        "defaultDenied": true,
+        "scopedReadSucceeded": true,
+        "eventsAndDownloadStillDenied": true,
+        "expiryDenied": true,
+        "revocationDenied": true
+      }
+    },
+    {
+      "name": "service restart restores original execution and artifact",
+      "result": "pass",
+      "seconds": 2.24,
+      "evidence": {
+        "conversationId": "71f54f9e-60c0-4823-902c-50d0a21ed0fd",
+        "sameBindingAfterRestart": true,
+        "sameArtifactAfterRestart": true
+      }
+    }
+  ],
+  "passed": 15,
+  "total": 15
+}

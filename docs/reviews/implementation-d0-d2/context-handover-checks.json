@@ -1,0 +1,82 @@
+{
+  "scope": "actual synthetic HTTP/MySQL context preparation; no model or external resources",
+  "cases": [
+    {
+      "name": "collect_only_understanding_without_execution",
+      "result": "pass"
+    },
+    {
+      "name": "recomputable_plan_context_owner_acl_and_new_input_invalidation",
+      "result": "pass"
+    },
+    {
+      "name": "source_revocation_invalidates_context_receipt_and_pending_binding",
+      "result": "pass"
+    }
+  ],
+  "passed": 3,
+  "total": 3,
+  "apiResponseValidation": {
+    "checked": 41,
+    "operations": [
+      "quota",
+      "newConfiguration",
+      "publish",
+      "grant",
+      "create",
+      "understand",
+      "context",
+      "snapshot",
+      "message",
+      "upload",
+      "prepare",
+      "stop",
+      "revokeSource"
+    ],
+    "responseCounts": {
+      "quota": {
+        "200": 1
+      },
+      "newConfiguration": {
+        "200": 3
+      },
+      "publish": {
+        "200": 1
+      },
+      "grant": {
+        "200": 2
+      },
+      "create": {
+        "200": 3
+      },
+      "understand": {
+        "200": 3,
+        "409": 1
+      },
+      "context": {
+        "200": 2,
+        "404": 3,
+        "409": 2
+      },
+      "snapshot": {
+        "200": 9
+      },
+      "message": {
+        "200": 3
+      },
+      "upload": {
+        "200": 4
+      },
+      "prepare": {
+        "200": 2
+      },
+      "stop": {
+        "200": 1
+      },
+      "revokeSource": {
+        "200": 1
+      }
+    }
+  },
+  "recordedAt": "2026-10-26T13:01:53.983865+00:00"
+}

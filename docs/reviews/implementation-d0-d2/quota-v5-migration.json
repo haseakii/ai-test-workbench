@@ -1,0 +1,23 @@
+{
+  "scope": "V5 only on approved platform DB; no accounts/privileges changed",
+  "preMigration": {
+    "open": 0,
+    "slots": 0,
+    "reserved": 0
+  },
+  "beforeDigests": [
+    "8f618a73636e0cee29db84b08554e4628efff03477d6a1d9182dae994a24e159",
+    "c63ef7a926207dde4a3f486f74d924ff9d65eb4e55d69ba10dd63df48557d9c5",
+    "c8ef795c0b02ebac81d0019ef4ab3c9182137b9b45942d2f6fe81c8a68d6256b"
+  ],
+  "afterDigests": [
+    "8f618a73636e0cee29db84b08554e4628efff03477d6a1d9182dae994a24e159",
+    "c63ef7a926207dde4a3f486f74d924ff9d65eb4e55d69ba10dd63df48557d9c5",
+    "c8ef795c0b02ebac81d0019ef4ab3c9182137b9b45942d2f6fe81c8a68d6256b"
+  ],
+  "balancesStatesPeriodsSlotsUnchanged": true,
+  "frozen": 162,
+  "version": "5",
+  "unresolvedLegacy": 2,
+  "unresolvedLegacyOpen": 0
+}

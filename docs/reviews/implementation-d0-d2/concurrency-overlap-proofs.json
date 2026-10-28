@@ -1,0 +1,89 @@
+{
+  "scope": "final Maven clean verify; actual MySQL with independent overlapping transactions at deterministic checkpoints",
+  "proofs": [
+    {
+      "followerConnection": 22970,
+      "case": "same-message-changed-text",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 22969,
+      "followerWaited": true
+    },
+    {
+      "followerConnection": 23000,
+      "case": "distinct-message-same-revision",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 22999,
+      "followerWaited": true
+    },
+    {
+      "followerConnection": 23030,
+      "case": "same-command-equal-body",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 23029,
+      "followerWaited": true
+    },
+    {
+      "followerConnection": 23061,
+      "case": "same-command-different-body",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 23060,
+      "followerWaited": true
+    },
+    {
+      "followerConnection": 23091,
+      "case": "same-message-equal-text",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 23090,
+      "followerWaited": true
+    },
+    {
+      "followerConnection": 23155,
+      "case": "same-terminal-concurrent-settlement",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 23154,
+      "followerWaited": true
+    },
+    {
+      "before": 1,
+      "connections": {
+        "a04-follower": 23193,
+        "a04-leader": 23192,
+        "a04-reader": 23194
+      },
+      "snapshotWatermark": 3,
+      "finalWatermark": 3,
+      "pagedContinuation": true,
+      "case": "late-event-commit-and-snapshot"
+    },
+    {
+      "followerConnection": 23225,
+      "case": "rollback-and-concurrent-retry",
+      "leaderRollback": true,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 23224,
+      "followerWaited": true
+    },
+    {
+      "followerConnection": 23261,
+      "case": "same-node-open-binding-unique-index",
+      "leaderRollback": false,
+      "leaderHeldBeforeCommit": true,
+      "activeTransactionsOverlapped": true,
+      "leaderConnection": 23260,
+      "followerWaited": true
+    }
+  ]
+}

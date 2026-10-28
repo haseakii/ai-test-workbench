@@ -1,0 +1,172 @@
+{
+  "scope": "current targeted source classes, before final fixed jar",
+  "total": 33,
+  "passed": 33,
+  "cases": [
+    {
+      "class": "ApiContractTest",
+      "name": "committedOpenApiMatchesActualRoutesAndRequestRecords",
+      "result": "pass"
+    },
+    {
+      "class": "ApiContractTest",
+      "name": "strictCommandRecordsRejectMissingOrNullDecisionFlagsAndFields",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "unknownExecutionAndLegacyReservationDoNotInventProviderOrFrozenAccountFacts",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "exactLargeCsvTotalsSurviveAndInconsistentEvidenceIsRejected",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "closureRequiresInactiveOwnershipAndOpaqueReferencesRejectPathsOrUrls",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "duplicateFactsAndDanglingEvidenceAreRejected",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "staleContextCanBeRepresentedWithoutBecomingActiveOrChangingItsOriginalHash",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "canonicalDigestIsStableForEquivalentFactOrderAndUtcFormatting",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "contentChangeChangesPackageDigestWithoutPretendingToChangeApprovalHash",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "precisionAndIntegerBoundariesAreRejectedRatherThanRounded",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "expandedYearsCannotEscapeTheFourDigitWireTimeAndPeriodContract",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "projectionCopiesListsAndCannotChangeAfterExport",
+      "result": "pass"
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "originalProviderCursorAndPendingStopDoNotInventClosureProof",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "revokedOwnerCannotReuseOldActorForExportAndDeniedAttemptIsNotAuditedAsExport",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "planContextAndArtifactTamperingPreventExportWithoutPublishingAudit",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "completedFixedCsvFlowExportsAuthorizedFactsHashesVerificationAndAudit",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "revokedSourceBlocksEntireDerivedPackageAndRetainsUnknownOccupation",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "unknownSubmissionAcrossUtcRolloverExportsFrozenOldPairWithoutReleaseOrNewExecution",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "contextInputRevisionMustMatchItsHistoricalPlanEvenWhenTheConversationHasNewInput",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "newInputExportsStalePlanAndOriginalContextHashWithoutOldResultBody",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "contextAttachmentDigestMustBelongToTheReferencedConversationSources",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "peerReviewerBodyLeaseAndAdminMetadataDoNotAuthorizeOwnerExport",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "selfConsistentContextHashCannotBindDifferentProvidedScopeToTheApprovedPlan",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "auditFailureReturnsNoPackageAndRollsBackItsOnlyWrite",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "alteredPlatformSummaryCannotOverrideTheHashedProviderSummaryArtifact",
+      "result": "pass"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "legacyUnknownFrozenPairStaysUnknownAndDoesNotGuessCurrentAccounts",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "anotherValidEnvironmentGrantCannotExposeOwnerEnvironmentOrItsContent",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "sameEnvironmentPeerCannotUploadReadContextEventsOrDownloadOwnerArtifact",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "ownerRevocationBlocksOldActorArtifactContextUploadReceiptAndReviewerLease",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "reviewerBodyLeaseGrantsMessagesOnlyAndDoesNotGrantContextEventsUploadOrArtifact",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "sameEnvironmentForeignAttachmentCannotBeAssociatedWithAnotherOwnedConversation",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "sourceRevocationAndNewInputBlockOldDerivedMaterialWithoutRewritingHistoricFacts",
+      "result": "pass"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "resumeCursorCannotCrossSubjectOrConversationAndPagesRecheckCurrentGrant",
+      "result": "pass"
+    }
+  ]
+}

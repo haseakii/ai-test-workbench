@@ -1,0 +1,9 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion><parent><groupId>io.aitest</groupId><artifactId>workbench</artifactId><version>0.1.0-SNAPSHOT</version></parent>
+  <artifactId>provider-contract</artifactId>
+  <dependencies>
+    <dependency><groupId>tools.jackson.core</groupId><artifactId>jackson-databind</artifactId></dependency>
+    <dependency><groupId>io.github.erdtman</groupId><artifactId>java-json-canonicalization</artifactId><version>1.1</version></dependency>
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><scope>test</scope></dependency>
+  </dependencies>
+</project>

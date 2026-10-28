@@ -1,0 +1,75 @@
+{
+  "recordedAt": "2026-10-26T10:37:27.272941+00:00",
+  "stage": "A09 interim; not final A09/A03 acceptance",
+  "mysql": "8.4.13",
+  "platformMigration": 6,
+  "newMigrationApplied": 1,
+  "casesAtFirstPositiveRun": [
+    {
+      "name": "committedOpenApiMatchesActualRoutesAndRequestRecords",
+      "result": "pass"
+    },
+    {
+      "name": "strictCommandRecordsRejectMissingOrNullDecisionFlagsAndFields",
+      "result": "pass"
+    },
+    {
+      "name": "newInputInvalidatesManifestUnderstandingAndPlanInStorage",
+      "result": "pass"
+    },
+    {
+      "name": "sourceRevocationInvalidatesDerivedContextAndBlocksBodyRead",
+      "result": "pass"
+    },
+    {
+      "name": "collectingQuestionsPersistsIndependentUnderstandingWithoutExecutionOrModel",
+      "result": "pass"
+    },
+    {
+      "name": "csvRulesUseBusinessCalendarAcrossDstAndRequireConfirmation",
+      "result": "pass"
+    },
+    {
+      "name": "contextReadRechecksOwnerAndCurrentGrantAndDetectsTampering",
+      "result": "pass"
+    },
+    {
+      "name": "planBindsRecomputableDigestsWithoutCopyingMessageBodies",
+      "result": "pass"
+    },
+    {
+      "name": "preparedPlanFreezesARecomputableContextManifest",
+      "result": "pass"
+    }
+  ],
+  "positiveRunCommand": "python /workspace/scratch/development-start-20261026/verify-context-a09.py",
+  "tsContracts": {
+    "passed": 10,
+    "failed": 0
+  },
+  "tsSubmissions": {
+    "passed": 9,
+    "failed": 0
+  },
+  "frontendBuild": "passed",
+  "afterPositiveRunChangesPendingRetest": [
+    "revocation before approval enqueues durable reconciliation",
+    "understanding receipt rechecks context after same-key replay",
+    "new frontend context-understanding.spec.ts (2 cases)"
+  ],
+  "knownResidualFixture": {
+    "bindingId": "bcbe90f5-2ce7-45ed-9a38-4d0513df5ea2",
+    "state": "prepared/stopped/pending",
+    "neverAccepted": true,
+    "quotaOrSlotOccupied": false,
+    "resolution": "re-run audited revoke with durable reconciliation fix; no deletion/manual financial update"
+  },
+  "A03": "Provider port and ExecutionSpecs delegated; Worker integration pending",
+  "sourceSha256": {
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/ContextManifests.java": "c8f4c7432f058e99b9f9dc84ca85140c006d8007405ae53584a60e27e4442581",
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/PreparationService.java": "4dc8069ccc7f62e3f9352b40c33d1b65b13779d0676468663111a0218b6dbd33",
+    "backend/platform-server/src/main/resources/db/migration/V6__context_manifests.sql": "64cca5af6f8d60ef0ec435e35b96a6ee23e161fe2bcdac8954269ce9f187e61c",
+    "frontend/src/main.tsx": "aab8cf46e24d04d23785d816cc940d610ec9db47f451f25d0e575586db7d3c95",
+    "frontend/src/shared/command-journal.ts": "e19ad30ffa5ec98229e8743f222f7c60b0679041477ef0b951c8933eb130b308"
+  }
+}

@@ -1,0 +1,16 @@
+# OFFLINE TEMPLATE ONLY. Secure initialization of a NEW private datadir only.
+# Keep the refusal guard until an explicitly approved coordinator validates all
+# inputs. Do not point initialization at normal my.ini or guessed TLS files.
+[mysqld]
+workbench-template-not-rendered=REFUSE_UNAPPROVED_TEMPLATE
+basedir="{{MYSQL_BASEDIR_MYSQL_PATH}}"
+datadir="{{PRIVATE_DATA_DIRECTORY_MYSQL_PATH}}"
+tmpdir="{{PRIVATE_TEMP_DIRECTORY_MYSQL_PATH}}"
+log-error="{{PRIVATE_INITIALIZATION_LOG_MYSQL_PATH}}"
+skip-networking=ON
+mysqlx=OFF
+named-pipe=OFF
+shared-memory=OFF
+general-log=OFF
+slow-query-log=OFF
+default-storage-engine=InnoDB

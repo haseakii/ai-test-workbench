@@ -1,0 +1,37 @@
+-- OFFLINE TEMPLATE ONLY. No executable bootstrap SQL is shipped here.
+-- An approved coordinator must verify a NEW private instance and every token.
+-- The guard prefixes EACH statement, so mysql --force cannot skip one guard
+-- and continue with a later valid CREATE/GRANT. Never remove guards by hand.
+-- Password tokens are complete vetted SQL literals, not raw concatenated input.
+-- The initial localhost root password is temporary and expired; rotate it first.
+
+{{APPROVED_RENDER_ONLY}} ALTER USER 'root'@'localhost'
+  IDENTIFIED WITH caching_sha2_password BY {{ROOT_PASSWORD_SQL_LITERAL}};
+
+{{APPROVED_RENDER_ONLY}} CREATE DATABASE `workbench_platform`
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs;
+{{APPROVED_RENDER_ONLY}} CREATE DATABASE `workbench_runner`
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs;
+
+{{APPROVED_RENDER_ONLY}} CREATE USER 'workbench'@'127.0.0.1'
+  IDENTIFIED WITH caching_sha2_password BY {{PLATFORM_PASSWORD_SQL_LITERAL}}
+  REQUIRE SSL;
+{{APPROVED_RENDER_ONLY}} CREATE USER 'workbench_runner'@'127.0.0.1'
+  IDENTIFIED WITH caching_sha2_password BY {{RUNNER_PASSWORD_SQL_LITERAL}}
+  REQUIRE SSL;
+{{APPROVED_RENDER_ONLY}} CREATE USER 'workbench_migration'@'127.0.0.1'
+  IDENTIFIED WITH caching_sha2_password BY {{MIGRATION_PASSWORD_SQL_LITERAL}}
+  REQUIRE SSL;
+
+{{APPROVED_RENDER_ONLY}} GRANT SELECT, INSERT, UPDATE, DELETE
+  ON `workbench_platform`.* TO 'workbench'@'127.0.0.1';
+{{APPROVED_RENDER_ONLY}} GRANT SELECT, INSERT, UPDATE, DELETE
+  ON `workbench_runner`.* TO 'workbench_runner'@'127.0.0.1';
+-- Current V1-V7/V1 migrations need only these schema-scoped operations.
+-- Destructive or wider future migrations require separate review, not ALL.
+{{APPROVED_RENDER_ONLY}} GRANT SELECT, INSERT, UPDATE, DELETE,
+  CREATE, ALTER, INDEX, REFERENCES
+  ON `workbench_platform`.* TO 'workbench_migration'@'127.0.0.1';
+{{APPROVED_RENDER_ONLY}} GRANT SELECT, INSERT, UPDATE, DELETE,
+  CREATE, ALTER, INDEX, REFERENCES
+  ON `workbench_runner`.* TO 'workbench_migration'@'127.0.0.1';

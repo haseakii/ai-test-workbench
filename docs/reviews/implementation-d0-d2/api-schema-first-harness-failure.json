@@ -1,0 +1,17 @@
+{
+  "scope": "actual local Java service and MySQL, synthetic identity/backend/data only",
+  "cases": [
+    {
+      "name": "actual service synthetic CSV to user verification",
+      "result": "fail",
+      "seconds": 0.546,
+      "error": "{'ok': False, 'error': 'Error: Undocumented route POST /admin/configurations'}"
+    }
+  ],
+  "passed": 0,
+  "total": 1,
+  "apiContract": {
+    "checked": 0,
+    "operations": []
+  }
+}

@@ -198,6 +198,69 @@
       "prototypeCoverage": "real_only",
       "controlProvider": "not_run",
       "directProvider": "not_run"
+    },
+    {
+      "id": "CP23",
+      "method": "getSnapshot",
+      "trigger": "分派中直接收到权威成功/取消，与停止交错",
+      "expected": "不要求伪造 active；原接纳一致、安全关闭，终态不回退",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP24",
+      "method": "getSnapshot",
+      "trigger": "快照读取与新事件提交并发",
+      "expected": "原子 snapshotRevision/watermark/resumeCursor；续读不漏事件",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP25",
+      "method": "validateBinding",
+      "trigger": "安全整数、微秒时间、Unicode 和 Decimal 往返",
+      "expected": "Java/TS 规范摘要一致，越界/重复键拒绝",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP26",
+      "method": "respondPermission",
+      "trigger": "人工与策略身份映射及摘要参数篡改",
+      "expected": "authority 保持一致，不伪造人工；改范围拒绝原批准",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP27",
+      "method": "start",
+      "trigger": "发送延迟、批准过期或撤权与首次接纳并发",
+      "expected": "authority 单次消费为线性化点；失效不首次接纳，已消费只核查",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP28",
+      "method": "submitInput",
+      "trigger": "来源撤权而派生内容或 Agent session 已缓存",
+      "expected": "正文/下载/验证即时拒绝，含撤权来源会话不得恢复",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
+    },
+    {
+      "id": "CP29",
+      "method": "validateBinding",
+      "trigger": "所选变更集依赖 CAS 冲突，期间紧急撤权",
+      "expected": "发布整批回滚；紧急守卫独立生效，不发布其他草稿",
+      "prototypeCoverage": "design_only",
+      "controlProvider": "not_run",
+      "directProvider": "not_run"
     }
   ]
 }

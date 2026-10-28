@@ -1,0 +1,3620 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-test-workbench:provider:initial-draft",
+  "title": "Provider wire contract; no transport routes implemented",
+  "$comment": "{\"source\":\"docs/design/contracts/execution-provider.d.ts\",\"sourceSha256\":\"96702856a346556ae04a882693731b21729e8b59458de847e1f6b606e319535a\",\"methods\":[\"inspectCapabilities\",\"validateBinding\",\"start\",\"lookupSubmission\",\"closeSubmission\",\"getSnapshot\",\"readEvents\",\"submitInput\",\"cancel\",\"preparePermissionResume\",\"respondPermission\",\"getArtifact\"]}",
+  "$defs": {
+    "ContractVersion": {
+      "const": "initial-draft",
+      "type": "string"
+    },
+    "Id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Uuid": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "Cursor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "SafeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "Instant": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\.\\d{6}Z$"
+    },
+    "Sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "Decimal": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "KnownBoolean": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "const": "unknown",
+          "type": "string"
+        }
+      ]
+    },
+    "EffectStatus": {
+      "type": "string",
+      "enum": [
+        "none",
+        "verified",
+        "unknown"
+      ]
+    },
+    "ExecutionPurpose": {
+      "type": "string",
+      "enum": [
+        "understanding",
+        "investigation",
+        "title",
+        "summary"
+      ]
+    },
+    "EvidenceLevel": {
+      "type": "string",
+      "enum": [
+        "advertised",
+        "adapter_supported",
+        "verified",
+        "unknown",
+        "unsupported"
+      ]
+    },
+    "CallContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractVersion",
+        "correlationId",
+        "tenantId",
+        "subjectContext",
+        "deadline"
+      ],
+      "properties": {
+        "contractVersion": {
+          "$ref": "#/$defs/ContractVersion"
+        },
+        "correlationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "tenantId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "subjectContext": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "subjectId",
+            "authorizationRef"
+          ],
+          "properties": {
+            "subjectId": {
+              "$ref": "#/$defs/Uuid"
+            },
+            "authorizationRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        "deadline": {
+          "$ref": "#/$defs/Instant"
+        }
+      }
+    },
+    "ConnectionRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "providerId",
+        "connectionId",
+        "connectionRevision"
+      ],
+      "properties": {
+        "providerId": {
+          "$ref": "#/$defs/Id"
+        },
+        "connectionId": {
+          "$ref": "#/$defs/Id"
+        },
+        "connectionRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        }
+      }
+    },
+    "BindingRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "nodeRunId",
+        "providerId"
+      ],
+      "properties": {
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "nodeRunId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "providerId": {
+          "$ref": "#/$defs/Id"
+        }
+      }
+    },
+    "SubmissionRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "nodeRunId",
+        "providerId",
+        "tenantId",
+        "idempotencyKey",
+        "specHash"
+      ],
+      "properties": {
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "nodeRunId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "providerId": {
+          "$ref": "#/$defs/Id"
+        },
+        "tenantId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "idempotencyKey": {
+          "$ref": "#/$defs/Id"
+        },
+        "specHash": {
+          "$ref": "#/$defs/Sha256"
+        }
+      }
+    },
+    "CommandRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commandId",
+        "idempotencyKey",
+        "requestHash",
+        "expectedRevision"
+      ],
+      "properties": {
+        "commandId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "idempotencyKey": {
+          "$ref": "#/$defs/Id"
+        },
+        "requestHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "expectedRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        }
+      }
+    },
+    "CapabilitySnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connection",
+        "adapterVersion",
+        "backendVersion",
+        "agentVersion",
+        "negotiatedProtocol",
+        "configurationHash",
+        "observedAt",
+        "validUntil",
+        "capabilities",
+        "modelOptions"
+      ],
+      "properties": {
+        "connection": {
+          "$ref": "#/$defs/ConnectionRef"
+        },
+        "adapterVersion": {
+          "type": "string"
+        },
+        "backendVersion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "agentVersion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "negotiatedProtocol": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "configurationHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "observedAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "validUntil": {
+          "$ref": "#/$defs/Instant"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "level",
+              "evidenceRef"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "image_input",
+                  "resume_checkpoint",
+                  "permission_bridge",
+                  "binary_artifact",
+                  "durable_events",
+                  "idempotent_start",
+                  "submission_fence",
+                  "hard_call_limit",
+                  "usage_reporting",
+                  "hard_token_limit",
+                  "admission_guard"
+                ]
+              },
+              "level": {
+                "$ref": "#/$defs/EvidenceLevel"
+              },
+              "evidenceRef": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Id"
+                  },
+                  {
+                    "const": null,
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "modelOptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "modelId",
+              "confirmed"
+            ],
+            "properties": {
+              "modelId": {
+                "$ref": "#/$defs/Id"
+              },
+              "confirmed": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ExecutionSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractVersion",
+        "admission",
+        "purpose",
+        "tenantId",
+        "conversationId",
+        "workflowRunId",
+        "workflowVersion",
+        "nodeRunId",
+        "bindingId",
+        "ownershipEpoch",
+        "connection",
+        "capabilitySnapshotHash",
+        "agentId",
+        "systemId",
+        "environmentId",
+        "primaryRepositoryId",
+        "deployedCommit",
+        "codeCommit",
+        "objective",
+        "preparation",
+        "inputs",
+        "executionIdentityRef",
+        "workspaceAuthorizationRef",
+        "resourceAuthorizationRefs",
+        "modelRequest",
+        "skills",
+        "budget",
+        "deadline",
+        "outputContract"
+      ],
+      "properties": {
+        "contractVersion": {
+          "$ref": "#/$defs/ContractVersion"
+        },
+        "admission": {
+          "$ref": "#/$defs/AdmissionTicket"
+        },
+        "purpose": {
+          "$ref": "#/$defs/ExecutionPurpose"
+        },
+        "tenantId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "conversationId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "workflowRunId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "workflowVersion": {
+          "$ref": "#/$defs/Id"
+        },
+        "nodeRunId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "ownershipEpoch": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "connection": {
+          "$ref": "#/$defs/ConnectionRef"
+        },
+        "capabilitySnapshotHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "agentId": {
+          "$ref": "#/$defs/Id"
+        },
+        "systemId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "environmentId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "primaryRepositoryId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "deployedCommit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "codeCommit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "objective": {
+          "type": "string"
+        },
+        "preparation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "inputRevision",
+            "configurationSnapshotRevision",
+            "admissionPolicyRevision",
+            "integrationSnapshotRef",
+            "integrationSnapshotHash",
+            "environmentResourcesRef",
+            "environmentResourcesHash",
+            "executionPolicyDecisionRef",
+            "effectiveWorkflowRef",
+            "effectiveWorkflowHash",
+            "runtimeManifestRef",
+            "runtimeManifestHash",
+            "contextManifestRef",
+            "contextManifestHash",
+            "authorizationRevision"
+          ],
+          "properties": {
+            "inputRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "configurationSnapshotRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "admissionPolicyRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "integrationSnapshotRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "integrationSnapshotHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "environmentResourcesRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "environmentResourcesHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "executionPolicyDecisionRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "effectiveWorkflowRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "effectiveWorkflowHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "runtimeManifestRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "runtimeManifestHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "contextManifestRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "contextManifestHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "authorizationRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            }
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "attachmentId",
+              "sha256",
+              "authorizationRef"
+            ],
+            "properties": {
+              "attachmentId": {
+                "$ref": "#/$defs/Id"
+              },
+              "sha256": {
+                "$ref": "#/$defs/Sha256"
+              },
+              "authorizationRef": {
+                "$ref": "#/$defs/Id"
+              }
+            }
+          }
+        },
+        "executionIdentityRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "workspaceAuthorizationRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "resourceAuthorizationRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          }
+        },
+        "modelRequest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "modelId",
+            "presetId",
+            "presetRevision"
+          ],
+          "properties": {
+            "modelId": {
+              "$ref": "#/$defs/Id"
+            },
+            "presetId": {
+              "$ref": "#/$defs/Id"
+            },
+            "presetRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            }
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "skillId",
+              "revision",
+              "sha256"
+            ],
+            "properties": {
+              "skillId": {
+                "$ref": "#/$defs/Id"
+              },
+              "revision": {
+                "$ref": "#/$defs/SafeInteger"
+              },
+              "sha256": {
+                "$ref": "#/$defs/Sha256"
+              }
+            }
+          }
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "modelQuotaSnapshotRef",
+            "modelQuotaSnapshotHash",
+            "reservationId",
+            "scopeId",
+            "maxNewCalls",
+            "maxConcurrency",
+            "estimatedAmount",
+            "currency",
+            "unknownUsagePolicy",
+            "riskAcceptanceRef",
+            "userTotalAccountRef",
+            "platformTurnReservationId",
+            "requireHardModelLimits",
+            "callLimitEnforcement"
+          ],
+          "properties": {
+            "modelQuotaSnapshotRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "modelQuotaSnapshotHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "reservationId": {
+              "$ref": "#/$defs/Id"
+            },
+            "scopeId": {
+              "$ref": "#/$defs/Id"
+            },
+            "maxNewCalls": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "maxConcurrency": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "estimatedAmount": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Decimal"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            },
+            "currency": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            },
+            "unknownUsagePolicy": {
+              "type": "string",
+              "enum": [
+                "block_new_billable_actions",
+                "allow_with_platform_limits"
+              ]
+            },
+            "riskAcceptanceRef": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            },
+            "userTotalAccountRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "platformTurnReservationId": {
+              "$ref": "#/$defs/Id"
+            },
+            "requireHardModelLimits": {
+              "type": "boolean"
+            },
+            "callLimitEnforcement": {
+              "type": "string",
+              "enum": [
+                "verified",
+                "adapter_only",
+                "unknown"
+              ]
+            }
+          }
+        },
+        "deadline": {
+          "$ref": "#/$defs/Instant"
+        },
+        "outputContract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schemaRef",
+            "artifactTypes",
+            "evidenceRequired"
+          ],
+          "properties": {
+            "schemaRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "artifactTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "evidenceRequired": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "AdmissionTicket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ticketId",
+        "bindingId",
+        "executionContentHash",
+        "authorizationRevision",
+        "approvalRef",
+        "approvalRevision",
+        "notBefore",
+        "notAfter",
+        "authorityRef"
+      ],
+      "properties": {
+        "ticketId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "executionContentHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "authorizationRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "approvalRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "approvalRevision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "notBefore": {
+          "$ref": "#/$defs/Instant"
+        },
+        "notAfter": {
+          "$ref": "#/$defs/Instant"
+        },
+        "authorityRef": {
+          "$ref": "#/$defs/Id"
+        }
+      }
+    },
+    "ValidationReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "specHash",
+        "checkedAt",
+        "validUntil",
+        "canStart",
+        "blockers",
+        "warnings"
+      ],
+      "properties": {
+        "specHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "checkedAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "validUntil": {
+          "$ref": "#/$defs/Instant"
+        },
+        "canStart": {
+          "type": "boolean"
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "field",
+              "detail"
+            ],
+            "properties": {
+              "code": {
+                "$ref": "#/$defs/ErrorCode"
+              },
+              "field": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "StartRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "submission",
+        "command",
+        "spec"
+      ],
+      "properties": {
+        "submission": {
+          "$ref": "#/$defs/SubmissionRef"
+        },
+        "command": {
+          "$ref": "#/$defs/CommandRef"
+        },
+        "spec": {
+          "$ref": "#/$defs/ExecutionSpec"
+        }
+      }
+    },
+    "ProviderRunRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "providerRunId",
+        "taskId",
+        "sessionId",
+        "attemptId"
+      ],
+      "properties": {
+        "providerRunId": {
+          "$ref": "#/$defs/Id"
+        },
+        "taskId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "sessionId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "attemptId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "StartReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "binding",
+        "run",
+        "acceptedAt",
+        "receiptId",
+        "specHash",
+        "reused"
+      ],
+      "properties": {
+        "status": {
+          "const": "accepted",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "run": {
+          "$ref": "#/$defs/ProviderRunRef"
+        },
+        "acceptedAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "receiptId": {
+          "$ref": "#/$defs/Id"
+        },
+        "specHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "reused": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SubmissionLookup": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "receipt"
+          ],
+          "properties": {
+            "status": {
+              "const": "found",
+              "type": "string"
+            },
+            "receipt": {
+              "$ref": "#/$defs/StartReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "observedAt",
+            "authoritativeNonAcceptance"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_found",
+              "type": "string"
+            },
+            "observedAt": {
+              "$ref": "#/$defs/Instant"
+            },
+            "authoritativeNonAcceptance": {
+              "const": false,
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason",
+            "observedAt"
+          ],
+          "properties": {
+            "status": {
+              "const": "unknown",
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "observedAt": {
+              "$ref": "#/$defs/Instant"
+            }
+          }
+        }
+      ]
+    },
+    "CloseSubmissionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "submission",
+        "command"
+      ],
+      "properties": {
+        "submission": {
+          "$ref": "#/$defs/SubmissionRef"
+        },
+        "command": {
+          "$ref": "#/$defs/CommandRef"
+        }
+      }
+    },
+    "SubmissionClosure": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "receipt"
+          ],
+          "properties": {
+            "status": {
+              "const": "found",
+              "type": "string"
+            },
+            "receipt": {
+              "$ref": "#/$defs/StartReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "admissionFence",
+            "closedAt",
+            "proofRef"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_accepted_final",
+              "type": "string"
+            },
+            "admissionFence": {
+              "$ref": "#/$defs/Id"
+            },
+            "closedAt": {
+              "$ref": "#/$defs/Instant"
+            },
+            "proofRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "const": "unknown",
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "BindingState": {
+      "type": "string",
+      "enum": [
+        "prepared",
+        "submitting",
+        "acceptance_unknown",
+        "accepted",
+        "active",
+        "waiting_permission",
+        "stopping",
+        "reconciling",
+        "terminal",
+        "rejected"
+      ]
+    },
+    "ProviderPermissionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requestId",
+        "requestContextHash",
+        "operationId",
+        "operationHash",
+        "mappingRevision",
+        "validity",
+        "observedAt",
+        "expiresAt",
+        "options"
+      ],
+      "properties": {
+        "requestId": {
+          "$ref": "#/$defs/Id"
+        },
+        "requestContextHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "operationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "operationHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "mappingRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "validity": {
+          "type": "string",
+          "enum": [
+            "live",
+            "stale",
+            "unknown"
+          ]
+        },
+        "observedAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "expiresAt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Instant"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "optionId",
+              "kind"
+            ],
+            "properties": {
+              "optionId": {
+                "$ref": "#/$defs/Id"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "allow_once",
+                  "reject_once"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "ExecutionSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "run",
+        "state",
+        "snapshotRevision",
+        "eventWatermark",
+        "resumeCursor",
+        "observedAt",
+        "executionActive",
+        "outcome",
+        "effectStatus",
+        "effectReceiptRefs",
+        "modelConfirmed",
+        "permissions",
+        "permissionDeliveries",
+        "operationFacts",
+        "checkpointRef"
+      ],
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "run": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProviderRunRef"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "$ref": "#/$defs/BindingState"
+        },
+        "snapshotRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "eventWatermark": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "resumeCursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "observedAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "executionActive": {
+          "$ref": "#/$defs/KnownBoolean"
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "const": "succeeded",
+              "type": "string"
+            },
+            {
+              "const": "failed",
+              "type": "string"
+            },
+            {
+              "const": "cancelled",
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "effectStatus": {
+          "$ref": "#/$defs/EffectStatus"
+        },
+        "effectReceiptRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          }
+        },
+        "modelConfirmed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProviderPermissionRequest"
+          }
+        },
+        "permissionDeliveries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "requestId",
+              "decisionCommandId",
+              "status",
+              "providerReceiptRef",
+              "observedAt"
+            ],
+            "properties": {
+              "requestId": {
+                "$ref": "#/$defs/Id"
+              },
+              "decisionCommandId": {
+                "$ref": "#/$defs/Id"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "not_sent",
+                  "delivered",
+                  "unknown",
+                  "denied_by_provider"
+                ]
+              },
+              "providerReceiptRef": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Id"
+                  },
+                  {
+                    "const": null,
+                    "type": "null"
+                  }
+                ]
+              },
+              "observedAt": {
+                "$ref": "#/$defs/Instant"
+              }
+            }
+          }
+        },
+        "operationFacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "operationId",
+              "operationHash",
+              "state",
+              "receiptRef",
+              "observedAt"
+            ],
+            "properties": {
+              "operationId": {
+                "$ref": "#/$defs/Id"
+              },
+              "operationHash": {
+                "$ref": "#/$defs/Sha256"
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "not_started",
+                  "running",
+                  "succeeded",
+                  "failed",
+                  "cancelled",
+                  "unknown"
+                ]
+              },
+              "receiptRef": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Id"
+                  },
+                  {
+                    "const": null,
+                    "type": "null"
+                  }
+                ]
+              },
+              "observedAt": {
+                "$ref": "#/$defs/Instant"
+              }
+            }
+          }
+        },
+        "checkpointRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "EventPayload": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "receipt"
+          ],
+          "properties": {
+            "type": {
+              "const": "execution.accepted",
+              "type": "string"
+            },
+            "receipt": {
+              "$ref": "#/$defs/StartReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "snapshot"
+          ],
+          "properties": {
+            "type": {
+              "const": "execution.updated",
+              "type": "string"
+            },
+            "snapshot": {
+              "$ref": "#/$defs/ExecutionSnapshot"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "request"
+          ],
+          "properties": {
+            "type": {
+              "const": "permission.requested",
+              "type": "string"
+            },
+            "request": {
+              "$ref": "#/$defs/ProviderPermissionRequest"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "requestId",
+            "decisionCommandId",
+            "status"
+          ],
+          "properties": {
+            "type": {
+              "const": "permission.delivery",
+              "type": "string"
+            },
+            "requestId": {
+              "$ref": "#/$defs/Id"
+            },
+            "decisionCommandId": {
+              "$ref": "#/$defs/Id"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "delivered",
+                "denied_by_provider"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "inputId",
+            "adoptedAtBoundary"
+          ],
+          "properties": {
+            "type": {
+              "const": "input.adopted",
+              "type": "string"
+            },
+            "inputId": {
+              "$ref": "#/$defs/Id"
+            },
+            "adoptedAtBoundary": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "usage"
+          ],
+          "properties": {
+            "type": {
+              "const": "usage.reported",
+              "type": "string"
+            },
+            "usage": {
+              "$ref": "#/$defs/UsageFact"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "artifact"
+          ],
+          "properties": {
+            "type": {
+              "const": "artifact.ready",
+              "type": "string"
+            },
+            "artifact": {
+              "$ref": "#/$defs/ArtifactDescriptor"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "code",
+            "summary"
+          ],
+          "properties": {
+            "type": {
+              "const": "diagnostic",
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ExecutionEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "providerId",
+        "providerRunId",
+        "providerEventId",
+        "bindingId",
+        "sequence",
+        "sourceSequence",
+        "occurredAt",
+        "receivedAt",
+        "payloadVersion",
+        "visibility",
+        "payload"
+      ],
+      "properties": {
+        "providerId": {
+          "$ref": "#/$defs/Id"
+        },
+        "providerRunId": {
+          "$ref": "#/$defs/Id"
+        },
+        "providerEventId": {
+          "$ref": "#/$defs/Id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "sequence": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "sourceSequence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "occurredAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "receivedAt": {
+          "$ref": "#/$defs/Instant"
+        },
+        "payloadVersion": {
+          "const": 1,
+          "type": "integer"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "business",
+            "operator"
+          ]
+        },
+        "payload": {
+          "$ref": "#/$defs/EventPayload"
+        }
+      }
+    },
+    "EventReadRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "cursor",
+        "limit"
+      ],
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "$ref": "#/$defs/SafeInteger"
+        }
+      }
+    },
+    "EventPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "cursor",
+        "hasMore",
+        "earliestRetainedSequence",
+        "snapshotRevision"
+      ],
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExecutionEvent"
+          }
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cursor"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "hasMore": {
+          "type": "boolean"
+        },
+        "earliestRetainedSequence": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "snapshotRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        }
+      }
+    },
+    "InputRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "command",
+        "inputId",
+        "clientMessageId",
+        "kind",
+        "text",
+        "attachmentRefs",
+        "checkpointRef"
+      ],
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "command": {
+          "$ref": "#/$defs/CommandRef"
+        },
+        "inputId": {
+          "$ref": "#/$defs/Id"
+        },
+        "clientMessageId": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "supplement",
+            "resume_checkpoint"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "attachmentRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          }
+        },
+        "checkpointRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "InputReceipt": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "inputId",
+            "queuePosition"
+          ],
+          "properties": {
+            "status": {
+              "const": "accepted_pending",
+              "type": "string"
+            },
+            "inputId": {
+              "$ref": "#/$defs/Id"
+            },
+            "queuePosition": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SafeInteger"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "inputId",
+            "adoptedAtBoundary"
+          ],
+          "properties": {
+            "status": {
+              "const": "adopted",
+              "type": "string"
+            },
+            "inputId": {
+              "$ref": "#/$defs/Id"
+            },
+            "adoptedAtBoundary": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "inputId",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "const": "rejected",
+              "type": "string"
+            },
+            "inputId": {
+              "$ref": "#/$defs/Id"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "CancelRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "command",
+        "reason"
+      ],
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "command": {
+          "$ref": "#/$defs/CommandRef"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "CancelReceipt": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "commandId",
+            "receivedAt"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "requested",
+                "stopping"
+              ]
+            },
+            "commandId": {
+              "$ref": "#/$defs/Id"
+            },
+            "receivedAt": {
+              "$ref": "#/$defs/Instant"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "snapshot",
+            "proofRef"
+          ],
+          "properties": {
+            "status": {
+              "const": "confirmed",
+              "type": "string"
+            },
+            "snapshot": {
+              "$ref": "#/$defs/ExecutionSnapshot"
+            },
+            "proofRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "commandId",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "const": "unknown",
+              "type": "string"
+            },
+            "commandId": {
+              "$ref": "#/$defs/Id"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ResumePreparation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "command",
+        "checkpointRef",
+        "priorRequestId",
+        "operationHash",
+        "noEffectProofRef"
+      ],
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "command": {
+          "$ref": "#/$defs/CommandRef"
+        },
+        "checkpointRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "priorRequestId": {
+          "$ref": "#/$defs/Id"
+        },
+        "operationHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "noEffectProofRef": {
+          "$ref": "#/$defs/Id"
+        }
+      }
+    },
+    "ResumeReceipt": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "newRequest",
+            "operationExecuted"
+          ],
+          "properties": {
+            "status": {
+              "const": "ready",
+              "type": "string"
+            },
+            "newRequest": {
+              "$ref": "#/$defs/ProviderPermissionRequest"
+            },
+            "operationExecuted": {
+              "const": false,
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "preparationId",
+            "operationExecuted"
+          ],
+          "properties": {
+            "status": {
+              "const": "pending",
+              "type": "string"
+            },
+            "preparationId": {
+              "$ref": "#/$defs/Id"
+            },
+            "operationExecuted": {
+              "const": false,
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "OperationPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operationId",
+        "operationHash",
+        "systemId",
+        "environmentId",
+        "parameterHash",
+        "targetSetHash",
+        "preconditionHash",
+        "planContentRef",
+        "impactPreviewRef",
+        "resourceAuthorizationRefs",
+        "budgetReservationId"
+      ],
+      "properties": {
+        "operationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "operationHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "systemId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "environmentId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "parameterHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "targetSetHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "preconditionHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "planContentRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "impactPreviewRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "resourceAuthorizationRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          }
+        },
+        "budgetReservationId": {
+          "$ref": "#/$defs/Id"
+        }
+      }
+    },
+    "ApprovedOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operationId",
+        "operationHash",
+        "systemId",
+        "environmentId",
+        "parameterHash",
+        "targetSetHash",
+        "preconditionHash",
+        "planContentRef",
+        "impactPreviewRef",
+        "resourceAuthorizationRefs",
+        "budgetReservationId",
+        "businessApprovalId",
+        "approvalRevision",
+        "authority",
+        "authorizationProofRef",
+        "validUntil"
+      ],
+      "properties": {
+        "operationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "operationHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "systemId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "environmentId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "parameterHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "targetSetHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "preconditionHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "planContentRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "impactPreviewRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "resourceAuthorizationRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          }
+        },
+        "budgetReservationId": {
+          "$ref": "#/$defs/Id"
+        },
+        "businessApprovalId": {
+          "$ref": "#/$defs/Id"
+        },
+        "approvalRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "authority": {
+          "$ref": "#/$defs/DecisionAuthority"
+        },
+        "authorizationProofRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "validUntil": {
+          "$ref": "#/$defs/Instant"
+        }
+      }
+    },
+    "DecisionAuthority": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "subjectId",
+            "qualificationRef"
+          ],
+          "properties": {
+            "kind": {
+              "const": "human",
+              "type": "string"
+            },
+            "subjectId": {
+              "$ref": "#/$defs/Id"
+            },
+            "qualificationRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "grantId",
+            "grantRevision",
+            "grantHash",
+            "issuerId",
+            "serviceIdentityRef",
+            "evaluationProofRef"
+          ],
+          "properties": {
+            "kind": {
+              "const": "policy",
+              "type": "string"
+            },
+            "grantId": {
+              "$ref": "#/$defs/Id"
+            },
+            "grantRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "grantHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "issuerId": {
+              "$ref": "#/$defs/Id"
+            },
+            "serviceIdentityRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "evaluationProofRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        }
+      ]
+    },
+    "BusinessApprovalRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "id",
+        "binding",
+        "planRevision",
+        "revision",
+        "plan",
+        "decisionState",
+        "requestedBy",
+        "decidedBy",
+        "decidedAt",
+        "approverQualificationRef",
+        "decisionIdempotencyKey",
+        "reason",
+        "approvedOperation",
+        "priorApprovalId",
+        "validUntil"
+      ],
+      "properties": {
+        "authority": {
+          "$ref": "#/$defs/DecisionAuthority"
+        },
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "planRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "revision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "plan": {
+          "$ref": "#/$defs/OperationPlan"
+        },
+        "decisionState": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "denied",
+            "changes_requested",
+            "expired",
+            "revoked",
+            "superseded"
+          ]
+        },
+        "requestedBy": {
+          "$ref": "#/$defs/Id"
+        },
+        "decidedBy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "decidedAt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Instant"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "approverQualificationRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "decisionIdempotencyKey": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "approvedOperation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ApprovedOperation"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "priorApprovalId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "validUntil": {
+          "$ref": "#/$defs/Instant"
+        }
+      }
+    },
+    "PermissionMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "businessApprovalId",
+        "binding",
+        "request",
+        "deliveryState",
+        "decisionCommandId",
+        "providerReceiptRef",
+        "actionState",
+        "operationReceiptRef"
+      ],
+      "properties": {
+        "businessApprovalId": {
+          "$ref": "#/$defs/Id"
+        },
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "request": {
+          "$ref": "#/$defs/ProviderPermissionRequest"
+        },
+        "deliveryState": {
+          "type": "string",
+          "enum": [
+            "unmapped",
+            "awaiting_request",
+            "ready",
+            "sending",
+            "delivered",
+            "delivery_unknown",
+            "stale",
+            "unsupported",
+            "denied_by_provider"
+          ]
+        },
+        "decisionCommandId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "providerReceiptRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "actionState": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "dispatching",
+            "running",
+            "result_unknown",
+            "verified",
+            "failed",
+            "cancelled"
+          ]
+        },
+        "operationReceiptRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "PermissionResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "binding",
+            "command",
+            "requestId",
+            "requestContextHash",
+            "mappingRevision",
+            "optionId",
+            "decision",
+            "approvedOperation"
+          ],
+          "properties": {
+            "binding": {
+              "$ref": "#/$defs/BindingRef"
+            },
+            "command": {
+              "$ref": "#/$defs/CommandRef"
+            },
+            "requestId": {
+              "$ref": "#/$defs/Id"
+            },
+            "requestContextHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "mappingRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "optionId": {
+              "$ref": "#/$defs/Id"
+            },
+            "decision": {
+              "const": "allow",
+              "type": "string"
+            },
+            "approvedOperation": {
+              "$ref": "#/$defs/ApprovedOperation"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "binding",
+            "command",
+            "requestId",
+            "requestContextHash",
+            "mappingRevision",
+            "optionId",
+            "decision",
+            "businessApprovalId",
+            "reason"
+          ],
+          "properties": {
+            "binding": {
+              "$ref": "#/$defs/BindingRef"
+            },
+            "command": {
+              "$ref": "#/$defs/CommandRef"
+            },
+            "requestId": {
+              "$ref": "#/$defs/Id"
+            },
+            "requestContextHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "mappingRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "optionId": {
+              "$ref": "#/$defs/Id"
+            },
+            "decision": {
+              "const": "deny",
+              "type": "string"
+            },
+            "businessApprovalId": {
+              "$ref": "#/$defs/Id"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "PermissionReceipt": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "requestId",
+            "commandId",
+            "providerReceiptRef",
+            "operationExecuted"
+          ],
+          "properties": {
+            "status": {
+              "const": "delivered",
+              "type": "string"
+            },
+            "requestId": {
+              "$ref": "#/$defs/Id"
+            },
+            "commandId": {
+              "$ref": "#/$defs/Id"
+            },
+            "providerReceiptRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "operationExecuted": {
+              "const": "unknown",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "requestId",
+            "commandId"
+          ],
+          "properties": {
+            "status": {
+              "const": "delivery_unknown",
+              "type": "string"
+            },
+            "requestId": {
+              "$ref": "#/$defs/Id"
+            },
+            "commandId": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "requestId",
+            "commandId",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "const": "denied_by_provider",
+              "type": "string"
+            },
+            "requestId": {
+              "$ref": "#/$defs/Id"
+            },
+            "commandId": {
+              "$ref": "#/$defs/Id"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ArtifactRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "artifactId",
+        "purpose"
+      ],
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        },
+        "artifactId": {
+          "$ref": "#/$defs/Id"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "inspect",
+            "import",
+            "download"
+          ]
+        }
+      }
+    },
+    "ArtifactDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "bindingId",
+        "mimeType",
+        "bytes",
+        "sha256",
+        "sourceRef",
+        "importState",
+        "authorizationRef",
+        "access"
+      ],
+      "properties": {
+        "artifactId": {
+          "$ref": "#/$defs/Id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Id"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "bytes": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "sha256": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "importState": {
+          "type": "string",
+          "enum": [
+            "metadata_only",
+            "importing",
+            "verified",
+            "failed"
+          ]
+        },
+        "authorizationRef": {
+          "$ref": "#/$defs/Id"
+        },
+        "access": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "ticketRef",
+                "expiresAt",
+                "purpose"
+              ],
+              "properties": {
+                "ticketRef": {
+                  "$ref": "#/$defs/Id"
+                },
+                "expiresAt": {
+                  "$ref": "#/$defs/Instant"
+                },
+                "purpose": {
+                  "type": "string",
+                  "enum": [
+                    "inspect",
+                    "import",
+                    "download"
+                  ]
+                }
+              }
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "UsageFact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scopeId",
+            "sourceId",
+            "meter",
+            "aggregation",
+            "coverage",
+            "observedAt",
+            "quality",
+            "amount",
+            "unit",
+            "currency"
+          ],
+          "properties": {
+            "scopeId": {
+              "$ref": "#/$defs/Id"
+            },
+            "sourceId": {
+              "$ref": "#/$defs/Id"
+            },
+            "meter": {
+              "type": "string"
+            },
+            "aggregation": {
+              "type": "string",
+              "enum": [
+                "delta",
+                "cumulative"
+              ]
+            },
+            "coverage": {
+              "type": "string",
+              "enum": [
+                "run_total",
+                "child_only"
+              ]
+            },
+            "observedAt": {
+              "$ref": "#/$defs/Instant"
+            },
+            "quality": {
+              "type": "string",
+              "enum": [
+                "actual",
+                "estimate"
+              ]
+            },
+            "amount": {
+              "$ref": "#/$defs/Decimal"
+            },
+            "unit": {
+              "type": "string"
+            },
+            "currency": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scopeId",
+            "sourceId",
+            "meter",
+            "aggregation",
+            "coverage",
+            "observedAt",
+            "quality",
+            "amount",
+            "unit",
+            "currency"
+          ],
+          "properties": {
+            "scopeId": {
+              "$ref": "#/$defs/Id"
+            },
+            "sourceId": {
+              "$ref": "#/$defs/Id"
+            },
+            "meter": {
+              "type": "string"
+            },
+            "aggregation": {
+              "type": "string",
+              "enum": [
+                "delta",
+                "cumulative"
+              ]
+            },
+            "coverage": {
+              "type": "string",
+              "enum": [
+                "run_total",
+                "child_only"
+              ]
+            },
+            "observedAt": {
+              "$ref": "#/$defs/Instant"
+            },
+            "quality": {
+              "const": "unreported",
+              "type": "string"
+            },
+            "amount": {
+              "const": null,
+              "type": "null"
+            },
+            "unit": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            },
+            "currency": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ErrorCode": {
+      "type": "string",
+      "enum": [
+        "UNAUTHENTICATED",
+        "FORBIDDEN",
+        "VALIDATION_FAILED",
+        "CAPABILITY_MISMATCH",
+        "UNSUPPORTED",
+        "REVISION_CONFLICT",
+        "IDEMPOTENCY_CONFLICT",
+        "PROVIDER_UNAVAILABLE",
+        "DEADLINE_EXCEEDED",
+        "SUBMISSION_CLOSED",
+        "CURSOR_EXPIRED",
+        "EVENT_GAP",
+        "PERMISSION_STALE",
+        "APPROVAL_EXPIRED",
+        "PRECONDITION_CHANGED",
+        "BUDGET_BLOCKED",
+        "USAGE_UNKNOWN",
+        "ARTIFACT_UNAVAILABLE",
+        "INTEGRITY_MISMATCH",
+        "RESULT_UNKNOWN"
+      ]
+    },
+    "ProviderError": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "message",
+            "correlationId",
+            "phase",
+            "retryAdvice",
+            "currentRevision",
+            "acceptance",
+            "nonAcceptanceProof"
+          ],
+          "properties": {
+            "code": {
+              "$ref": "#/$defs/ErrorCode"
+            },
+            "message": {
+              "type": "string"
+            },
+            "correlationId": {
+              "$ref": "#/$defs/Id"
+            },
+            "phase": {
+              "type": "string",
+              "enum": [
+                "validation",
+                "submission",
+                "observation",
+                "permission",
+                "execution",
+                "artifact"
+              ]
+            },
+            "retryAdvice": {
+              "type": "string",
+              "enum": [
+                "read_only",
+                "reconcile",
+                "correct_input",
+                "none"
+              ]
+            },
+            "currentRevision": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SafeInteger"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            },
+            "acceptance": {
+              "const": "not_accepted",
+              "type": "string"
+            },
+            "nonAcceptanceProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "admissionFence",
+                "proofRef"
+              ],
+              "properties": {
+                "admissionFence": {
+                  "$ref": "#/$defs/Id"
+                },
+                "proofRef": {
+                  "$ref": "#/$defs/Id"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "message",
+            "correlationId",
+            "phase",
+            "retryAdvice",
+            "currentRevision",
+            "acceptance",
+            "nonAcceptanceProof"
+          ],
+          "properties": {
+            "code": {
+              "$ref": "#/$defs/ErrorCode"
+            },
+            "message": {
+              "type": "string"
+            },
+            "correlationId": {
+              "$ref": "#/$defs/Id"
+            },
+            "phase": {
+              "type": "string",
+              "enum": [
+                "validation",
+                "submission",
+                "observation",
+                "permission",
+                "execution",
+                "artifact"
+              ]
+            },
+            "retryAdvice": {
+              "type": "string",
+              "enum": [
+                "read_only",
+                "reconcile",
+                "correct_input",
+                "none"
+              ]
+            },
+            "currentRevision": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SafeInteger"
+                },
+                {
+                  "const": null,
+                  "type": "null"
+                }
+              ]
+            },
+            "acceptance": {
+              "type": "string",
+              "enum": [
+                "not_sent",
+                "accepted",
+                "unknown"
+              ]
+            },
+            "nonAcceptanceProof": {
+              "const": null,
+              "type": "null"
+            }
+          }
+        }
+      ]
+    },
+    "inspectCapabilitiesRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "connection"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "connection": {
+          "$ref": "#/$defs/ConnectionRef"
+        }
+      }
+    },
+    "inspectCapabilitiesResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/CapabilitySnapshot"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "validateBindingRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "spec"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "spec": {
+          "$ref": "#/$defs/ExecutionSpec"
+        }
+      }
+    },
+    "validateBindingResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/ValidationReport"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "startRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/StartRequest"
+        }
+      }
+    },
+    "startResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/StartReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "lookupSubmissionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/SubmissionRef"
+        }
+      }
+    },
+    "lookupSubmissionResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/SubmissionLookup"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "closeSubmissionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/CloseSubmissionRequest"
+        }
+      }
+    },
+    "closeSubmissionResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/SubmissionClosure"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "getSnapshotRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "binding"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "binding": {
+          "$ref": "#/$defs/BindingRef"
+        }
+      }
+    },
+    "getSnapshotResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/ExecutionSnapshot"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "readEventsRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/EventReadRequest"
+        }
+      }
+    },
+    "readEventsResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/EventPage"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "submitInputRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/InputRequest"
+        }
+      }
+    },
+    "submitInputResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/InputReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "cancelRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/CancelRequest"
+        }
+      }
+    },
+    "cancelResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/CancelReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "preparePermissionResumeRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/ResumePreparation"
+        }
+      }
+    },
+    "preparePermissionResumeResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/ResumeReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "respondPermissionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/PermissionResponse"
+        }
+      }
+    },
+    "respondPermissionResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/PermissionReceipt"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    },
+    "getArtifactRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "request"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/CallContext"
+        },
+        "request": {
+          "$ref": "#/$defs/ArtifactRequest"
+        }
+      }
+    },
+    "getArtifactResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ],
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/ArtifactDescriptor"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "error"
+          ],
+          "properties": {
+            "ok": {
+              "const": false
+            },
+            "error": {
+              "$ref": "#/$defs/ProviderError"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

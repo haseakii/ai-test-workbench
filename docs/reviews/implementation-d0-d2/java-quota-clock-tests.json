@@ -1,0 +1,325 @@
+{
+  "scope": "actual Java unit/wire/API, MySQL and offline SDK test outcomes; no real Provider conformance claim",
+  "total": 63,
+  "passed": 63,
+  "failed": 0,
+  "skipped": 0,
+  "missingRequiredClasses": [],
+  "cases": [
+    {
+      "class": "io.aitest.runner.AcpStdioCompatibilityTest",
+      "name": "initializePermissionCallbackAndCancelOverIsolatedStdio",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "mcpInitializeRoundTripUsesSameManagedJacksonMajor",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "acpPermissionOptionsKeepOriginalRequestIdentity",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "productionModulesKeepTheDeclaredDependencyDirection",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "acpInitializeAndCancelRoundTripWithJackson3",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.ApiContractTest",
+      "name": "committedOpenApiMatchesActualRoutesAndRequestRecords",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.ApiContractTest",
+      "name": "strictCommandRecordsRejectMissingOrNullDecisionFlagsAndFields",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "crossTenantSameSubjectKindAndKeyCannotExposeConflictOrCachedReceipt",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "crossCommandKindSameTenantSubjectAndKeyCannotCauseHashConflict",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "pendingMembershipCanRequestAccessButCannotProbeOtherCommandHashes",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "inactiveOrUnknownMembershipIsRejectedBeforeEqualOrConflictingHash",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "crossSubjectSameTenantKindAndKeyCreatesSeparateOwnedReceipts",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "revokedObjectEqualContentCannotReplayAFormerlyAuthorizedReceipt",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.DatabasePrivilegesTest",
+      "name": "platformRuntimeCannotDdlOrReadRunner",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.DatabasePrivilegesTest",
+      "name": "migrationIdentityCannotReadMysqlAdministration",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.DatabasePrivilegesTest",
+      "name": "runnerRuntimeOnlyReadsAndWritesRunnerJournal",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "actualEngineIsolationTimePrecisionAndDecimal",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "idempotencyKeysCompareExactBytes",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "uuidAndCanonicalJsonRoundTripIgnoreMysqlObjectOrder",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "lockingLastSlotAllowsExactlyOneCommit",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "tenantCompositeForeignKeyRejectsWrongParent",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "oneOpenBindingAndClosedHistoryAndSafeIntegerCheck",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "safeNumbersRejectFractionOverflowTextAndNegative",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "rejectsPublicBindingAndRemoteOrDifferentDatabaseBeforeOpeningConnection",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "rejectsMissingProductionAndMixedProfilesBeforeOpeningDatabase",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "lostReceiptReplayRacesCloseWithoutSecondAcceptanceOrCharge",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "newInputAfterAcceptanceBeforeToolStartCancelsOldAction",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "approvalAuditFailureRollsBackDecisionOutboxNodeAndCommand",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "twoDispatchTransactionsCompeteForLastActiveSlot",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "dispatchAuditFailureRollsBackAllAccountsSlotBindingTicketOutboxAndEvent",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "concurrentStartAndPermanentCloseCannotResurrectKey",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "twoDispatchTransactionsCompeteForLastTotalAndModelQuota",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "nonAuthoritativeNotFoundRetainsAllReservationsAndOwner",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "alreadyCalculatedOldResultCannotOverwriteNewInput",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "firstProviderSnapshotAlreadyTerminalSettlesOnce",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaIsolationTest",
+      "name": "terminalReplayDoesNotChargeAnotherModelAccount",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaIsolationTest",
+      "name": "dispatchDoesNotReserveOrReleaseAnotherModelAccount",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaIsolationTest",
+      "name": "exhaustedUnselectedModelDoesNotBlockSelectedModel",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "safeIntegerMaximumBlocksAnotherReservationWithoutOverflow",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "frozenPairAndPeriodSurviveMidnightAndRejectChangedModel",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "acceptanceAndRepeatedTerminalAfterMidnightSettleOnlyTheOldPair",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "legacyUnresolvedPairCannotConsumeOrReleaseUnknownBalances",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "differentModelConnectionBindingsCannotBypassOneTotalOrCreateItTwice",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.QuotaPeriodTest",
+      "name": "oldUnknownReservationIsNotReleasedAtUtcRollover",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "unacceptedSubmissionAtExactApprovalExpiryCannotConsumeBudget",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "queueLeaseUsesInjectedMicrosecondBoundary",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "injectedClockNormalizesMicrosAndUtcPeriodRegardlessOfClockZone",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "csvAmountAndRowLimitsRejectExponentsPrecisionLossAndOverflow",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "subMicrosecondPlanScopeIsRejectedRatherThanTruncated",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "dstDaysPreserveBothRepeatedHoursAndExclusiveEndWithExactMoney",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "planRangeLimitIsExactAndNotFlooredToWholeDays",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "firstAcceptanceWindowIsExclusiveButAcceptedLookupSurvivesExpiry",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "messageLeaseExpiresAtInjectedMicrosecondWithoutSleeping",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.TimeAndDecimalTest",
+      "name": "maximumCsvAmountsAggregateAsDecimalStringsWithoutTruncation",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "rejectDuplicateKeys",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "canonicalKeysAndDecimalStrings",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "rejectTimePrecisionLoss",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "safeIntegerBounds",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.GoldenContractTest",
+      "name": "matchesSharedGoldenVectors",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ProviderWireTest",
+      "name": "fullStartContentSpecAndCommandHashesMatchSharedVectors",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ProviderWireTest",
+      "name": "everyPortMethodCompilesAndAllSharedWireVectorsRoundTrip",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ProviderWireTest",
+      "name": "policyHumanAndUnknownOutcomeCannotBeCoercedIntoAnotherVariant",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ProviderWireTest",
+      "name": "rejectsUnsafeWireNumbersMissingFieldsUnknownFieldsAndPrecisionLoss",
+      "result": "pass"
+    }
+  ]
+}

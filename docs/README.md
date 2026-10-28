@@ -33,3 +33,11 @@
 - [不可变历史设计基线](review-baseline-20261025/)：保留最初交付的原稿，不直接修改。
 - [v0.2 阅读版](generated/v0.2/README.md)：由源码重新生成的 PDF、Word 和截图，不保证与资料库二进制原件逐字节相同。
 - [原始资料归档说明](ARCHIVE-STATUS.md)：说明资料库原件与仓库阅读副本的关系。
+
+## 开发设计分析与步骤
+
+[开发设计分析与开发步骤](development/DEVELOPMENT-STEPS.md)基于远端 2ae5c5 的 Java / MySQL 开发设计，列出合同问题、12 个依赖有序的步骤、交付物、验收及首个合成数据服务闭环。该计划初稿基于 b2a700f 工作区读取远端材料；获准开工后已完整同步至 2ae5c5 并开始隔离实现，当前结果见下方实施检查点。未提交或推送。
+
+## 隔离开发实施
+
+[实施检查点](reviews/IMPLEMENTATION-PROGRESS-20261026.md) · [工程运行说明](../backend/README.md) · [合同定向修复](development/CONTRACT-FREEZE.md)。服务与界面验证使用合成身份、持久执行替身和 CSV，不代表真实模型或业务资源接入。

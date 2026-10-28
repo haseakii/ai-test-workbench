@@ -1,0 +1,123 @@
+{
+  "scope": "final CLI code unit tests, task-owned ephemeral loopback sockets, no DB/actual Java",
+  "observedAt": "2026-10-27T01:28:50.419059+00:00",
+  "total": 28,
+  "passed": 28,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_database_failure_during_doctor_leaves_runtime_and_blob_directories_absent",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_duplicate_json_password_key_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_existing_operation_lock_rejects_a_second_operation",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_failed_doctor_does_not_create_a_runtime_directory",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_failed_migration_preserves_data_and_does_not_start_or_echo_private_log",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_group_or_world_readable_config_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_inactive_synthetic_identity_does_not_count_as_ready",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_java_version_probe_cannot_load_agents_from_inherited_environment",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_legacy_cli_flags_remain_in_help",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_listener_with_reuseaddr_still_blocks_a_second_service",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_malformed_json_does_not_echo_input",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_migration_process_receives_only_explicit_migration_credentials",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_missing_pid_is_not_a_managed_service",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_missing_required_configuration_is_rejected",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_non_string_password_does_not_reach_process_environment",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_occupied_port_is_reported_without_stopping_owner",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_parent_environment_cannot_override_service_or_leak_privileged_passwords",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_platform_target_accepts_only_its_synthetic_scope",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_private_runtime_and_migration_configs_are_accepted",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_ready_marker_requires_the_original_nonce_pid_port_and_synthetic_mode",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_recently_closed_owned_tcp_connection_does_not_block_restart",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_status_does_not_trust_a_listener_owned_by_another_process",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_stop_rechecks_identity_after_pidfd_open_before_signalling",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_stop_with_unverified_metadata_never_opens_or_signals_a_pidfd",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_unconfirmed_start_keeps_its_identity_without_restarting_or_signalling",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_unverified_live_pid_metadata_never_authorizes_a_signal",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_up_checks_database_migrates_both_scopes_checks_schema_then_starts",
+      "result": "pass"
+    },
+    {
+      "name": "test_synthetic_runtime.SyntheticRuntimeSafetyTest.test_up_refuses_migration_while_a_managed_service_is_running",
+      "result": "pass"
+    }
+  ]
+}

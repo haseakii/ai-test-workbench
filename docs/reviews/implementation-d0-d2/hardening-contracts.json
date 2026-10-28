@@ -1,0 +1,222 @@
+{
+  "scope": "actual Java/MySQL synthetic service audit regressions",
+  "passed": 15,
+  "total": 15,
+  "cases": [
+    {
+      "name": "R01 mutation receipt replay checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "ba08b446-a41c-43da-9d35-be1e9aa0babe",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R02 commandId lookup checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "75bd40e7-b04d-431c-8f8f-2a3c485afc85",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R03 idempotency-key lookup checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "4e513ff1-831f-4700-8653-2f91b82452d6",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R04 fractional configuration quota is rejected",
+      "result": "pass",
+      "evidence": {
+        "fractionRejectedBeforePersistence": true
+      }
+    },
+    {
+      "name": "R05 new input invalidates old current result",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "3cf55689-2ae3-472a-ad01-bb906feceb69",
+        "oldResultExcluded": true
+      }
+    },
+    {
+      "name": "R06 clientMessageId deduplicates across command keys",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "9426cb97-922b-4175-b147-e23f7fbb3610",
+        "savedMessages": 1
+      }
+    },
+    {
+      "name": "R07 synthetic configuration rejects real backend claims",
+      "result": "pass",
+      "evidence": {
+        "realBackendConfigurationRejected": true
+      }
+    },
+    {
+      "name": "R08 new attachment supersedes old result and download",
+      "result": "pass",
+      "evidence": {
+        "attachmentAdvancesInputRevision": true,
+        "oldDownloadDenied": true
+      }
+    },
+    {
+      "name": "R09 clientMessageId rejects changed content",
+      "result": "pass",
+      "evidence": {
+        "sameClientIdDifferentContentRejected": true
+      }
+    },
+    {
+      "name": "R10 publishing environment invalidates old plan",
+      "result": "pass",
+      "evidence": {
+        "environmentRevision": 2,
+        "oldApprovalRejected": true
+      }
+    },
+    {
+      "name": "R11 SSE snapshot W reconnects W+1 and revocation ends access",
+      "result": "pass",
+      "evidence": {
+        "snapshotWatermark": 1,
+        "resumedSequences": [
+          2,
+          3
+        ],
+        "revocationStopsBodyEvents": true
+      }
+    },
+    {
+      "name": "R12 subject namespace prevents foreign-key existence and receipt disclosure",
+      "result": "pass",
+      "evidence": {
+        "foreignSubjectCollisionDoesNotReturn409": true,
+        "foreignReceiptDenied": true,
+        "sameKeySeparateReceipts": true,
+        "ownChangedBodyReturns409": true
+      }
+    },
+    {
+      "name": "R13 command kind namespaces identical keys and lookups",
+      "result": "pass",
+      "evidence": {
+        "sameKeyDifferentKindsAreIndependent": true,
+        "lookupsRespectKind": true
+      }
+    },
+    {
+      "name": "R14 authentication precedes known idempotency key",
+      "result": "pass",
+      "evidence": {
+        "knownKeyWithoutIdentityReturns401": true,
+        "cachedResponseUnavailable": true
+      }
+    },
+    {
+      "name": "R15 cached artifact receipt rechecks current source permission",
+      "result": "pass",
+      "evidence": {
+        "equalArtifactCommandReauthorized": true,
+        "cachedArtifactReceiptReadReauthorized": true,
+        "sourceRevoked": true
+      }
+    }
+  ],
+  "apiContract": {
+    "checked": 177,
+    "operations": [
+      "newConfiguration",
+      "publish",
+      "grant",
+      "create",
+      "revoke",
+      "command",
+      "lookup",
+      "configurations",
+      "message",
+      "upload",
+      "snapshot",
+      "prepare",
+      "decide",
+      "verify",
+      "download",
+      "draft",
+      "stop",
+      "events",
+      "revokeSource"
+    ],
+    "responseCounts": {
+      "newConfiguration": {
+        "200": 39,
+        "422": 2
+      },
+      "publish": {
+        "200": 14
+      },
+      "grant": {
+        "200": 31
+      },
+      "create": {
+        "200": 16,
+        "404": 2,
+        "409": 1
+      },
+      "revoke": {
+        "200": 5
+      },
+      "command": {
+        "404": 2,
+        "409": 1
+      },
+      "lookup": {
+        "404": 1,
+        "200": 4
+      },
+      "configurations": {
+        "200": 2
+      },
+      "message": {
+        "200": 11,
+        "409": 1
+      },
+      "upload": {
+        "200": 9
+      },
+      "snapshot": {
+        "200": 20
+      },
+      "prepare": {
+        "200": 4
+      },
+      "decide": {
+        "200": 3,
+        "409": 1
+      },
+      "verify": {
+        "409": 2,
+        "200": 1
+      },
+      "download": {
+        "409": 1
+      },
+      "draft": {
+        "200": 1
+      },
+      "stop": {
+        "200": 1
+      },
+      "events": {
+        "404": 1
+      },
+      "revokeSource": {
+        "200": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "scope": "A09/A03 integrated synthetic implementation and parallel A05/A06 verification; A10/A11 prepared but not integrated",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "branch": "work",
+  "mysql": "8.4.13",
+  "platformMigration": 7,
+  "runnerMigration": 1,
+  "completedInCurrentSyntheticScope": [
+    "A03",
+    "A05",
+    "A06",
+    "A09"
+  ],
+  "primaryImplementation": {
+    "A09": [
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/ContextManifests.java",
+      "backend/platform-server/src/main/resources/db/migration/V6__context_manifests.sql",
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/PreparationService.java",
+      "frontend/src/main.tsx"
+    ],
+    "A03": [
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/ExecutionSpecs.java",
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/ExecutionWorker.java",
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/FixtureProvider.java",
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/ProviderObservation.java",
+      "backend/platform-server/src/main/resources/db/migration/V7__typed_provider_journal.sql"
+    ],
+    "A05": [
+      "backend/platform-server/src/main/java/io/aitest/workbench/execution/ExecutionWorker.java",
+      "backend/platform-server/src/test/java/io/aitest/workbench/execution/QueueCommitFaultTest.java"
+    ],
+    "A06": [
+      "backend/platform-server/src/test/java/io/aitest/workbench/execution/AdmissionRaceTest.java"
+    ]
+  },
+  "firstFailures": [
+    "context-port-before-fix.json",
+    "a05-before-fix.json",
+    "java-context-port-first-full.json",
+    "service-context-first-checks.json",
+    "service-context-port-first-checks.json",
+    "ui-context-port-first-checks.json"
+  ],
+  "finalEvidence": [
+    "java-context-port-final.json",
+    "a05-final-context-port.json",
+    "a06-final-context-port.json",
+    "service-context-port-checks.json",
+    "service-context-checks.json",
+    "hardening-context-port-checks.json",
+    "ui-context-port-checks.json",
+    "process-context-port-checks.json",
+    "context-port-artifact.json",
+    "typescript-context-port-tests.json"
+  ],
+  "actualJavaCommand": "mvn clean verify '-Dtest=*,!AuthorizationMatrixTest,!HandoverPackageTest,!HandoverServiceTest' -Dsurefire.failIfNoSpecifiedTests=false (approved DB env; trusted task Maven/JDK)",
+  "javaTests": {
+    "passed": 121,
+    "failed": 0,
+    "skipped": 0,
+    "explicitlyExcludedPendingApproval": [
+      "AuthorizationMatrixTest (7)",
+      "HandoverPackageTest (9, separate pure run passed earlier)",
+      "HandoverServiceTest (9)"
+    ]
+  },
+  "limits": [
+    "Synthetic Provider in the platform JVM/database only, no real adapter or Agent execution",
+    "Unsupported submitInput/permission/resume do not fabricate success",
+    "No-model understanding; fixed CSV roles and scope only",
+    "Quota snapshot retains exact original pair/UTC period; no new daily release",
+    "Process evidence covers computing checkpoint before outputs, not automatic recovery of uncertain partial writes",
+    "JDBC COMMIT fault injection is not packet/TLS/proxy qualification",
+    "FORCE INDEX(PRIMARY) establishes queue correctness but scans tenant history; no throughput claim",
+    "A10 service/DTO sources compile in the main artifact, but no export API/Schema/UI integration or service/ACL matrix acceptance yet"
+  ],
+  "remaining": {
+    "A01": "Original cold migration chain awaits separate new-instance approval; no new instance/DB/account created",
+    "A10": "Source DTO/export service and 9 service tests prepared; export entry/Schema/UI and authorized integrated verification remain",
+    "A11": "7 matrix tests prepared; currently blocked by automatic approval review pending direct user confirmation; existing HTTP/hardening checks do not replace this matrix",
+    "B01": "Remote hosted CI/job preparation not run; no push",
+    "C": "Real Provider/identity/resources, independent Runner/Agent and deployment are D3/D4"
+  },
+  "approvalEvidence": "integration-approval-blocks.json",
+  "noCommitPushDeployment": true,
+  "recordedAt": "2026-10-26T11:14:17.036000+00:00"
+}

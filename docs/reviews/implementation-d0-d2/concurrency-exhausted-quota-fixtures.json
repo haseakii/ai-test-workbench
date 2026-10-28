@@ -1,0 +1,32 @@
+{
+  "reason": "Alice synthetic daily quota reached 100/100 after repeated suites; no acceptance or reservations",
+  "unclosedFailedChecks": [
+    {
+      "queue": "queued",
+      "title": "????-b1687423",
+      "accepted": false,
+      "bindingId": "1d255004-ecb5-4ec3-9591-51c7dc066759",
+      "environment": "????-b1687423",
+      "bindingState": "prepared",
+      "providerRows": 0,
+      "conversationId": "14f36914-6360-4323-9551-3b2eca63b945",
+      "reservationRows": 0
+    }
+  ],
+  "safeClosure": [
+    {
+      "conversationId": "1a16f6aa-70cd-4615-8292-025c5abc081f",
+      "beforeState": "handoff",
+      "afterState": "handoff",
+      "accepted": false,
+      "allBindingsClosed": true
+    },
+    {
+      "conversationId": "14f36914-6360-4323-9551-3b2eca63b945",
+      "beforeState": "open",
+      "afterState": "handoff",
+      "accepted": false,
+      "allBindingsClosed": true
+    }
+  ]
+}

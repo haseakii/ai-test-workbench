@@ -1,0 +1,20 @@
+{
+  "scope": "actual MySQL dispatch/settlement regression before A02 fix",
+  "cases": [
+    {
+      "name": "terminalReplayDoesNotChargeAnotherModelAccount",
+      "result": "fail",
+      "failure": "unselected model must never be charged ==> expected: <0> but was: <1>"
+    },
+    {
+      "name": "dispatchDoesNotReserveOrReleaseAnotherModelAccount",
+      "result": "fail",
+      "failure": "unselected model must not be reserved ==> expected: <0> but was: <1>"
+    },
+    {
+      "name": "exhaustedUnselectedModelDoesNotBlockSelectedModel",
+      "result": "fail",
+      "failure": "only total and selected model may gate dispatch ==> expected: <true> but was: <false>"
+    }
+  ]
+}

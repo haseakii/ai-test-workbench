@@ -1,0 +1,321 @@
+{
+  "scope": "Read-only observation of approved platform DB; original history intact, separate owned prefix histories retained",
+  "originalHistory": [
+    {
+      "script": "V1__platform.sql",
+      "success": 1,
+      "version": "1",
+      "checksum": -996470260
+    },
+    {
+      "script": "V2__title_source_and_quota_policy.sql",
+      "success": 1,
+      "version": "2",
+      "checksum": -929084733
+    },
+    {
+      "script": "V3__scoped_content_review.sql",
+      "success": 1,
+      "version": "3",
+      "checksum": 1866593156
+    },
+    {
+      "script": "V4__receipt_scope_and_synthetic_marker.sql",
+      "success": 1,
+      "version": "4",
+      "checksum": 1449573138
+    },
+    {
+      "script": "V5__frozen_quota_accounts.sql",
+      "success": 1,
+      "version": "5",
+      "checksum": 93215456
+    }
+  ],
+  "prefixProbes": [
+    {
+      "table": "a01_02a75da3ab02_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_0f90928947d5_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_13e46119c98f_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_1c9777a35381_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_32264fc61788_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__future.sql",
+          "success": 1,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_479f1fae5a9f_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__failed.sql",
+          "success": 0,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_83434ef024e9_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__future.sql",
+          "success": 1,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_9366c2596aa4_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__failed.sql",
+          "success": 0,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_9efd286ce74c_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__failed.sql",
+          "success": 0,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_a9e1bd53c88d_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_c63f6b80e3e3_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_d01e1a8fd7c0_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    },
+    {
+      "table": "a01_d705aa86edaf_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__future.sql",
+          "success": 1,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_dec1bf8e1519_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__failed.sql",
+          "success": 0,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_e93eaf83fac0_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        },
+        {
+          "script": "V2__future.sql",
+          "success": 1,
+          "version": "2"
+        }
+      ]
+    },
+    {
+      "table": "a01_f549b98d0c06_history",
+      "rows": [
+        {
+          "script": "<< Flyway Baseline >>",
+          "success": 1,
+          "version": "0"
+        },
+        {
+          "script": "V1__probe.sql",
+          "success": 1,
+          "version": "1"
+        }
+      ]
+    }
+  ],
+  "ownedMigrationChildrenStillRunning": [],
+  "originalColdChainExecuted": false,
+  "additionalInstanceApproval": "pending; no new container/database/account created",
+  "observedAt": "2026-10-26T08:34:42.035996+00:00"
+}

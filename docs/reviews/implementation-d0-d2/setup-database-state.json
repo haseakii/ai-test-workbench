@@ -1,0 +1,29 @@
+{
+  "activeSlots": 0,
+  "mysqlVersion": "8.4.13",
+  "reservedTurns": 0,
+  "platformVersion": 7,
+  "failedMigrations": 0,
+  "outboxInProgress": 0,
+  "unclosedBindings": 0,
+  "originalHistoryRows": 7,
+  "eventGapConversations": 0,
+  "eventCounterMismatches": 0,
+  "providerExecutingOrUnknown": 0,
+  "runner": {
+    "failed": 0,
+    "version": 1,
+    "originalHistoryRows": 1
+  },
+  "taskContainers": [
+    "workbench-mysql-d0"
+  ],
+  "observedAt": "2026-10-27T01:28:09.139235+00:00",
+  "jarSha256": "60d85b5844a67850271784133387bbc7fa8b6ccaca62f5e721ac55bf98e01654",
+  "managedProcess": {
+    "pid": 75021,
+    "sha256": "60d85b5844a67850271784133387bbc7fa8b6ccaca62f5e721ac55bf98e01654",
+    "startTicks": 8165745
+  },
+  "readOnlyExistingAccountsOnly": true
+}

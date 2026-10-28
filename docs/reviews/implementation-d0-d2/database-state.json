@@ -1,0 +1,12 @@
+{
+  "activeSlots": 0,
+  "mysqlVersion": "8.4.13",
+  "reservedTurns": 0,
+  "outboxInProgress": 0,
+  "unclosedBindings": 0,
+  "foreignTenantRows": 0,
+  "platformMigration": "4",
+  "syntheticPlatformTurns": 115,
+  "namespaceFixtureSubjects": 0,
+  "observedAt": "2026-10-26T06:25:06.100547+00:00"
+}

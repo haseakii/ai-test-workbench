@@ -60,9 +60,9 @@
 | N06 | waiting_input / waiting_approval | wait_cleared | active | 业务服务 | 采纳回执/有效权限送达及复查 | T_PROJECT |
 | N07 | dispatching / active / waiting_input / waiting_approval / stopping | observation_unknown | reconciling | 后端事实投影 | 失联或外部结果未知 | T_PROJECT |
 | N08 | reconciling | active_recovered | active | 后端事实投影 | 原执行权威快照一致 | T_PROJECT |
-| N09 | active / waiting_input / waiting_approval / reconciling | cancel_requested | stopping | 授权用户/业务服务 | 保留正在发生的动作 | T_CANCEL |
-| N10 | active / reconciling / stopping | execution_succeeded | succeeded | 后端事实投影 | 终态、不活跃、副作用已知、输出合同满足 | T_CLOSE |
-| N11 | stopping / reconciling | cancel_confirmed | cancelled | 后端事实投影 | 权威停止及副作用已知 | T_CLOSE |
+| N09 | dispatching / active / waiting_input / waiting_approval / reconciling | cancel_requested | stopping | 授权用户/业务服务 | 保留正在发生的动作 | T_CANCEL |
+| N10 | dispatching / active / waiting_input / waiting_approval / reconciling / stopping | execution_succeeded | succeeded | 后端事实投影 | 接纳事实一致；终态、不活跃、副作用已知、输出合同满足 | T_CLOSE |
+| N11 | dispatching / stopping / reconciling | cancel_confirmed | cancelled | 后端事实投影 | 权威停止及副作用已知 | T_CLOSE |
 | N12 | dispatching / active / waiting_input / waiting_approval / reconciling / stopping | failure_confirmed | failed | 后端事实投影 | 明确拒绝或安全失败；未知不得走此边 | T_CLOSE |
 | N13 | blocked / ready / dispatching / active / waiting_input / waiting_approval / reconciling / stopping | handoff_requested | handoff | 授权负责人 | 保留原 Binding 事实与占用 | T_HANDOFF |
 
@@ -80,10 +80,10 @@
 | B06 | accepted | execution_active | active | 后端快照 | 原执行活跃 | T_PROJECT |
 | B07 | active | permission_required | waiting_permission | 后端请求 | 原生请求与动作哈希可定位 | T_APPROVAL |
 | B08 | waiting_permission | permission_delivered | active | 桥接回执 | 有效批准与当前请求；送达不等于已执行 | T_PROJECT |
-| B09 | accepted / active / waiting_permission | cancel_requested | stopping | 适配器 | 先登记取消请求 | T_CANCEL |
+| B09 | submitting / acceptance_unknown / accepted / active / waiting_permission | cancel_requested | stopping | 适配器 | 先登记取消请求；接纳未知继续核查，不假定未执行 | T_CANCEL |
 | B10 | accepted / active / waiting_permission / stopping | observation_unknown | reconciling | 适配器 | 断线/回执冲突/副作用未知 | T_PROJECT |
 | B11 | reconciling | active_recovered | active | 权威快照 | executionActive=true，原拥有者不变 | T_PROJECT |
-| B12 | active / waiting_permission / stopping / reconciling / accepted | terminal_confirmed | terminal | 权威快照 | 终态 outcome + executionActive=false + effectStatus 已知 | T_CLOSE |
+| B12 | submitting / acceptance_unknown / active / waiting_permission / stopping / reconciling / accepted | terminal_confirmed | terminal | 权威快照 | 接纳回执与 specHash 一致；终态 outcome + executionActive=false + effectStatus 已知 | T_CLOSE |
 
 ## 业务审批决定（approval）
 

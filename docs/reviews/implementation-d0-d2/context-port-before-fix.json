@@ -1,0 +1,15 @@
+{
+  "scope": "actual plan creation and runtime dependency before A09/A03",
+  "cases": [
+    {
+      "name": "runtimeWorkerConsumesTheUnifiedProviderPort",
+      "result": "fail",
+      "failure": "runtime must consume the compiled port rather than fixture Maps ==> expected: <io.aitest.contract.ExecutionProvider> but was: <io.aitest.workbench.execution.FixtureProvider>"
+    },
+    {
+      "name": "preparedPlanFreezesARecomputableContextManifest",
+      "result": "fail",
+      "failure": "a plan must bind the immutable input/config/authorization context ==> expected: not <null>"
+    }
+  ]
+}

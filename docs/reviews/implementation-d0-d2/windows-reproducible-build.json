@@ -1,0 +1,16 @@
+{
+  "scope": "two actual clean Maven packages with existing locked toolchain/cache, -DskipTests for packaging; tests collected separately",
+  "builds": [
+    {
+      "phase": 1,
+      "jarSha256": "b330bcba35e3677dd243c0b65a39c7d65ba86c5bc4528a9a3e6076c074e1d1b9",
+      "bytes": 26243834
+    },
+    {
+      "phase": 2,
+      "jarSha256": "b330bcba35e3677dd243c0b65a39c7d65ba86c5bc4528a9a3e6076c074e1d1b9",
+      "bytes": 26243834
+    }
+  ],
+  "identical": true
+}

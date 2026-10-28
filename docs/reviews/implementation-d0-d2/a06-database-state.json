@@ -1,0 +1,10 @@
+{
+  "mysqlVersion": "8.4.13",
+  "allOpenBindings": 1,
+  "platformVersion": 6,
+  "allOccupiedSlots": 0,
+  "allReservedUnits": 0,
+  "probeOpenBindings": 1,
+  "probeOccupiedSlots": 0,
+  "probeReservedUnits": 0
+}

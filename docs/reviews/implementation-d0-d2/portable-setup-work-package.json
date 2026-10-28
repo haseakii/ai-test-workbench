@@ -1,0 +1,148 @@
+{
+  "scope": "Windows simple first-install preparation only; user selected Windows, no selected machine or new software/resource authorization",
+  "status": "repository_preparation_complete_actual_install_not_accepted",
+  "recommendation": "single primary portable Java + private MySQL route; existing environment compatibility only",
+  "steps": {
+    "recommendedTargetActions": 3,
+    "actions": [
+      "extract complete approved bundle",
+      "double-click Workbench.cmd",
+      "confirm private instance/path/ports and wait for verified readiness"
+    ],
+    "targetManualDatabasePasswordInputs": 0,
+    "targetUserFlowImplemented": false,
+    "existingCompatibilityPrompts": 6,
+    "existingCompatibilityRequiredInputs": 4,
+    "administratorPreworkCountedSeparately": true
+  },
+  "implemented": [
+    "Java-free CMD requirements with explicit unverified dependency refusal",
+    "read-only setup/human/JSON inspector, source hashes and scope, no executable action",
+    "fixed two schemas/three scoped users guarded SQL plus separate initialization/normal INI and eleven-step action plan",
+    "standalone DPAPI CurrentUser adapter with no plaintext fallback, preserved execution-policy guard, no persistence/integration",
+    "v2 allowlisted preparation package including plan/templates; v1 verification preserved; old preview archive untouched"
+  ],
+  "remainingImplementation": [
+    "dependency binary acquisition/verification/licensing and native runtime closure, then approved bundle integration",
+    "initialization coordinator is intentionally absent; must be connected and tested with the exact approved Windows packages and host",
+    "real Windows DPAPI/ACL/native bootstrap/TLS/process behavior; no test double is accepted as that evidence"
+  ],
+  "dependencies": {
+    "javaFamily": "21",
+    "mysqlFamily": "8.4",
+    "linuxReferenceOnly": {
+      "java": "Temurin21.0.9+10",
+      "mysql": "8.4.13"
+    },
+    "actualWindowsExactVersionsAndSha256": null,
+    "msvcUcrt": "conditional on exact MySQL Windows package and machine; app-local rights/servicing unverified",
+    "secretProtection": "Windows system PowerShell/DPAPI policies must permit current-user protection; no policy bypass",
+    "binaryDownloads": 0,
+    "newBundledThirdPartySoftware": 0,
+    "newThirdPartyBinaryExecution": 0
+  },
+  "technicalBlockers": [
+    {
+      "scope": "officialWindows artifact metadata",
+      "actualResult": "api.github.com/dev.mysql.com proxy403 and checksum text404; Windows exact binaries/SHA remain null, no bypass",
+      "evidence": "portable-dependency-sources.json"
+    },
+    {
+      "scope": "actual Windows acceptance",
+      "actualResult": "no selected/provided Windows machine; current executor Linux"
+    }
+  ],
+  "nextApprovalScopes": [
+    {
+      "order": 1,
+      "action": "obtain and verify precise official Windows Java/MySQL/native artifacts after versions/digests/license are known",
+      "objects": "exact vendor archives and published checksums; no mutable latest, software execution or deployment included",
+      "currentStatus": "not approved; exact artifacts not yet verified"
+    },
+    {
+      "order": 2,
+      "action": "select host and concrete owned paths",
+      "objects": "one user-selected Windows host, app/private data/log/blob/TLS/protected-secret paths, backup/recovery location",
+      "currentStatus": "host not selected; paths only proposed per-user location"
+    },
+    {
+      "order": 3,
+      "action": "create and validate only the new private local instance",
+      "objects": "MySQL own system bootstrap/built-in identities; workbench_platform/workbench_runner; workbench/workbench_runner/workbench_migration with explicit scoped rights; initial root rotation; TLS/trust/DPAPI secrets; loopback13306/18080; foreground owned processes",
+      "excludes": "existing/shared databases, Windows service/PATH/firewall/global privilege changes, real business/model access; any MSVC install/app-local redistribution separately reviewed",
+      "currentStatus": "not approved, no executor included"
+    }
+  ],
+  "recoveryRisks": [
+    "never repeat uncertain initialize or clear/repair data; retain original identity/log/journal",
+    "MySQL multi-DDL bootstrap not assumed atomic rollback",
+    "restore DBs/blobs/key references consistently, freeze dispatch and reconcile unknown executions",
+    "DPAPI ciphertext cannot be assumed portable across users/machines; recovery protection and backup target must be approved first"
+  ],
+  "tests": {
+    "javaTargetedOffline": {
+      "passed": 103,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "portable-offline-java-tests.json"
+    },
+    "pythonOffline": {
+      "passed": 89,
+      "failed": 0,
+      "skipped": 0,
+      "breakdown": {
+        "bootstrapTemplateContracts": 22,
+        "cmdStaticContracts": 6,
+        "bundle": 22,
+        "realJarClassloading": 4,
+        "existingRuntime": 35
+      },
+      "evidence": "portable-offline-python-tests.json"
+    },
+    "packagedReadOnlyInspection": {
+      "passed": 3,
+      "total": 3,
+      "code": "SETUP_PREPARATION_ONLY",
+      "canInitialize": false,
+      "evidence": "portable-inspection-offline-smoke.json"
+    },
+    "actualWindowsInitDpapiOrDatabaseRun": false
+  },
+  "artifact": {
+    "scope": "new setup preparation archive without third-party runtime/server payload or initialization executor",
+    "archivePath": "backend/target/portable-setup-preparation/ai-test-workbench-0.1.0-SNAPSHOT-synthetic.zip",
+    "archiveSha256": "0b373297dde0b4b3f9ae1ffde0b5547cee049084ee5d7daaa71dfe51eda72da8",
+    "archiveBytes": 26383341,
+    "jarSha256": "6ade73ac4bcab9f8bc60b13cfda4d1870d3765b57c2664effaf627094899d40f",
+    "files": 17,
+    "previousPreviewSha256Unchanged": "a71f61adb819d078c20ace7c5c3282766a7dcd96d0968fa235c23a9e55fe0fc7",
+    "vendorSoftwareIncluded": false,
+    "executorIncluded": false,
+    "actualWindowsVerified": false
+  },
+  "safety": {
+    "oldPreviewPreserved": true,
+    "newInstanceAccountCredentialsCertificatesCreated": false,
+    "softwareDownloadedInstalledRun": false,
+    "existingServiceOrDataTouched": false,
+    "newSoftwareBundled": false,
+    "pushMergeDeployment": false
+  },
+  "files": [
+    "backend/distribution/setup/dependencies.json",
+    "backend/distribution/setup/bootstrap-actions.json",
+    "backend/distribution/setup/bootstrap.sql.template",
+    "backend/distribution/setup/initialize.ini.template",
+    "backend/distribution/setup/my.ini.template",
+    "backend/platform-server/src/main/java/io/aitest/workbench/bootstrap/SetupInspector.java",
+    "backend/platform-server/src/main/java/io/aitest/workbench/bootstrap/WindowsSecretProtection.java"
+  ],
+  "checks": {
+    "sourceHashes": 154,
+    "localLinks": 158,
+    "missingLinks": 0,
+    "badAnchors": 0,
+    "privateScan": "portable-private-scan.json",
+    "gitState": "portable-git-state.json"
+  }
+}

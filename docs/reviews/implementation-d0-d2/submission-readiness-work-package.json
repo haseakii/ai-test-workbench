@@ -1,0 +1,196 @@
+{
+  "scope": "A08 complete; A01 startup/readiness/interruption complete, original cold chain blocked on additional isolated instance authorization; no other A package implemented",
+  "observedAt": "2026-10-26T08:34:42.035996+00:00",
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "branch": "work",
+  "mysqlVersion": "8.4.13",
+  "artifactSha256": "73ff5c7551ac2c06e5ba757f79e49664590d2e877c07c0b8c3c3c50a0f9e31d2",
+  "completedWorkPackages": [
+    "A08"
+  ],
+  "partialWorkPackages": {
+    "A01": {
+      "passed": [
+        "read-only exact V1-V5 startup/checksum gate",
+        "missing/pending/failed/future/changed-checksum history rejection",
+        "own migration subprocess interruption leaves partial DDL but not ready"
+      ],
+      "notRun": [
+        "original platform V1-V5 and runner V1 empty schema chains"
+      ],
+      "reason": "additional private MySQL instance/two DBs/three scoped temporary users need explicit approval; pending, no execution",
+      "proposal": "a01-empty-instance-proposal.json"
+    }
+  },
+  "beforeFix": [
+    "submission-before-fix.json",
+    "readiness-before-fix.json",
+    "draft-cas-before-fix.json"
+  ],
+  "additionalRegressionsRetained": [
+    "submission-first-regression.json",
+    "submission-selector-regression.json",
+    "selection-refresh-before-fix.json",
+    "ui-submission-first-full-regression.json",
+    "submission-new-draft-race.json"
+  ],
+  "newJavaCases": [
+    {
+      "class": "io.aitest.workbench.ConfigurationDraftTest",
+      "name": "staleDraftCannotOverwriteAnotherTabsSavedContent",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MigrationReadinessTest",
+      "name": "interruptedOwnMigrationProcessLeavesPartialDdlAndCannotPassReadiness",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MigrationReadinessTest",
+      "name": "missingPendingAndChecksumChangedHistoryCannotBeReady",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MigrationReadinessTest",
+      "name": "actualPlatformHistoryIsReadyWithRuntimeReadOnlyPrivileges",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MigrationReadinessTest",
+      "name": "failedDdlHistoryAndFutureVersionCannotBeReadyOrRepaired",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "syntheticMarkerAloneCannotAuthorizeMissingMigrationHistory",
+      "result": "pass"
+    }
+  ],
+  "uiCases": [
+    {
+      "name": "正式界面完成配置开通审批计算下载与用户确认",
+      "file": "journey.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "配置弹窗支持Escape和焦点返回",
+      "file": "journey.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "身份切换清除正文且未获权用户无法打开他人结果",
+      "file": "journey.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "正式界面正文资格、用途租约、撤权后清除正文",
+      "file": "recovery-and-content.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "正式对话在事件连接断开后恢复期间新增的输入",
+      "file": "recovery-and-content.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "已到服务端但回执丢失：刷新后查原回执且消息只保存一次",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "请求未到达：刷新保留原键和消息 ID，查不到回执才原键重试",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "环境草稿取消不发送，分步保存丢回执后刷新沿用已完成步骤",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "身份与环境切换不自动重发，清除旧正文缓存且返回后仅核查原回执",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "两个标签重命名冲突保留输入，明确载入最新基础后再保存",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "两个标签保存配置以草稿哈希 CAS 防覆盖，冲突后保留输入并重新比较",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "后台刷新晚返回不会覆盖管理员刚选择的授权环境",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    },
+    {
+      "name": "两个标签审批冲突可载入已批准状态，保留一个 Binding 和一次接纳",
+      "file": "submission-recovery.spec.ts",
+      "result": "pass"
+    }
+  ],
+  "verification": {
+    "java": {
+      "passed": 69,
+      "total": 69,
+      "skipped": 0,
+      "evidence": "java-submission-readiness-tests.json",
+      "command": "/workspace/scratch/toolchain/apache-maven-3.9.11/bin/mvn -s /workspace/scratch/development-start-20261026/maven-settings.xml -Dmaven.repo.local=/workspace/scratch/maven-cache -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -f backend/pom.xml clean verify -B -ntp",
+      "launcher": "/workspace/scratch/development-start-20261026/verify-submission-final.py; existing approved credentials supplied without printing"
+    },
+    "typescript": {
+      "newSubmissionChecks": 9,
+      "existingContractChecks": 10,
+      "evidence": "typescript-submission-readiness-tests.json"
+    },
+    "ui": {
+      "passed": 13,
+      "newCases": 8,
+      "evidence": "ui-submission-readiness-checks.json",
+      "command": "WB_UI_REPORT=../docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json npm --prefix frontend run test:e2e"
+    },
+    "httpService": {
+      "passed": 15,
+      "evidence": "service-submission-readiness-checks.json"
+    },
+    "httpHardening": {
+      "passed": 15,
+      "evidence": "hardening-submission-readiness-checks.json"
+    },
+    "httpSchemaReplies": 383,
+    "staticChecks": 484,
+    "originalArchiveSHA": 20,
+    "providerGeneratedStale": 0,
+    "ciYamlAndNewGate": "pass; remote and new hosted-job bootstrap not run"
+  },
+  "implementation": {
+    "client": "frontend/src/shared/command-journal.ts; original key/body/fixed preconditions before fetch, lookup before original retry, current server subject identity and generation, redact body on identity switch/denied lookup",
+    "forms": "frontend/src/main.tsx; one unresolved operation, current-choice-preserving refresh, explicit CAS conflict rebase, staged environment draft recovery",
+    "draftCAS": "ConfigurationService.draft; published revision + expectedDraftHash under transaction guard; required input/output Schema synchronized",
+    "readiness": "SchemaReadiness.platform/verify; exact successful version sequence and Flyway checksum validation, called from SyntheticBoundary before startup"
+  },
+  "runtimeState": "database-submission-readiness-state.json",
+  "migrationState": "migration-readiness-state.json",
+  "artifactEvidence": "submission-readiness-artifact.json",
+  "scopeLimits": [
+    "A04 simultaneous transaction matrix remains; UI conflicts are ordered competing snapshots",
+    "A03-A06 and A09-A11 not implemented here",
+    "Five execution-process interruption windows belong to A07/A02, not rerun on this artifact",
+    "Full original empty migration chain not replaced by prefixed baseline-0 probes",
+    "Per-tab recovery uses synthetic test identities, not production auth"
+  ],
+  "resourceChanges": {
+    "additionalContainers": false,
+    "additionalDatabases": false,
+    "newAccountsOrPrivilegeChanges": false,
+    "existingDataRetained": true,
+    "ownPrefixHistoryTablesRetained": 16,
+    "commitPushMergeDeployment": false,
+    "realModelsOrBusinessResources": false
+  },
+  "nextAfterParentReview": "resolve explicit A01 isolated instance authorization and verify original cold chain; other D0-D2 packages remain separately scheduled"
+}

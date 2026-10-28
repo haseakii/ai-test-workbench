@@ -1,0 +1,144 @@
+{
+  "recordedAt": "2026-10-26T10:41:07.223014+00:00",
+  "command": [
+    "/workspace/scratch/toolchain/apache-maven-3.9.11/bin/mvn",
+    "-o",
+    "-s",
+    "/workspace/scratch/development-start-20261026/maven-settings.xml",
+    "-Dmaven.repo.local=/workspace/scratch/maven-cache",
+    "-f",
+    "backend/platform-server/pom.xml",
+    "surefire:test",
+    "-Dtest=QueueCommitFaultTest",
+    "-B",
+    "-ntp"
+  ],
+  "exitCode": 1,
+  "sourceSha256": "0e8f8f746b787c47e9f956c377cc0de36efe0d6cc6220d478bfe5ac95bf33dd3",
+  "tests": [
+    {
+      "name": "mysqlDeadlockVictimRollsBackItsEntireOwnedTransaction",
+      "status": "passed",
+      "durationSeconds": "1.021",
+      "failure": null
+    },
+    {
+      "name": "lostDispatchCommitResponseRetainsFrozenOccupationsUntilAuthoritativeClosure",
+      "status": "passed",
+      "durationSeconds": "0.887",
+      "failure": null
+    },
+    {
+      "name": "lockedOldestQueueItemIsSkippedThenClaimedAfterRelease",
+      "status": "failed",
+      "durationSeconds": "1.089",
+      "failure": {
+        "type": "org.opentest4j.AssertionFailedError",
+        "message": "LIMIT 1 claim must not lock every remaining eligible queue row ==> expected: <1> but was: <0>",
+        "stack": "org.opentest4j.AssertionFailedError: LIMIT 1 claim must not lock every remaining eligible queue row ==> expected: <1> but was: <0>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:152)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:590)\n\tat io.aitest.workbench.execution.QueueCommitFaultTest.lockedOldestQueueItemIsSkippedThenClaimedAfterRelease(QueueCommitFaultTest.java:120)\n"
+      }
+    },
+    {
+      "name": "commitResponseLostFindsDurableOriginalReceiptWithoutSecondOutbox",
+      "status": "passed",
+      "durationSeconds": "0.514",
+      "failure": null
+    },
+    {
+      "name": "quotaRowWaitCannotBeSkippedAndTimeoutRollsBackBeforeWholeDispatchRetry",
+      "status": "passed",
+      "durationSeconds": "1.599",
+      "failure": null
+    },
+    {
+      "name": "leaseHandoffAfterOwnerReadPreventsOldWorkerFromDispatching",
+      "status": "failed",
+      "durationSeconds": "0.475",
+      "failure": {
+        "type": "org.opentest4j.AssertionFailedError",
+        "message": "old owner must abort after the lease is claimed by another worker ==> expected: <false> but was: <true>",
+        "stack": "org.opentest4j.AssertionFailedError: old owner must abort after the lease is claimed by another worker ==> expected: <false> but was: <true>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)\n\tat org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:69)\n\tat org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:41)\n\tat org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:255)\n\tat io.aitest.workbench.execution.QueueCommitFaultTest.leaseHandoffAfterOwnerReadPreventsOldWorkerFromDispatching(QueueCommitFaultTest.java:99)\n"
+      }
+    },
+    {
+      "name": "commitRequestNotSentRollsBackAndOriginalApprovalKeyRetriesOnce",
+      "status": "passed",
+      "durationSeconds": "0.495",
+      "failure": null
+    },
+    {
+      "name": "rolledBackQueueClaimDoesNotConsumeLeaseAttemptOrOwner",
+      "status": "passed",
+      "durationSeconds": "0.415",
+      "failure": null
+    }
+  ],
+  "proofs": [
+    {
+      "case": "mysql-deadlock-entire-transaction-rollback",
+      "connections": [
+        28342,
+        28343
+      ],
+      "bothSlotLimits": 2,
+      "externalActions": 0,
+      "victimError": 1213,
+      "committedAudits": 1
+    },
+    {
+      "case": "dispatch-commit-response-lost-keeps-unknown-occupation",
+      "reservedPerAccount": 1,
+      "ticketRows": 1,
+      "sameFrozenAccountPair": true,
+      "slotOccupation": 1,
+      "providerAcceptances": 0,
+      "reexecuted": false,
+      "reconcileReads": 2
+    },
+    {
+      "case": "queue-claim-lock-range-before-release",
+      "secondConsumerRows": 0,
+      "leaderHeldBeforeCommit": true,
+      "candidateRows": 3,
+      "leaderConnection": 28509
+    },
+    {
+      "case": "commit-committed_response_lost",
+      "durableBeforeReconcile": true,
+      "outboxRows": 1,
+      "approvalAudits": 1,
+      "providerAcceptances": 0,
+      "packetLevelProxyValidated": false,
+      "quotaReservations": 0,
+      "injectionBoundary": "owned JDBC Connection.commit",
+      "sameCommandReceipt": true
+    },
+    {
+      "case": "quota-lock-timeout-whole-transaction-retry",
+      "queueLockReleased": true,
+      "rollbackAccounts": true,
+      "providerAcceptances": 0,
+      "retryReservations": 1,
+      "mysqlError": 1205
+    },
+    {
+      "case": "lease-handoff-after-owner-read",
+      "oldWorkerDispatched": true,
+      "newOwnerRetained": true,
+      "reservations": 1,
+      "takeoverCommitted": true
+    },
+    {
+      "case": "commit-request_not_sent",
+      "durableBeforeReconcile": false,
+      "outboxRows": 1,
+      "approvalAudits": 1,
+      "providerAcceptances": 0,
+      "packetLevelProxyValidated": false,
+      "quotaReservations": 0,
+      "injectionBoundary": "owned JDBC Connection.commit",
+      "sameCommandReceipt": true
+    }
+  ],
+  "scope": "actual existing MySQL; own synthetic records and physical JDBC connections only; no packet proxy/TLS qualification"
+}

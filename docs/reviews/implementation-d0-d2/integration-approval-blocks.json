@@ -1,0 +1,29 @@
+{
+  "actions": [
+    {
+      "action": "initial A10/A11 integrated DB test command",
+      "result": "auto_review_rejected; not executed",
+      "reason": "current A09/A03 package scope"
+    },
+    {
+      "action": "A05/A06 test command",
+      "result": "first rejected/not executed; one explicit-parent-scope retry permitted and executed",
+      "outcome": "A05 8 pass; A06 first run 10 pass/3 assertion failures"
+    },
+    {
+      "action": "A10/A11 integrated DB test command retry after parent expanded scope",
+      "result": "auto_review_rejected; not executed; stopped",
+      "reason": "parent-delegated scope evidence not considered direct user authorization",
+      "next": "direct user confirmation requested; no alternative execution of blocked tests"
+    }
+  ],
+  "unaffected": "A09/A03 integration and approved existing-regression verification continuing",
+  "newEmptyMySqlInstance": "not approved; not created",
+  "resolution": {
+    "authorization": "Direct user permitted A10/A11 export/API/UI and existing synthetic tests in Sentinel_e5ffa8a1f3c081918a8b91ce6ad5f085",
+    "priorRejectedActionsVerifiedNotExecuted": true,
+    "authorizedRetry": "Executed once: 25 tests; 17 pass, 1 fixture assertion failure, 7 fixture SQL errors; no new account/instance/database permission",
+    "currentBlocker": null,
+    "newEmptyInstanceStillUnapproved": true
+  }
+}

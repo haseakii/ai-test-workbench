@@ -1,0 +1,7 @@
+{
+  "scope": "known approved credential bytes in repository files, distribution entries and direct unpacked Jar entries; values never emitted",
+  "repositoryFiles": 596,
+  "distributionAndJarEntries": 272,
+  "repositoryMatches": [],
+  "packageMatches": []
+}

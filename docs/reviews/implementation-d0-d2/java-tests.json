@@ -1,0 +1,82 @@
+{
+  "scope": "5 core contract + 9 real MySQL/privilege + 5 offline SDK/module tests; no real Agent/model",
+  "suites": [
+    {
+      "name": "io.aitest.runner.AcpStdioCompatibilityTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "initializePermissionCallbackAndCancelOverIsolatedStdio"
+      ]
+    },
+    {
+      "name": "io.aitest.runner.SdkCompatibilityTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "mcpInitializeRoundTripUsesSameManagedJacksonMajor",
+        "acpPermissionOptionsKeepOriginalRequestIdentity",
+        "productionModulesKeepTheDeclaredDependencyDirection",
+        "acpInitializeAndCancelRoundTripWithJackson3"
+      ]
+    },
+    {
+      "name": "io.aitest.workbench.DatabasePrivilegesTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "platformRuntimeCannotDdlOrReadRunner",
+        "migrationIdentityCannotReadMysqlAdministration",
+        "runnerRuntimeOnlyReadsAndWritesRunnerJournal"
+      ]
+    },
+    {
+      "name": "io.aitest.workbench.MySqlSemanticsTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "actualEngineIsolationTimePrecisionAndDecimal",
+        "idempotencyKeysCompareExactBytes",
+        "uuidAndCanonicalJsonRoundTripIgnoreMysqlObjectOrder",
+        "lockingLastSlotAllowsExactlyOneCommit",
+        "tenantCompositeForeignKeyRejectsWrongParent",
+        "oneOpenBindingAndClosedHistoryAndSafeIntegerCheck"
+      ]
+    },
+    {
+      "name": "io.aitest.contract.ContractTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "rejectDuplicateKeys",
+        "canonicalKeysAndDecimalStrings",
+        "rejectTimePrecisionLoss",
+        "safeIntegerBounds"
+      ]
+    },
+    {
+      "name": "io.aitest.contract.GoldenContractTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "matchesSharedGoldenVectors"
+      ]
+    }
+  ],
+  "tests": 19,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0
+}

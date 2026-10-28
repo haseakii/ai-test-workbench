@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-test-workbench:core:1",
+  "title": "Generated core contract projections",
+  "$comment": "{\"source\":\"docs/design/contracts/execution-provider.d.ts\",\"sourceSha256\":\"96702856a346556ae04a882693731b21729e8b59458de847e1f6b606e319535a\"}",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "SafeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "Uuid": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "Cursor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Instant": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\.\\d{6}Z$"
+    },
+    "Sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "Decimal": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "safeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "instant": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\.\\d{6}Z$"
+    },
+    "authority": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "subjectId",
+            "qualificationRef"
+          ],
+          "properties": {
+            "kind": {
+              "const": "human",
+              "type": "string"
+            },
+            "subjectId": {
+              "$ref": "#/$defs/Id"
+            },
+            "qualificationRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "grantId",
+            "grantRevision",
+            "grantHash",
+            "issuerId",
+            "serviceIdentityRef",
+            "evaluationProofRef"
+          ],
+          "properties": {
+            "kind": {
+              "const": "policy",
+              "type": "string"
+            },
+            "grantId": {
+              "$ref": "#/$defs/Id"
+            },
+            "grantRevision": {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            "grantHash": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "issuerId": {
+              "$ref": "#/$defs/Id"
+            },
+            "serviceIdentityRef": {
+              "$ref": "#/$defs/Id"
+            },
+            "evaluationProofRef": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        }
+      ]
+    },
+    "admissionTicket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ticketId",
+        "bindingId",
+        "executionContentHash",
+        "authorizationRevision",
+        "approvalRef",
+        "approvalRevision",
+        "notBefore",
+        "notAfter",
+        "authorityRef"
+      ],
+      "properties": {
+        "ticketId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "executionContentHash": {
+          "$ref": "#/$defs/Sha256"
+        },
+        "authorizationRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "approvalRef": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "approvalRevision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SafeInteger"
+            },
+            {
+              "const": null,
+              "type": "null"
+            }
+          ]
+        },
+        "notBefore": {
+          "$ref": "#/$defs/Instant"
+        },
+        "notAfter": {
+          "$ref": "#/$defs/Instant"
+        },
+        "authorityRef": {
+          "$ref": "#/$defs/Id"
+        }
+      }
+    },
+    "recoveryPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "snapshotRevision",
+        "eventWatermark",
+        "resumeCursor"
+      ],
+      "properties": {
+        "bindingId": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "snapshotRevision": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "eventWatermark": {
+          "$ref": "#/$defs/SafeInteger"
+        },
+        "resumeCursor": {
+          "$ref": "#/$defs/Cursor"
+        }
+      }
+    }
+  }
+}

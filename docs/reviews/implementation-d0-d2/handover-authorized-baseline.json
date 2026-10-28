@@ -1,0 +1,158 @@
+{
+  "scope": "first permitted A10/A11 integrated retry; existing approved MySQL/identities only",
+  "total": 25,
+  "passed": 17,
+  "failed": 8,
+  "cases": [
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "unknownExecutionAndLegacyReservationDoNotInventProviderOrFrozenAccountFacts",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "exactLargeCsvTotalsSurviveAndInconsistentEvidenceIsRejected",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "closureRequiresInactiveOwnershipAndOpaqueReferencesRejectPathsOrUrls",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "duplicateFactsAndDanglingEvidenceAreRejected",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "staleContextCanBeRepresentedWithoutBecomingActiveOrChangingItsOriginalHash",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "canonicalDigestIsStableForEquivalentFactOrderAndUtcFormatting",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "contentChangeChangesPackageDigestWithoutPretendingToChangeApprovalHash",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "precisionAndIntegerBoundariesAreRejectedRatherThanRounded",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "handover.HandoverPackageTest",
+      "name": "projectionCopiesListsAndCannotChangeAfterExport",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "revokedOwnerCannotReuseOldActorForExportAndDeniedAttemptIsNotAuditedAsExport",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "planContextAndArtifactTamperingPreventExportWithoutPublishingAudit",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "completedFixedCsvFlowExportsAuthorizedFactsHashesVerificationAndAudit",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "revokedSourceBlocksEntireDerivedPackageAndRetainsUnknownOccupation",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "unknownSubmissionAcrossUtcRolloverExportsFrozenOldPairWithoutReleaseOrNewExecution",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "newInputExportsStalePlanAndOriginalContextHashWithoutOldResultBody",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "peerReviewerBodyLeaseAndAdminMetadataDoNotAuthorizeOwnerExport",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "auditFailureReturnsNoPackageAndRollsBackItsOnlyWrite",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.HandoverServiceTest",
+      "name": "legacyUnknownFrozenPairStaysUnknownAndDoesNotGuessCurrentAccounts",
+      "result": "fail",
+      "reason": "PreparedStatementCallback; SQL [SELECT HEX(r.binding_id) binding,period_key,state,HEX(total_account_key) total_key,HEX(model_account_key) model_key FROM quota_reservations r JOIN execution_bindings b ON b.tenant_id=r.tenant_id AND b.id=r.binding_id WHERE b.tenant_id=? AND b.conversation_id=? ORDER BY r.binding_id]; Column 'state' in field list is ambiguous"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "anotherValidEnvironmentGrantCannotExposeOwnerEnvironmentOrItsContent",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "sameEnvironmentPeerCannotUploadReadContextEventsOrDownloadOwnerArtifact",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "ownerRevocationBlocksOldActorArtifactContextUploadReceiptAndReviewerLease",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "reviewerBodyLeaseGrantsMessagesOnlyAndDoesNotGrantContextEventsUploadOrArtifact",
+      "result": "fail",
+      "reason": "expected: <true> but was: <false>"
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "sameEnvironmentForeignAttachmentCannotBeAssociatedWithAnotherOwnedConversation",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "sourceRevocationAndNewInputBlockOldDerivedMaterialWithoutRewritingHistoricFacts",
+      "result": "pass",
+      "reason": ""
+    },
+    {
+      "class": "execution.AuthorizationMatrixTest",
+      "name": "resumeCursorCannotCrossSubjectOrConversationAndPagesRecheckCurrentGrant",
+      "result": "pass",
+      "reason": ""
+    }
+  ]
+}

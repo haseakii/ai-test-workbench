@@ -1,0 +1,57 @@
+{
+  "runner": "isolated javac + JUnit 6.0.3 Launcher; existing official cache; no Maven/shared target/DB/network",
+  "found": 9,
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "tests": [
+    {
+      "status": "SUCCESSFUL",
+      "test": "unknownExecutionAndLegacyReservationDoNotInventProviderOrFrozenAccountFacts()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "exactLargeCsvTotalsSurviveAndInconsistentEvidenceIsRejected()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "closureRequiresInactiveOwnershipAndOpaqueReferencesRejectPathsOrUrls()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "duplicateFactsAndDanglingEvidenceAreRejected()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "staleContextCanBeRepresentedWithoutBecomingActiveOrChangingItsOriginalHash()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "canonicalDigestIsStableForEquivalentFactOrderAndUtcFormatting()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "contentChangeChangesPackageDigestWithoutPretendingToChangeApprovalHash()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "precisionAndIntegerBoundariesAreRejectedRatherThanRounded()"
+    },
+    {
+      "status": "SUCCESSFUL",
+      "test": "projectionCopiesListsAndCannotChangeAfterExport()"
+    }
+  ],
+  "checkedAt": "2026-10-26T10:37:52.382229+00:00",
+  "javaRelease": 21,
+  "scope": "Pure Handover DTO only. No route/service/UI export and no DB/HTTP/SSE/Provider integration verification.",
+  "sourceSha256": {
+    "backend/platform-server/src/main/java/io/aitest/workbench/handover/HandoverPackage.java": "283c9c3806b63c8d13414f665e9abba5e2716ac643c8058e7555ccaef82bd6b0",
+    "backend/platform-server/src/test/java/io/aitest/workbench/handover/HandoverPackageTest.java": "1df51b879245ae615bd3dc739d00af07ac85c972ee0cc000e60a6b17997c2291"
+  },
+  "localRunner": "/workspace/scratch/development-start-20261026/a10-pure-check/A10PureCheck.java",
+  "localOutput": "/workspace/scratch/development-start-20261026/a10-pure-check/output.log",
+  "sharedMavenTargetTouched": false,
+  "databaseUsed": false,
+  "networkUsed": false
+}

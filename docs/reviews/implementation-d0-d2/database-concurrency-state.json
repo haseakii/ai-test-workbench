@@ -1,0 +1,31 @@
+{
+  "activeSlots": 0,
+  "mysqlVersion": "8.4.13",
+  "reservedTurns": 0,
+  "foreignTenants": 0,
+  "outboxInProgress": 0,
+  "unclosedBindings": 0,
+  "platformMigration": 5,
+  "unresolvedLegacyOpen": 0,
+  "eventGapConversations": 0,
+  "eventCounterMismatches": 0,
+  "originalFailedMigrations": 0,
+  "observedAt": "2026-10-26T09:35:17.022207+00:00",
+  "aliceCurrentDayAccounts": [
+    {
+      "limit": 200,
+      "period": "2026-10-26",
+      "account": "model:fixture-v1",
+      "consumed": 114,
+      "reserved": 0
+    },
+    {
+      "limit": 200,
+      "period": "2026-10-26",
+      "account": "total",
+      "consumed": 114,
+      "reserved": 0
+    }
+  ],
+  "ownedMigrationChildrenStillRunning": []
+}

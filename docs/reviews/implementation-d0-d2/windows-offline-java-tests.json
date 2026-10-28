@@ -1,0 +1,395 @@
+{
+  "scope": "final targeted pure/offline tests on Linux; injected process/HTTP/DB ops and private temp files, no actual service/database/Windows",
+  "observedAt": "2026-10-27T01:57:10.125679+00:00",
+  "total": 77,
+  "passed": 77,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "existingAccountRolesCannotBeSwappedOrPointAtRealTargets",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "metadataRejectsNoncanonicalNonceCoercionUnknownStateAndTrailingJson",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "stopWritesOnlyOriginalBoundRequestAndRetainsAllEvidence",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "wrongNoncePortOrPidCanNeverReportReady",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "runningProcessCannotBeMigrated",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "environmentDropsAgentsLoaderOverridesAndOtherDatabaseCredentials",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "unconfirmedReadinessRetainsOriginalLiveProcessWithoutReplacement",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "configurationRejectsTrailingJsonObjectWithoutCreatingRuntime",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "unknownStopNeverEscalatesToForceKillOrStartsAnotherProcess",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "failedMigrationDoesNotStartOrDeleteOriginalFiles",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "readinessRejectsStringFractionalAndTrailingNumericClaims",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "actualDirectoryLockBlocksASecondOperation",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "doctorDatabaseFailureDoesNotWriteRuntimeOrLogs",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "readablePrivateConfigIsRejectedWithoutChangingPermissions",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "repeatedUpKeepsOriginalPidAndNeverReinitializes",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "creationIOExceptionKeepsUnknownIntentAndFencesTheNextUp",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "optionsUseLocalAppDataAndKeepChineseSpaceBundlePaths",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "stoppedStatusAndStopDoNotRequireCredentialsOrCreateRuntime",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "doctorUsesReadOnlySchemaProbeAndCreatesNoRuntime",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "duplicateUnknownAndNonStringPrivateValuesAreRejected",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "explicitInitializationOrdersDatabasePlatformRunnerSchemaThenOneStart",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "recycledPidStartOrCommandCannotBeStopped",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "configurationRecordsNeverDisclosePrivateMetadata",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "missingConfigErrorNeverPrintsInputAndCreatesNoRuntime",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "unknownDuplicateFlagsAndSecretParametersAreRejected",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "missingWindowsProcessInformationRefusesStopInsteadOfGuessing",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "helpDoesNotReadPrivateConfigurationOrCreateDirectories",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLauncherTest",
+      "name": "upStartsOneFixedJarAndPublishesNoPrivilegedCredential",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "canonicalizesTlsPropertyNamesAndRejectsRemoteTruststores",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "schemaRequiresExistingSyntheticMarkerAndNeverCreatesIt",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "tlsVerificationCannotBeDisabled",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "rejectsIdentityOverridesDynamicDriversAndDuplicateParameters",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "authenticationConnectionAndPermissionFailuresStayDistinctAndRedacted",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "rejectsIncompatibleVersionEngineIsolationTimezoneAndStrictMode",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "rejectsRootAndMalformedRuntimeUsers",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "closesConnectionWhenSessionConfigurationFails",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "rejectsRemoteDifferentDatabaseAndEmbeddedCredentials",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "requiresAllExplicitRuntimeConfiguration",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "ownsFiniteTimeoutsWithoutExposingCredentialConfig",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "rejectsProductionOrCombinedProfilesBeforeConnecting",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "databaseProbeIsReadOnlyAndDoesNotClaimSchemaReady",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "schemaProbeUsesReadOnlyConnectionsAndCurrentPlatformGate",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "rejectsUnknownStageWithoutOpeningDatabase",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeProbeTest",
+      "name": "schemaFailuresReturnActionableFixedErrorWithoutRepairOrSecrets",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "aclPolicyModelAllowsOnlyCurrentOwnerAndRejectsBroadOrMissingAllow",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "createsOnlyNewOwnerPrivateDirectoriesAndFiles",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "existingFileIsNotOverwritten",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "unsafeParentFailsBeforeFileCreation",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "privateFileMayPreserveLegacyOwnerReadinessInNonWritable755Directory",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "rejectsRelativeAndUnnormalizedPathsWithFixedError",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "neverChangesPermissionsOfAnExistingUnprivateDirectory",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeFilesTest",
+      "name": "rejectsSymlinkFileAndAncestor",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "failedCloseDoesNotExitOrRetryTheOriginalRequest",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "requestBeforeApplicationReadyDoesNotCloseAnyContext",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "explicitControlRequiresMatchingPrivateRunScopeAndCanonicalNonce",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "forgedOrMissingReadinessCannotAuthorizeStop",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "noRequestMeansNoEffect",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "validOwnedRequestClosesBeforeExitExactlyOnceAndPreservesAllEvidence",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "wrongNoncePidActionExtraOrDuplicateFieldsCannotStopAnything",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "rejectsOversizedRequestAndNeverEchoesItsContent",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "publicBindingOrNonSyntheticContextCannotArm",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "controlRequiresPrivateParentWithoutRepairingPermissions",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "rejectsExistingControlWithoutOverwritingEvidence",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "symlinkOrBroadlyReadableRequestIsNotConsumed",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeLifecycleControlTest",
+      "name": "absentControlLeavesExistingLinuxReadinessConfigurationDisabled",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "duplicateReadyEventsDoNotRewriteOrCreateMoreFiles",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "legacyLinuxOwner755DirectoryKeepsPermissionsAndPrivateAck",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "peerWritableReadinessDirectoryIsRejectedWithoutPermissionRepair",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "onlyPublishesAfterReadyWithActualPortAndExactSafeProjection",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "absentOptionsAreCompletelyDisabled",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "rejectsPublicBindingProductionAndInvalidActualPort",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "rejectsRelativeAndUnnormalizedPaths",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "requiresBothOptionsAndCanonicalUuid",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "rechecksTargetAndParentAtPublicationTime",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "rejectsTargetAndAncestorSymlinks",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "doesNotCreateMissingDirectoriesOrOverwriteExistingFiles",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.bootstrap.RuntimeReadinessTest",
+      "name": "unsupportedContextDoesNotPublish",
+      "result": "pass"
+    }
+  ]
+}

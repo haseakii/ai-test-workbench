@@ -1,0 +1,813 @@
+{
+  "scope": "wire fixtures only; no backend, model or resource conformance claim",
+  "executionContentHash": "e48433f14c63838e4c50d9228bb31c57de11edf33732cdb8adfb37578b2ac3d7",
+  "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31",
+  "commandRequestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+  "methods": {
+    "inspectCapabilities": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "connection": {
+          "providerId": "synthetic-fixture",
+          "connectionId": "synthetic-connection",
+          "connectionRevision": 1
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "connection": {
+            "providerId": "synthetic-fixture",
+            "connectionId": "synthetic-connection",
+            "connectionRevision": 1
+          },
+          "adapterVersion": "synthetic@1",
+          "backendVersion": null,
+          "agentVersion": null,
+          "negotiatedProtocol": null,
+          "configurationHash": "5d14ddc7d88f95f8b54ef59a9032bf79a554e660df3fa6d97ac43e5c550fa843",
+          "observedAt": "2026-10-26T00:00:00.000001Z",
+          "validUntil": "2026-10-26T01:00:00.000001Z",
+          "capabilities": [
+            {
+              "name": "idempotent_start",
+              "level": "advertised",
+              "evidenceRef": null
+            }
+          ],
+          "modelOptions": []
+        }
+      }
+    },
+    "validateBinding": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "spec": {
+          "contractVersion": "initial-draft",
+          "purpose": "investigation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "conversationId": "00000000-0000-4000-8000-000000000020",
+          "workflowRunId": "00000000-0000-4000-8000-000000000030",
+          "workflowVersion": "synthetic-workflow@1",
+          "nodeRunId": "00000000-0000-4000-8000-000000000032",
+          "bindingId": "00000000-0000-4000-8000-000000000031",
+          "ownershipEpoch": 1,
+          "connection": {
+            "providerId": "synthetic-fixture",
+            "connectionId": "synthetic-connection",
+            "connectionRevision": 1
+          },
+          "capabilitySnapshotHash": "b46812cfd90a6bedce16ffadb19454e3407aa88aec57f6779a26632ee93c5c42",
+          "agentId": "synthetic-fixture-agent",
+          "systemId": "00000000-0000-4000-8000-000000000021",
+          "environmentId": "00000000-0000-4000-8000-000000000022",
+          "primaryRepositoryId": null,
+          "deployedCommit": null,
+          "codeCommit": null,
+          "objective": "合成契约样例，不调用模型或业务资源",
+          "preparation": {
+            "inputRevision": 3,
+            "configurationSnapshotRevision": 1,
+            "admissionPolicyRevision": 1,
+            "authorizationRevision": 1,
+            "integrationSnapshotRef": "synthetic:integrationSnapshot",
+            "integrationSnapshotHash": "1bd9606a51f9435bd8fbd8398cca55070340c1ba5ce04e456b59b40d657ad70f",
+            "environmentResourcesRef": "synthetic:environmentResources",
+            "environmentResourcesHash": "c3abbbc91dda5f566ae199afb18d0e9efb053c8764d2f1d5616986297d5a58e7",
+            "effectiveWorkflowRef": "synthetic:effectiveWorkflow",
+            "effectiveWorkflowHash": "6c28c15518ffafef0644da239cb9f44f4991f9236d7ccbdadd9b1bb8e58030f0",
+            "runtimeManifestRef": "synthetic:runtimeManifest",
+            "runtimeManifestHash": "cda22ca5cee697c9c25745199ee7974315acac7dc02b75a7f8da4b7d33416ea5",
+            "contextManifestRef": "synthetic:contextManifest",
+            "contextManifestHash": "75ed359da2230ffb0caf4a25816fb1f3de7107330b69112dcb230414bb205ffb",
+            "executionPolicyDecisionRef": "synthetic:execution-policy"
+          },
+          "inputs": [
+            {
+              "attachmentId": "00000000-0000-4000-8000-000000000040",
+              "sha256": "c686beb349018655edde0a5b57b156566ab219d75b38907d292c8f51f4047ae1",
+              "authorizationRef": "synthetic:attachment-grant"
+            }
+          ],
+          "executionIdentityRef": "synthetic:fixture-identity",
+          "workspaceAuthorizationRef": "synthetic:private-workspace",
+          "resourceAuthorizationRefs": [
+            "synthetic:read-only-csv"
+          ],
+          "modelRequest": {
+            "modelId": "synthetic:no-model",
+            "presetId": "synthetic:default",
+            "presetRevision": 1
+          },
+          "skills": [],
+          "budget": {
+            "modelQuotaSnapshotRef": "synthetic:quota",
+            "modelQuotaSnapshotHash": "26fb2af870a8c6f653298d0b9ffc1bde1ba5d53867419692603e7fde0d2802be",
+            "reservationId": "00000000-0000-4000-8000-000000000050",
+            "scopeId": "00000000-0000-4000-8000-000000000051",
+            "maxNewCalls": 0,
+            "maxConcurrency": 1,
+            "estimatedAmount": "0.00",
+            "currency": "EUR",
+            "unknownUsagePolicy": "block_new_billable_actions",
+            "riskAcceptanceRef": null,
+            "userTotalAccountRef": "synthetic:total-account",
+            "platformTurnReservationId": "00000000-0000-4000-8000-000000000052",
+            "requireHardModelLimits": false,
+            "callLimitEnforcement": "unknown"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z",
+          "outputContract": {
+            "schemaRef": "synthetic:difference-csv:v1",
+            "artifactTypes": [
+              "text/csv"
+            ],
+            "evidenceRequired": true
+          },
+          "admission": {
+            "ticketId": "00000000-0000-4000-8000-000000000033",
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "executionContentHash": "e48433f14c63838e4c50d9228bb31c57de11edf33732cdb8adfb37578b2ac3d7",
+            "authorizationRevision": 1,
+            "approvalRef": "00000000-0000-4000-8000-000000000034",
+            "approvalRevision": 2,
+            "notBefore": "2026-10-26T00:00:00.000001Z",
+            "notAfter": "2026-10-26T01:00:00.000001Z",
+            "authorityRef": "synthetic:platform-authority"
+          }
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31",
+          "checkedAt": "2026-10-26T00:00:00.000001Z",
+          "validUntil": "2026-10-26T01:00:00.000001Z",
+          "canStart": true,
+          "blockers": [],
+          "warnings": []
+        }
+      }
+    },
+    "start": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "submission": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture",
+            "tenantId": "00000000-0000-4000-8000-000000000001",
+            "idempotencyKey": "synthetic-start-key",
+            "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31"
+          },
+          "command": {
+            "commandId": "00000000-0000-4000-8000-000000000035",
+            "idempotencyKey": "synthetic-command-key",
+            "requestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+            "expectedRevision": 1
+          },
+          "spec": {
+            "contractVersion": "initial-draft",
+            "purpose": "investigation",
+            "tenantId": "00000000-0000-4000-8000-000000000001",
+            "conversationId": "00000000-0000-4000-8000-000000000020",
+            "workflowRunId": "00000000-0000-4000-8000-000000000030",
+            "workflowVersion": "synthetic-workflow@1",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "ownershipEpoch": 1,
+            "connection": {
+              "providerId": "synthetic-fixture",
+              "connectionId": "synthetic-connection",
+              "connectionRevision": 1
+            },
+            "capabilitySnapshotHash": "b46812cfd90a6bedce16ffadb19454e3407aa88aec57f6779a26632ee93c5c42",
+            "agentId": "synthetic-fixture-agent",
+            "systemId": "00000000-0000-4000-8000-000000000021",
+            "environmentId": "00000000-0000-4000-8000-000000000022",
+            "primaryRepositoryId": null,
+            "deployedCommit": null,
+            "codeCommit": null,
+            "objective": "合成契约样例，不调用模型或业务资源",
+            "preparation": {
+              "inputRevision": 3,
+              "configurationSnapshotRevision": 1,
+              "admissionPolicyRevision": 1,
+              "authorizationRevision": 1,
+              "integrationSnapshotRef": "synthetic:integrationSnapshot",
+              "integrationSnapshotHash": "1bd9606a51f9435bd8fbd8398cca55070340c1ba5ce04e456b59b40d657ad70f",
+              "environmentResourcesRef": "synthetic:environmentResources",
+              "environmentResourcesHash": "c3abbbc91dda5f566ae199afb18d0e9efb053c8764d2f1d5616986297d5a58e7",
+              "effectiveWorkflowRef": "synthetic:effectiveWorkflow",
+              "effectiveWorkflowHash": "6c28c15518ffafef0644da239cb9f44f4991f9236d7ccbdadd9b1bb8e58030f0",
+              "runtimeManifestRef": "synthetic:runtimeManifest",
+              "runtimeManifestHash": "cda22ca5cee697c9c25745199ee7974315acac7dc02b75a7f8da4b7d33416ea5",
+              "contextManifestRef": "synthetic:contextManifest",
+              "contextManifestHash": "75ed359da2230ffb0caf4a25816fb1f3de7107330b69112dcb230414bb205ffb",
+              "executionPolicyDecisionRef": "synthetic:execution-policy"
+            },
+            "inputs": [
+              {
+                "attachmentId": "00000000-0000-4000-8000-000000000040",
+                "sha256": "c686beb349018655edde0a5b57b156566ab219d75b38907d292c8f51f4047ae1",
+                "authorizationRef": "synthetic:attachment-grant"
+              }
+            ],
+            "executionIdentityRef": "synthetic:fixture-identity",
+            "workspaceAuthorizationRef": "synthetic:private-workspace",
+            "resourceAuthorizationRefs": [
+              "synthetic:read-only-csv"
+            ],
+            "modelRequest": {
+              "modelId": "synthetic:no-model",
+              "presetId": "synthetic:default",
+              "presetRevision": 1
+            },
+            "skills": [],
+            "budget": {
+              "modelQuotaSnapshotRef": "synthetic:quota",
+              "modelQuotaSnapshotHash": "26fb2af870a8c6f653298d0b9ffc1bde1ba5d53867419692603e7fde0d2802be",
+              "reservationId": "00000000-0000-4000-8000-000000000050",
+              "scopeId": "00000000-0000-4000-8000-000000000051",
+              "maxNewCalls": 0,
+              "maxConcurrency": 1,
+              "estimatedAmount": "0.00",
+              "currency": "EUR",
+              "unknownUsagePolicy": "block_new_billable_actions",
+              "riskAcceptanceRef": null,
+              "userTotalAccountRef": "synthetic:total-account",
+              "platformTurnReservationId": "00000000-0000-4000-8000-000000000052",
+              "requireHardModelLimits": false,
+              "callLimitEnforcement": "unknown"
+            },
+            "deadline": "2026-10-26T01:00:00.000001Z",
+            "outputContract": {
+              "schemaRef": "synthetic:difference-csv:v1",
+              "artifactTypes": [
+                "text/csv"
+              ],
+              "evidenceRequired": true
+            },
+            "admission": {
+              "ticketId": "00000000-0000-4000-8000-000000000033",
+              "bindingId": "00000000-0000-4000-8000-000000000031",
+              "executionContentHash": "e48433f14c63838e4c50d9228bb31c57de11edf33732cdb8adfb37578b2ac3d7",
+              "authorizationRevision": 1,
+              "approvalRef": "00000000-0000-4000-8000-000000000034",
+              "approvalRevision": 2,
+              "notBefore": "2026-10-26T00:00:00.000001Z",
+              "notAfter": "2026-10-26T01:00:00.000001Z",
+              "authorityRef": "synthetic:platform-authority"
+            }
+          }
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "accepted",
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "run": {
+            "providerRunId": "synthetic-run",
+            "taskId": null,
+            "sessionId": null,
+            "attemptId": null
+          },
+          "acceptedAt": "2026-10-26T00:00:00.000001Z",
+          "receiptId": "synthetic-receipt",
+          "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31",
+          "reused": false
+        }
+      }
+    },
+    "lookupSubmission": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "bindingId": "00000000-0000-4000-8000-000000000031",
+          "nodeRunId": "00000000-0000-4000-8000-000000000032",
+          "providerId": "synthetic-fixture",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "idempotencyKey": "synthetic-start-key",
+          "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31"
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "found",
+          "receipt": {
+            "status": "accepted",
+            "binding": {
+              "bindingId": "00000000-0000-4000-8000-000000000031",
+              "nodeRunId": "00000000-0000-4000-8000-000000000032",
+              "providerId": "synthetic-fixture"
+            },
+            "run": {
+              "providerRunId": "synthetic-run",
+              "taskId": null,
+              "sessionId": null,
+              "attemptId": null
+            },
+            "acceptedAt": "2026-10-26T00:00:00.000001Z",
+            "receiptId": "synthetic-receipt",
+            "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31",
+            "reused": false
+          }
+        }
+      }
+    },
+    "closeSubmission": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "submission": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture",
+            "tenantId": "00000000-0000-4000-8000-000000000001",
+            "idempotencyKey": "synthetic-start-key",
+            "specHash": "4c9b262c2fc88789bd61efb8e7e67eef5e8b3777b693d655a2fc7fc8f8a73a31"
+          },
+          "command": {
+            "commandId": "00000000-0000-4000-8000-000000000035",
+            "idempotencyKey": "synthetic-command-key",
+            "requestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+            "expectedRevision": 1
+          }
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "not_accepted_final",
+          "admissionFence": "synthetic:fence",
+          "closedAt": "2026-10-26T00:00:00.000001Z",
+          "proofRef": "synthetic:nonacceptance-proof"
+        }
+      }
+    },
+    "getSnapshot": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "binding": {
+          "bindingId": "00000000-0000-4000-8000-000000000031",
+          "nodeRunId": "00000000-0000-4000-8000-000000000032",
+          "providerId": "synthetic-fixture"
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "run": {
+            "providerRunId": "synthetic-run",
+            "taskId": null,
+            "sessionId": null,
+            "attemptId": null
+          },
+          "state": "terminal",
+          "snapshotRevision": 2,
+          "eventWatermark": 4,
+          "resumeCursor": "synthetic:cursor:4",
+          "observedAt": "2026-10-26T00:00:00.000001Z",
+          "executionActive": false,
+          "outcome": "succeeded",
+          "effectStatus": "verified",
+          "effectReceiptRefs": [
+            "synthetic:no-side-effects"
+          ],
+          "modelConfirmed": null,
+          "permissions": [],
+          "permissionDeliveries": [],
+          "operationFacts": [],
+          "checkpointRef": null
+        }
+      }
+    },
+    "readEvents": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "cursor": "synthetic:cursor:3",
+          "limit": 50
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "events": [
+            {
+              "providerId": "synthetic-fixture",
+              "providerRunId": "synthetic-run",
+              "providerEventId": "synthetic-event-4",
+              "bindingId": "00000000-0000-4000-8000-000000000031",
+              "sequence": 4,
+              "sourceSequence": null,
+              "occurredAt": "2026-10-26T00:00:00.000001Z",
+              "receivedAt": "2026-10-26T00:00:00.000001Z",
+              "payloadVersion": 1,
+              "visibility": "business",
+              "payload": {
+                "type": "execution.updated",
+                "snapshot": {
+                  "binding": {
+                    "bindingId": "00000000-0000-4000-8000-000000000031",
+                    "nodeRunId": "00000000-0000-4000-8000-000000000032",
+                    "providerId": "synthetic-fixture"
+                  },
+                  "run": {
+                    "providerRunId": "synthetic-run",
+                    "taskId": null,
+                    "sessionId": null,
+                    "attemptId": null
+                  },
+                  "state": "terminal",
+                  "snapshotRevision": 2,
+                  "eventWatermark": 4,
+                  "resumeCursor": "synthetic:cursor:4",
+                  "observedAt": "2026-10-26T00:00:00.000001Z",
+                  "executionActive": false,
+                  "outcome": "succeeded",
+                  "effectStatus": "verified",
+                  "effectReceiptRefs": [
+                    "synthetic:no-side-effects"
+                  ],
+                  "modelConfirmed": null,
+                  "permissions": [],
+                  "permissionDeliveries": [],
+                  "operationFacts": [],
+                  "checkpointRef": null
+                }
+              }
+            }
+          ],
+          "cursor": "synthetic:cursor:4",
+          "hasMore": false,
+          "earliestRetainedSequence": 1,
+          "snapshotRevision": 2
+        }
+      }
+    },
+    "submitInput": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "command": {
+            "commandId": "00000000-0000-4000-8000-000000000035",
+            "idempotencyKey": "synthetic-command-key",
+            "requestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+            "expectedRevision": 1
+          },
+          "inputId": "synthetic-input",
+          "clientMessageId": "synthetic-message",
+          "kind": "supplement",
+          "text": "新增合成输入",
+          "attachmentRefs": [],
+          "checkpointRef": null
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "accepted_pending",
+          "inputId": "synthetic-input",
+          "queuePosition": 0
+        }
+      }
+    },
+    "cancel": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "command": {
+            "commandId": "00000000-0000-4000-8000-000000000035",
+            "idempotencyKey": "synthetic-command-key",
+            "requestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+            "expectedRevision": 1
+          },
+          "reason": "synthetic user stop"
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "confirmed",
+          "snapshot": {
+            "binding": {
+              "bindingId": "00000000-0000-4000-8000-000000000031",
+              "nodeRunId": "00000000-0000-4000-8000-000000000032",
+              "providerId": "synthetic-fixture"
+            },
+            "run": {
+              "providerRunId": "synthetic-run",
+              "taskId": null,
+              "sessionId": null,
+              "attemptId": null
+            },
+            "state": "terminal",
+            "snapshotRevision": 2,
+            "eventWatermark": 4,
+            "resumeCursor": "synthetic:cursor:4",
+            "observedAt": "2026-10-26T00:00:00.000001Z",
+            "executionActive": false,
+            "outcome": "succeeded",
+            "effectStatus": "verified",
+            "effectReceiptRefs": [
+              "synthetic:no-side-effects"
+            ],
+            "modelConfirmed": null,
+            "permissions": [],
+            "permissionDeliveries": [],
+            "operationFacts": [],
+            "checkpointRef": null
+          },
+          "proofRef": "synthetic:terminal-proof"
+        }
+      }
+    },
+    "preparePermissionResume": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "command": {
+            "commandId": "00000000-0000-4000-8000-000000000035",
+            "idempotencyKey": "synthetic-command-key",
+            "requestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+            "expectedRevision": 1
+          },
+          "checkpointRef": "synthetic:checkpoint",
+          "priorRequestId": "synthetic-old-permission",
+          "operationHash": "e12db1ad15d6b0b2198a52df39e0d35b3dec728ebdf50ed9954ef635a037018a",
+          "noEffectProofRef": "synthetic:no-effect-proof"
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "ready",
+          "newRequest": {
+            "requestId": "synthetic-permission",
+            "requestContextHash": "82e814bfc339d7add5a5d260e2f9a0dce639230d74cb67808d581d4f27783da0",
+            "operationId": "synthetic-operation",
+            "operationHash": "e12db1ad15d6b0b2198a52df39e0d35b3dec728ebdf50ed9954ef635a037018a",
+            "mappingRevision": 1,
+            "validity": "live",
+            "observedAt": "2026-10-26T00:00:00.000001Z",
+            "expiresAt": "2026-10-26T01:00:00.000001Z",
+            "options": [
+              {
+                "optionId": "allow-once",
+                "kind": "allow_once"
+              },
+              {
+                "optionId": "reject-once",
+                "kind": "reject_once"
+              }
+            ]
+          },
+          "operationExecuted": false
+        }
+      }
+    },
+    "respondPermission": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "command": {
+            "commandId": "00000000-0000-4000-8000-000000000035",
+            "idempotencyKey": "synthetic-command-key",
+            "requestHash": "f76d56e97a8f4e146ea69c2364d57188895191b3156f3e52ec1c0551fb6b2036",
+            "expectedRevision": 1
+          },
+          "requestId": "synthetic-permission",
+          "requestContextHash": "82e814bfc339d7add5a5d260e2f9a0dce639230d74cb67808d581d4f27783da0",
+          "mappingRevision": 1,
+          "optionId": "allow-once",
+          "decision": "allow",
+          "approvedOperation": {
+            "operationId": "synthetic-operation",
+            "operationHash": "e12db1ad15d6b0b2198a52df39e0d35b3dec728ebdf50ed9954ef635a037018a",
+            "systemId": "00000000-0000-4000-8000-000000000021",
+            "environmentId": "00000000-0000-4000-8000-000000000022",
+            "parameterHash": "645b9944f567d3db606e26ed0671849ab10d7c8c713ebdb97a0433f3e78f1c22",
+            "targetSetHash": "05d7de1fb35077755fb9b4b212ea80086efb6e6dd5e694b11f314a98ffdcc6e1",
+            "preconditionHash": "d0fcf182b386fbb8a986bac55000f9414b37bb37ff5e10f1aa84d15c84b7fcca",
+            "planContentRef": "synthetic:fixed-plan",
+            "impactPreviewRef": "synthetic:readonly-preview",
+            "resourceAuthorizationRefs": [
+              "synthetic:read-only-csv"
+            ],
+            "budgetReservationId": "00000000-0000-4000-8000-000000000050",
+            "businessApprovalId": "00000000-0000-4000-8000-000000000034",
+            "approvalRevision": 2,
+            "authority": {
+              "kind": "human",
+              "subjectId": "00000000-0000-4000-8000-000000000011",
+              "qualificationRef": "synthetic:reviewer-grant"
+            },
+            "authorizationProofRef": "synthetic:approval-proof",
+            "validUntil": "2026-10-26T01:00:00.000001Z"
+          }
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "status": "delivered",
+          "requestId": "synthetic-permission",
+          "commandId": "00000000-0000-4000-8000-000000000035",
+          "providerReceiptRef": "synthetic:decision-receipt",
+          "operationExecuted": "unknown"
+        }
+      }
+    },
+    "getArtifact": {
+      "request": {
+        "context": {
+          "contractVersion": "initial-draft",
+          "correlationId": "synthetic-correlation",
+          "tenantId": "00000000-0000-4000-8000-000000000001",
+          "subjectContext": {
+            "subjectId": "00000000-0000-4000-8000-000000000012",
+            "authorizationRef": "synthetic:subject-grant"
+          },
+          "deadline": "2026-10-26T01:00:00.000001Z"
+        },
+        "request": {
+          "binding": {
+            "bindingId": "00000000-0000-4000-8000-000000000031",
+            "nodeRunId": "00000000-0000-4000-8000-000000000032",
+            "providerId": "synthetic-fixture"
+          },
+          "artifactId": "00000000-0000-4000-8000-000000000060",
+          "purpose": "download"
+        }
+      },
+      "response": {
+        "ok": true,
+        "value": {
+          "artifactId": "00000000-0000-4000-8000-000000000060",
+          "bindingId": "00000000-0000-4000-8000-000000000031",
+          "mimeType": "text/csv",
+          "bytes": 100,
+          "sha256": "70b189b19167f6880ff7c884c04f80794791f11d6ee4596934609c0bb1b1aebc",
+          "sourceRef": "synthetic:artifact",
+          "importState": "verified",
+          "authorizationRef": "synthetic:artifact-grant",
+          "access": {
+            "ticketRef": "synthetic:download-ticket",
+            "expiresAt": "2026-10-26T01:00:00.000001Z",
+            "purpose": "download"
+          }
+        }
+      }
+    }
+  },
+  "unknownError": {
+    "ok": false,
+    "error": {
+      "code": "PROVIDER_UNAVAILABLE",
+      "message": "Synthetic observation unavailable",
+      "correlationId": "synthetic-correlation",
+      "phase": "observation",
+      "retryAdvice": "reconcile",
+      "currentRevision": null,
+      "acceptance": "unknown",
+      "nonAcceptanceProof": null
+    }
+  }
+}

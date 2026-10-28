@@ -1,0 +1,200 @@
+{
+  "scope": "actual MySQL 8.4.13; includes six rolled-back namespace fixtures; single synthetic runtime tenant, no multi-tenant HTTP claim",
+  "command": "mvn -f backend/pom.xml package -B -ntp with approved task test accounts and CA trust",
+  "total": 38,
+  "passed": 38,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "class": "io.aitest.workbench.DatabasePrivilegesTest",
+      "name": "platformRuntimeCannotDdlOrReadRunner",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.DatabasePrivilegesTest",
+      "name": "migrationIdentityCannotReadMysqlAdministration",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.DatabasePrivilegesTest",
+      "name": "runnerRuntimeOnlyReadsAndWritesRunnerJournal",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "crossTenantSameSubjectKindAndKeyCannotExposeConflictOrCachedReceipt",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "crossCommandKindSameTenantSubjectAndKeyCannotCauseHashConflict",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "pendingMembershipCanRequestAccessButCannotProbeOtherCommandHashes",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "inactiveOrUnknownMembershipIsRejectedBeforeEqualOrConflictingHash",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "crossSubjectSameTenantKindAndKeyCreatesSeparateOwnedReceipts",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.CommandNamespaceTest",
+      "name": "revokedObjectEqualContentCannotReplayAFormerlyAuthorizedReceipt",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "safeNumbersRejectFractionOverflowTextAndNegative",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "rejectsPublicBindingAndRemoteOrDifferentDatabaseBeforeOpeningConnection",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.SyntheticBoundaryTest",
+      "name": "rejectsMissingProductionAndMixedProfilesBeforeOpeningDatabase",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "lostReceiptReplayRacesCloseWithoutSecondAcceptanceOrCharge",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "newInputAfterAcceptanceBeforeToolStartCancelsOldAction",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "approvalAuditFailureRollsBackDecisionOutboxNodeAndCommand",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "twoDispatchTransactionsCompeteForLastActiveSlot",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "dispatchAuditFailureRollsBackAllAccountsSlotBindingTicketOutboxAndEvent",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "concurrentStartAndPermanentCloseCannotResurrectKey",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "twoDispatchTransactionsCompeteForLastTotalAndModelQuota",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "nonAuthoritativeNotFoundRetainsAllReservationsAndOwner",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "alreadyCalculatedOldResultCannotOverwriteNewInput",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.execution.DispatchAtomicityTest",
+      "name": "firstProviderSnapshotAlreadyTerminalSettlesOnce",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "actualEngineIsolationTimePrecisionAndDecimal",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "idempotencyKeysCompareExactBytes",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "uuidAndCanonicalJsonRoundTripIgnoreMysqlObjectOrder",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "lockingLastSlotAllowsExactlyOneCommit",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "tenantCompositeForeignKeyRejectsWrongParent",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.workbench.MySqlSemanticsTest",
+      "name": "oneOpenBindingAndClosedHistoryAndSafeIntegerCheck",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.GoldenContractTest",
+      "name": "matchesSharedGoldenVectors",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "rejectDuplicateKeys",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "canonicalKeysAndDecimalStrings",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "rejectTimePrecisionLoss",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.contract.ContractTest",
+      "name": "safeIntegerBounds",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.AcpStdioCompatibilityTest",
+      "name": "initializePermissionCallbackAndCancelOverIsolatedStdio",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "mcpInitializeRoundTripUsesSameManagedJacksonMajor",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "acpPermissionOptionsKeepOriginalRequestIdentity",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "productionModulesKeepTheDeclaredDependencyDirection",
+      "result": "pass"
+    },
+    {
+      "class": "io.aitest.runner.SdkCompatibilityTest",
+      "name": "acpInitializeAndCancelRoundTripWithJackson3",
+      "result": "pass"
+    }
+  ]
+}

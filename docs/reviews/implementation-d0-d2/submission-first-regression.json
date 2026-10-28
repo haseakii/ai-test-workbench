@@ -1,0 +1,468 @@
+{
+  "config": {
+    "configFile": "/workspace/ai-test-workbench/frontend/playwright.config.ts",
+    "rootDir": "/workspace/ai-test-workbench/frontend/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/reviews/implementation-d0-d2/submission-recovery-checks.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/ai-test-workbench/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "submission-recovery.spec.ts",
+      "file": "submission-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "已到服务端但回执丢失：刷新后查原回执且消息只保存一次",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6085,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '核查并继续原提交', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '核查并继续原提交', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '核查并继续原提交', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '核查并继续原提交', exact: true })\u001b[22m\n\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:22:90",
+                    "location": {
+                      "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                      "column": 90,
+                      "line": 22
+                    },
+                    "snippet": "  20 |  await page.goto('/');await page.getByLabel('测试身份').selectOption('alice');await page.locator('.recent-item').filter({hasText:f.name}).click();await page.getByLabel('问题描述').fill('回执丢失需要保持原消息身份');\n  21 |  await page.getByRole('button',{name:'保存消息',exact:true}).click();await expect(page.getByRole('alert')).toBeVisible();\n> 22 |  await page.reload();await expect(page.getByRole('button',{name:'核查并继续原提交',exact:true})).toBeVisible();\n     |                                                                                          ^\n  23 |  await page.getByRole('button',{name:'核查并继续原提交',exact:true}).click();\n  24 |  await expect(page.getByText('回执丢失需要保持原消息身份',{exact:true})).toBeVisible();\n  25 |  expect(sent).toHaveLength(1);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                        "column": 90,
+                        "line": 22
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '核查并继续原提交', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '核查并继续原提交', exact: true })\u001b[22m\n\n\n  20 |  await page.goto('/');await page.getByLabel('测试身份').selectOption('alice');await page.locator('.recent-item').filter({hasText:f.name}).click();await page.getByLabel('问题描述').fill('回执丢失需要保持原消息身份');\n  21 |  await page.getByRole('button',{name:'保存消息',exact:true}).click();await expect(page.getByRole('alert')).toBeVisible();\n> 22 |  await page.reload();await expect(page.getByRole('button',{name:'核查并继续原提交',exact:true})).toBeVisible();\n     |                                                                                          ^\n  23 |  await page.getByRole('button',{name:'核查并继续原提交',exact:true}).click();\n  24 |  await expect(page.getByText('回执丢失需要保持原消息身份',{exact:true})).toBeVisible();\n  25 |  expect(sent).toHaveLength(1);\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:22:90"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:10:30.577Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-已到服务端但回执丢失：刷新后查原回执且消息只保存一次/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-已到服务端但回执丢失：刷新后查原回执且消息只保存一次/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-已到服务端但回执丢失：刷新后查原回执且消息只保存一次/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                    "column": 90,
+                    "line": 22
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-c4989920891affe4224f",
+          "file": "submission-recovery.spec.ts",
+          "line": 90,
+          "column": 1
+        },
+        {
+          "title": "请求未到达：刷新保留原键和消息 ID，查不到回执才原键重试",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 60102,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                        "column": 82,
+                        "line": 35
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '核查并继续原提交', exact: true })\u001b[22m\n\n\n  33 |  await page.goto('/');await page.getByLabel('测试身份').selectOption('alice');await page.locator('.recent-item').filter({hasText:f.name}).click();\n  34 |  await page.getByLabel('问题描述').fill('请求没有到达服务端');await page.getByRole('button',{name:'保存消息',exact:true}).click();await expect(page.getByRole('alert')).toBeVisible();\n> 35 |  await page.reload();await page.getByRole('button',{name:'核查并继续原提交',exact:true}).click();await expect(page.getByText('请求没有到达服务端',{exact:true})).toBeVisible();\n     |                                                                                  ^\n  36 |  expect(sent).toHaveLength(2);expect(sent[0]).toEqual(sent[1]);expect(ordering).toEqual(['message','lookup','message']);\n  37 |  await page.getByLabel('问题描述').fill('请求没有到达服务端');await page.getByRole('button',{name:'保存消息',exact:true}).click();await expect(page.locator('.message')).toHaveCount(2);\n  38 |  expect(sent[2].idempotencyKey).not.toBe(sent[1].idempotencyKey);expect(sent[2].clientMessageId).not.toBe(sent[1].clientMessageId);\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:35:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:10:37.232Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-请求未到达：刷新保留原键和消息-ID，查不到回执才原键重试/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-请求未到达：刷新保留原键和消息-ID，查不到回执才原键重试/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-请求未到达：刷新保留原键和消息-ID，查不到回执才原键重试/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-b6c5db731cc45ac624ad",
+          "file": "submission-recovery.spec.ts",
+          "line": 136,
+          "column": 1
+        },
+        {
+          "title": "环境草稿取消不发送，分步保存丢回执后刷新沿用已完成步骤",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1632,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:11:37.922Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-3afbc84b081de625f3c1",
+          "file": "submission-recovery.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "身份与环境切换不自动重发，清除旧正文缓存且返回后仅核查原回执",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 720,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:58:76",
+                    "location": {
+                      "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                      "column": 76,
+                      "line": 58
+                    },
+                    "snippet": "  56 |  await page.goto('/');await page.getByLabel('测试身份').selectOption('alice');await page.locator('.recent-item').filter({hasText:f.name}).click();\n  57 |  const secret='不得泄漏到其他身份的草稿-'+crypto.randomUUID();await page.getByLabel('问题描述').fill(secret);await page.getByRole('button',{name:'保存消息',exact:true}).click();await expect(page.getByRole('alert')).toBeVisible();\n> 58 |  await page.getByLabel('所属环境').selectOption(f.environmentId);expect(posts).toBe(1);expect(lookups).toBe(0);\n     |                                                                            ^\n  59 |  await page.getByLabel('测试身份').selectOption('bob');await expect(page.getByRole('region',{name:'待核查提交'})).toHaveCount(0);await expect(page.getByText(secret,{exact:false})).toHaveCount(0);\n  60 |  expect(await page.evaluate(value=>JSON.stringify({...sessionStorage,...localStorage}).includes(value),secret)).toBe(false);expect(posts).toBe(1);expect(lookups).toBe(0);\n  61 |  await page.getByLabel('测试身份').selectOption('alice');await page.getByRole('button',{name:'核查并继续原提交',exact:true}).click();await expect(page.getByText(secret,{exact:true})).toBeVisible();expect(posts).toBe(1);expect(lookups).toBe(1);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                        "column": 76,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  56 |  await page.goto('/');await page.getByLabel('测试身份').selectOption('alice');await page.locator('.recent-item').filter({hasText:f.name}).click();\n  57 |  const secret='不得泄漏到其他身份的草稿-'+crypto.randomUUID();await page.getByLabel('问题描述').fill(secret);await page.getByRole('button',{name:'保存消息',exact:true}).click();await expect(page.getByRole('alert')).toBeVisible();\n> 58 |  await page.getByLabel('所属环境').selectOption(f.environmentId);expect(posts).toBe(1);expect(lookups).toBe(0);\n     |                                                                            ^\n  59 |  await page.getByLabel('测试身份').selectOption('bob');await expect(page.getByRole('region',{name:'待核查提交'})).toHaveCount(0);await expect(page.getByText(secret,{exact:false})).toHaveCount(0);\n  60 |  expect(await page.evaluate(value=>JSON.stringify({...sessionStorage,...localStorage}).includes(value),secret)).toBe(false);expect(posts).toBe(1);expect(lookups).toBe(0);\n  61 |  await page.getByLabel('测试身份').selectOption('alice');await page.getByRole('button',{name:'核查并继续原提交',exact:true}).click();await expect(page.getByText(secret,{exact:true})).toBeVisible();expect(posts).toBe(1);expect(lookups).toBe(1);\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:58:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:11:39.693Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-身份与环境切换不自动重发，清除旧正文缓存且返回后仅核查原回执/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-身份与环境切换不自动重发，清除旧正文缓存且返回后仅核查原回执/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-身份与环境切换不自动重发，清除旧正文缓存且返回后仅核查原回执/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                    "column": 76,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-97b72e70a4dff4dd56dd",
+          "file": "submission-recovery.spec.ts",
+          "line": 257,
+          "column": 1
+        },
+        {
+          "title": "两个标签重命名冲突保留输入，明确载入最新基础后再保存",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6095,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: '重命名问题' })\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: '重命名问题' })\u001b[22m\n\u001b[2m    9 × locator resolved to <section tabindex=\"-1\" role=\"dialog\" class=\"modal\" aria-modal=\"true\" aria-label=\"重命名问题\">…</section>\u001b[22m\n\u001b[2m      - unexpected value \"visible\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: '重命名问题' })\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: '重命名问题' })\u001b[22m\n\u001b[2m    9 × locator resolved to <section tabindex=\"-1\" role=\"dialog\" class=\"modal\" aria-modal=\"true\" aria-label=\"重命名问题\">…</section>\u001b[22m\n\u001b[2m      - unexpected value \"visible\"\u001b[22m\n\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:69:121",
+                    "location": {
+                      "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                      "column": 121,
+                      "line": 69
+                    },
+                    "snippet": "  67 |   for(const tab of [page,other]){await tab.goto('/');await tab.getByLabel('测试身份').selectOption('alice');await tab.locator('.recent-item').filter({hasText:f.name}).click();await tab.getByRole('button',{name:'重命名',exact:true}).click();}\n  68 |   await page.getByLabel('问题名称',{exact:true}).fill(f.name+' first');await other.getByLabel('问题名称',{exact:true}).fill(f.name+' second');\n> 69 |   await page.getByRole('button',{name:'保存名称',exact:true}).click();await expect(page.getByRole('dialog',{name:'重命名问题'})).toBeHidden();\n     |                                                                                                                         ^\n  70 |   await other.getByRole('button',{name:'保存名称',exact:true}).click();await expect(other.getByRole('alert')).toContainText('名称已被更新');await expect(other.getByLabel('问题名称',{exact:true})).toHaveValue(f.name+' second');\n  71 |   await other.getByRole('button',{name:'载入最新名称并保留输入'}).click();await other.getByRole('button',{name:'保存名称',exact:true}).click();await expect(other.getByRole('dialog')).toHaveCount(0);\n  72 |   const snapshot=await (await request.get('/api/conversations/'+f.conversationId,{headers:{'X-Test-Subject':'alice'}})).json();expect(snapshot.title).toBe(f.name+' second');expect(snapshot.titleRevision).toBe(4);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                        "column": 121,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: '重命名问题' })\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: '重命名问题' })\u001b[22m\n\u001b[2m    9 × locator resolved to <section tabindex=\"-1\" role=\"dialog\" class=\"modal\" aria-modal=\"true\" aria-label=\"重命名问题\">…</section>\u001b[22m\n\u001b[2m      - unexpected value \"visible\"\u001b[22m\n\n\n  67 |   for(const tab of [page,other]){await tab.goto('/');await tab.getByLabel('测试身份').selectOption('alice');await tab.locator('.recent-item').filter({hasText:f.name}).click();await tab.getByRole('button',{name:'重命名',exact:true}).click();}\n  68 |   await page.getByLabel('问题名称',{exact:true}).fill(f.name+' first');await other.getByLabel('问题名称',{exact:true}).fill(f.name+' second');\n> 69 |   await page.getByRole('button',{name:'保存名称',exact:true}).click();await expect(page.getByRole('dialog',{name:'重命名问题'})).toBeHidden();\n     |                                                                                                                         ^\n  70 |   await other.getByRole('button',{name:'保存名称',exact:true}).click();await expect(other.getByRole('alert')).toContainText('名称已被更新');await expect(other.getByLabel('问题名称',{exact:true})).toHaveValue(f.name+' second');\n  71 |   await other.getByRole('button',{name:'载入最新名称并保留输入'}).click();await other.getByRole('button',{name:'保存名称',exact:true}).click();await expect(other.getByRole('dialog')).toHaveCount(0);\n  72 |   const snapshot=await (await request.get('/api/conversations/'+f.conversationId,{headers:{'X-Test-Subject':'alice'}})).json();expect(snapshot.title).toBe(f.name+' second');expect(snapshot.titleRevision).toBe(4);\n    at /workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts:69:121"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:11:40.856Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-两个标签重命名冲突保留输入，明确载入最新基础后再保存/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-两个标签重命名冲突保留输入，明确载入最新基础后再保存/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/submission-ui-artifacts/submission-recovery-两个标签重命名冲突保留输入，明确载入最新基础后再保存/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ai-test-workbench/frontend/tests/e2e/submission-recovery.spec.ts",
+                    "column": 121,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-6fb1c1871e3e5b3174d6",
+          "file": "submission-recovery.spec.ts",
+          "line": 312,
+          "column": 1
+        },
+        {
+          "title": "两个标签保存配置以草稿哈希 CAS 防覆盖，冲突后保留输入并重新比较",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2502,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:11:47.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-e056f6158027a3c8fa4b",
+          "file": "submission-recovery.spec.ts",
+          "line": 371,
+          "column": 1
+        },
+        {
+          "title": "两个标签审批冲突可载入已批准状态，保留一个 Binding 和一次接纳",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1841,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T08:11:50.190Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6fbc304047445c9ba527-e92e7a47cef8082f2fa0",
+          "file": "submission-recovery.spec.ts",
+          "line": 426,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T08:10:30.096Z",
+    "duration": 82017.801,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

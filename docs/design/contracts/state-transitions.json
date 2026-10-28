@@ -366,6 +366,7 @@
         {
           "id": "N09",
           "from": [
+            "dispatching",
             "active",
             "waiting_input",
             "waiting_approval",
@@ -380,19 +381,23 @@
         {
           "id": "N10",
           "from": [
+            "dispatching",
             "active",
+            "waiting_input",
+            "waiting_approval",
             "reconciling",
             "stopping"
           ],
           "event": "execution_succeeded",
           "to": "succeeded",
           "actor": "后端事实投影",
-          "guard": "终态、不活跃、副作用已知、输出合同满足",
+          "guard": "接纳事实一致；终态、不活跃、副作用已知、输出合同满足",
           "atomic": "T_CLOSE"
         },
         {
           "id": "N11",
           "from": [
+            "dispatching",
             "stopping",
             "reconciling"
           ],
@@ -547,6 +552,8 @@
         {
           "id": "B09",
           "from": [
+            "submitting",
+            "acceptance_unknown",
             "accepted",
             "active",
             "waiting_permission"
@@ -554,7 +561,7 @@
           "event": "cancel_requested",
           "to": "stopping",
           "actor": "适配器",
-          "guard": "先登记取消请求",
+          "guard": "先登记取消请求；接纳未知继续核查，不假定未执行",
           "atomic": "T_CANCEL"
         },
         {
@@ -585,6 +592,8 @@
         {
           "id": "B12",
           "from": [
+            "submitting",
+            "acceptance_unknown",
             "active",
             "waiting_permission",
             "stopping",
@@ -594,7 +603,7 @@
           "event": "terminal_confirmed",
           "to": "terminal",
           "actor": "权威快照",
-          "guard": "终态 outcome + executionActive=false + effectStatus 已知",
+          "guard": "接纳回执与 specHash 一致；终态 outcome + executionActive=false + effectStatus 已知",
           "atomic": "T_CLOSE"
         }
       ]

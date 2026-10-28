@@ -110,3 +110,7 @@ preparation 固定 environmentResourcesRef / hash 和 executionPolicyDecisionRef
 ExecutionSpec.purpose 显式区分 understanding / investigation / title / summary；understanding、title、summary 不附业务工具授权，相关辅助用途也须计量。budget 固定用户跨连接总账、平台轮次预占和是否要求内部硬限额。默认 unknownUsagePolicy=block_new_billable_actions；只有有效风险接受记录、非硬限额流程和平台轮次 / 并发门禁齐备时才允许 allow_with_platform_limits。该例外仅针对未上报费用/用量，绝不允许对接纳未知或副作用未知的执行另投。
 
 接纳示例假设强制能力已验证，只表达合成合同预期，不是实际能力证据；示例摘要是占位字符串，不是可验签报文。Java DTO 映射、可复算哈希和错误恢复见[接入与 API 开发设计](../development/INTEGRATION-AND-API.md)。
+
+## 最小实施合同补充
+
+安全整数上界、DecisionAuthority、AdmissionTicket 的首次接纳消费及快照原子 resumeCursor 按[合同冻结](../development/CONTRACT-FREEZE.md)实施；authority 校验失败不首次接纳。snapshot 与恢复游标必须原子配对，不能将随后查询的最新游标与旧快照拼接。

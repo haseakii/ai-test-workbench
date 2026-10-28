@@ -1,0 +1,15 @@
+{
+  "scope": "local file targets of updated implementation/development documents; not external URL/anchor validation",
+  "files": [
+    "docs/reviews/IMPLEMENTATION-PROGRESS-20261026.md",
+    "backend/README.md",
+    "docs/development/ARCHITECTURE-AND-CODE.md",
+    "docs/development/DATA-AND-TRANSACTIONS.md",
+    "docs/development/README.md"
+  ],
+  "checked": 119,
+  "missing": [],
+  "staticConsistencyChecks": 486,
+  "originalUtf8HashesPassed": 20,
+  "diffCheck": "passed"
+}

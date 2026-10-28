@@ -1,0 +1,10 @@
+{
+  "runningArtifactUnchangedAfterRebuild": true,
+  "runningArtifactSha256": "ea67c030e5c9274cf6d965e0ed2cd8c3c68daddeb0ef891f58f31d05886e8af8",
+  "newBuildSha256": "4ba6cdd1d1a064c4be244b149e7b2bd62c9e4968723af34540f96040f0192c62",
+  "afterBuildApiStatus": 200,
+  "notes": "Read-only request after Maven repackaging still succeeds; immutable running artifact is separate from target output. New generated identifier guards were compiled after the interruption matrix; the execution worker/provider checkpoint code did not change.",
+  "executionServiceClassesCompared": 43,
+  "executionServiceClassBytesMatchFinalBuild": true,
+  "finalBuildSha256": "4ba6cdd1d1a064c4be244b149e7b2bd62c9e4968723af34540f96040f0192c62"
+}

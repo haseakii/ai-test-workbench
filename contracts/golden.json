@@ -1,0 +1,24 @@
+{
+  "contractVersion": 1,
+  "canonicalization": "RFC8785",
+  "cases": [
+    {
+      "name": "decimal_unicode_safe_integer",
+      "input": "{\"z\":null,\"amount\":\"1.00\",\"title\":\"订单核对\",\"revision\":9007199254740991,\"targets\":[\"O003\",\"O002\"]}",
+      "canonical": "{\"amount\":\"1.00\",\"revision\":9007199254740991,\"targets\":[\"O003\",\"O002\"],\"title\":\"订单核对\",\"z\":null}",
+      "sha256": "c66aec9560e4952609741f0ea4f1ebdc336bec24474df476101ce72d4b95e8a7"
+    },
+    {
+      "name": "microsecond_time_and_null",
+      "input": "{\"optional\":null,\"at\":\"2026-10-26T00:00:00.000001Z\",\"amount\":\"0.10\"}",
+      "canonical": "{\"amount\":\"0.10\",\"at\":\"2026-10-26T00:00:00.000001Z\",\"optional\":null}",
+      "sha256": "d6a3a0af7cc10c61e6bcb31159df5b56f9ca41f5c7a498f23aa603781bad3208"
+    },
+    {
+      "name": "array_order_and_unicode_preserved",
+      "input": "{\"z\":\"é\",\"a\":\"😀\",\"ids\":[\"B\",\"a\"]}",
+      "canonical": "{\"a\":\"😀\",\"ids\":[\"B\",\"a\"],\"z\":\"é\"}",
+      "sha256": "9430609a84aeedf38e6f5faffda71120e45b31d5fb9420680271fa80231ef8e5"
+    }
+  ]
+}

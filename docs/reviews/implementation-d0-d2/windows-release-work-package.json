@@ -1,0 +1,162 @@
+{
+  "scope": "Windows synthetic-preview distribution preparation, executed/compiled and tested on Linux only",
+  "status": "completed_current_offline_preparation",
+  "observedAt": "2026-10-27T02:08:50.678841+00:00",
+  "targetPlatform": {
+    "selectedByUser": "Windows computer",
+    "actualWindowsExecutorAvailable": false,
+    "specificWindowsVersionArchitectureVerified": false
+  },
+  "head": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+  "branch": "work",
+  "archivePath": "backend/target/distribution/ai-test-workbench-0.1.0-SNAPSHOT-synthetic.zip",
+  "archiveSha256": "a71f61adb819d078c20ace7c5c3282766a7dcd96d0968fa235c23a9e55fe0fc7",
+  "jarSha256": "b330bcba35e3677dd243c0b65a39c7d65ba86c5bc4528a9a3e6076c074e1d1b9",
+  "filesIncludingManifestAndChecksums": 12,
+  "requiredRuntimeDependencies": [
+    "existing trusted Java21 runtime",
+    "existing authorized local MySQL8.4, verified TLS and separately scoped platform/Runner databases and runtime/migration accounts"
+  ],
+  "notRequiredForWindowsEntry": [
+    "Node",
+    "Maven",
+    "Python",
+    "PowerShell scripts",
+    "Docker Desktop"
+  ],
+  "maintainerBuildTools": [
+    "existing Java21 JDK",
+    "existing Maven3.9.11 or pinned wrapper",
+    "existing Node/npm frontend toolchain",
+    "Python3.12 packaging checks"
+  ],
+  "entry": "Workbench.cmd -> RuntimeLauncher (Java PropertiesLauncher)",
+  "configurationPrompts": {
+    "total": 6,
+    "requiredExistingInputs": 4,
+    "defaultedInputs": 2,
+    "defaults": [
+      "DB port3306",
+      "UI port18080"
+    ],
+    "required": [
+      "existing PKCS12 trust store path",
+      "existing trust store password",
+      "existing runtime password",
+      "existing migration password"
+    ],
+    "proposedThreeInputBudgetMet": false,
+    "newAccountsOrCredentialsCreated": false
+  },
+  "implemented": [
+    "single CMD entry with Chinese menu, configure/check/start/status/stop/explicit existing-schema migration",
+    "JVM and Boot loader overrides stripped before launcher and child execution",
+    "read-only schema preflight reused; missing deps return fixed failure",
+    "private per-run files with POSIX/Windows ACL policy and conservative unsupported failure",
+    "original pid/startInstant/java/hash/nonce checked, lock and immutable Jar",
+    "unknown creation result fences future launches",
+    "stop request goes to original owned run, Spring closes before exit; no forced PID kill/public shutdown",
+    "allowlisted build/verify, runtime dependency inventory/checksums/source-dirty provenance",
+    "reproducible Maven output and ZIP construction; no whole-workspace copying"
+  ],
+  "tests": {
+    "javaOffline": {
+      "passed": 77,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "windows-offline-java-tests.json",
+      "notFullServiceSuite": true
+    },
+    "python": {
+      "passed": 60,
+      "failed": 0,
+      "skipped": 0,
+      "breakdown": {
+        "runtime": 35,
+        "bundle": 21,
+        "realJarClassloading": 4
+      },
+      "evidence": "windows-offline-python-tests.json"
+    },
+    "extractedJarAndVerifierSmoke": {
+      "passed": 7,
+      "total": 7,
+      "windowsCmdExecuted": false,
+      "serviceOrDatabaseStarted": false,
+      "evidence": "windows-unpacked-offline-smoke.json"
+    },
+    "reproducibleCleanMavenPackages": {
+      "builds": 2,
+      "identical": true,
+      "testsSkippedForPackagingOnly": true,
+      "evidence": "windows-reproducible-build.json"
+    },
+    "independentPackageBuilds": {
+      "builds": 2,
+      "identical": true,
+      "evidence": "windows-release-artifact.json"
+    }
+  },
+  "findings": [
+    {
+      "issue": "source-relative default Jar/template paths failed after distribution extraction",
+      "result": "fixed; seven new layout cases passed plus original28; initial five assertion/subtest failures reported by child before fix, root final independently passed35",
+      "evidence": "windows-offline-python-tests.json"
+    },
+    {
+      "issue": "PropertiesLauncher loaded cwd loader.properties and could override application classes",
+      "result": "actual harmless canary reproduced on all3 mains with former shape; fixed config location/home and negative real-Jar regressions passed",
+      "evidence": "windows-loader-override-checks.json"
+    },
+    {
+      "issue": "manifest limits formerly checked after reading full content",
+      "result": "now directory stat/ZipInfo bounds before read/decompress; attack tests pass",
+      "evidence": "windows-offline-python-tests.json"
+    },
+    {
+      "issue": "inherited JVM/Loader environment and unknown start retry risks",
+      "result": "sanitized before initial Java; unknown intent retained; strict JSON/PID/nonce tests pass",
+      "evidence": "windows-offline-java-tests.json"
+    }
+  ],
+  "notRun": [
+    "actual Windows CMD/menu/double-click, NTFS ACL/inheritance, ProcessHandle identity visibility, actual stop/start",
+    "clean Windows install, dependency installation, database provisioning, first real administrator",
+    "A01 original complete empty-schema chain (new instance not approved)",
+    "remote hosted CI (no push)",
+    "new Windows service integration on MySQL; prior182/25/42/6 remain evidence for previous60d85b artifact only",
+    "actual upgrade/backup/restore or destructive recovery (constraints docs only)",
+    "real identity/models/resources/ACP adapter/independent Runner"
+  ],
+  "minimumNextDecisions": [
+    "Target OS is decided; confirm whether a Windows validation host already has approved MySQL8.4 and TLS/scoped accounts. If absent, installation and account provisioning need a separate concrete authorized scope. No secret values should be sent in chat."
+  ],
+  "compatibilityDocument": "backend/distribution/COMPATIBILITY.md",
+  "sourceSnapshot": {
+    "observedFiles": 127,
+    "observedSourceSha256": "6fc1a95da1158e363fbc1d5c2023faca9ae96bb0fa85e2f5e5d216585e9f15b9",
+    "provenance": "source observed at packaging; tests and build origin are not attested by this command",
+    "revision": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+    "workingTreeDirty": true
+  },
+  "safety": {
+    "newSoftwareInstalled": false,
+    "newDatabaseInstanceOrUserOrPrivileges": false,
+    "realPersistentCredentialsConfigured": false,
+    "existingDataResetOrDeleted": false,
+    "existingServiceRestarted": false,
+    "commitPushMergeDeployment": false
+  },
+  "checks": {
+    "localDocLinks": 149,
+    "badAnchors": 0,
+    "staticConsistency": 491,
+    "historicalArchiveShaMatches": 20,
+    "schemaGenerators": "12 Provider methods/76defs, Handover15records/16defs, OpenAPI37paths/39ops/349validators; no drift",
+    "gitDiffCheck": "passed",
+    "sourceHashes": 143,
+    "privateScanEvidence": "windows-release-private-scan.json",
+    "existingServiceIdentity": "windows-existing-service-identity.json"
+  },
+  "gitStateEvidence": "windows-release-git-state.json"
+}

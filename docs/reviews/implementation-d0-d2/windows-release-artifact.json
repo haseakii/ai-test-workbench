@@ -1,0 +1,284 @@
+{
+  "scope": "actual allowlisted Windows synthetic-preview candidate, produced on Linux; not a Windows installation result",
+  "jarSha256": "b330bcba35e3677dd243c0b65a39c7d65ba86c5bc4528a9a3e6076c074e1d1b9",
+  "archiveSha256": "a71f61adb819d078c20ace7c5c3282766a7dcd96d0968fa235c23a9e55fe0fc7",
+  "archiveBytes": 26312313,
+  "archivePath": "backend/target/distribution/ai-test-workbench-0.1.0-SNAPSHOT-synthetic.zip",
+  "directoryPath": "backend/target/distribution/ai-test-workbench-0.1.0-SNAPSHOT-synthetic",
+  "duplicatePackageBytesIdentical": true,
+  "filesIncludingManifestAndChecksums": 12,
+  "payload": [
+    {
+      "path": "COMPATIBILITY.md",
+      "bytes": 2341,
+      "sha256": "90b73b4d05ae7e97b6ac115936e986b387e1fecf2e4b9076807fb81415d76382"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3298,
+      "sha256": "c86d607284693c31982917bb6b0f5878aa13a7fe8b9d79b5d280ff719b17f933"
+    },
+    {
+      "path": "Workbench.cmd",
+      "bytes": 1272,
+      "sha256": "3a82fefa10030e562ecdea8aa58be0b53ab62845207b5c512537972d948bc24b"
+    },
+    {
+      "path": "app/platform-server.jar",
+      "bytes": 26243834,
+      "sha256": "b330bcba35e3677dd243c0b65a39c7d65ba86c5bc4528a9a3e6076c074e1d1b9"
+    },
+    {
+      "path": "config/migration-platform.example.json",
+      "bytes": 416,
+      "sha256": "5e0b97aa226a48e949eafe72326b69e8111274f7dc41c01c12aba68d3056133d"
+    },
+    {
+      "path": "config/migration-runner.example.json",
+      "bytes": 414,
+      "sha256": "4ea2bb7a5d7c99f13fe5d1eed1ee9075687cac88c148b385274305e423de52fa"
+    },
+    {
+      "path": "config/runtime.example.json",
+      "bytes": 514,
+      "sha256": "6594f0d7a0e3d1303da214a6743cc190d3e4e6fff248122ee1db6191aee00957"
+    },
+    {
+      "path": "scripts/release_manifest.py",
+      "bytes": 8181,
+      "sha256": "54657c8b534f835f393eb073f33b71ba5dc88333f64ef1b002e914a9a1b5a2f8"
+    },
+    {
+      "path": "scripts/synthetic_runtime.py",
+      "bytes": 29294,
+      "sha256": "3e6fda1ea5a3d2140cc6c6bb5a8d610c29191727822a2ae8e77ee6a8527b3235"
+    }
+  ],
+  "libraries": [
+    {
+      "file": "HikariCP-7.0.2.jar",
+      "sha256": "f1e612fa27345be3107a85431e8a8aeb205c15364ab2f2d411e40a9d7bb08095"
+    },
+    {
+      "file": "commons-codec-1.21.0.jar",
+      "sha256": "4da851cb6abfb98bfe9eb77c5e5fc47f5414fa28b94e21b7fd9a646705dc167f"
+    },
+    {
+      "file": "commons-csv-1.14.1.jar",
+      "sha256": "32be0e1e76673092f5d12cb790bd2acb6c2ab04c4ea6efc69ea5ee17911c24fe"
+    },
+    {
+      "file": "commons-io-2.20.0.jar",
+      "sha256": "df90bba0fe3cb586b7f164e78fe8f8f4da3f2dd5c27fa645f888100ccc25dd72"
+    },
+    {
+      "file": "commons-logging-1.3.6.jar",
+      "sha256": "f8ead8943401081dea0aa824b5b1ba40a0e4ed297a572a0f02258150a0b62357"
+    },
+    {
+      "file": "flyway-core-12.4.0.jar",
+      "sha256": "c3f93df1f3e0c9d14652adb5ade97401f2ede503859ac693c2af5c06e2797799"
+    },
+    {
+      "file": "flyway-mysql-12.4.0.jar",
+      "sha256": "de0eac641b3d0104e4ebe3d6340fb25f49cbd154a636b4d2d13b98115f60b055"
+    },
+    {
+      "file": "jackson-annotations-2.21.jar",
+      "sha256": "53ca085f4a150f703f49e1aabd935bd03b43e1ea3d55d135438292af22cef56b"
+    },
+    {
+      "file": "jackson-core-3.1.7.jar",
+      "sha256": "7608c367fd8a92666d28711519599543c180298259963184ce04d2947a8f71e7"
+    },
+    {
+      "file": "jackson-databind-3.1.7.jar",
+      "sha256": "48c781de87e2016e1f0d973748a27130f11643e7ac080173f40e2d9669d84be3"
+    },
+    {
+      "file": "jakarta.annotation-api-3.0.0.jar",
+      "sha256": "b01f55552284cfb149411e64eabca75e942d26d2e1786b32914250e4330afaa2"
+    },
+    {
+      "file": "java-json-canonicalization-1.1.jar",
+      "sha256": "ed12a01f28d147898312963a1f704e90290b67a61f34fa3a761f41c134f4e691"
+    },
+    {
+      "file": "jspecify-1.0.1.jar",
+      "sha256": "070d75f261fe4c5b8202508366715f7f2d4660f88c8ef7e6d3575e48c9683b66"
+    },
+    {
+      "file": "jul-to-slf4j-2.0.20.jar",
+      "sha256": "062249d0677a0e08039120a2292a8db064c69d04282bf562af2e54c53ff06976"
+    },
+    {
+      "file": "log4j-api-2.25.5.jar",
+      "sha256": "64777f73ea0b3104c04eb82befbdccc30a425a19e83ad06cb2f93aa303511863"
+    },
+    {
+      "file": "log4j-to-slf4j-2.25.5.jar",
+      "sha256": "b68e8b47342dbc9b35644a14fe2efc0b7bf18da703910cd05ad5501ffe07bba1"
+    },
+    {
+      "file": "logback-classic-1.5.38.jar",
+      "sha256": "afb439c61fa287c9e1925523b13baab03617e724406a389d48b61c2c3e46b700"
+    },
+    {
+      "file": "logback-core-1.5.38.jar",
+      "sha256": "a855a0fc97b1d06f4efb1c3bba5ebd0eb508d8b58e68e89e4bbc23a85135c883"
+    },
+    {
+      "file": "micrometer-commons-1.17.2.jar",
+      "sha256": "af8c85e879025ce30c381e6810e14c4f52b4150894e36c815860d14763271348"
+    },
+    {
+      "file": "micrometer-observation-1.17.2.jar",
+      "sha256": "d3ff53cfa0532dc1af0de349073f9aeb985e01f4b88c1d904350178805859695"
+    },
+    {
+      "file": "mysql-connector-j-9.7.0.jar",
+      "sha256": "0353648eaa1c91e0f4020c959abf756bc866ffd583df22ae6b6f6e0cbd43eb44"
+    },
+    {
+      "file": "provider-contract-0.1.0-SNAPSHOT.jar",
+      "sha256": "1ac7be667b30d146ef4a569ae3eca7a41031bb22500368cc535e79bdb4bbdb0f"
+    },
+    {
+      "file": "slf4j-api-2.0.20.jar",
+      "sha256": "7e1446499b359675d8aabe6af2de86b85e72ae8a2a932c0b40d0e5ba57097439"
+    },
+    {
+      "file": "snakeyaml-2.6.jar",
+      "sha256": "c8f7a98e7394adda02f6317249710e4d1b4c7a25aa8c7eace0c2eea52eb8bf85"
+    },
+    {
+      "file": "spring-aop-7.0.10.jar",
+      "sha256": "babf50a645f4f788e1267078cf891e472f657cabf65518055cf5214220574e3f"
+    },
+    {
+      "file": "spring-beans-7.0.10.jar",
+      "sha256": "bd67c6fc887afa30cbcb489ff4f82bf19f818e79ab1cf1bef98dff8a289108ec"
+    },
+    {
+      "file": "spring-boot-4.1.2.jar",
+      "sha256": "1fbf6443a301eb9a098bd024149c0edc6578b073f75da8c98bc1af84c43a8f59"
+    },
+    {
+      "file": "spring-boot-autoconfigure-4.1.2.jar",
+      "sha256": "a3582f417c8194a621776d14ea281e072d84e85bdbabc1e02df5c035835b5096"
+    },
+    {
+      "file": "spring-boot-flyway-4.1.2.jar",
+      "sha256": "3aa1f3a85cc7f9892a58e303e6f39073626a3c65c00688bf263c5d46355d69d6"
+    },
+    {
+      "file": "spring-boot-http-converter-4.1.2.jar",
+      "sha256": "d1e655ce47617315c6d87e754597928a31d21478b5c28b0e3300963b0915b551"
+    },
+    {
+      "file": "spring-boot-jackson-4.1.2.jar",
+      "sha256": "83a8d3ca9ac434f22e6d148e41ba82aeb52add220484bf7f9551c74323d9cbc7"
+    },
+    {
+      "file": "spring-boot-jarmode-tools-4.1.2.jar",
+      "sha256": "a0d9e74c09c81f2c8e096bc856f327605a34df2209e5cf6884351170c6aa3547"
+    },
+    {
+      "file": "spring-boot-jdbc-4.1.2.jar",
+      "sha256": "2c4f460e7b965fd9a3d7ee6c3d7c5f3ebbc9b447841c118abed20d7b5a72d184"
+    },
+    {
+      "file": "spring-boot-persistence-4.1.2.jar",
+      "sha256": "fd1473df17db5d4d444eac14ed262407a971fc0a3a9631e6753343d72e7859af"
+    },
+    {
+      "file": "spring-boot-servlet-4.1.2.jar",
+      "sha256": "0ff3618e8b37143843d1a8824e42ffd66b4ff73d6225b2087acce4dfc676d0e8"
+    },
+    {
+      "file": "spring-boot-sql-4.1.2.jar",
+      "sha256": "6055db3a7e6f9b59814aac0a346a604d54a8638beff8a145273415b263936d45"
+    },
+    {
+      "file": "spring-boot-tomcat-4.1.2.jar",
+      "sha256": "f0b1d8d33b090bc773298005708b4df1576d1c4b1bbf9583afce065580e13002"
+    },
+    {
+      "file": "spring-boot-transaction-4.1.2.jar",
+      "sha256": "f0430406b83310c65219082ff16a9af5ee74e2c1ee19f9f478f6a0ab8ec1f70f"
+    },
+    {
+      "file": "spring-boot-web-server-4.1.2.jar",
+      "sha256": "e5b2fa7222baf36621566a2d0f7d924aa92a8462680f8e67d972f965ef18356a"
+    },
+    {
+      "file": "spring-boot-webmvc-4.1.2.jar",
+      "sha256": "3c39a0578d1e66b5b5371641790a66c89b14f8099731987a7dd6502e2fdd32b5"
+    },
+    {
+      "file": "spring-context-7.0.10.jar",
+      "sha256": "f0065166b6a5101a871ab8702d6c4011cf39faed370a64e7ef14a3ad2bf2a99a"
+    },
+    {
+      "file": "spring-core-7.0.10.jar",
+      "sha256": "a236f31a7c07e3a1a8e7839ec5c0d47b5cc75709132db50416d5dad320341f12"
+    },
+    {
+      "file": "spring-expression-7.0.10.jar",
+      "sha256": "12067b66548f7613fa8938ca6051a6d1dd8c397bf478e0bb1adb9936358ec81d"
+    },
+    {
+      "file": "spring-jdbc-7.0.10.jar",
+      "sha256": "bc4ba6bd242f2db2642938960ae27589b53dd6a611d700a260af7b3383cd0c6c"
+    },
+    {
+      "file": "spring-tx-7.0.10.jar",
+      "sha256": "9442610a8ed3d44e70fa97f49896ea810c831da62620101450f0feb522edb4cd"
+    },
+    {
+      "file": "spring-web-7.0.10.jar",
+      "sha256": "76ddb03d236547f6852def8cb303e1cf2cd2c1954dec5bf2abd87d11b89dfee7"
+    },
+    {
+      "file": "spring-webmvc-7.0.10.jar",
+      "sha256": "8ad0e813999d0ef1c65b8d5e55c21e4a6c0d6895cd3df32a33f9cc57bf9d226a"
+    },
+    {
+      "file": "tomcat-embed-core-11.0.27.jar",
+      "sha256": "b71785ff101c0df501064b3e3b8c4a02e4f9cc3047a7fa686c41fc4edc2f0cb4"
+    },
+    {
+      "file": "tomcat-embed-el-11.0.27.jar",
+      "sha256": "206d6c6b1b6ce67b1c9af9ed0f6f43b4dbbc26164dd47bb49b9aad1583191f33"
+    },
+    {
+      "file": "tomcat-embed-websocket-11.0.27.jar",
+      "sha256": "cbcd7ed6d7428fa71af6572d541a3ef74ceff42dfc523273950fe586062dc60f"
+    }
+  ],
+  "source": {
+    "observedFiles": 127,
+    "observedSourceSha256": "6fc1a95da1158e363fbc1d5c2023faca9ae96bb0fa85e2f5e5d216585e9f15b9",
+    "provenance": "source observed at packaging; tests and build origin are not attested by this command",
+    "revision": "2ae5c516c04efcaefb2d0acbc659737effb3f1ab",
+    "workingTreeDirty": true
+  },
+  "runtime": {
+    "embeddedSyntheticBootstrap": true,
+    "externalTestDataIncluded": false,
+    "extraPythonOrDockerRequiredForWindowsEntry": false,
+    "identity": "synthetic_only",
+    "java": "21",
+    "mysql": "8.4 LTS (existing approved instance)",
+    "platformSchema": 7,
+    "realAdaptersIncluded": false,
+    "runnerSchema": 1,
+    "windowsEntry": "Workbench.cmd"
+  },
+  "windowsInstallVerified": false
+}

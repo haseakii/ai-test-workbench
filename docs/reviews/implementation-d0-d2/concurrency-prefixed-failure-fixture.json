@@ -1,0 +1,23 @@
+{
+  "scope": "only private tx-probe fixtures, read-only discovery of the retained pre-fix failed INSERT counter",
+  "fixtures": [
+    {
+      "alias": "tx-probe-0e97a646-6af2-48cd-914d-cad83df0eff9",
+      "bindings": 0,
+      "messages": 0,
+      "maxStored": 1,
+      "subjectId": "206e6ee5-f352-41d6-9e1b-19102afaa9bc",
+      "watermark": 2,
+      "storedEvents": 1,
+      "conversationId": "07fa8959-174a-4274-913e-a91882141f31"
+    }
+  ],
+  "cleanup": {
+    "purpose": "rollback only the first failed test probe counter after saving failure evidence; no event rows/data/history deleted",
+    "before": 2,
+    "after": 1,
+    "changedRows": 1,
+    "storedEventsRetained": 1,
+    "otherRowsModified": false
+  }
+}

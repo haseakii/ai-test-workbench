@@ -1,0 +1,105 @@
+name: Isolated D0-D2 checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    services:
+      mysql:
+        image: mysql@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+        env:
+          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+          MYSQL_DATABASE: workbench_platform
+          TZ: UTC
+        ports:
+          - 127.0.0.1:13306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 2s --health-timeout 2s --health-retries 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: 21.0.9
+          cache: maven
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Contract generation, TypeScript and frontend
+        run: |
+          python -m unittest scripts.tests.test_synthetic_runtime -v
+          python -m unittest scripts.tests.test_portable_bootstrap_templates scripts.tests.test_portable_cmd_detection -v
+          npm --prefix frontend ci --ignore-scripts --strict-ssl=true
+          node scripts/generate_provider_contract.mjs --check
+          node scripts/generate_handover_schema.mjs --check
+          node scripts/check_api_responses.mjs --check
+          npm --prefix frontend run test:contracts
+          npm --prefix frontend run test:submissions
+          npm --prefix frontend run test:handover
+          npm --prefix frontend run build
+          ./backend/mvnw -f backend/pom.xml package -DskipTests -B -ntp
+          python -m unittest scripts.tests.test_release_bundle -v
+          python -m unittest scripts.tests.test_release_java_offline -v
+          mkdir -p backend/target
+          python scripts/release_bundle.py build --jar backend/platform-server/target/platform-server-0.1.0-SNAPSHOT.jar --output-dir backend/target/distribution
+          python scripts/release_bundle.py verify --archive backend/target/distribution/ai-test-workbench-0.1.0-SNAPSHOT-synthetic.zip
+      - name: Prepare only the job-owned MySQL service
+        env:
+          WB_CI_MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+        run: python scripts/ci_prepare_mysql.py
+      - name: Real MySQL, privilege, wire and API consistency tests
+        run: |
+          ./backend/mvnw -f backend/pom.xml verify -B -ntp
+          python scripts/collect_java_results.py --require-complete --output docs/reviews/implementation-d0-d2/ci-java.json
+      - name: Start pinned synthetic artifact and run HTTP contracts
+        run: |
+          python scripts/synthetic_runtime.py doctor --runtime-dir "$RUNNER_TEMP/workbench" --config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME"
+          python scripts/synthetic_runtime.py up --runtime-dir "$RUNNER_TEMP/workbench" --config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME"
+          python scripts/synthetic_runtime.py status --runtime-dir "$RUNNER_TEMP/workbench" --config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME"
+          python scripts/synthetic_setup_check.py --runtime-dir "$RUNNER_TEMP/workbench" --runtime-config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME" --output docs/reviews/implementation-d0-d2/ci-setup.json
+          python scripts/synthetic_service_check.py --validate-api --runtime-dir "$RUNNER_TEMP/workbench" --runtime-config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME" --output docs/reviews/implementation-d0-d2/ci-service.json
+          python scripts/synthetic_context_check.py --validate-api --output docs/reviews/implementation-d0-d2/ci-context.json
+          python scripts/synthetic_authorization_check.py --validate-api --output docs/reviews/implementation-d0-d2/ci-authorization.json
+          python scripts/synthetic_hardening_check.py --validate-api --output docs/reviews/implementation-d0-d2/ci-hardening.json
+      - name: Own-process interruption matrix
+        env:
+          WB_CI_MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+        run: python scripts/synthetic_crash_check.py --runtime-dir "$RUNNER_TEMP/workbench" --runtime-config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME" --mysql-container "$WB_CI_MYSQL_CONTAINER" --output docs/reviews/implementation-d0-d2/ci-process.json
+      - name: Formal frontend
+        working-directory: frontend
+        env:
+          WB_UI_REPORT: ../docs/reviews/implementation-d0-d2/ci-ui.json
+          WB_UI_OUTPUT: ${{ runner.temp }}/workbench-ui
+        run: |
+          npx --no-install playwright install --with-deps chromium
+          CHROMIUM_PATH="$(node -e 'process.stdout.write(require("playwright").chromium.executablePath())')" npm run test:e2e
+      - name: Documentation and immutable source checks
+        run: |
+          python scripts/check_initial_design.py
+          python scripts/verify_sources.py
+          git diff --check
+      - name: Stop only recorded test service
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/workbench/platform.pid"; then
+            python scripts/synthetic_runtime.py stop --runtime-dir "$RUNNER_TEMP/workbench" --config "$RUNNER_TEMP/workbench/runtime-private.json" --java-home "$JAVA_HOME"
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: synthetic-check-results
+          path: docs/reviews/implementation-d0-d2/ci-*.json
+          if-no-files-found: ignore

@@ -1,0 +1,7 @@
+{
+  "scope": "known approved credential byte scan, repository plus package/direct Jar entries; no credential values output",
+  "repositoryFiles": 618,
+  "archiveAndJarEntries": 290,
+  "repositoryMatches": [],
+  "packageMatches": []
+}

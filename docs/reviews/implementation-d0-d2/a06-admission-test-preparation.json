@@ -1,0 +1,304 @@
+{
+  "workPackage": "A06",
+  "status": "passed_targeted_current_pre_a03_source",
+  "scope": "Existing approved synthetic platform MySQL only; no new resources or privilege changes. Parent coordinates DB test window.",
+  "source": "backend/platform-server/src/test/java/io/aitest/workbench/execution/AdmissionRaceTest.java",
+  "sha256": "4f8b424403d329079d874e6df49f286f95191fb470fb9cb43472359a29bccc53",
+  "tests": [
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary",
+      "invocations": 10,
+      "changes": [
+        "ENVIRONMENT_PUBLICATION",
+        "DEPENDENCY_PUBLICATION",
+        "GRANT_REVOCATION",
+        "QUOTA_REDUCTION",
+        "STOP"
+      ],
+      "boundaries": [
+        "DISPATCH",
+        "FIRST_ACCEPTANCE"
+      ],
+      "mechanism": "Two distinct active MySQL connections; leader holds tenant guard immediately before COMMIT; follower enters transaction before leader release. Real configuration/revocation/stop commands; quota uses WorkbenchApi.quota business endpoint with a server-resolved synthetic admin actor."
+    },
+    {
+      "name": "dispatchChecksExclusiveExpiryAfterWaitingForTheGuard",
+      "invocations": 1,
+      "mechanism": "Injected MutableClock advances to exact exclusive approval expiry while follower waits for tenant guard."
+    },
+    {
+      "name": "firstAcceptanceChecksExclusiveExpiryAfterWaitingForTheGuard",
+      "invocations": 1,
+      "mechanism": "Same guard/clock interleaving after durable T_DISPATCH reservation."
+    },
+    {
+      "name": "acceptedReceiptSurvivesConcurrentRevocationButNoNextToolStarts",
+      "invocations": 1,
+      "mechanism": "Acceptance commits before revoke; original receipt remains queryable, stopped fixture cannot start tool, repeated reconciliation consumes accepted turn once and releases slot once."
+    }
+  ],
+  "plannedInvocationCount": 13,
+  "run": {
+    "maven": true,
+    "database": true,
+    "mysqlVersion": "8.4.13",
+    "platformSchemaVersion": 6,
+    "testInvocationsRun": 13,
+    "passed": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suiteSeconds": 8.398,
+    "build": "SUCCESS",
+    "privateLog": "/workspace/scratch/development-start-20261026/a06-admission-final.log",
+    "logSha256": "b9c57d2d55189a58b3757e94fa278b7e8f8d5612eeec4c9ae6f3ef6bc282dff1"
+  },
+  "assertions": [
+    "No Provider acceptance when current guard rejects.",
+    "No tickets/reservations before blocked T_DISPATCH.",
+    "Existing unknown/reserved pair remains occupied until explicit authoritative close.",
+    "No quota consumption before acceptance.",
+    "Safe cleanup closes own binding; restores only its own synthetic grant when revoked; never deletes existing data."
+  ],
+  "staticFindings": [
+    {
+      "id": "A06-S01",
+      "status": "potential_not_reproduced",
+      "area": "ExecutionWorker.prepareDispatch lease handoff",
+      "observation": "Ordinary worker_id read precedes final outbox sending update without owner/lease CAS; independent queueTransaction could change owner between them. Shared with parent and A05 to avoid duplicate core edits."
+    }
+  ],
+  "dependencies": [
+    "Current DispatchAtomicityTest helper constructors and local raw synthetic provider choreography remain available while A03 ports are integrated.",
+    "Approved existing platform database has V6 applied before prepared-plan fixture use.",
+    "Parent grants serial Maven/DB window."
+  ],
+  "commandsActuallyRun": [
+    "Read-only AGENTS/repository/design/source review.",
+    "apply_patch/write of this independent test file and this evidence file.",
+    "Existing verify-context-port-before.py environment setup; Maven test -Dtest=AdmissionRaceTest -Dsurefire.failIfNoSpecifiedTests=false (log renamed a06-admission-first.log), exit 1 compiling shared HandoverPackage.",
+    "Maven test -Dtest=AdmissionRaceTest -Dsurefire.failIfNoSpecifiedTests=false on existing approved DB/JDK/Maven environment; final log a06-admission-final.log, exit 0.",
+    "Read-only SELECT version/history/open bindings/slots/reservations and synthetic probe metadata using approved workbench account; no DB mutations outside test business APIs."
+  ],
+  "nonClaims": [
+    "13 targeted tests are not full D0-D2 regression.",
+    "A03 will change provider/worker consumption; these tests require rerun on that final integrated artifact.",
+    "The lease/worker handoff observation is still only potential, delegated to A05; A06 did not reproduce or fix it."
+  ],
+  "testCases": [
+    {
+      "name": "acceptedReceiptSurvivesConcurrentRevocationButNoNextToolStarts",
+      "status": "pass",
+      "seconds": 1.511
+    },
+    {
+      "name": "dispatchChecksExclusiveExpiryAfterWaitingForTheGuard",
+      "status": "pass",
+      "seconds": 0.668
+    },
+    {
+      "name": "firstAcceptanceChecksExclusiveExpiryAfterWaitingForTheGuard",
+      "status": "pass",
+      "seconds": 0.631
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[1]",
+      "status": "pass",
+      "seconds": 0.626
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[2]",
+      "status": "pass",
+      "seconds": 0.594
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[3]",
+      "status": "pass",
+      "seconds": 0.581
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[4]",
+      "status": "pass",
+      "seconds": 0.533
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[5]",
+      "status": "pass",
+      "seconds": 0.54
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[6]",
+      "status": "pass",
+      "seconds": 0.565
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[7]",
+      "status": "pass",
+      "seconds": 0.532
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[8]",
+      "status": "pass",
+      "seconds": 0.521
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[9]",
+      "status": "pass",
+      "seconds": 0.526
+    },
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[10]",
+      "status": "pass",
+      "seconds": 0.523
+    }
+  ],
+  "overlapProofs": [
+    {
+      "case": "first-acceptance-before-revocation",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27465,
+      "followerConnection": 27469,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "expiry-while-waiting-for-DISPATCH",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27540,
+      "followerConnection": 27541,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "expiry-while-waiting-for-FIRST_ACCEPTANCE",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27605,
+      "followerConnection": 27606,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "ENVIRONMENT_PUBLICATION-before-DISPATCH",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27674,
+      "followerConnection": 27675,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "ENVIRONMENT_PUBLICATION-before-FIRST_ACCEPTANCE",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27744,
+      "followerConnection": 27745,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "DEPENDENCY_PUBLICATION-before-DISPATCH",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27814,
+      "followerConnection": 27815,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "DEPENDENCY_PUBLICATION-before-FIRST_ACCEPTANCE",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27885,
+      "followerConnection": 27886,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "GRANT_REVOCATION-before-DISPATCH",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 27952,
+      "followerConnection": 27953,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "GRANT_REVOCATION-before-FIRST_ACCEPTANCE",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 28023,
+      "followerConnection": 28024,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "QUOTA_REDUCTION-before-DISPATCH",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 28094,
+      "followerConnection": 28095,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "QUOTA_REDUCTION-before-FIRST_ACCEPTANCE",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 28163,
+      "followerConnection": 28164,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "STOP-before-DISPATCH",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 28229,
+      "followerConnection": 28230,
+      "activeTransactionsOverlapped": true
+    },
+    {
+      "case": "STOP-before-FIRST_ACCEPTANCE",
+      "leaderHeldBeforeCommit": true,
+      "followerWaited": true,
+      "leaderConnection": 28296,
+      "followerConnection": 28297,
+      "activeTransactionsOverlapped": true
+    }
+  ],
+  "priorFailures": [
+    {
+      "attempt": "a06-admission-first.log",
+      "stage": "main_compile",
+      "cause": "Parallel HandoverPackage helper names shadowed by record accessors; owner fixed. No A06 tests entered."
+    },
+    {
+      "attempt": "a06-admission-second.log",
+      "stage": "test_compile",
+      "cause": "New test Materials constructor IOException declaration omitted; fixed in the allowed A06 test file. No test entered."
+    },
+    {
+      "attempt": "a06-admission-third.log",
+      "stage": "test",
+      "tests": 13,
+      "passed": 12,
+      "failed": 1,
+      "cause": "Test dispatch helper updated outbox worker_id before opening admission transaction; STOP leader held that row, so follower could not reach transaction checkpoint."
+    },
+    {
+      "attempt": "a06-admission-fourth.log",
+      "stage": "test",
+      "tests": 13,
+      "passed": 12,
+      "failed": 1,
+      "cause": "Same test barrier issue persisted while diagnostic code clarified follower phase. Corrected by assigning owner before overlap and invoking real prepareDispatch directly during overlap."
+    }
+  ],
+  "cleanup": {
+    "eachInvocation": "finally invokes real stop/worker reconciliation for its own binding and asserts occupied/reserved=0; revoked grant restored only for this synthetic subject when required. No data deleted.",
+    "globalSnapshot": "a06-database-state.json",
+    "preexistingResidual": {
+      "bindingId": "bcbe90f5-2ce7-45ed-9a38-4d0513df5ea2",
+      "firstEventUtc": "2026-10-26T10:30:04.894166Z",
+      "state": "prepared",
+      "approval": "pending",
+      "stopped": true,
+      "activeGrant": false,
+      "outbox": null,
+      "handling": "Earlier than A06 run, parent notified; left unchanged for A09 owner to close."
+    }
+  },
+  "window": "Released to parent immediately after final Maven completion."
+}

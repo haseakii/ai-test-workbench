@@ -1,0 +1,18 @@
+{
+  "scope": "first offline script test run; no DB or managed process touched",
+  "total": 14,
+  "passed": 12,
+  "errors": 2,
+  "failures": 0,
+  "errorsDetail": [
+    {
+      "test": "test_occupied_port_is_reported_without_stopping_owner",
+      "reason": "sandbox blocked socket creation; requires loopback network capability, not a product failure"
+    },
+    {
+      "test": "test_platform_target_accepts_only_its_synthetic_scope",
+      "reason": "new fixture omitted mandatory forceConnectionTimeZoneToSession=true; fixture corrected, production UTC requirement preserved"
+    }
+  ],
+  "followup": "Expanded final suite includes genuine before-fix JVM -version environment injection and inactive-ready acceptance tests, original scope/PID/migration fixtures, nonce integrity and real TIME_WAIT restart coverage."
+}

@@ -1,0 +1,5 @@
+{
+  "WB_DB_URL": "jdbc:mysql://127.0.0.1:3306/workbench_platform?sslMode=VERIFY_CA&trustCertificateKeyStoreUrl=REPLACE_TRUSTSTORE_URI&trustCertificateKeyStorePassword=REPLACE_TRUSTSTORE_PASSWORD&trustCertificateKeyStoreType=PKCS12&connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true",
+  "WB_MIGRATION_USER": "workbench_migration",
+  "WB_MIGRATION_PASSWORD": "REPLACE_EXISTING_APPROVED_MIGRATION_PASSWORD"
+}

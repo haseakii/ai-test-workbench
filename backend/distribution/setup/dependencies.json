@@ -1,0 +1,334 @@
+{
+  "format": "workbench-portable-dependencies-v1",
+  "catalogVersion": 1,
+  "recommendedRoute": "portable-private-mysql",
+  "target": "windows",
+  "targetArchitecture": "x64_proposed_pending_host_confirmation",
+  "allowedToExecute": false,
+  "dependencyDownloadAllowed": false,
+  "dependencyBundlingAllowed": false,
+  "referenceVersions": {
+    "java": "21.0.9+10 (Temurin, existing Linux)",
+    "mysql": "8.4.13 (existing Linux)"
+  },
+  "components": [
+    {
+      "id": "java",
+      "name": "Eclipse Temurin Java21 portable runtime",
+      "requiredFamily": "21",
+      "referenceVersion": "21.0.9+10",
+      "referencePlatform": "Linux x64 existing task toolchain, not Windows acceptance",
+      "proposedWindowsVersion": null,
+      "expectedRelativeExecutable": "runtime/java/bin/java.exe",
+      "artifact": {
+        "url": null,
+        "sha256": null,
+        "approvalStatus": "not_approved"
+      },
+      "sources": [
+        "adoptium_home",
+        "adoptium_release",
+        "openjdk_license_reference"
+      ],
+      "state": "windows_artifact_not_pinned",
+      "binaryDownloaded": false,
+      "binaryExecuted": false,
+      "license": {
+        "status": "exact_binary_not_verified",
+        "expectedFamily": "OpenJDK GPLv2 with Classpath Exception and distribution notices",
+        "redistributionApproval": false,
+        "buildRepositoryLicenseIsNotRuntimeLicense": true
+      },
+      "remaining": [
+        "Select supported Windows runtime patch from official release metadata and pin exact artifact name/URL/SHA/signature before downloading",
+        "Retain exact archive license/notice/source obligations and approve bundling",
+        "Verify Java21 startup on named approved Windows host without PATH/system service changes"
+      ]
+    },
+    {
+      "id": "mysql",
+      "name": "MySQL Community8.4 portable Windows server/client utilities",
+      "requiredFamily": "8.4",
+      "referenceVersion": "8.4.13",
+      "referencePlatform": "Linux existing approved synthetic server8.4.13; only8.4.0 Windows source requirements read",
+      "proposedWindowsVersion": null,
+      "expectedRelativeExecutable": "runtime/mysql/bin/mysqld.exe",
+      "artifact": {
+        "url": null,
+        "sha256": null,
+        "approvalStatus": "not_approved"
+      },
+      "sources": [
+        "mysql_windows_build",
+        "mysql_downloads",
+        "mysql_windows_manual"
+      ],
+      "state": "windows_package_availability_and_checksum_unknown",
+      "binaryDownloaded": false,
+      "binaryExecuted": false,
+      "license": {
+        "status": "exact_binary_not_verified",
+        "referenceFamily": "GPLv2 with Oracle/MySQL additional permissions and third-party notices, from official8.4.0 source header",
+        "redistributionApproval": false
+      },
+      "remaining": [
+        "Verify whether the chosen validated8.4 patch has an official Windows x64 ZIP; do not assume8.4.13 availability",
+        "Pin the official Windows artifact filename/URL/SHA/signature and dependency/DLL inventory",
+        "Verify no-install foreground lifecycle, secure initialization, local-only bootstrap and shutdown on actual Windows",
+        "Check required mysql.exe/mysqladmin.exe/mysqldump.exe/SSL tools against exact package rather than assume all are present"
+      ]
+    },
+    {
+      "id": "msvc",
+      "name": "MSVC v14/UCRT dependency closure for the selected MySQL Windows package",
+      "requiredFamily": "MSVC v14 x64 and compatible Windows UCRT (exact closure pending)",
+      "referenceVersion": null,
+      "referenceBuildToolRequirement": "Visual Studio2019 Update11/MSVC_VERSION1929 for MySQL8.4.0 source only",
+      "proposedWindowsVersion": null,
+      "expectedRelativeExecutable": null,
+      "artifact": {
+        "url": null,
+        "sha256": null,
+        "approvalStatus": "not_approved"
+      },
+      "sources": [
+        "mysql_windows_build",
+        "msvc_deployment",
+        "msvc_supported"
+      ],
+      "state": "not_pinned_existing_host_or_licensed_app_local_required",
+      "binaryDownloaded": false,
+      "binaryExecuted": false,
+      "possibleRuntimeFilesNotAnApprovedCompleteList": [
+        "vcruntime140.dll",
+        "vcruntime140_1.dll",
+        "msvcp140.dll"
+      ],
+      "license": {
+        "status": "redistributable_rights_and_file_list_pending",
+        "owner": "Microsoft",
+        "redistributionApproval": false,
+        "mustUseLicensedRedistributableFiles": true,
+        "copyFromSystem32Allowed": false
+      },
+      "deploymentPolicy": {
+        "preferredWithinNoGlobalChangeConstraint": "Reuse an already compatible system runtime or, only after rights and closure verification, approved app-local redistributable files beside their executable",
+        "silentGlobalInstallAllowed": false,
+        "systemPathModificationAllowed": false,
+        "cannotAssumeZipIsDependencyFree": true,
+        "appLocalServicingOwner": "Application publisher must track and redeploy runtime security updates; Microsoft recommends central deployment for servicing",
+        "missingRuntimeBehavior": "Explain the exact blocked native prerequisite and stop; do not disable checks, fetch DLLs from third-party sites, or install globally without separate authorization"
+      }
+    }
+  ],
+  "sources": {
+    "adoptium_home": {
+      "url": "https://github.com/adoptium/temurin21-binaries/blob/main/README.md",
+      "type": "official_repository_text",
+      "checked": true,
+      "finding": "Official repository says it is the home for releases/nightlies for all Temurin21 variants/platforms; it does not pin this Windows artifact or its checksum."
+    },
+    "adoptium_release": {
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/tag/jdk-21.0.9%2B10",
+      "type": "official_release_page",
+      "checked": false,
+      "finding": "Reference version matches the existing Linux toolchain; Windows binary availability and SHA are not established by the reads performed."
+    },
+    "mysql_windows_build": {
+      "url": "https://github.com/mysql/mysql-server/blob/mysql-8.4.0/cmake/os/Windows.cmake",
+      "type": "official_source_build_requirements",
+      "checked": true,
+      "quotes": [
+        "We require at least Visual Studio 2019 Update 11 (aka 16.11), which has version nr 1929.",
+        "OPTION(LINK_STATIC_RUNTIME_LIBRARIES \"Link with /MT\" OFF)",
+        "32 bit Windows builds are not supported."
+      ],
+      "finding": "MySQL8.4.0 source reference builds x64 server and defaults to dynamic MSVC runtime; this is not proof of the actual Windows8.4.13 ZIP dependency closure or supported OS list."
+    },
+    "mysql_downloads": {
+      "url": "https://dev.mysql.com/downloads/mysql/8.4.html",
+      "type": "official_download_page",
+      "checked": false,
+      "finding": "MySQL8.4 series official page; exact Windows8.4.13 package availability, signature/checksum and dependency closure remain unknown."
+    },
+    "mysql_windows_manual": {
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/windows-installation.html",
+      "type": "official_installation_manual",
+      "checked": false,
+      "finding": "Access from current executor denied by proxy403; no attempt to bypass or fetch software."
+    },
+    "msvc_deployment": {
+      "url": "https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/windows/redistributing-visual-cpp-files.md",
+      "type": "official_microsoft_documentation",
+      "checked": true,
+      "quotes": [
+        "Distribution of the Visual C++ Runtime Redistributable package, merge modules, and individual binaries is limited to licensed Visual Studio users and is subject to Microsoft Software License Terms.",
+        "It's also possible to directly install the Redistributable DLLs in the application local folder.",
+        "For servicing reasons, we don't recommend that you use this installation location."
+      ],
+      "finding": "App-local DLL deployment exists, but rights/REDIST list and maintenance duty must be checked. Do not copy arbitrary DLLs fromSystem32 or promise zero prerequisites."
+    },
+    "msvc_supported": {
+      "url": "https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/windows/latest-supported-vc-redist.md",
+      "type": "official_microsoft_documentation",
+      "checked": true,
+      "quotes": [
+        "The version of the Redistributable installed on the machine must be the same or later than the version of the MSVC Build Tools used to create your application.",
+        "The latest version of the Visual C++ v14 Redistributable included with Visual Studio 2026 supports only the following operating systems:"
+      ],
+      "finding": "Architecture must match. Official latest permalink is mutable and page intentionally does not freeze a version; inspect/pin the selected approved package later. Latest MSVC OS statement is not the MySQL8.4.13 support matrix.",
+      "documentedLatestRuntimeOsList": [
+        "Windows10",
+        "Windows11",
+        "Windows Server2016",
+        "Windows Server2019",
+        "Windows Server2022",
+        "Windows Server2025"
+      ]
+    },
+    "openjdk_license_reference": {
+      "url": "https://github.com/openjdk/jdk21u/blob/master/LICENSE",
+      "type": "official_license_reference_not_read_this_batch",
+      "checked": false,
+      "finding": "Expected OpenJDK GPLv2 with Classpath Exception/additional notices must be checked against the exact selected Temurin runtime archive before redistribution. temurin-build Apache2 license is build-system licensing, not runtime archive licensing."
+    }
+  },
+  "windowsHost": {
+    "selectedMachine": null,
+    "actualWindowsExecutorAvailable": false,
+    "requiredProperties": [
+      "Named user-authorized Windows computer and current user",
+      "Supported Windows version/architecture for exact Java/MySQL/native artifacts",
+      "Local filesystem with verifiable owner-private ACL; avoid shared/FAT/network-only storage",
+      "No requirement to be administrator or install a Windows service"
+    ],
+    "versionOrArchitectureFrozen": false
+  },
+  "sourceVerificationPolicy": {
+    "textMetadataOnlyThisBatch": true,
+    "maximumRequestedMetadataBytes": 262144,
+    "archiveBytesDownloaded": 0,
+    "exeBytesDownloaded": 0,
+    "exactWindowsChecksumsKnown": false,
+    "mutableLatestUrlMayBePinnedAsArtifact": false,
+    "missingDigestMustBlockExecution": true,
+    "rootEvidence": "docs/reviews/implementation-d0-d2/portable-dependency-sources.json"
+  },
+  "routes": {
+    "portable-private-mysql": {
+      "role": "recommended single primary first-install path after explicit approvals and implementation/Windows acceptance",
+      "status": "prepared_design_not_executed",
+      "plannedUserActions": [
+        "Extract a complete approved bundle in a local writable/private location",
+        "Double-click Workbench.cmd",
+        "Review and confirm first local-instance scope, then wait for actual readiness"
+      ],
+      "plannedActionCount": 3,
+      "plannedRequiredDatabasePasswordInputs": 0,
+      "automationOnlyAfterApproval": [
+        "Verify every bundled dependency digest and native prerequisites",
+        "Use private Java/MySQL paths without modifying PATH/service/firewall/global registry settings",
+        "Create only a new private data directory and fixed local schemas/scoped users",
+        "Generate secrets/TLS only within the approved scope and store using DPAPI CurrentUser plus owner ACL",
+        "Run independent migration identity and then start runtime with only platform DML credentials"
+      ],
+      "currentGaps": [
+        "No approved/bundled Windows Java/MySQL/native binaries",
+        "No actual native dependency closure proof",
+        "No selected Windows machine",
+        "No authorization to create the local DB instance/users/secrets",
+        "DPAPI and secure bootstrap/recovery not Windows-executed"
+      ]
+    },
+    "existing-authorized-mysql": {
+      "role": "compatibility path for administrators with an already prepared environment, not a second automatic installer",
+      "status": "current_preview_path",
+      "currentPrompts": 6,
+      "requiredIndependentExistingInputs": 4,
+      "defaultedInputs": 2,
+      "requiredValues": [
+        "Existing PKCS12 trust store path",
+        "Existing trust store password",
+        "Existing platform runtime password",
+        "Existing migration password"
+      ],
+      "hiddenAdministratorPreworkNotCountedAsZero": [
+        "Provision compatibleJava/MySQL/TLS",
+        "Create/verify the two scoped databases and three scoped runtime/migration users"
+      ],
+      "tradeoff": "Reuses resources but retains administrator prework and four required inputs; cannot be labeled simple first-install completion"
+    }
+  },
+  "secureStorage": {
+    "recommended": "Windows DPAPI CurrentUser plus owner-private ACL",
+    "status": "prepare_code_only_windows_behavior_not_validated",
+    "candidateBridge": "Single fixed OS-builtin Windows PowerShell DPAPI call if available and permitted by host policy; no downloaded script, ExecutionPolicy bypass, secret argv or plaintext fallback",
+    "requiresNewThirdPartySoftware": false,
+    "sameUserBoundary": "DPAPI at rest does not isolate application code from other code running as the same Windows user",
+    "recoveryConstraint": "DPAPI ciphertext can be bound to the user/machine profile. A copied app/data directory alone must not be claimed recoverable on a different Windows profile; recovery/export design and authorized test remain required"
+  },
+  "laterApprovals": [
+    {
+      "id": "official_windows_archives",
+      "actions": [
+        "Read official metadata and freeze supported exact Java/MySQL/native versions/filenames/digests/license inventory",
+        "Download and verify only those official archives after explicit approval",
+        "Approve redistribution/bundling of exact licensed files"
+      ],
+      "objects": [
+        "PortableJava21 Windows archive",
+        "MySQL8.4 Windows x64 ZIP and included utilities",
+        "If needed, authorized app-local MSVC files or separately approved system runtime installation"
+      ],
+      "limits": [
+        "No mutable latest URL as reproducibility pin",
+        "No third-party DLL download or System32 copying",
+        "No system installation implied by bundling approval"
+      ]
+    },
+    {
+      "id": "specific_private_instance",
+      "actions": [
+        "Select and identify the authorized Windows host/current user and private paths",
+        "Create only new private MySQL data/runtime directories with local verified ACL",
+        "Securely initialize one standalone private instance, never --initialize-insecure",
+        "Create the two fixed databases and only the approved local SQL users/permissions",
+        "Generate/rotate required bootstrap/runtime/migration secrets and local TLS material in approved private storage"
+      ],
+      "objects": [
+        "Named host and user (not selected here)",
+        "Proposed loopback DB13306 and UI18080, subject to non-destructive conflict checks",
+        "workbench_platform/workbench_runner",
+        "workbench/workbench_runner/workbench_migration plus explicitly reviewed initial root lifecycle",
+        "DPAPI-protected credential/TLS references"
+      ],
+      "limits": [
+        "No existing database reset, delete, repair, password overwrite or grant expansion",
+        "No Windows service, PATH/firewall or global network/security changes",
+        "No real models/company databases",
+        "Do not send secrets in chat"
+      ]
+    },
+    {
+      "id": "windows_acceptance_and_recovery",
+      "actions": [
+        "Run real Windows first-install/start/status/graceful-stop checks on approved host",
+        "Record actual steps/input count/ports/process identities/ACL and native failures",
+        "Approve a separate restore target before testing backups/restoration"
+      ],
+      "limits": [
+        "No Linux mock result substituted for Windows acceptance",
+        "Do not copy older DB state and replay unknown executions",
+        "Never delete existing data to recover an uncertain bootstrap"
+      ]
+    }
+  ],
+  "preservedBoundaries": {
+    "a01NewEmptyInstanceApproved": false,
+    "newRuntimeOrDbCreated": false,
+    "accountsOrCredentialsCreated": false,
+    "globalPermissionsOrPathChanged": false,
+    "softwareDownloadedOrInstalled": false,
+    "commitPushDeploy": false
+  }
+}

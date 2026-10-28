@@ -1,0 +1,3404 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-test-workbench:synthetic-platform-responses:1",
+  "title": "Reviewed response projections for the existing synthetic API",
+  "$defs": {
+    "ResponseEnvironment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "revision"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseMember": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "alias",
+        "role",
+        "state",
+        "revision"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "inputRevision"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "resolved",
+        "resultRevision"
+      ],
+      "properties": {
+        "artifactId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "resolved": {
+          "type": "boolean"
+        },
+        "resultRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseAttachment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "state",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseExecution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "state",
+        "accepted_at",
+        "closed_at",
+        "stopped"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "type": "string"
+        },
+        "accepted_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stopped": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResponseFixedPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "environmentId",
+        "environmentRevision",
+        "inputRevision",
+        "authorizationRevision",
+        "detailAttachmentId",
+        "reportAttachmentId",
+        "detailAttachmentIdHash",
+        "reportAttachmentIdHash",
+        "from",
+        "to",
+        "timeZone",
+        "currency",
+        "status",
+        "output",
+        "validUntil",
+        "dependencyRevisions",
+        "model",
+        "purpose"
+      ],
+      "properties": {
+        "operation": {
+          "const": "reconcile_csv_readonly_v1"
+        },
+        "environmentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "environmentRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "authorizationRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "detailAttachmentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reportAttachmentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "detailAttachmentIdHash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reportAttachmentIdHash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "output": {
+          "const": "difference.csv"
+        },
+        "validUntil": {
+          "type": "string"
+        },
+        "dependencyRevisions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "model": {
+          "const": "fixture-v1"
+        },
+        "purpose": {
+          "const": "investigation"
+        },
+        "contextManifestRef": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "contextManifestHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "understandingRef": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "understandingHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "$comment": "New preparations require context refs; legacy closed plans remain readable without invented context."
+    },
+    "ResponseDifferenceSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "differenceCount",
+        "detailTotal",
+        "reportTotal",
+        "totalDifference",
+        "currency",
+        "plan",
+        "algorithm",
+        "scope",
+        "usage"
+      ],
+      "properties": {
+        "differenceCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "detailTotal": {
+          "type": "string"
+        },
+        "reportTotal": {
+          "type": "string"
+        },
+        "totalDifference": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "plan": {
+          "$ref": "#/$defs/ResponseFixedPlan"
+        },
+        "algorithm": {
+          "const": "report-minus-detail-v1"
+        },
+        "scope": {
+          "const": "synthetic_fixture_service"
+        },
+        "usage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "platformTurns",
+            "modelCalls",
+            "costQuality"
+          ],
+          "properties": {
+            "platformTurns": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "modelCalls": {
+              "const": 0
+            },
+            "costQuality": {
+              "const": "not_applicable"
+            }
+          }
+        }
+      }
+    },
+    "ResponseArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "resultRevision",
+        "inputRevision",
+        "summary",
+        "sha256",
+        "state"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "resultRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "summary": {
+          "$ref": "#/$defs/ResponseDifferenceSummary"
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "state": {
+          "const": "ready"
+        }
+      }
+    },
+    "ResponseApproval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "state",
+        "plan",
+        "operationHash",
+        "validUntil"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state": {
+          "type": "string"
+        },
+        "plan": {
+          "$ref": "#/$defs/ResponseFixedPlan"
+        },
+        "operationHash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "validUntil": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseApprovalListItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "conversationId",
+        "title",
+        "state",
+        "revision",
+        "operationHash",
+        "plan"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "conversationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "operationHash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "plan": {
+          "$ref": "#/$defs/ResponseFixedPlan"
+        }
+      }
+    },
+    "ResponseSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subjectId",
+        "alias",
+        "role",
+        "state",
+        "authorizationRevision",
+        "identityMode"
+      ],
+      "properties": {
+        "subjectId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "authorizationRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "identityMode": {
+          "const": "synthetic_only"
+        }
+      }
+    },
+    "ResponseConversationListItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "state",
+        "revision"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "state",
+        "revision",
+        "titleRevision",
+        "inputRevision",
+        "eventWatermark",
+        "resumeCursor",
+        "environmentId",
+        "environmentName",
+        "verifications",
+        "messages",
+        "attachments",
+        "approvals",
+        "executions",
+        "artifacts"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "titleRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "eventWatermark": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "resumeCursor": {
+          "type": "string"
+        },
+        "environmentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "environmentName": {
+          "type": "string"
+        },
+        "verifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseVerification"
+          }
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseMessage"
+          }
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseAttachment"
+          }
+        },
+        "approvals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseApproval"
+          }
+        },
+        "executions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseExecution"
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseArtifact"
+          }
+        }
+      }
+    },
+    "ResponseRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversationId",
+        "title",
+        "state",
+        "subjectId",
+        "environmentId",
+        "inputRevision",
+        "canReadContent"
+      ],
+      "properties": {
+        "conversationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "subjectId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "environmentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "canReadContent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResponseExecutionListItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "conversationId",
+        "title",
+        "state",
+        "acceptedAt",
+        "closedAt"
+      ],
+      "properties": {
+        "bindingId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "conversationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "acceptedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ResponseConfiguration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "name",
+        "revision",
+        "draftBase",
+        "disabled",
+        "draft",
+        "draftHash"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "kind": {
+          "enum": [
+            "model",
+            "workflow",
+            "environment"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "draftBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "draft": {
+          "type": "object"
+        },
+        "published": {
+          "type": "object"
+        },
+        "draftHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "ResponseQuota": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accounts",
+        "slots"
+      ],
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "account",
+              "period",
+              "turnLimit",
+              "consumed",
+              "reserved"
+            ],
+            "properties": {
+              "account": {
+                "type": "string"
+              },
+              "period": {
+                "type": "string"
+              },
+              "turnLimit": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "consumed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "reserved": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          }
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "occupied",
+              "slotLimit"
+            ],
+            "properties": {
+              "occupied": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "slotLimit": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          }
+        }
+      }
+    },
+    "ResponseMembership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "requestId",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseGrant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subjectId",
+        "state",
+        "commandId"
+      ],
+      "properties": {
+        "subjectId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "const": "active"
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseRevoked": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "const": "revoked"
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseNewConfiguration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "draftBase",
+        "commandId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "draftBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseDraft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "draftBase",
+        "commandId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "draftBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponsePublish": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "published",
+        "commandId"
+      ],
+      "properties": {
+        "published": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "revision"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          }
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseDisabled": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "const": "disabled"
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseNewConversation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "commandId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseSavedMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "inputRevision",
+        "revision",
+        "commandId"
+      ],
+      "properties": {
+        "status": {
+          "const": "saved"
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseRenamed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "titleRevision",
+        "commandId"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "titleRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseUpload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "state",
+        "sha256",
+        "bytes",
+        "name",
+        "inputRevision",
+        "commandId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "const": "ready"
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "name": {
+          "type": "string"
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponsePrepare": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approvalId",
+        "bindingId",
+        "operationHash",
+        "plan",
+        "revision",
+        "commandId"
+      ],
+      "properties": {
+        "approvalId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "bindingId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationHash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "plan": {
+          "$ref": "#/$defs/ResponseFixedPlan"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "revision",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "approved",
+            "denied"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseStop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "stopping",
+            "already_terminal"
+          ]
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseVerify": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "resolved",
+            "open"
+          ]
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseQuotaSaved": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "const": "saved"
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "authorizationRevision",
+        "commandId"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "granted",
+            "revoked"
+          ]
+        },
+        "authorizationRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseLease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversationId",
+        "validUntil",
+        "scope",
+        "commandId"
+      ],
+      "properties": {
+        "conversationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "validUntil": {
+          "type": "string"
+        },
+        "scope": {
+          "const": "messages_only"
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ResponseCommandReceipt": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ResponseMembership"
+        },
+        {
+          "$ref": "#/$defs/ResponseGrant"
+        },
+        {
+          "$ref": "#/$defs/ResponseRevoked"
+        },
+        {
+          "$ref": "#/$defs/ResponseNewConfiguration"
+        },
+        {
+          "$ref": "#/$defs/ResponseDraft"
+        },
+        {
+          "$ref": "#/$defs/ResponsePublish"
+        },
+        {
+          "$ref": "#/$defs/ResponseDisabled"
+        },
+        {
+          "$ref": "#/$defs/ResponseNewConversation"
+        },
+        {
+          "$ref": "#/$defs/ResponseSavedMessage"
+        },
+        {
+          "$ref": "#/$defs/ResponseRenamed"
+        },
+        {
+          "$ref": "#/$defs/ResponseUpload"
+        },
+        {
+          "$ref": "#/$defs/ResponsePrepare"
+        },
+        {
+          "$ref": "#/$defs/ResponseDecision"
+        },
+        {
+          "$ref": "#/$defs/ResponseStop"
+        },
+        {
+          "$ref": "#/$defs/ResponseVerify"
+        },
+        {
+          "$ref": "#/$defs/ResponseQuotaSaved"
+        },
+        {
+          "$ref": "#/$defs/ResponseEligibility"
+        },
+        {
+          "$ref": "#/$defs/ResponseLease"
+        }
+      ]
+    },
+    "ResponseCommandLookup": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ResponseCommandReceipt"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "authoritativeNonAcceptance"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_found"
+            },
+            "authoritativeNonAcceptance": {
+              "const": false
+            }
+          }
+        }
+      ]
+    },
+    "ResponseContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversationId",
+        "messages",
+        "validUntil"
+      ],
+      "properties": {
+        "conversationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseMessage"
+          }
+        },
+        "validUntil": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseLeaseStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validUntil",
+        "scope"
+      ],
+      "properties": {
+        "validUntil": {
+          "type": "string"
+        },
+        "scope": {
+          "const": "messages_only"
+        }
+      }
+    },
+    "ResponsePlatformEvent": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "conversation.created"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [],
+              "properties": {}
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "message.saved"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "inputRevision"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "inputRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "title.updated"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "title",
+                "titleRevision"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "titleRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "attachment.ready"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "attachmentId",
+                "sha256",
+                "inputRevision"
+              ],
+              "properties": {
+                "attachmentId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "sha256": {
+                  "type": "string",
+                  "minLength": 64,
+                  "maxLength": 64,
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "inputRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "investigation.awaiting_approval"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "approvalId",
+                "operationHash"
+              ],
+              "properties": {
+                "approvalId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "operationHash": {
+                  "type": "string",
+                  "minLength": 64,
+                  "maxLength": 64,
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "approval.decided"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "approvalId",
+                "approved"
+              ],
+              "properties": {
+                "approvalId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "approved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "execution.dispatching"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bindingId"
+              ],
+              "properties": {
+                "bindingId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "execution.accepted"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bindingId",
+                "backend"
+              ],
+              "properties": {
+                "bindingId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "backend": {
+                  "const": "persistent_synthetic_fixture"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "execution.reconciling"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bindingId",
+                "reason"
+              ],
+              "properties": {
+                "bindingId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "result.ready"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "artifactId",
+                "resultRevision"
+              ],
+              "properties": {
+                "artifactId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "resultRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "result.superseded"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "artifactId",
+                "resultRevision"
+              ],
+              "properties": {
+                "artifactId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "resultRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "execution.closed"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "outcome",
+                "reason"
+              ],
+              "properties": {
+                "outcome": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "stop.requested"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [],
+              "properties": {}
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "source.revoked"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "attachmentId",
+                "derivedAccess",
+                "providerSession"
+              ],
+              "properties": {
+                "attachmentId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "derivedAccess": {
+                  "const": "blocked"
+                },
+                "providerSession": {
+                  "const": "unusable"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "result.verified"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "resultRevision",
+                "resolved"
+              ],
+              "properties": {
+                "resultRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "resolved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "understanding.prepared"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "inputRevision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "contextManifestRef": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "contextManifestHash": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "state": {
+                  "enum": [
+                    "ready",
+                    "needs_input"
+                  ]
+                },
+                "tools": {
+                  "type": "array",
+                  "maxItems": 0
+                },
+                "modelCalls": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "id",
+                "inputRevision",
+                "contextManifestRef",
+                "contextManifestHash",
+                "state",
+                "tools",
+                "modelCalls"
+              ]
+            }
+          },
+          "required": [
+            "sequence",
+            "type",
+            "payload"
+          ]
+        }
+      ]
+    },
+    "ResponseEvents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "cursor",
+        "hasMore"
+      ],
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponsePlatformEvent"
+          }
+        },
+        "cursor": {
+          "type": "string"
+        },
+        "hasMore": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResponseUnderstanding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "contextManifestRef": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "contextManifestHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "outputHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "purpose": {
+          "const": "understanding"
+        },
+        "tools": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "modelCalls": {
+          "const": 0
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "needs_input"
+          ]
+        },
+        "suggestedScope": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "detailAttachmentId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "reportAttachmentId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "from": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "to": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "timeZone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "currency": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "detailAttachmentId",
+            "reportAttachmentId",
+            "from",
+            "to",
+            "timeZone",
+            "currency",
+            "status"
+          ]
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ruleVersion": {
+          "const": "csv-scope-rules-v1"
+        },
+        "confirmationRequired": {
+          "const": true
+        },
+        "commandId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "id",
+        "inputRevision",
+        "contextManifestRef",
+        "contextManifestHash",
+        "outputHash",
+        "purpose",
+        "tools",
+        "modelCalls",
+        "state",
+        "suggestedScope",
+        "questions",
+        "ruleVersion",
+        "confirmationRequired",
+        "commandId"
+      ]
+    },
+    "ResponseContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "state": {
+          "const": "active"
+        },
+        "manifest": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "sha256",
+        "state",
+        "manifest"
+      ]
+    },
+    "ResponseHandoverPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "generatedAt",
+        "conversation",
+        "context",
+        "operation",
+        "executions",
+        "inputs",
+        "artifacts",
+        "reservations",
+        "accountBalances",
+        "verifications",
+        "unresolved",
+        "responsibility"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "fixed-csv-handover-v1"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{6}Z$"
+        },
+        "conversation": {
+          "$ref": "#/$defs/ResponseHandoverConversation"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResponseHandoverContext"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResponseHandoverOperation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "executions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverExecution"
+          },
+          "uniqueItems": true
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverInput"
+          },
+          "uniqueItems": true
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverArtifact"
+          },
+          "uniqueItems": true
+        },
+        "reservations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverReservation"
+          },
+          "uniqueItems": true
+        },
+        "accountBalances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverAccountBalance"
+          },
+          "uniqueItems": true
+        },
+        "verifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverVerification"
+          },
+          "uniqueItems": true
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResponseHandoverUnresolved"
+          },
+          "uniqueItems": true
+        },
+        "responsibility": {
+          "$ref": "#/$defs/ResponseHandoverResponsibility"
+        }
+      }
+    },
+    "ResponseHandoverConversation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversationId",
+        "environmentId",
+        "inputRevision",
+        "revision",
+        "eventWatermark",
+        "state"
+      ],
+      "properties": {
+        "conversationId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "environmentId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "eventWatermark": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "open",
+            "awaiting_user",
+            "awaiting_verification",
+            "resolved",
+            "handoff",
+            "archived_unconfirmed"
+          ]
+        }
+      }
+    },
+    "ResponseHandoverContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference",
+        "sha256",
+        "purpose",
+        "inputRevision",
+        "state",
+        "invalidationCode"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "understanding",
+            "investigation"
+          ]
+        },
+        "inputRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "active",
+            "stale",
+            "unknown"
+          ]
+        },
+        "invalidationCode": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "active"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "invalidationCode": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "invalidationCode"
+            ]
+          }
+        }
+      ]
+    },
+    "ResponseHandoverAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "subjectId",
+        "qualificationRef"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "human",
+            "policy",
+            "unknown"
+          ]
+        },
+        "subjectId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "qualificationRef": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "human"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "subjectId": {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+              }
+            },
+            "required": [
+              "subjectId"
+            ]
+          }
+        }
+      ]
+    },
+    "ResponseHandoverCsvScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "detailAttachmentId",
+        "detailSha256",
+        "reportAttachmentId",
+        "reportSha256",
+        "from",
+        "to",
+        "timeZone",
+        "currency",
+        "status"
+      ],
+      "properties": {
+        "detailAttachmentId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "detailSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reportAttachmentId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "reportSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "from": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{6}Z$"
+        },
+        "to": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{6}Z$"
+        },
+        "timeZone": {
+          "type": "string",
+          "minLength": 1,
+          "$comment": "The server additionally validates this value with java.time.ZoneId.of."
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "completed",
+            "pending",
+            "cancelled"
+          ]
+        }
+      }
+    },
+    "ResponseHandoverOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approvalId",
+        "bindingId",
+        "approvalRevision",
+        "state",
+        "operationHash",
+        "scope",
+        "authority",
+        "inputRevision",
+        "environmentRevision",
+        "authorizationRevision",
+        "validUntil"
+      ],
+      "properties": {
+        "approvalId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "bindingId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "approvalRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "denied",
+            "superseded",
+            "unknown"
+          ]
+        },
+        "operationHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scope": {
+          "$ref": "#/$defs/ResponseHandoverCsvScope"
+        },
+        "authority": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResponseHandoverAuthority"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inputRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "environmentRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authorizationRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "validUntil": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{6}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ResponseHandoverExecution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "nodeRunId",
+        "providerId",
+        "providerRunId",
+        "state",
+        "acceptedAt",
+        "closedAt",
+        "ownership",
+        "outcome",
+        "effectStatus",
+        "snapshotRevision",
+        "authoritativeSnapshotHash",
+        "receiptRef",
+        "stopRequested",
+        "providerCancelRequested",
+        "closureProofRef",
+        "providerEventWatermark",
+        "providerResumeCursor"
+      ],
+      "properties": {
+        "bindingId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "nodeRunId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "providerId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "providerRunId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "prepared",
+            "submitting",
+            "acceptance_unknown",
+            "accepted",
+            "active",
+            "waiting_permission",
+            "reconciling",
+            "stopping",
+            "terminal",
+            "rejected",
+            "unknown"
+          ]
+        },
+        "acceptedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{6}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{6}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ownership": {
+          "type": "string",
+          "enum": [
+            "active",
+            "inactive",
+            "unknown"
+          ]
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "succeeded",
+                "failed",
+                "cancelled",
+                "rejected"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effectStatus": {
+          "type": "string",
+          "enum": [
+            "none",
+            "verified",
+            "unknown"
+          ]
+        },
+        "snapshotRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authoritativeSnapshotHash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "receiptRef": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stopRequested": {
+          "type": "boolean"
+        },
+        "providerCancelRequested": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closureProofRef": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "providerEventWatermark": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "providerResumeCursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "closedAt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "closedAt"
+            ]
+          },
+          "then": {
+            "properties": {
+              "ownership": {
+                "const": "inactive"
+              }
+            },
+            "required": [
+              "ownership"
+            ]
+          }
+        }
+      ]
+    },
+    "ResponseHandoverInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attachmentId",
+        "role",
+        "sha256",
+        "bytes",
+        "state",
+        "authorizationRef"
+      ],
+      "properties": {
+        "attachmentId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "detail",
+            "report",
+            "other"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "active",
+            "revoked",
+            "unknown"
+          ]
+        },
+        "authorizationRef": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ResponseHandoverCsvResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "differenceCount",
+        "detailTotal",
+        "reportTotal",
+        "totalDifference",
+        "currency",
+        "algorithm"
+      ],
+      "properties": {
+        "differenceCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "detailTotal": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]{0,16})\\.[0-9]{2}$"
+        },
+        "reportTotal": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]{0,16})\\.[0-9]{2}$"
+        },
+        "totalDifference": {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]{0,16})\\.[0-9]{2}$"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "algorithm": {
+          "const": "report-minus-detail-v1"
+        }
+      }
+    },
+    "ResponseHandoverArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "bindingId",
+        "sha256",
+        "bytes",
+        "state",
+        "resultRevision",
+        "inputRevision",
+        "result"
+      ],
+      "properties": {
+        "artifactId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "bindingId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "ready",
+            "superseded",
+            "revoked",
+            "unknown"
+          ]
+        },
+        "resultRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "inputRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResponseHandoverCsvResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ResponseHandoverReservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bindingId",
+        "subjectId",
+        "period",
+        "state",
+        "totalAccountKey",
+        "modelAccountKey"
+      ],
+      "properties": {
+        "bindingId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "subjectId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "period": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "reserved",
+            "consumed",
+            "released",
+            "settled",
+            "unknown"
+          ]
+        },
+        "totalAccountKey": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modelAccountKey": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "totalAccountKey": {
+              "type": "null"
+            },
+            "modelAccountKey": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "totalAccountKey": {
+              "const": "total"
+            },
+            "modelAccountKey": {
+              "type": "string",
+              "pattern": "^model:[A-Za-z0-9_.:-]{1,174}$"
+            }
+          }
+        }
+      ]
+    },
+    "ResponseHandoverAccountBalance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subjectId",
+        "accountKey",
+        "period",
+        "turnLimit",
+        "reserved",
+        "consumed"
+      ],
+      "properties": {
+        "subjectId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "accountKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+        },
+        "period": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "turnLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "reserved": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "consumed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ResponseHandoverVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "resultRevision",
+        "subjectId",
+        "resolved"
+      ],
+      "properties": {
+        "artifactId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "resultRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "subjectId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "resolved": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResponseHandoverUnresolved": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "bindingId",
+        "nextCheck"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:-]{1,180}$"
+        },
+        "bindingId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nextCheck": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f]+$",
+          "not": {
+            "pattern": "^[\\u0020\\u1680\\u2000-\\u2006\\u2008-\\u200a\\u2028\\u2029\\u205f\\u3000]*$"
+          }
+        }
+      }
+    },
+    "ResponseHandoverResponsibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nextSubjectId",
+        "status",
+        "nextChecks"
+      ],
+      "properties": {
+        "nextSubjectId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "assigned",
+            "unassigned"
+          ]
+        },
+        "nextChecks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f]+$",
+            "not": {
+              "pattern": "^[\\u0020\\u1680\\u2000-\\u2006\\u2008-\\u200a\\u2028\\u2029\\u205f\\u3000]*$"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "assigned"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "nextSubjectId": {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+              }
+            },
+            "required": [
+              "nextSubjectId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "unassigned"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "nextSubjectId": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "nextSubjectId"
+            ]
+          }
+        }
+      ]
+    },
+    "ResponseHandover": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package",
+        "packageSha256"
+      ],
+      "properties": {
+        "package": {
+          "$ref": "#/$defs/ResponseHandoverPackage"
+        },
+        "packageSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "$comment": "The package hash covers canonical JSON of the package projection. The server also enforces arithmetic totals, reference integrity, identity uniqueness and ordering, and time-range ordering; JSON Schema does not substitute for those checks."
+    }
+  },
+  "$comment": "{\"operations\":{\"session\":{\"$ref\":\"#/$defs/ResponseSession\"},\"options\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseEnvironment\"}},\"members\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseMember\"}},\"configurations\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseConfiguration\"}},\"list\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseConversationListItem\"}},\"snapshot\":{\"$ref\":\"#/$defs/ResponseSnapshot\"},\"approvals\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseApprovalListItem\"}},\"events\":{\"$ref\":\"#/$defs/ResponseEvents\"},\"records\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseRecord\"}},\"executions\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/ResponseExecutionListItem\"}},\"content\":{\"$ref\":\"#/$defs/ResponseContent\"},\"contentLease\":{\"$ref\":\"#/$defs/ResponseLeaseStatus\"},\"command\":{\"$ref\":\"#/$defs/ResponseCommandReceipt\"},\"lookup\":{\"$ref\":\"#/$defs/ResponseCommandLookup\"},\"quota\":{\"$ref\":\"#/$defs/ResponseQuota\"},\"grant\":{\"$ref\":\"#/$defs/ResponseGrant\"},\"revoke\":{\"$ref\":\"#/$defs/ResponseRevoked\"},\"newConfiguration\":{\"$ref\":\"#/$defs/ResponseNewConfiguration\"},\"draft\":{\"$ref\":\"#/$defs/ResponseDraft\"},\"publish\":{\"$ref\":\"#/$defs/ResponsePublish\"},\"disable\":{\"$ref\":\"#/$defs/ResponseDisabled\"},\"create\":{\"$ref\":\"#/$defs/ResponseNewConversation\"},\"message\":{\"$ref\":\"#/$defs/ResponseSavedMessage\"},\"upload\":{\"$ref\":\"#/$defs/ResponseUpload\"},\"prepare\":{\"$ref\":\"#/$defs/ResponsePrepare\"},\"decide\":{\"$ref\":\"#/$defs/ResponseDecision\"},\"stop\":{\"$ref\":\"#/$defs/ResponseStop\"},\"verify\":{\"$ref\":\"#/$defs/ResponseVerify\"},\"eligibility\":{\"$ref\":\"#/$defs/ResponseEligibility\"},\"lease\":{\"$ref\":\"#/$defs/ResponseLease\"},\"requestMembership\":{\"$ref\":\"#/$defs/ResponseMembership\"},\"title\":{\"$ref\":\"#/$defs/ResponseRenamed\"},\"revokeSource\":{\"$ref\":\"#/$defs/ResponseRevoked\"},\"quotaPost\":{\"$ref\":\"#/$defs/ResponseQuotaSaved\"},\"understand\":{\"$ref\":\"#/$defs/ResponseUnderstanding\"},\"context\":{\"$ref\":\"#/$defs/ResponseContext\"},\"handover\":{\"$ref\":\"#/$defs/ResponseHandover\"}}}"
+}

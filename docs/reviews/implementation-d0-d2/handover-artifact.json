@@ -1,0 +1,24 @@
+{
+  "scope": "all 156 Java checks and final UI/HTTP use this compiled source and immutable jar; byte identity plus runtime served assets verified",
+  "observedAt": "2026-10-26T13:07:05.501048+00:00",
+  "jarSha256": "1e1e87e20a4a5dbf1b838b06d0577659f4ce599ce02b63eb2ae416da7de2abb7",
+  "immutableRuntimeMatchesJar": true,
+  "platformClassesMatched": 74,
+  "providerContractJarMatches": true,
+  "servedStaticAssetsMatchCurrentDist": true,
+  "assets": [
+    {
+      "path": "index.html",
+      "sha256": "26d601dc1b1db677c788554338cb3a7da06bd0bca44692988e6dfee15af6a19b"
+    },
+    {
+      "path": "assets/index-BYBmnWkB.js",
+      "sha256": "ec7d84d49287cacd777149d36edb992c1e992eb3fbe5f784b3fb70ec2bf50d0a"
+    },
+    {
+      "path": "assets/index-jGg4TAyt.css",
+      "sha256": "fed529af0a8d978428e035cc05d4908ca810f93efed50873a9e1bbffc1daa602"
+    }
+  ],
+  "realProviderOrDeploymentClaim": false
+}

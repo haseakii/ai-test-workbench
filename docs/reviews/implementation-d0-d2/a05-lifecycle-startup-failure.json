@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-10-26T10:39:10.975318+00:00",
+  "command": [
+    "/workspace/scratch/toolchain/apache-maven-3.9.11/bin/mvn",
+    "-o",
+    "-s",
+    "/workspace/scratch/development-start-20261026/maven-settings.xml",
+    "-Dmaven.repo.local=/workspace/scratch/maven-cache",
+    "-f",
+    "backend/pom.xml",
+    "-pl",
+    "platform-server",
+    "-am",
+    "test",
+    "-Dmaven.main.skip=true",
+    "-Dtest=QueueCommitFaultTest",
+    "-Dsurefire.failIfNoSpecifiedTests=false",
+    "-B",
+    "-ntp"
+  ],
+  "exitCode": 1,
+  "sourceSha256": "0e8f8f746b787c47e9f956c377cc0de36efe0d6cc6220d478bfe5ac95bf33dd3",
+  "tests": [],
+  "proofs": [],
+  "scope": "actual existing MySQL; own synthetic records and physical JDBC connections only; no packet proxy/TLS qualification"
+}

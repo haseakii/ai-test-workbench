@@ -1,0 +1,27 @@
+{
+  "commands": [
+    "npm --prefix frontend run test:contracts",
+    "npm --prefix frontend run test:submissions"
+  ],
+  "results": [
+    {
+      "log": "context-port-ts-contracts.log",
+      "summary": [
+        "ℹ tests 10",
+        "ℹ pass 10",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    },
+    {
+      "log": "context-port-ts-submissions.log",
+      "summary": [
+        "ℹ tests 9",
+        "ℹ pass 9",
+        "ℹ fail 0",
+        "ℹ skipped 0"
+      ]
+    }
+  ],
+  "frontendBuild": "passed; static asset build verified in final jar"
+}

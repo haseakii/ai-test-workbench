@@ -1,0 +1,11 @@
+{
+  "scope": "local file targets in four Markdown files changed in current implementation package; external URLs/anchors not executed",
+  "checked": 85,
+  "missing": [],
+  "files": [
+    "docs/reviews/IMPLEMENTATION-PROGRESS-20261026.md",
+    "backend/README.md",
+    "docs/development/ARCHITECTURE-AND-CODE.md",
+    "docs/development/DATA-AND-TRANSACTIONS.md"
+  ]
+}

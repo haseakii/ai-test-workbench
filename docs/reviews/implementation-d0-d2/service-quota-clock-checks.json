@@ -1,0 +1,288 @@
+{
+  "scope": "actual local Java service and MySQL, synthetic identity/backend/data only",
+  "cases": [
+    {
+      "name": "actual service synthetic CSV to user verification",
+      "result": "pass",
+      "seconds": 1.237,
+      "evidence": {
+        "conversationId": "7373bd4d-7c82-4957-9ed0-689168555acf",
+        "bindingId": "a634d8c2-3e0e-4684-a4c9-8e9b8de5ee78",
+        "artifactId": "27548b7a-7943-486a-8d2a-b16d5f5cb1c5",
+        "csvSha256": "04606b19bbd97f15118ac35a0b760fbff6b47293a4bc301fa98a34469e0ba0f2",
+        "differenceCount": 2,
+        "totalDifference": "10.00"
+      }
+    },
+    {
+      "name": "independent object authorization and pending member boundary",
+      "result": "pass",
+      "seconds": 0.025,
+      "evidence": {
+        "cross_user_objects_denied": 3,
+        "unassigned_environment_absent": true,
+        "membershipState": "active",
+        "allowedEnvironmentCount": 6
+      }
+    },
+    {
+      "name": "stable command receipt and changed-content conflict",
+      "result": "pass",
+      "seconds": 0.023,
+      "evidence": {
+        "conversationId": "47429488-8298-4fa6-83c7-8ab76018986e",
+        "sameReceipt": true,
+        "changedBodyRejected": true
+      }
+    },
+    {
+      "name": "atomic snapshot cursor resumes after watermark",
+      "result": "pass",
+      "seconds": 0.041,
+      "evidence": {
+        "snapshotWatermark": 10,
+        "nextSequence": 11
+      }
+    },
+    {
+      "name": "fixed scope approval and stop before external acceptance",
+      "result": "pass",
+      "seconds": 0.27,
+      "evidence": {
+        "tamperedHashRejected": true,
+        "selfApprovalRejected": true,
+        "stoppedBinding": "75721230-bde7-465a-baef-670dbc6c0f61"
+      }
+    },
+    {
+      "name": "queued approval expiry cannot start after waiting for a slot",
+      "result": "pass",
+      "seconds": 3.126,
+      "evidence": {
+        "heldBinding": "f6aeac24-5d30-47bc-968f-38e59bf92d33",
+        "expiredBinding": "c1047afd-0e3b-4a06-80ba-62425304d84f",
+        "expiredTaskAccepted": false
+      }
+    },
+    {
+      "name": "lost acceptance receipt reconciles one execution and one charge",
+      "result": "pass",
+      "seconds": 1.393,
+      "evidence": {
+        "bindingId": "3f75bcd0-2696-44e2-bf78-ab40a5cb501d",
+        "acceptedEvents": 1,
+        "duplicateCharge": false
+      }
+    },
+    {
+      "name": "corrupt output is closed without artifact delivery or regeneration",
+      "result": "pass",
+      "seconds": 0.276,
+      "evidence": {
+        "bindingId": "80f601ec-34b7-4756-9727-d2df955ef25e",
+        "artifactReady": false,
+        "reason": "INTEGRITY_MISMATCH"
+      }
+    },
+    {
+      "name": "source revocation blocks derived content and preserves old decision",
+      "result": "pass",
+      "seconds": 0.468,
+      "evidence": {
+        "artifactId": "6f9744e9-d6af-4faf-8785-9efab2c07f3e",
+        "derivedResultHidden": true,
+        "downloadDenied": true,
+        "historicalDecisionPreserved": true,
+        "agentSession": "not_applicable_fixture_backend"
+      }
+    },
+    {
+      "name": "metadata administration does not grant body or download rights",
+      "result": "pass",
+      "seconds": 0.014,
+      "evidence": {
+        "metadataVisible": true,
+        "bodyAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "dependency CAS conflicts preserve drafts and emergency guard",
+      "result": "pass",
+      "seconds": 0.14,
+      "evidence": {
+        "environmentId": "b5844570-1326-461a-95c1-32cc148c3b4a",
+        "publicationConflict": true,
+        "unpublishedDraftPreserved": true,
+        "emergencyDisableEffective": true
+      }
+    },
+    {
+      "name": "manual title priority and independent revision conflict",
+      "result": "pass",
+      "seconds": 0.071,
+      "evidence": {
+        "manualPlaceholderNamePreserved": true,
+        "staleTitleRevisionRejected": true
+      }
+    },
+    {
+      "name": "membership revocation blocks each object interface",
+      "result": "pass",
+      "seconds": 0.449,
+      "evidence": {
+        "environmentId": "7934e7c8-f322-4287-a79e-8e2190d3d437",
+        "conversationEventsAndDownloadDenied": true
+      }
+    },
+    {
+      "name": "explicit content qualification and expiring message-only lease",
+      "result": "pass",
+      "seconds": 1.154,
+      "evidence": {
+        "defaultDenied": true,
+        "scopedReadSucceeded": true,
+        "eventsAndDownloadStillDenied": true,
+        "expiryDenied": true,
+        "revocationDenied": true
+      }
+    },
+    {
+      "name": "service restart restores original execution and artifact",
+      "result": "pass",
+      "seconds": 2.259,
+      "evidence": {
+        "conversationId": "7373bd4d-7c82-4957-9ed0-689168555acf",
+        "sameBindingAfterRestart": true,
+        "sameArtifactAfterRestart": true
+      }
+    }
+  ],
+  "passed": 15,
+  "total": 15,
+  "apiContract": {
+    "checked": 208,
+    "operations": [
+      "newConfiguration",
+      "publish",
+      "grant",
+      "create",
+      "message",
+      "upload",
+      "snapshot",
+      "prepare",
+      "decide",
+      "verify",
+      "events",
+      "download",
+      "session",
+      "options",
+      "title",
+      "stop",
+      "quota",
+      "revokeSource",
+      "approvals",
+      "records",
+      "configurations",
+      "draft",
+      "disable",
+      "revoke",
+      "lease",
+      "eligibility",
+      "content"
+    ],
+    "responseCounts": {
+      "newConfiguration": {
+        "200": 24
+      },
+      "publish": {
+        "200": 9,
+        "409": 1
+      },
+      "grant": {
+        "200": 16
+      },
+      "create": {
+        "200": 11,
+        "409": 1
+      },
+      "message": {
+        "200": 9
+      },
+      "upload": {
+        "200": 16
+      },
+      "snapshot": {
+        "200": 58,
+        "404": 3
+      },
+      "prepare": {
+        "200": 8
+      },
+      "decide": {
+        "200": 7,
+        "409": 1,
+        "403": 1
+      },
+      "verify": {
+        "200": 1,
+        "409": 1
+      },
+      "events": {
+        "404": 3,
+        "200": 4
+      },
+      "download": {
+        "404": 4,
+        "409": 1
+      },
+      "session": {
+        "200": 3
+      },
+      "options": {
+        "200": 2
+      },
+      "title": {
+        "200": 2,
+        "409": 1
+      },
+      "stop": {
+        "200": 2
+      },
+      "quota": {
+        "200": 2
+      },
+      "revokeSource": {
+        "200": 1
+      },
+      "approvals": {
+        "200": 1
+      },
+      "records": {
+        "200": 1
+      },
+      "configurations": {
+        "200": 2
+      },
+      "draft": {
+        "200": 2
+      },
+      "disable": {
+        "200": 1
+      },
+      "revoke": {
+        "200": 1
+      },
+      "lease": {
+        "403": 1,
+        "200": 2
+      },
+      "eligibility": {
+        "200": 2
+      },
+      "content": {
+        "200": 1,
+        "403": 2
+      }
+    }
+  }
+}

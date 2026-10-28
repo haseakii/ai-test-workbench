@@ -1,0 +1,96 @@
+{
+  "scope": "actual Java/MySQL synthetic service audit regressions",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "name": "R01 mutation receipt replay checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "55bbcab5-bc05-485e-a29d-83b169e305bd",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R02 commandId lookup checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "0c1aaaab-292b-4997-b2be-4f8d87228df7",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R03 idempotency-key lookup checks current object scope",
+      "result": "pass",
+      "evidence": {
+        "commandId": "31eb1088-60de-4324-bc9e-da9510c3f3fa",
+        "currentScopeDenied": true
+      }
+    },
+    {
+      "name": "R04 fractional configuration quota is rejected",
+      "result": "pass",
+      "evidence": {
+        "fractionRejectedBeforePersistence": true
+      }
+    },
+    {
+      "name": "R05 new input invalidates old current result",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "5196870a-7ce4-4217-8404-df0f4e51e31c",
+        "oldResultExcluded": true
+      }
+    },
+    {
+      "name": "R06 clientMessageId deduplicates across command keys",
+      "result": "pass",
+      "evidence": {
+        "conversationId": "d4b9dd8e-44b3-44bb-af0e-bc89df65ae6a",
+        "savedMessages": 1
+      }
+    },
+    {
+      "name": "R07 synthetic configuration rejects real backend claims",
+      "result": "pass",
+      "evidence": {
+        "realBackendConfigurationRejected": true
+      }
+    },
+    {
+      "name": "R08 new attachment supersedes old result and download",
+      "result": "pass",
+      "evidence": {
+        "attachmentAdvancesInputRevision": true,
+        "oldDownloadDenied": true
+      }
+    },
+    {
+      "name": "R09 clientMessageId rejects changed content",
+      "result": "pass",
+      "evidence": {
+        "sameClientIdDifferentContentRejected": true
+      }
+    },
+    {
+      "name": "R10 publishing environment invalidates old plan",
+      "result": "pass",
+      "evidence": {
+        "environmentRevision": 2,
+        "oldApprovalRejected": true
+      }
+    },
+    {
+      "name": "R11 SSE snapshot W reconnects W+1 and revocation ends access",
+      "result": "pass",
+      "evidence": {
+        "snapshotWatermark": 1,
+        "resumedSequences": [
+          2,
+          3
+        ],
+        "revocationStopsBodyEvents": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,785 @@
+{
+  "scope": "D0-D2 exit review; MY12/MY14 and D4-DEPLOY are later-stage acceptance items and do not change the existing D0-D2 test results.",
+  "entries": [
+    {
+      "id": "D0-01",
+      "phase": "D0",
+      "criterion": "冻结 JDK/Boot/JDBC/Flyway/SDK 与前端版本并验证兼容",
+      "status": "passed_current_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "frontend/package-lock.json",
+        "backend/pom.xml"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": []
+    },
+    {
+      "id": "D0-02",
+      "phase": "D0",
+      "criterion": "实际 MySQL 8.4 补丁/镜像冻结，最小类型/锁/约束实验",
+      "status": "passed_minimum",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/database-state.json"
+      ],
+      "remaining": "D0 最小实验已完成；扩展实验按 A01–A07 分项，不以整个 MY 目录作为 D0 未完成项。",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": []
+    },
+    {
+      "id": "D0-03",
+      "phase": "D0",
+      "criterion": "12 Provider 方法、DTO、错误/事件/状态及 API Schema 可审核、编译一致",
+      "status": "passed_wire_boundary",
+      "evidence": [
+        "docs/design/contracts/execution-provider.d.ts",
+        "scripts/generate_provider_contract.mjs",
+        "backend/provider-contract/src/main/java/io/aitest/contract/ExecutionProvider.java",
+        "contracts/provider.schema.json",
+        "contracts/platform.openapi.json",
+        "contracts/provider-vectors.json",
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C01"
+      ],
+      "countsTowardD0D2": true,
+      "scopeNotes": "端口/DTO/Schema 已编译；真实适配器共同 CP 为 C01，不是 D0 阻塞。",
+      "remainingGroups": []
+    },
+    {
+      "id": "D0-04",
+      "phase": "D0",
+      "criterion": "本阶段身份与部署策略明确",
+      "status": "passed_current_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "backend/platform-server/src/main/java/io/aitest/workbench/identity/SyntheticBoundary.java"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C03"
+      ],
+      "countsTowardD0D2": true,
+      "scopeNotes": "当前策略为回环、指定合成库和测试身份；真实身份/部署为 C03。",
+      "remainingGroups": []
+    },
+    {
+      "id": "D1-01",
+      "phase": "D1",
+      "criterion": "工程、Wrapper/锁文件、迁移与运行账号隔离",
+      "status": "partial_waiting_empty_instance_approval",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "backend/.mvn/wrapper/maven-wrapper.properties",
+        "backend/platform-server/src/main/resources/db/migration/V4__receipt_scope_and_synthetic_marker.sql",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "backend/platform-server/src/main/java/io/aitest/workbench/bootstrap/SchemaReadiness.java",
+        "docs/reviews/implementation-d0-d2/readiness-before-fix.json",
+        "docs/reviews/implementation-d0-d2/a01-empty-instance-proposal.json"
+      ],
+      "remaining": "A01 原始平台 V1–V5/Runner V1 完整空库链待额外隔离实例授权；启动门禁与前缀迁移中断/失败历史已通过。B01 仅远端 hosted job 未执行。",
+      "workPackages": [
+        "A01",
+        "B01"
+      ],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "D1-02",
+      "phase": "D1",
+      "criterion": "跨用户拒绝与命令/消息幂等、同键命名空间和当前回执鉴权",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json",
+        "docs/reviews/implementation-d0-d2/typescript-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/concurrency-overlap-proofs.json",
+        "docs/reviews/implementation-d0-d2/concurrency-before-fix.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "scopeNotes": "现有服务固定合成租户；跨租户回执负面验证、当前主体权限、并发同键/消息及 A08 原键恢复均通过，不冒称生产身份。",
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A08",
+        "A04"
+      ]
+    },
+    {
+      "id": "D1-03",
+      "phase": "D1",
+      "criterion": "真实 MySQL 并发预占、唯一约束、审计/outbox 原子性",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-quota-clock-tests.json",
+        "docs/reviews/implementation-d0-d2/quota-clock-before-fix.json",
+        "docs/reviews/implementation-d0-d2/quota-v5-migration.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/concurrency-overlap-proofs.json",
+        "docs/reviews/implementation-d0-d2/concurrency-before-fix.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A02",
+        "A04"
+      ]
+    },
+    {
+      "id": "D1-04",
+      "phase": "D1",
+      "criterion": "提交/发送/接纳回执与结果各窗口进程中断恢复",
+      "status": "passed_six_windows_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json",
+        "docs/reviews/implementation-d0-d2/immutable-artifact-check.json",
+        "docs/reviews/implementation-d0-d2/process-concurrency-checks.json",
+        "docs/reviews/implementation-d0-d2/concurrency-artifact.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json",
+        "docs/reviews/implementation-d0-d2/process-context-port-checks.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": []
+    },
+    {
+      "id": "D1-05",
+      "phase": "D1",
+      "criterion": "CI 配置、等价命令与不误跳过门槛",
+      "status": "passed_local_configuration",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/ci-configuration-checks.json",
+        ".github/workflows/development-ci.yml",
+        "scripts/collect_java_results.py",
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/ui-contracts-report.json",
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json",
+        "docs/reviews/implementation-d0-d2/typescript-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/typescript-concurrency-tests.json"
+      ],
+      "remaining": "B01：未推送，远端工作流及 hosted-job MySQL 准备未执行；本地配置与等价命令已通过。",
+      "workPackages": [
+        "B01"
+      ],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [
+        "B"
+      ]
+    },
+    {
+      "id": "D2-01",
+      "phase": "D2",
+      "criterion": "正式页面创建配置、合成成员开通并贯穿同一会话审批执行与确认",
+      "status": "passed_rules_and_synthetic_flow",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/ui-contracts-report.json",
+        "docs/reviews/implementation-d0-d2/ui-journey.json",
+        "docs/reviews/implementation-d0-d2/first-ui-journey.json",
+        "docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json",
+        "docs/reviews/implementation-d0-d2/typescript-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/ui-concurrency-checks.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C03"
+      ],
+      "countsTowardD0D2": true,
+      "scopeNotes": "首次开通使用预置合成 subject，不是真实账号注册。",
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A08"
+      ]
+    },
+    {
+      "id": "D2-02",
+      "phase": "D2",
+      "criterion": "真实上传解析与确定性 CSV 计算、哈希和用户验证",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/ui-contracts-report.json",
+        "docs/reviews/implementation-d0-d2/ui-difference.csv",
+        "docs/reviews/implementation-d0-d2/ui-concurrency-checks.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json",
+        "docs/reviews/implementation-d0-d2/handover-work-package.json",
+        "docs/reviews/implementation-d0-d2/java-handover-final.json",
+        "docs/reviews/implementation-d0-d2/http-authorization-checks.json",
+        "docs/reviews/implementation-d0-d2/ui-handover-checks.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": []
+    },
+    {
+      "id": "D2-03",
+      "phase": "D2",
+      "criterion": "正文/附件/产物/事件分别鉴权、来源撤权与新输入失效",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/ui-contracts-report.json",
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/ui-concurrency-checks.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json",
+        "docs/reviews/implementation-d0-d2/handover-work-package.json",
+        "docs/reviews/implementation-d0-d2/java-handover-final.json",
+        "docs/reviews/implementation-d0-d2/http-authorization-checks.json",
+        "docs/reviews/implementation-d0-d2/ui-handover-checks.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C02"
+      ],
+      "countsTowardD0D2": true,
+      "scopeNotes": "无独立原附件下载产品入口；只对存在入口验收。真实 Agent 会话净化为 C02。",
+      "remainingGroups": [],
+      "limits": "Existing implemented routes only; absent original-attachment download or separate lease-revoke routes are not counted as ACL evidence."
+    },
+    {
+      "id": "D2-04",
+      "phase": "D2",
+      "criterion": "刷新、服务重启、SSE 断流不重复启动原执行",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/ui-contracts-report.json",
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json",
+        "docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json",
+        "docs/reviews/implementation-d0-d2/typescript-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/concurrency-overlap-proofs.json",
+        "docs/reviews/implementation-d0-d2/concurrency-before-fix.json",
+        "docs/reviews/implementation-d0-d2/process-concurrency-checks.json",
+        "docs/reviews/implementation-d0-d2/concurrency-artifact.json",
+        "docs/reviews/implementation-d0-d2/ui-concurrency-checks.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A08",
+        "A04"
+      ],
+      "scopeNotes": "原快照与 SSE/刷新/重启、A08 原键恢复/多标签及 A04 并发事件/回滚/迟到提交已通过。"
+    },
+    {
+      "id": "MY01",
+      "phase": "database_catalog",
+      "criterion": "MY01 full catalogue",
+      "status": "partial_waiting_empty_instance_approval",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "backend/platform-server/src/main/java/io/aitest/workbench/bootstrap/SchemaReadiness.java",
+        "docs/reviews/implementation-d0-d2/readiness-before-fix.json",
+        "docs/reviews/implementation-d0-d2/a01-empty-instance-proposal.json"
+      ],
+      "remaining": "A01 原始平台 V1–V5/Runner V1 完整空库链待额外隔离实例授权；启动门禁与前缀迁移中断/失败历史已通过。B01 仅远端 hosted job 未执行。",
+      "workPackages": [
+        "A01",
+        "B01"
+      ],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "MY02",
+      "phase": "database_catalog",
+      "criterion": "MY02 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/concurrency-overlap-proofs.json",
+        "docs/reviews/implementation-d0-d2/concurrency-before-fix.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A04"
+      ],
+      "scopeNotes": "独立原始 MySQL 事务同时争同 NodeRun 唯一绑定，关闭历史保留，未派发约束探针安全收口。"
+    },
+    {
+      "id": "MY03",
+      "phase": "database_catalog",
+      "criterion": "MY03 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json",
+        "docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json",
+        "docs/reviews/implementation-d0-d2/typescript-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/concurrency-overlap-proofs.json",
+        "docs/reviews/implementation-d0-d2/concurrency-before-fix.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A08",
+        "A04"
+      ],
+      "scopeNotes": "同键同/异内容、同消息 ID、回滚重试与重复终态以独立活动事务重叠验证；仍按当前权限重读回执。"
+    },
+    {
+      "id": "MY04",
+      "phase": "database_catalog",
+      "criterion": "MY04 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-quota-clock-tests.json",
+        "docs/reviews/implementation-d0-d2/quota-clock-before-fix.json",
+        "docs/reviews/implementation-d0-d2/quota-v5-migration.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A02"
+      ],
+      "scopeNotes": "原原子回滚/最后额度槽位与本包两模型合成选择验证通过；不等同真实连接适配器。"
+    },
+    {
+      "id": "MY05",
+      "phase": "database_catalog",
+      "criterion": "MY05 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-quota-clock-tests.json",
+        "docs/reviews/implementation-d0-d2/quota-clock-before-fix.json",
+        "docs/reviews/implementation-d0-d2/quota-v5-migration.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A02",
+        "A07"
+      ],
+      "scopeNotes": "稳定租户守卫、首次账户并发及 UTC 跨日旧未知预占保留通过。"
+    },
+    {
+      "id": "MY06",
+      "phase": "database_catalog",
+      "criterion": "MY06 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-quota-clock-tests.json",
+        "docs/reviews/implementation-d0-d2/quota-clock-before-fix.json",
+        "docs/reviews/implementation-d0-d2/quota-v5-migration.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A07"
+      ]
+    },
+    {
+      "id": "MY07",
+      "phase": "database_catalog",
+      "criterion": "MY07 full catalogue",
+      "status": "passed_queue_lock_correctness_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "limits": "FORCE INDEX(PRIMARY) correctness verified; tenant history scanning throughput not claimed."
+    },
+    {
+      "id": "MY08",
+      "phase": "database_catalog",
+      "criterion": "MY08 full catalogue",
+      "status": "passed_jdbc_commit_fault_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json",
+        "docs/reviews/implementation-d0-d2/java-context-port-final.json",
+        "docs/reviews/implementation-d0-d2/context-port-work-package.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "limits": "Owned JDBC connections and real MySQL commit; no packet/TLS/proxy qualification claim."
+    },
+    {
+      "id": "MY09",
+      "phase": "database_catalog",
+      "criterion": "MY09 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/java-quota-clock-tests.json",
+        "docs/reviews/implementation-d0-d2/quota-clock-before-fix.json",
+        "docs/reviews/implementation-d0-d2/quota-v5-migration.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A07"
+      ],
+      "scopeNotes": "Clock 非 UTC zone、UTC/微秒、23/25 小时 DST、精确期限与 Decimal 最大/超限/汇总通过；未修改系统时钟。"
+    },
+    {
+      "id": "MY10",
+      "phase": "database_catalog",
+      "criterion": "MY10 full catalogue",
+      "status": "passed_minimum",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "contracts/golden.json",
+        "contracts/provider-vectors.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C01"
+      ],
+      "countsTowardD0D2": true,
+      "scopeNotes": "Java/TS/MySQL 最小往返与哈希已通过，真实后端协议实测归 C01。",
+      "remainingGroups": []
+    },
+    {
+      "id": "MY11",
+      "phase": "database_catalog",
+      "criterion": "MY11 full catalogue",
+      "status": "passed_current_synthetic_scope",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/service-checks-contracts.json",
+        "docs/reviews/implementation-d0-d2/hardening-contracts.json",
+        "docs/reviews/implementation-d0-d2/ui-contracts-report.json",
+        "docs/reviews/implementation-d0-d2/ui-submission-readiness-checks.json",
+        "docs/reviews/implementation-d0-d2/typescript-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-submission-readiness-tests.json",
+        "docs/reviews/implementation-d0-d2/java-concurrency-tests.json",
+        "docs/reviews/implementation-d0-d2/concurrency-overlap-proofs.json",
+        "docs/reviews/implementation-d0-d2/concurrency-before-fix.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [],
+      "countsTowardD0D2": true,
+      "remainingGroups": [],
+      "completedWorkPackages": [
+        "A08",
+        "A04"
+      ],
+      "scopeNotes": "迟到事件提交、并发事件与快照、分页和原游标续接保持连续已提交水位；事件 SQL 失败不推进计数。"
+    },
+    {
+      "id": "MY12",
+      "phase": "D3",
+      "criterion": "MY12 full catalogue",
+      "status": "not_run_D3",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json",
+        "docs/reviews/implementation-d0-d2/process-interruption-checks.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C01",
+        "C02"
+      ],
+      "countsTowardD0D2": false,
+      "scopeNotes": "已有证据只覆盖合成替身局部行为；独立 Runner 拥有者/fencing 不计入本阶段退出。",
+      "remainingGroups": []
+    },
+    {
+      "id": "MY13",
+      "phase": "database_catalog",
+      "criterion": "MY13 full catalogue",
+      "status": "passed_runtime_accounts",
+      "evidence": [
+        "docs/reviews/implementation-d0-d2/java-contract-tests.json"
+      ],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C02"
+      ],
+      "countsTowardD0D2": true,
+      "scopeNotes": "三个获准账号 DDL/跨库拒绝已通过；真实 Agent OS/网络攻击归 C02，不阻塞当前账号退出。",
+      "remainingGroups": []
+    },
+    {
+      "id": "MY14",
+      "phase": "D4",
+      "criterion": "MY14 full catalogue",
+      "status": "not_run_D4",
+      "evidence": [],
+      "remaining": "",
+      "workPackages": [],
+      "deferredTo": [
+        "C04"
+      ],
+      "countsTowardD0D2": false,
+      "scopeNotes": "两库、文件、密钥引用备份恢复为 C04，不计入本阶段退出。",
+      "remainingGroups": []
+    },
+    {
+      "id": "D4-DEPLOY",
+      "phase": "D4",
+      "criterion": "普通使用者可简单搭建，并以单一入口完成首装、停止/重启、升级和备份恢复",
+      "status": "portable_preparation_verified_simple_install_not_accepted",
+      "evidence": [
+        "scripts/synthetic_runtime.py",
+        "scripts/synthetic_setup_check.py",
+        "backend/config/runtime.example.json",
+        "backend/config/migration-platform.example.json",
+        "backend/config/migration-runner.example.json",
+        "docs/reviews/implementation-d0-d2/setup-java-final.json",
+        "docs/reviews/implementation-d0-d2/setup-lifecycle-checks.json",
+        "docs/reviews/implementation-d0-d2/setup-work-package.json",
+        "docs/reviews/implementation-d0-d2/setup-script-tests.json",
+        "docs/reviews/implementation-d0-d2/setup-database-state.json",
+        "docs/reviews/implementation-d0-d2/windows-release-work-package.json",
+        "docs/reviews/implementation-d0-d2/windows-release-artifact.json",
+        "docs/reviews/implementation-d0-d2/windows-offline-java-tests.json",
+        "docs/reviews/implementation-d0-d2/windows-offline-python-tests.json",
+        "docs/reviews/implementation-d0-d2/windows-unpacked-offline-smoke.json",
+        "docs/reviews/implementation-d0-d2/windows-reproducible-build.json",
+        "docs/reviews/implementation-d0-d2/portable-setup-work-package.json",
+        "docs/reviews/implementation-d0-d2/portable-dependency-sources.json",
+        "docs/reviews/implementation-d0-d2/portable-offline-java-tests.json",
+        "docs/reviews/implementation-d0-d2/portable-offline-python-tests.json",
+        "docs/reviews/implementation-d0-d2/portable-inspection-offline-smoke.json"
+      ],
+      "requirementsRef": "docs/development/IMPLEMENTATION-PLAN.md#简单搭建交付验收d4-deploy用户首装待验收",
+      "remaining": "推荐便携Java/新私有MySQL单一主路线，目标3动作/0手填DB密码未实现验收；现有环境仍6提示/4必填，仅兼容。已完成只读依赖/方案检测、受限初始化模板、DPAPI代码、准备包；软件精确Windows版本/SHA/许可未核验、初始化执行器未接通、无Windows机器/资源授权，实机首装/恢复仍未运行。",
+      "workPackages": [],
+      "deferredTo": [
+        "D4"
+      ],
+      "countsTowardD0D2": false,
+      "remainingGroups": [
+        "C"
+      ],
+      "userRequirement": "要注意部署复杂度不能太高，要能够简单搭建",
+      "source": "Sentinel_31588245985c819183b533774d468d8e",
+      "acceptanceTargets": {
+        "singlePrimaryInstallRoute": true,
+        "singleOperationEntry": true,
+        "requiredInputBudget": {
+          "proposedMaximum": 3,
+          "userSpecifiedNumber": false,
+          "frozen": false,
+          "counting": "Each independent required value, including each secret/connection parameter; no grouped JSON undercount"
+        },
+        "runtimeUnits": {
+          "currentSynthetic": 2,
+          "withIndependentAcpRunnerRoles": 3,
+          "shortLivedAgents": "Execution children, not separately installed always-on user services"
+        },
+        "prerequisitesToConfirm": [
+          "Windows concrete version/architecture and actual host acceptance; OS selected by user",
+          "MySQL managed by delivery or existing authorized instance",
+          "persistent data/backup location",
+          "first administrator identity method"
+        ],
+        "requiredChecks": [
+          "prebuilt frontend/service, no user-side source build",
+          "dependency/configuration/port/directory preflight with actionable errors",
+          "authorized least-privilege DB initialization/migration behind the entry; no manual SQL",
+          "first boot reports actual readiness and selected identity usable",
+          "restart/stop preserves data and does not repeat initialization/execution",
+          "upgrade backup, version guard, least-privilege migration, recoverable non-ready failure",
+          "resume initialization after interruption without delete/clean/repair shortcuts",
+          "restore platform/Runner/files/key references, freeze dispatch and reconcile unknown executions"
+        ],
+        "evidenceToRecord": [
+          "exact target environment",
+          "each required field and manual command count",
+          "runtime unit count",
+          "elapsed time",
+          "failure hint and retry/recovery results"
+        ]
+      },
+      "limits": "User authorized repository implementation and tests in the existing approved synthetic environment. No new instance/database/account/permission, new persistent credential, software install, real resource, push or deployment. A01 new empty instance and remote CI remain unrun.",
+      "preparationScope": {
+        "entry": "scripts/synthetic_runtime.py",
+        "actions": [
+          "template",
+          "doctor",
+          "up",
+          "status",
+          "stop",
+          "restart",
+          "start (compatibility)",
+          "migrate (compatibility)"
+        ],
+        "existingPrerequisites": [
+          "Linux /proc/flock/pidfd",
+          "Java 21",
+          "Python 3.12",
+          "prebuilt complete platform Jar",
+          "existing approved loopback MySQL 8.4 with TLS and separate runtime/migration accounts"
+        ],
+        "runtimeConfigTopLevelKeys": 6,
+        "suggestedThreeInputBudgetMet": false,
+        "managedUnits": [
+          "platform JVM with bundled UI and fixture"
+        ],
+        "mysqlLifecycleManaged": false,
+        "provisioningExecuted": false,
+        "completeUserInstallVerified": false,
+        "upgradeRestoreVerified": false,
+        "windowsEntry": "Workbench.cmd -> Java RuntimeLauncher",
+        "windowsRuntimeDependencies": [
+          "Java21",
+          "existing authorized MySQL8.4/TLS/scoped accounts"
+        ],
+        "windowsExtraPythonPowerShellDockerRequired": false,
+        "actualWindowsExecutionVerified": false,
+        "windowsWizardPrompts": 6,
+        "windowsWizardRequiredExistingInputs": 4,
+        "windowsWizardDefaultedInputs": 2,
+        "releaseFiles": 12,
+        "primaryRoute": "portable-private-mysql",
+        "targetUserActions": 3,
+        "targetDatabasePasswordInputs": 0,
+        "threeActionFlowImplementedOrVerified": false,
+        "initializerIncluded": false,
+        "newThirdPartyBinariesIncluded": false
+      },
+      "sourcePlatformDecision": "user: Windows 电脑"
+    }
+  ],
+  "remoteCiExecuted": false,
+  "permissionOrDependencyBlocker": "Only A01 new private empty MySQL instance remains unapproved; A10/A11 direct-user authorization accepted and tests completed.",
+  "noCommitPushOrDeployment": true,
+  "remainingClassification": {
+    "A": "Only A01 original empty install migration chain awaits separately authorized new private instance. A02-A11 complete in current synthetic scope.",
+    "B": "仅未推送导致远端 hosted CI 及该 job 专用准备未执行；本地完整空库链归 A01。",
+    "C": "D3/D4 真实接入、恢复及新增 D4-DEPLOY 普通使用者简单搭建验收；不属于 D0-D2 阻塞。"
+  },
+  "workPackagesRef": "docs/reviews/implementation-d0-d2/handover-work-package.json",
+  "deferredWork": [
+    {
+      "id": "C01",
+      "phase": "D3",
+      "work": "真实总控/ACP 适配器、真实能力与共同 CP；不阻塞 D0-D2。"
+    },
+    {
+      "id": "C02",
+      "phase": "D3",
+      "work": "独立 Runner 接纳日志/进程 fencing、Agent OS/网络/资源隔离及原生会话净化；不阻塞 D0-D2。"
+    },
+    {
+      "id": "C03",
+      "phase": "D3/D4",
+      "work": "真实身份、组织接入、业务资源/模型凭据和外部部署；不阻塞 D0-D2。"
+    },
+    {
+      "id": "C04",
+      "phase": "D4",
+      "work": "平台/Runner 两库、文件/密钥引用恢复及 RPO/RTO、运维试点；不阻塞 D0-D2。"
+    }
+  ],
+  "completedWorkPackages": [
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11"
+  ],
+  "partiallyCompletedWorkPackages": [
+    "A01: readiness/forward/prefix tests passed; original empty install chain awaits separate new-instance approval"
+  ]
+}

@@ -1,0 +1,1572 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "检 检验台 AI 测试协作平台" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 检
+      - generic [ref=e7]:
+        - text: 检验台
+        - generic [ref=e8]: AI 测试协作平台
+    - paragraph [ref=e9]: 工作空间
+    - navigation [ref=e10]:
+      - button "问题对话" [ref=e11] [cursor=pointer]
+    - generic [ref=e12]:
+      - text: 本地服务已连接
+      - generic [ref=e14]: 合成数据验证环境
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - text: 开发验证环境
+        - heading "问题对话" [level=1] [ref=e18]
+      - generic [ref=e19]:
+        - text: 测试身份
+        - combobox "测试身份" [ref=e20]:
+          - option "alice" [selected]
+          - option "reviewer"
+          - option "admin"
+          - option "bob"
+          - option "pending"
+    - alert [ref=e21]:
+      - strong [ref=e22]: 操作未完成
+      - generic [ref=e23]: 身份已切换，请重新操作。
+      - button "关闭错误" [ref=e24] [cursor=pointer]: ×
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - heading "我的问题" [level=2] [ref=e28]
+        - generic [ref=e29]:
+          - text: 新问题环境
+          - combobox "所属环境" [ref=e30]:
+            - option "请选择可用环境"
+            - option "订单测试-97029690" [selected]
+            - option "订单测试-f0bf32b3"
+            - option "订单测试-f34d949a"
+            - option "订单测试-dedfa8eb"
+            - option "订单测试-32b12673"
+            - option "订单测试-93dcb434"
+            - option "订单测试-c524e870"
+            - option "订单测试-9a5f003b"
+            - option "订单测试-74013eb0"
+            - option "订单测试-0da4943a"
+            - option "订单测试-bba432aa"
+            - option "订单测试-c399e442"
+            - option "订单测试-dcaffa22"
+            - option "订单测试-a7b4ed37"
+            - option "订单测试-34b7f1b5"
+            - option "订单测试-72852e5e"
+            - option "订单测试-caca2b9f"
+            - option "订单测试-3d53fc8c"
+            - option "订单测试-b701c0f6"
+            - option "订单测试-8bc46bed"
+            - option "订单测试-07f518a2"
+            - option "订单测试-51d8f75b"
+            - option "提交恢复-f4d2ba4a"
+            - option "提交恢复-1594cd68"
+            - option "订单测试-b563dd68"
+            - option "提交恢复-cec05cc7"
+            - option "订单测试-d5457aa7"
+            - option "订单测试-5b912e83"
+            - option "订单测试-f6b3a4a5"
+            - option "订单测试-863e5b92"
+            - option "context-72d38d58-8984-4d4c-9f8f-373012cbf018"
+            - option "订单测试-640f229a"
+            - option "订单测试-a4245543"
+            - option "订单测试-96bc1246"
+            - option "UI权限恢复-66096eb4"
+            - option "提交恢复-5febd935"
+            - option "订单测试-3a0f420b"
+            - option "订单测试-215e7f39"
+            - option "订单测试-becee252"
+            - option "订单测试-97cb1257"
+            - option "context-404c4d17-f891-4814-a94b-e5e1984f3130"
+            - option "订单测试-a2f19ff4"
+            - option "订单测试-e1480b87"
+            - option "提交恢复-1e1a5e9e"
+            - option "提交恢复-b1687423"
+            - option "订单测试-88421dac"
+            - option "提交恢复-543f45ce"
+            - option "订单测试-ac179795"
+            - option "订单测试-b7005da0"
+            - option "订单测试-1b77a160"
+            - option "订单测试-bc03a9d5"
+            - option "订单测试-e66cb14f"
+            - option "订单测试-fe6dbaae"
+            - option "订单测试-beb4eac8"
+            - option "订单测试-1ef03f31"
+            - option "订单测试-20048da2"
+            - option "订单测试-8be720d2"
+            - option "订单测试-af671c4d"
+            - option "提交恢复-f4b37cc6"
+            - option "订单测试-41029927"
+            - option "订单测试-8e9daeba"
+            - option "订单测试-17ebc3de"
+            - option "订单测试-85a2d2aa"
+            - option "订单测试-e5bfdfc0"
+            - option "订单测试-02661bfa"
+            - option "订单测试-25707abb"
+            - option "订单测试-8b884157"
+            - option "提交恢复-c12f0b09"
+            - option "订单测试-09e6e566"
+            - option "订单测试-433fdc20"
+            - option "订单测试-759ffed8"
+            - option "提交恢复-8bd72e77"
+            - option "订单测试-bba0b4fe"
+            - option "提交恢复-ae07c34f"
+            - option "提交恢复-d0c8f405"
+            - option "UI权限恢复-bff77744"
+            - option "订单测试-1a39694f"
+            - option "提交恢复-11b12081"
+            - option "context-91500601-b3ae-48c6-8fe6-56ec1498a0ac"
+            - option "提交恢复-928acfc7"
+            - option "订单测试-49bfeb61"
+            - option "提交恢复-19da0e48"
+            - option "提交恢复-7aefc3e1"
+            - option "订单测试-bd53bb78"
+            - option "订单测试-1a67ac8b"
+            - option "订单测试-8c14f99a"
+            - option "订单测试-44d6274d"
+            - option "订单测试-e4db08cd"
+            - option "提交恢复-9409c133"
+            - option "订单测试-19555e62"
+            - option "订单测试-0d2125b6"
+            - option "订单测试-1ce100ae"
+            - option "提交恢复-1585d01a"
+            - option "订单测试-ec8d6f0a"
+            - option "订单测试-536430e4"
+            - option "订单测试-3a03adfc"
+            - option "订单测试-15d12a52"
+            - option "提交恢复-24c9655e"
+            - option "订单测试-5ee76bc5"
+            - option "订单测试-a86028f3"
+            - option "订单测试-0aec33ad"
+            - option "订单测试-c127e1f6"
+            - option "订单测试-02775d27"
+            - option "提交恢复-52e7d91f"
+            - option "订单测试-0d539613"
+            - option "订单测试-e0ba7397"
+            - option "UI权限恢复-e42bef93"
+            - option "订单测试-0d6327a6"
+            - option "提交恢复-84ae19c2"
+            - option "订单测试-9c469203"
+            - option "订单测试-c24e7aea"
+            - option "订单测试-af2cb43a"
+            - option "订单测试-92799bef"
+            - option "订单测试-3c03fbb5"
+            - option "订单测试-2296b1bd"
+            - option "订单测试-0924dd58"
+            - option "订单测试-553b90ca"
+            - option "订单测试-bfe2ec6b"
+            - option "订单测试-9ffe7551"
+            - option "订单测试-41b54025"
+            - option "订单测试-0522c5de"
+            - option "提交恢复-38b03622"
+            - option "订单测试-abaaac98"
+            - option "提交恢复-a5b5dc37"
+            - option "提交恢复-01332f6b"
+            - option "订单测试-4e30a125"
+            - option "订单测试-493542aa"
+            - option "订单测试-688ba1df"
+            - option "订单测试-d27fad21"
+            - option "订单测试-9409f178"
+            - option "订单测试-8a25ef56"
+            - option "订单测试-f201ced8"
+            - option "提交恢复-b04bad2d"
+            - option "提交恢复-dfa7294a"
+            - option "提交恢复-e4d1deda"
+            - option "订单测试-5e451774"
+            - option "提交恢复-26588f4c"
+            - option "订单测试-5f9c88f4"
+            - option "订单测试-47e3dedf"
+            - option "订单测试-9a666ce8"
+            - option "订单测试-b0788273"
+            - option "接管导出-aa118ed1"
+            - option "提交恢复-413be2d8"
+            - option "订单测试-d80431b8"
+            - option "订单测试-3fae5a3d"
+            - option "订单测试-50131203"
+            - option "订单测试-43534706"
+            - option "提交恢复-886b6035"
+            - option "订单测试-8519b95b"
+            - option "提交恢复-622e7e24"
+            - option "订单测试-bc2b8df3"
+            - option "订单测试-a69b9ec4"
+            - option "订单测试-fdac895a"
+            - option "订单测试-08e3d8ab"
+            - option "UI权限恢复-32495749"
+            - option "订单测试-b59fe0d1"
+            - option "订单测试-9a0d56fa"
+            - option "订单测试-633800ec"
+            - option "订单测试-ce834e68"
+            - option "订单测试-c49efe82"
+            - option "提交恢复-aa9876d8"
+            - option "订单测试-8e9bd21d"
+            - option "订单测试-a1224063"
+            - option "UI权限恢复-b945eb0a"
+            - option "订单测试-5d1a4d00"
+            - option "订单测试-5c91b4dc"
+            - option "订单测试-cb422e85"
+            - option "UI权限恢复-f7835372"
+            - option "订单测试-f7ebaf0a"
+            - option "订单测试-4e627a69"
+            - option "订单测试-d20602cc"
+            - option "提交恢复-61a7702e"
+            - option "订单测试-4aa0222a"
+            - option "订单测试-1f2d6d72"
+            - option "订单测试-2eec8b8f"
+            - option "订单测试-b992b8cc"
+            - option "订单测试-869c106b"
+            - option "订单测试-e7d2302d"
+            - option "UI权限恢复-c9100953"
+            - option "订单测试-f17fa42e"
+            - option "提交恢复-95c28f20"
+            - option "订单测试-38c0b21d"
+            - option "提交恢复-78c7def5"
+            - option "订单测试-4f0a548a"
+            - option "订单测试-ab64c575"
+            - option "订单测试-b409d374"
+            - option "提交恢复-379a9ca4"
+            - option "订单测试-9551e1e4"
+            - option "订单测试-77b3f4c5"
+            - option "订单测试-82824b2c"
+            - option "接管导出-6e0be25b"
+            - option "订单测试-74ec6d45"
+            - option "订单测试-3c66ebc8"
+            - option "订单测试-9630ff21"
+            - option "订单测试-0a332cf5"
+            - option "提交恢复-345e35ae"
+            - option "提交恢复-cd06ed06"
+            - option "订单测试-9ca71c0a"
+            - option "订单测试-9063108a"
+            - option "订单测试-59067417"
+            - option "订单测试-dff94c40"
+            - option "UI权限恢复-e67faf67"
+            - option "订单测试-e581274e"
+            - option "订单测试-ba564e77"
+            - option "订单测试-aefda51f"
+            - option "订单测试-1117775c"
+            - option "提交恢复-35d5ccdb"
+            - option "UI权限恢复-3ec7756d"
+            - option "提交恢复-d2840741"
+            - option "订单测试-031324b7"
+            - option "订单测试-db8c24da"
+            - option "订单测试-3bcf7855"
+            - option "订单测试-e6ef3318"
+            - option "提交恢复-8b097276"
+            - option "订单测试-770d8f0d"
+            - option "提交恢复-9698997c"
+            - option "订单测试-2aaa1a7c"
+            - option "订单测试-9fa75704"
+            - option "订单测试-e219da02"
+            - option "订单测试-52cf5373"
+            - option "订单测试-8c8e5bb7"
+            - option "订单测试-42d806a8"
+            - option "提交恢复-6fafc3e3"
+            - option "UI权限恢复-26358bc9"
+            - option "订单测试-2572fcda"
+            - option "订单测试-3462c999"
+            - option "订单测试-eb57993d"
+            - option "提交恢复-5afde094"
+            - option "订单测试-7e1d4541"
+            - option "订单测试-8df75d7c"
+            - option "接管导出-24f9cb39"
+            - option "提交恢复-7c4ead1b"
+            - option "提交恢复-481592f0"
+            - option "订单测试-0f1bc78d"
+            - option "订单测试-59687752"
+            - option "订单测试-7174fc99"
+            - option "订单测试-f7ab22b1"
+            - option "提交恢复-e87b6f81"
+            - option "订单测试-1b51fdb4"
+            - option "订单测试-1cb39519"
+            - option "订单测试-4b8e4312"
+            - option "订单测试-190be638"
+            - option "订单测试-39d224ae"
+            - option "提交恢复-acaf471d"
+            - option "订单测试-2ded71a7"
+            - option "订单测试-ab3e6d26"
+            - option "订单测试-64c302b2"
+            - option "订单测试-43d4ec14"
+            - option "提交恢复-35d8383f"
+            - option "UI权限恢复-7458f69f"
+            - option "订单测试-d3ceee45"
+            - option "订单测试-8a6dfaa3"
+            - option "订单测试-2c6d4aa8"
+            - option "提交恢复-b9c7aa31"
+            - option "订单测试-b056bbe3"
+            - option "context-3e6583bf-bb53-40c1-8917-a2cdf3115585"
+            - option "订单测试-2cb80826"
+            - option "订单测试-f4f1d63e"
+            - option "订单测试-dd911a22"
+            - option "订单测试-f601d2cb"
+            - option "订单测试-d97b261e"
+            - option "订单测试-a4b66792"
+            - option "提交恢复-f1ad908a"
+            - option "订单测试-3f44c5ae"
+            - option "订单测试-a47789b8"
+            - option "提交恢复-416e34d6"
+            - option "订单测试-fcab6f05"
+            - option "订单测试-b8ad2409"
+            - option "订单测试-bcf56bd8"
+            - option "提交恢复-30f43ef5"
+            - option "订单测试-46d58b35"
+            - option "订单测试-bef6d07b"
+            - option "订单测试-dc8a0fe2"
+            - option "UI权限恢复-ffb627bf"
+            - option "提交恢复-8b651b6f"
+            - option "订单测试-ab93fd73"
+            - option "订单测试-4e1f39da"
+            - option "订单测试-2b916fec"
+            - option "订单测试-045ff5b8"
+            - option "context-3bcf981a-7e6d-4084-8e33-70dcf519e164"
+            - option "提交恢复-7b1db804"
+            - option "订单测试-9a5b7bbf"
+            - option "接管导出-eb8b91b2"
+            - option "UI权限恢复-007b356a"
+            - option "订单测试-4b24e811"
+            - option "UI权限恢复-87f2a366"
+            - option "订单测试-d8052dee"
+            - option "UI权限恢复-97386a57"
+            - option "订单测试-e0f1ac7f"
+            - option "订单测试-d4f6371f"
+            - option "UI权限恢复-07a2fd8d"
+            - option "UI权限恢复-a0938d68"
+            - option "订单测试-fd76ae12"
+            - option "提交恢复-4ece71a1"
+            - option "订单测试-1ade5b96"
+            - option "订单测试-22dfd48d"
+            - option "订单测试-99685705"
+            - option "订单测试-de9acaeb"
+            - option "订单测试-744f862c"
+            - option "context-34b2f342-af91-4c58-a5cb-e751b38dfd96"
+            - option "订单测试-9dc97d6e"
+            - option "订单测试-7c5f42a4"
+            - option "提交恢复-79660117"
+            - option "订单测试-7624581e"
+            - option "订单测试-2bf7986d"
+            - option "订单测试-cbc873f6"
+            - option "订单测试-41024697"
+            - option "订单测试-a0a92867"
+            - option "订单测试-b52e4171"
+            - option "订单测试-53548e2b"
+            - option "UI权限恢复-382417b2"
+            - option "提交恢复-3eb5119f"
+            - option "订单测试-5e4b384f"
+            - option "订单测试-d005e7b0"
+            - option "订单测试-222dea4a"
+            - option "订单测试-4582c78b"
+            - option "订单测试-2518e7be"
+            - option "订单测试-492e64a5"
+            - option "订单测试-8323d5c2"
+            - option "提交恢复-230304da"
+            - option "订单测试-7e5268f3"
+            - option "订单测试-04cf8145"
+            - option "订单测试-b7e13478"
+            - option "订单测试-6911b545"
+            - option "订单测试-3708f689"
+            - option "订单测试-d00ece37"
+            - option "订单测试-b97e2990"
+            - option "订单测试-06e1bc25"
+            - option "订单测试-1a19b61e"
+            - option "订单测试-2aa7c6fb"
+            - option "订单测试-197f3e96"
+            - option "订单测试-f2c4e5fa"
+            - option "订单测试-c4b2684b"
+            - option "提交恢复-c011a10b"
+            - option "订单测试-7e8eeb19"
+            - option "订单测试-ee254bf3"
+            - option "提交恢复-3fe21f09"
+            - option "提交恢复-1613e4d8"
+            - option "订单测试-0357cc60"
+            - option "订单测试-039717de"
+        - button "新建问题" [ref=e31] [cursor=pointer]
+        - generic [ref=e32]:
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e33] [cursor=pointer]:
+            - strong [ref=e34]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e35]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e36] [cursor=pointer]:
+            - strong [ref=e37]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e38]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e39] [cursor=pointer]:
+            - strong [ref=e40]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e41]: 待接管
+          - button "新问题 待补充" [ref=e42] [cursor=pointer]:
+            - strong [ref=e43]: 新问题
+            - generic [ref=e44]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e45] [cursor=pointer]:
+            - strong [ref=e46]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e47]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e48] [cursor=pointer]:
+            - strong [ref=e49]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e50]: 待接管
+          - button "合成差异已复核 已解决" [ref=e51] [cursor=pointer]:
+            - strong [ref=e52]: 合成差异已复核
+            - generic [ref=e53]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e54] [cursor=pointer]:
+            - strong [ref=e55]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e56]: 待验证
+          - button "新问题 待补充" [ref=e57] [cursor=pointer]:
+            - strong [ref=e58]: 新问题
+            - generic [ref=e59]: 待补充
+          - button "提交恢复-9409c133 second 待补充" [ref=e60] [cursor=pointer]:
+            - strong [ref=e61]: 提交恢复-9409c133 second
+            - generic [ref=e62]: 待补充
+          - button "新问题 待补充" [ref=e63] [cursor=pointer]:
+            - strong [ref=e64]: 新问题
+            - generic [ref=e65]: 待补充
+          - button "提交恢复-01332f6b second 待补充" [ref=e66] [cursor=pointer]:
+            - strong [ref=e67]: 提交恢复-01332f6b second
+            - generic [ref=e68]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e69] [cursor=pointer]:
+            - strong [ref=e70]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e71]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e72] [cursor=pointer]:
+            - strong [ref=e73]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e74]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e75] [cursor=pointer]:
+            - strong [ref=e76]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e77]: 待接管
+          - button "新问题 待补充" [ref=e78] [cursor=pointer]:
+            - strong [ref=e79]: 新问题
+            - generic [ref=e80]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e81] [cursor=pointer]:
+            - strong [ref=e82]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e83]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e84] [cursor=pointer]:
+            - strong [ref=e85]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e86]: 待补充
+          - button "合成差异已复核 已解决" [ref=e87] [cursor=pointer]:
+            - strong [ref=e88]: 合成差异已复核
+            - generic [ref=e89]: 已解决
+          - button "新问题 待补充" [ref=e90] [cursor=pointer]:
+            - strong [ref=e91]: 新问题
+            - generic [ref=e92]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e93] [cursor=pointer]:
+            - strong [ref=e94]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e95]: 待接管
+          - button "提交恢复-3eb5119f 待补充" [ref=e96] [cursor=pointer]:
+            - strong [ref=e97]: 提交恢复-3eb5119f
+            - generic [ref=e98]: 待补充
+          - button "提交恢复-b1687423 待接管" [ref=e99] [cursor=pointer]:
+            - strong [ref=e100]: 提交恢复-b1687423
+            - generic [ref=e101]: 待接管
+          - button "新问题 待补充" [ref=e102] [cursor=pointer]:
+            - strong [ref=e103]: 新问题
+            - generic [ref=e104]: 待补充
+          - button "W 后第一条持久事件 待补充" [ref=e105] [cursor=pointer]:
+            - strong [ref=e106]: W 后第一条持久事件
+            - generic [ref=e107]: 待补充
+          - button "新问题 待补充" [ref=e108] [cursor=pointer]:
+            - strong [ref=e109]: 新问题
+            - generic [ref=e110]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e111] [cursor=pointer]:
+            - strong [ref=e112]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e113]: 待补充
+          - button "新问题 待补充" [ref=e114] [cursor=pointer]:
+            - strong [ref=e115]: 新问题
+            - generic [ref=e116]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e117] [cursor=pointer]:
+            - strong [ref=e118]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e119]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e120] [cursor=pointer]:
+            - strong [ref=e121]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e122]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e123] [cursor=pointer]:
+            - strong [ref=e124]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e125]: 待接管
+          - button "提交恢复-95c28f20 second 待补充" [ref=e126] [cursor=pointer]:
+            - strong [ref=e127]: 提交恢复-95c28f20 second
+            - generic [ref=e128]: 待补充
+          - button "W 后第一条持久事件 待补充" [ref=e129] [cursor=pointer]:
+            - strong [ref=e130]: W 后第一条持久事件
+            - generic [ref=e131]: 待补充
+          - button "新问题 待补充" [ref=e132] [cursor=pointer]:
+            - strong [ref=e133]: 新问题
+            - generic [ref=e134]: 待补充
+          - button "新问题 待补充" [ref=e135] [cursor=pointer]:
+            - strong [ref=e136]: 新问题
+            - generic [ref=e137]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e138] [cursor=pointer]:
+            - strong [ref=e139]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e140]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e141] [cursor=pointer]:
+            - strong [ref=e142]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e143]: 待接管
+          - button "重传同一条已保存消息 待补充" [ref=e144] [cursor=pointer]:
+            - strong [ref=e145]: 重传同一条已保存消息
+            - generic [ref=e146]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e147] [cursor=pointer]:
+            - strong [ref=e148]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e149]: 待接管
+          - button "新问题 待补充" [ref=e150] [cursor=pointer]:
+            - strong [ref=e151]: 新问题
+            - generic [ref=e152]: 待补充
+          - button "新问题 待补充" [ref=e153] [cursor=pointer]:
+            - strong [ref=e154]: 新问题
+            - generic [ref=e155]: 待补充
+          - button "合成差异已复核 已解决" [ref=e156] [cursor=pointer]:
+            - strong [ref=e157]: 合成差异已复核
+            - generic [ref=e158]: 已解决
+          - button "合成差异已复核 已解决" [ref=e159] [cursor=pointer]:
+            - strong [ref=e160]: 合成差异已复核
+            - generic [ref=e161]: 已解决
+          - button "新问题 待补充" [ref=e162] [cursor=pointer]:
+            - strong [ref=e163]: 新问题
+            - generic [ref=e164]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e165] [cursor=pointer]:
+            - strong [ref=e166]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e167]: 待验证
+          - button "新问题 待补充" [ref=e168] [cursor=pointer]:
+            - strong [ref=e169]: 新问题
+            - generic [ref=e170]: 待补充
+          - button "UI权限恢复-26358bc9 的问题 UI权限恢复-26358bc9 的独立正 待补充" [ref=e171] [cursor=pointer]:
+            - strong [ref=e172]: UI权限恢复-26358bc9 的问题 UI权限恢复-26358bc9 的独立正
+            - generic [ref=e173]: 待补充
+          - button "新问题 待补充" [ref=e174] [cursor=pointer]:
+            - strong [ref=e175]: 新问题
+            - generic [ref=e176]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e177] [cursor=pointer]:
+            - strong [ref=e178]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e179]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e180] [cursor=pointer]:
+            - strong [ref=e181]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e182]: 待接管
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e183] [cursor=pointer]:
+            - strong [ref=e184]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e185]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e186] [cursor=pointer]:
+            - strong [ref=e187]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e188]: 待接管
+          - button "原始消息内容 待补充" [ref=e189] [cursor=pointer]:
+            - strong [ref=e190]: 原始消息内容
+            - generic [ref=e191]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e192] [cursor=pointer]:
+            - strong [ref=e193]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e194]: 待补充
+          - button "W 后第一条持久事件 待补充" [ref=e195] [cursor=pointer]:
+            - strong [ref=e196]: W 后第一条持久事件
+            - generic [ref=e197]: 待补充
+          - button "UI权限恢复-bff77744 的问题 UI权限恢复-bff77744 的独立正 待补充" [ref=e198] [cursor=pointer]:
+            - strong [ref=e199]: UI权限恢复-bff77744 的问题 UI权限恢复-bff77744 的独立正
+            - generic [ref=e200]: 待补充
+          - button "新问题 待补充" [ref=e201] [cursor=pointer]:
+            - strong [ref=e202]: 新问题
+            - generic [ref=e203]: 待补充
+          - button "提交恢复-b9c7aa31 待补充" [ref=e204] [cursor=pointer]:
+            - strong [ref=e205]: 提交恢复-b9c7aa31
+            - generic [ref=e206]: 待补充
+          - button "提交恢复-928acfc7 待验证" [ref=e207] [cursor=pointer]:
+            - strong [ref=e208]: 提交恢复-928acfc7
+            - generic [ref=e209]: 待验证
+          - button "新问题 待补充" [ref=e210] [cursor=pointer]:
+            - strong [ref=e211]: 新问题
+            - generic [ref=e212]: 待补充
+          - button "原始消息内容 待补充" [ref=e213] [cursor=pointer]:
+            - strong [ref=e214]: 原始消息内容
+            - generic [ref=e215]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e216] [cursor=pointer]:
+            - strong [ref=e217]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e218]: 待验证
+          - button "新问题 待补充" [ref=e219] [cursor=pointer]:
+            - strong [ref=e220]: 新问题
+            - generic [ref=e221]: 待补充
+          - button "新问题 待补充" [ref=e222] [cursor=pointer]:
+            - strong [ref=e223]: 新问题
+            - generic [ref=e224]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e225] [cursor=pointer]:
+            - strong [ref=e226]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e227]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e228] [cursor=pointer]:
+            - strong [ref=e229]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e230]: 待验证
+          - button "接管导出-6e0be25b 待验证" [ref=e231] [cursor=pointer]:
+            - strong [ref=e232]: 接管导出-6e0be25b
+            - generic [ref=e233]: 待验证
+          - button "新问题 待补充" [ref=e234] [cursor=pointer]:
+            - strong [ref=e235]: 新问题
+            - generic [ref=e236]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e237] [cursor=pointer]:
+            - strong [ref=e238]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e239]: 待接管
+          - button "新问题 待补充" [ref=e240] [cursor=pointer]:
+            - strong [ref=e241]: 新问题
+            - generic [ref=e242]: 待补充
+          - button "提交恢复-1e1a5e9e 待补充" [ref=e243] [cursor=pointer]:
+            - strong [ref=e244]: 提交恢复-1e1a5e9e
+            - generic [ref=e245]: 待补充
+          - button "提交恢复-35d8383f second 待补充" [ref=e246] [cursor=pointer]:
+            - strong [ref=e247]: 提交恢复-35d8383f second
+            - generic [ref=e248]: 待补充
+          - button "新问题 待补充" [ref=e249] [cursor=pointer]:
+            - strong [ref=e250]: 新问题
+            - generic [ref=e251]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e252] [cursor=pointer]:
+            - strong [ref=e253]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e254]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e255] [cursor=pointer]:
+            - strong [ref=e256]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e257]: 待验证
+          - button "合成差异已复核 已解决" [ref=e258] [cursor=pointer]:
+            - strong [ref=e259]: 合成差异已复核
+            - generic [ref=e260]: 已解决
+          - button "新问题 待补充" [ref=e261] [cursor=pointer]:
+            - strong [ref=e262]: 新问题
+            - generic [ref=e263]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e264] [cursor=pointer]:
+            - strong [ref=e265]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e266]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e267] [cursor=pointer]:
+            - strong [ref=e268]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e269]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e270] [cursor=pointer]:
+            - strong [ref=e271]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e272]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e273] [cursor=pointer]:
+            - strong [ref=e274]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e275]: 待接管
+          - button "合成差异已复核 已解决" [ref=e276] [cursor=pointer]:
+            - strong [ref=e277]: 合成差异已复核
+            - generic [ref=e278]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e279] [cursor=pointer]:
+            - strong [ref=e280]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e281]: 待接管
+          - button "W 后第一条持久事件 待补充" [ref=e282] [cursor=pointer]:
+            - strong [ref=e283]: W 后第一条持久事件
+            - generic [ref=e284]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e285] [cursor=pointer]:
+            - strong [ref=e286]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e287]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e288] [cursor=pointer]:
+            - strong [ref=e289]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e290]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e291] [cursor=pointer]:
+            - strong [ref=e292]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e293]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e294] [cursor=pointer]:
+            - strong [ref=e295]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e296]: 待验证
+          - button "W 后第一条持久事件 待补充" [ref=e297] [cursor=pointer]:
+            - strong [ref=e298]: W 后第一条持久事件
+            - generic [ref=e299]: 待补充
+          - button "UI权限恢复-a0938d68 的问题 UI权限恢复-a0938d68 的独立正 待补充" [ref=e300] [cursor=pointer]:
+            - strong [ref=e301]: UI权限恢复-a0938d68 的问题 UI权限恢复-a0938d68 的独立正
+            - generic [ref=e302]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e303] [cursor=pointer]:
+            - strong [ref=e304]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e305]: 待接管
+          - button "新问题 待补充" [ref=e306] [cursor=pointer]:
+            - strong [ref=e307]: 新问题
+            - generic [ref=e308]: 待补充
+          - button "新问题 待补充" [ref=e309] [cursor=pointer]:
+            - strong [ref=e310]: 新问题
+            - generic [ref=e311]: 待补充
+          - button "提交恢复-8bd72e77 待补充" [ref=e312] [cursor=pointer]:
+            - strong [ref=e313]: 提交恢复-8bd72e77
+            - generic [ref=e314]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e315] [cursor=pointer]:
+            - strong [ref=e316]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e317]: 待补充
+          - button "新问题 待补充" [ref=e318] [cursor=pointer]:
+            - strong [ref=e319]: 新问题
+            - generic [ref=e320]: 待补充
+          - button "新问题 待补充" [ref=e321] [cursor=pointer]:
+            - strong [ref=e322]: 新问题
+            - generic [ref=e323]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e324] [cursor=pointer]:
+            - strong [ref=e325]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e326]: 已解决
+          - button "Separate authorized conversation 待接管" [ref=e327] [cursor=pointer]:
+            - strong [ref=e328]: Separate authorized conversation
+            - generic [ref=e329]: 待接管
+          - button "新问题 待补充" [ref=e330] [cursor=pointer]:
+            - strong [ref=e331]: 新问题
+            - generic [ref=e332]: 待补充
+          - button "合成差异已复核 已解决" [ref=e333] [cursor=pointer]:
+            - strong [ref=e334]: 合成差异已复核
+            - generic [ref=e335]: 已解决
+          - button "提交恢复-52e7d91f 待验证" [ref=e336] [cursor=pointer]:
+            - strong [ref=e337]: 提交恢复-52e7d91f
+            - generic [ref=e338]: 待验证
+          - button "新问题 待补充" [ref=e339] [cursor=pointer]:
+            - strong [ref=e340]: 新问题
+            - generic [ref=e341]: 待补充
+          - button "新问题 待补充" [ref=e342] [cursor=pointer]:
+            - strong [ref=e343]: 新问题
+            - generic [ref=e344]: 待补充
+          - button "新问题 待补充" [ref=e345] [cursor=pointer]:
+            - strong [ref=e346]: 新问题
+            - generic [ref=e347]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e348] [cursor=pointer]:
+            - strong [ref=e349]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e350]: 待接管
+          - button "提交恢复-aa9876d8 待补充" [ref=e351] [cursor=pointer]:
+            - strong [ref=e352]: 提交恢复-aa9876d8
+            - generic [ref=e353]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e354] [cursor=pointer]:
+            - strong [ref=e355]: 重传同一条已保存消息
+            - generic [ref=e356]: 待补充
+          - button "合成差异已复核 已解决" [ref=e357] [cursor=pointer]:
+            - strong [ref=e358]: 合成差异已复核
+            - generic [ref=e359]: 已解决
+          - button "First event after W 待补充" [ref=e360] [cursor=pointer]:
+            - strong [ref=e361]: First event after W
+            - generic [ref=e362]: 待补充
+          - button "提交恢复-79660117 待验证" [ref=e363] [cursor=pointer]:
+            - strong [ref=e364]: 提交恢复-79660117
+            - generic [ref=e365]: 待验证
+          - button "提交恢复-3fe21f09 待补充" [ref=e366] [cursor=pointer]:
+            - strong [ref=e367]: 提交恢复-3fe21f09
+            - generic [ref=e368]: 待补充
+          - button "新问题 待补充" [ref=e369] [cursor=pointer]:
+            - strong [ref=e370]: 新问题
+            - generic [ref=e371]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e372] [cursor=pointer]:
+            - strong [ref=e373]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e374]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e375] [cursor=pointer]:
+            - strong [ref=e376]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e377]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e378] [cursor=pointer]:
+            - strong [ref=e379]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e380]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e381] [cursor=pointer]:
+            - strong [ref=e382]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e383]: 待补充
+          - button "提交恢复-345e35ae 待补充" [ref=e384] [cursor=pointer]:
+            - strong [ref=e385]: 提交恢复-345e35ae
+            - generic [ref=e386]: 待补充
+          - button "原始消息内容 待补充" [ref=e387] [cursor=pointer]:
+            - strong [ref=e388]: 原始消息内容
+            - generic [ref=e389]: 待补充
+          - button "新问题 待补充" [ref=e390] [cursor=pointer]:
+            - strong [ref=e391]: 新问题
+            - generic [ref=e392]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e393] [cursor=pointer]:
+            - strong [ref=e394]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e395]: 待接管
+          - button "提交恢复-e87b6f81 second 待补充" [ref=e396] [cursor=pointer]:
+            - strong [ref=e397]: 提交恢复-e87b6f81 second
+            - generic [ref=e398]: 待补充
+          - button "新问题 待补充" [ref=e399] [cursor=pointer]:
+            - strong [ref=e400]: 新问题
+            - generic [ref=e401]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e402] [cursor=pointer]:
+            - strong [ref=e403]: 重传同一条已保存消息
+            - generic [ref=e404]: 待补充
+          - button "合成差异已复核 已解决" [ref=e405] [cursor=pointer]:
+            - strong [ref=e406]: 合成差异已复核
+            - generic [ref=e407]: 已解决
+          - button "提交恢复-c011a10b 待补充" [ref=e408] [cursor=pointer]:
+            - strong [ref=e409]: 提交恢复-c011a10b
+            - generic [ref=e410]: 待补充
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e411] [cursor=pointer]:
+            - strong [ref=e412]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e413]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e414] [cursor=pointer]:
+            - strong [ref=e415]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e416]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e417] [cursor=pointer]:
+            - strong [ref=e418]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e419]: 待接管
+          - button "提交恢复-379a9ca4 待补充" [ref=e420] [cursor=pointer]:
+            - strong [ref=e421]: 提交恢复-379a9ca4
+            - generic [ref=e422]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e423] [cursor=pointer]:
+            - strong [ref=e424]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e425]: 待验证
+          - button "提交恢复-9698997c 待补充" [ref=e426] [cursor=pointer]:
+            - strong [ref=e427]: 提交恢复-9698997c
+            - generic [ref=e428]: 待补充
+          - button "新问题 待补充" [ref=e429] [cursor=pointer]:
+            - strong [ref=e430]: 新问题
+            - generic [ref=e431]: 待补充
+          - button "新问题 待补充" [ref=e432] [cursor=pointer]:
+            - strong [ref=e433]: 新问题
+            - generic [ref=e434]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e435] [cursor=pointer]:
+            - strong [ref=e436]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e437]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e438] [cursor=pointer]:
+            - strong [ref=e439]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e440]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e441] [cursor=pointer]:
+            - strong [ref=e442]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e443]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e444] [cursor=pointer]:
+            - strong [ref=e445]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e446]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e447] [cursor=pointer]:
+            - strong [ref=e448]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e449]: 待接管
+          - button "接管导出-aa118ed1 已解决" [ref=e450] [cursor=pointer]:
+            - strong [ref=e451]: 接管导出-aa118ed1
+            - generic [ref=e452]: 已解决
+          - button "合成差异已复核 已解决" [ref=e453] [cursor=pointer]:
+            - strong [ref=e454]: 合成差异已复核
+            - generic [ref=e455]: 已解决
+          - button "提交恢复-f4d2ba4a 待补充" [ref=e456] [cursor=pointer]:
+            - strong [ref=e457]: 提交恢复-f4d2ba4a
+            - generic [ref=e458]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e459] [cursor=pointer]:
+            - strong [ref=e460]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e461]: 待接管
+          - button "原始消息内容 待补充" [ref=e462] [cursor=pointer]:
+            - strong [ref=e463]: 原始消息内容
+            - generic [ref=e464]: 待补充
+          - button "新问题 待补充" [ref=e465] [cursor=pointer]:
+            - strong [ref=e466]: 新问题
+            - generic [ref=e467]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e468] [cursor=pointer]:
+            - strong [ref=e469]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e470]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e471] [cursor=pointer]:
+            - strong [ref=e472]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e473]: 待接管
+          - button "新问题 待补充" [ref=e474] [cursor=pointer]:
+            - strong [ref=e475]: 新问题
+            - generic [ref=e476]: 待补充
+          - button "新问题 待补充" [ref=e477] [cursor=pointer]:
+            - strong [ref=e478]: 新问题
+            - generic [ref=e479]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e480] [cursor=pointer]:
+            - strong [ref=e481]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e482]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e483] [cursor=pointer]:
+            - strong [ref=e484]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e485]: 待验证
+          - button "新问题 待补充" [ref=e486] [cursor=pointer]:
+            - strong [ref=e487]: 新问题
+            - generic [ref=e488]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e489] [cursor=pointer]:
+            - strong [ref=e490]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e491]: 待补充
+          - button "W 后第一条持久事件 待补充" [ref=e492] [cursor=pointer]:
+            - strong [ref=e493]: W 后第一条持久事件
+            - generic [ref=e494]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e495] [cursor=pointer]:
+            - strong [ref=e496]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e497]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e498] [cursor=pointer]:
+            - strong [ref=e499]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e500]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e501] [cursor=pointer]:
+            - strong [ref=e502]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e503]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e504] [cursor=pointer]:
+            - strong [ref=e505]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e506]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e507] [cursor=pointer]:
+            - strong [ref=e508]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e509]: 待接管
+          - button "新问题 待补充" [ref=e510] [cursor=pointer]:
+            - strong [ref=e511]: 新问题
+            - generic [ref=e512]: 待补充
+          - button "Expiring synthetic body lease 待补充" [ref=e513] [cursor=pointer]:
+            - strong [ref=e514]: Expiring synthetic body lease
+            - generic [ref=e515]: 待补充
+          - button "新问题 待补充" [ref=e516] [cursor=pointer]:
+            - strong [ref=e517]: 新问题
+            - generic [ref=e518]: 待补充
+          - button "UI权限恢复-e67faf67 的问题 UI权限恢复-e67faf67 的独立正 待补充" [ref=e519] [cursor=pointer]:
+            - strong [ref=e520]: UI权限恢复-e67faf67 的问题 UI权限恢复-e67faf67 的独立正
+            - generic [ref=e521]: 待补充
+          - button "新问题 待补充" [ref=e522] [cursor=pointer]:
+            - strong [ref=e523]: 新问题
+            - generic [ref=e524]: 待补充
+          - button "提交恢复-6fafc3e3 待补充" [ref=e525] [cursor=pointer]:
+            - strong [ref=e526]: 提交恢复-6fafc3e3
+            - generic [ref=e527]: 待补充
+          - button "新问题 待补充" [ref=e528] [cursor=pointer]:
+            - strong [ref=e529]: 新问题
+            - generic [ref=e530]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e531] [cursor=pointer]:
+            - strong [ref=e532]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e533]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e534] [cursor=pointer]:
+            - strong [ref=e535]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e536]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e537] [cursor=pointer]:
+            - strong [ref=e538]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e539]: 待接管
+          - button "新问题 待补充" [ref=e540] [cursor=pointer]:
+            - strong [ref=e541]: 新问题
+            - generic [ref=e542]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e543] [cursor=pointer]:
+            - strong [ref=e544]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e545]: 待验证
+          - button "提交恢复-622e7e24 待补充" [ref=e546] [cursor=pointer]:
+            - strong [ref=e547]: 提交恢复-622e7e24
+            - generic [ref=e548]: 待补充
+          - button "合成差异已复核 已解决" [ref=e549] [cursor=pointer]:
+            - strong [ref=e550]: 合成差异已复核
+            - generic [ref=e551]: 已解决
+          - button "合成差异已复核 已解决" [ref=e552] [cursor=pointer]:
+            - strong [ref=e553]: 合成差异已复核
+            - generic [ref=e554]: 已解决
+          - button "提交恢复-acaf471d 待补充" [ref=e555] [cursor=pointer]:
+            - strong [ref=e556]: 提交恢复-acaf471d
+            - generic [ref=e557]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e558] [cursor=pointer]:
+            - strong [ref=e559]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e560]: 待验证
+          - button "提交恢复-5febd935 待补充" [ref=e561] [cursor=pointer]:
+            - strong [ref=e562]: 提交恢复-5febd935
+            - generic [ref=e563]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e564] [cursor=pointer]:
+            - strong [ref=e565]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e566]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e567] [cursor=pointer]:
+            - strong [ref=e568]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e569]: 待验证
+          - button "提交恢复-1594cd68 待补充" [ref=e570] [cursor=pointer]:
+            - strong [ref=e571]: 提交恢复-1594cd68
+            - generic [ref=e572]: 待补充
+          - button "提交恢复-7b1db804 待补充" [ref=e573] [cursor=pointer]:
+            - strong [ref=e574]: 提交恢复-7b1db804
+            - generic [ref=e575]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e576] [cursor=pointer]:
+            - strong [ref=e577]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e578]: 待接管
+          - button "新问题 待补充" [ref=e579] [cursor=pointer]:
+            - strong [ref=e580]: 新问题
+            - generic [ref=e581]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e582] [cursor=pointer]:
+            - strong [ref=e583]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e584]: 待接管
+          - button "新问题 待补充" [ref=e585] [cursor=pointer]:
+            - strong [ref=e586]: 新问题
+            - generic [ref=e587]: 待补充
+          - button "新问题 待补充" [ref=e588] [cursor=pointer]:
+            - strong [ref=e589]: 新问题
+            - generic [ref=e590]: 待补充
+          - button "提交恢复-886b6035 待补充" [ref=e591] [cursor=pointer]:
+            - strong [ref=e592]: 提交恢复-886b6035
+            - generic [ref=e593]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e594] [cursor=pointer]:
+            - strong [ref=e595]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e596]: 待验证
+          - button "新问题 待补充" [ref=e597] [cursor=pointer]:
+            - strong [ref=e598]: 新问题
+            - generic [ref=e599]: 待补充
+          - button "新问题 待补充" [ref=e600] [cursor=pointer]:
+            - strong [ref=e601]: 新问题
+            - generic [ref=e602]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e603] [cursor=pointer]:
+            - strong [ref=e604]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e605]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e606] [cursor=pointer]:
+            - strong [ref=e607]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e608]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e609] [cursor=pointer]:
+            - strong [ref=e610]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e611]: 待验证
+          - button "提交恢复-26588f4c 待补充" [ref=e612] [cursor=pointer]:
+            - strong [ref=e613]: 提交恢复-26588f4c
+            - generic [ref=e614]: 待补充
+          - button "提交恢复-c12f0b09 待补充" [ref=e615] [cursor=pointer]:
+            - strong [ref=e616]: 提交恢复-c12f0b09
+            - generic [ref=e617]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e618] [cursor=pointer]:
+            - strong [ref=e619]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e620]: 待接管
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e621] [cursor=pointer]:
+            - strong [ref=e622]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e623]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e624] [cursor=pointer]:
+            - strong [ref=e625]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e626]: 待验证
+          - button "UI权限恢复-3ec7756d 的问题 UI权限恢复-3ec7756d 的独立正 待补充" [ref=e627] [cursor=pointer]:
+            - strong [ref=e628]: UI权限恢复-3ec7756d 的问题 UI权限恢复-3ec7756d 的独立正
+            - generic [ref=e629]: 待补充
+          - button "UI权限恢复-e42bef93 的问题 UI权限恢复-e42bef93 的独立正 待补充" [ref=e630] [cursor=pointer]:
+            - strong [ref=e631]: UI权限恢复-e42bef93 的问题 UI权限恢复-e42bef93 的独立正
+            - generic [ref=e632]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e633] [cursor=pointer]:
+            - strong [ref=e634]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e635]: 待验证
+          - button "提交恢复-543f45ce 待补充" [ref=e636] [cursor=pointer]:
+            - strong [ref=e637]: 提交恢复-543f45ce
+            - generic [ref=e638]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e639] [cursor=pointer]:
+            - strong [ref=e640]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e641]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e642] [cursor=pointer]:
+            - strong [ref=e643]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e644]: 待接管
+          - button "提交恢复-19da0e48 待补充" [ref=e645] [cursor=pointer]:
+            - strong [ref=e646]: 提交恢复-19da0e48
+            - generic [ref=e647]: 待补充
+          - button "UI权限恢复-b945eb0a 的问题 UI权限恢复-b945eb0a 的独立正 待补充" [ref=e648] [cursor=pointer]:
+            - strong [ref=e649]: UI权限恢复-b945eb0a 的问题 UI权限恢复-b945eb0a 的独立正
+            - generic [ref=e650]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e651] [cursor=pointer]:
+            - strong [ref=e652]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e653]: 待补充
+          - button "新问题 待补充" [ref=e654] [cursor=pointer]:
+            - strong [ref=e655]: 新问题
+            - generic [ref=e656]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e657] [cursor=pointer]:
+            - strong [ref=e658]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e659]: 待接管
+          - button "提交恢复-f1ad908a 待补充" [ref=e660] [cursor=pointer]:
+            - strong [ref=e661]: 提交恢复-f1ad908a
+            - generic [ref=e662]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e663] [cursor=pointer]:
+            - strong [ref=e664]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e665]: 待接管
+          - button "新问题 待补充" [ref=e666] [cursor=pointer]:
+            - strong [ref=e667]: 新问题
+            - generic [ref=e668]: 待补充
+          - button "提交恢复-61a7702e 待补充" [ref=e669] [cursor=pointer]:
+            - strong [ref=e670]: 提交恢复-61a7702e
+            - generic [ref=e671]: 待补充
+          - button "新问题 待补充" [ref=e672] [cursor=pointer]:
+            - strong [ref=e673]: 新问题
+            - generic [ref=e674]: 待补充
+          - button "新问题 待补充" [ref=e675] [cursor=pointer]:
+            - strong [ref=e676]: 新问题
+            - generic [ref=e677]: 待补充
+          - button "提交恢复-4ece71a1 待补充" [ref=e678] [cursor=pointer]:
+            - strong [ref=e679]: 提交恢复-4ece71a1
+            - generic [ref=e680]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e681] [cursor=pointer]:
+            - strong [ref=e682]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e683]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e684] [cursor=pointer]:
+            - strong [ref=e685]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e686]: 待接管
+          - button "新问题 待补充" [ref=e687] [cursor=pointer]:
+            - strong [ref=e688]: 新问题
+            - generic [ref=e689]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e690] [cursor=pointer]:
+            - strong [ref=e691]: 重传同一条已保存消息
+            - generic [ref=e692]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e693] [cursor=pointer]:
+            - strong [ref=e694]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e695]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e696] [cursor=pointer]:
+            - strong [ref=e697]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e698]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e699] [cursor=pointer]:
+            - strong [ref=e700]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e701]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e702] [cursor=pointer]:
+            - strong [ref=e703]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e704]: 待验证
+          - button "提交恢复-416e34d6 待补充" [ref=e705] [cursor=pointer]:
+            - strong [ref=e706]: 提交恢复-416e34d6
+            - generic [ref=e707]: 待补充
+          - button "新问题 待补充" [ref=e708] [cursor=pointer]:
+            - strong [ref=e709]: 新问题
+            - generic [ref=e710]: 待补充
+          - button "新问题 待补充" [ref=e711] [cursor=pointer]:
+            - strong [ref=e712]: 新问题
+            - generic [ref=e713]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e714] [cursor=pointer]:
+            - strong [ref=e715]: 重传同一条已保存消息
+            - generic [ref=e716]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e717] [cursor=pointer]:
+            - strong [ref=e718]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e719]: 待补充
+          - button "提交恢复-cec05cc7 待验证" [ref=e720] [cursor=pointer]:
+            - strong [ref=e721]: 提交恢复-cec05cc7
+            - generic [ref=e722]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e723] [cursor=pointer]:
+            - strong [ref=e724]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e725]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e726] [cursor=pointer]:
+            - strong [ref=e727]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e728]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e729] [cursor=pointer]:
+            - strong [ref=e730]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e731]: 待补充
+          - button "新问题 待补充" [ref=e732] [cursor=pointer]:
+            - strong [ref=e733]: 新问题
+            - generic [ref=e734]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e735] [cursor=pointer]:
+            - strong [ref=e736]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e737]: 待接管
+          - button "新问题 待补充" [ref=e738] [cursor=pointer]:
+            - strong [ref=e739]: 新问题
+            - generic [ref=e740]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e741] [cursor=pointer]:
+            - strong [ref=e742]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e743]: 待接管
+          - button "UI权限恢复-87f2a366 的问题 UI权限恢复-87f2a366 的独立正 待补充" [ref=e744] [cursor=pointer]:
+            - strong [ref=e745]: UI权限恢复-87f2a366 的问题 UI权限恢复-87f2a366 的独立正
+            - generic [ref=e746]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e747] [cursor=pointer]:
+            - strong [ref=e748]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e749]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e750] [cursor=pointer]:
+            - strong [ref=e751]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e752]: 待接管
+          - button "新问题 待补充" [ref=e753] [cursor=pointer]:
+            - strong [ref=e754]: 新问题
+            - generic [ref=e755]: 待补充
+          - button "接管导出-24f9cb39 待验证" [ref=e756] [cursor=pointer]:
+            - strong [ref=e757]: 接管导出-24f9cb39
+            - generic [ref=e758]: 待验证
+          - button "新问题 待补充" [ref=e759] [cursor=pointer]:
+            - strong [ref=e760]: 新问题
+            - generic [ref=e761]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e762] [cursor=pointer]:
+            - strong [ref=e763]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e764]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e765] [cursor=pointer]:
+            - strong [ref=e766]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e767]: 待接管
+          - button "提交恢复-1613e4d8 待补充" [ref=e768] [cursor=pointer]:
+            - strong [ref=e769]: 提交恢复-1613e4d8
+            - generic [ref=e770]: 待补充
+          - button "提交恢复-a5b5dc37 second 待补充" [ref=e771] [cursor=pointer]:
+            - strong [ref=e772]: 提交恢复-a5b5dc37 second
+            - generic [ref=e773]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e774] [cursor=pointer]:
+            - strong [ref=e775]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e776]: 待接管
+          - button "提交恢复-413be2d8 待补充" [ref=e777] [cursor=pointer]:
+            - strong [ref=e778]: 提交恢复-413be2d8
+            - generic [ref=e779]: 待补充
+          - button "新问题 待补充" [ref=e780] [cursor=pointer]:
+            - strong [ref=e781]: 新问题
+            - generic [ref=e782]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e783] [cursor=pointer]:
+            - strong [ref=e784]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e785]: 待接管
+          - button "W 后第一条持久事件 待补充" [ref=e786] [cursor=pointer]:
+            - strong [ref=e787]: W 后第一条持久事件
+            - generic [ref=e788]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e789] [cursor=pointer]:
+            - strong [ref=e790]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e791]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e792] [cursor=pointer]:
+            - strong [ref=e793]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e794]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e795] [cursor=pointer]:
+            - strong [ref=e796]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e797]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e798] [cursor=pointer]:
+            - strong [ref=e799]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e800]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e801] [cursor=pointer]:
+            - strong [ref=e802]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e803]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e804] [cursor=pointer]:
+            - strong [ref=e805]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e806]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e807] [cursor=pointer]:
+            - strong [ref=e808]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e809]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e810] [cursor=pointer]:
+            - strong [ref=e811]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e812]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e813] [cursor=pointer]:
+            - strong [ref=e814]: 重传同一条已保存消息
+            - generic [ref=e815]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e816] [cursor=pointer]:
+            - strong [ref=e817]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e818]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e819] [cursor=pointer]:
+            - strong [ref=e820]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e821]: 待接管
+          - button "新问题 待补充" [ref=e822] [cursor=pointer]:
+            - strong [ref=e823]: 新问题
+            - generic [ref=e824]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e825] [cursor=pointer]:
+            - strong [ref=e826]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e827]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e828] [cursor=pointer]:
+            - strong [ref=e829]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e830]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e831] [cursor=pointer]:
+            - strong [ref=e832]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e833]: 待验证
+          - button "提交恢复-24c9655e second 待补充" [ref=e834] [cursor=pointer]:
+            - strong [ref=e835]: 提交恢复-24c9655e second
+            - generic [ref=e836]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e837] [cursor=pointer]:
+            - strong [ref=e838]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e839]: 待接管
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e840] [cursor=pointer]:
+            - strong [ref=e841]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e842]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e843] [cursor=pointer]:
+            - strong [ref=e844]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e845]: 已解决
+          - button "提交恢复-230304da 待验证" [ref=e846] [cursor=pointer]:
+            - strong [ref=e847]: 提交恢复-230304da
+            - generic [ref=e848]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e849] [cursor=pointer]:
+            - strong [ref=e850]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e851]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e852] [cursor=pointer]:
+            - strong [ref=e853]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e854]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e855] [cursor=pointer]:
+            - strong [ref=e856]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e857]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e858] [cursor=pointer]:
+            - strong [ref=e859]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e860]: 待验证
+          - button "acl-owner-9c16e6d77a9f4362bb7b1adf0e19441e 已解决" [ref=e861] [cursor=pointer]:
+            - strong [ref=e862]: acl-owner-9c16e6d77a9f4362bb7b1adf0e19441e
+            - generic [ref=e863]: 已解决
+          - button "合成差异已复核 已解决" [ref=e864] [cursor=pointer]:
+            - strong [ref=e865]: 合成差异已复核
+            - generic [ref=e866]: 已解决
+          - button "提交恢复-30f43ef5 待补充" [ref=e867] [cursor=pointer]:
+            - strong [ref=e868]: 提交恢复-30f43ef5
+            - generic [ref=e869]: 待补充
+          - button "原始消息内容 待补充" [ref=e870] [cursor=pointer]:
+            - strong [ref=e871]: 原始消息内容
+            - generic [ref=e872]: 待补充
+          - button "提交恢复-e4d1deda 待补充" [ref=e873] [cursor=pointer]:
+            - strong [ref=e874]: 提交恢复-e4d1deda
+            - generic [ref=e875]: 待补充
+          - button "新问题 待补充" [ref=e876] [cursor=pointer]:
+            - strong [ref=e877]: 新问题
+            - generic [ref=e878]: 待补充
+          - button "新问题 待补充" [ref=e879] [cursor=pointer]:
+            - strong [ref=e880]: 新问题
+            - generic [ref=e881]: 待补充
+          - button "新问题 待补充" [ref=e882] [cursor=pointer]:
+            - strong [ref=e883]: 新问题
+            - generic [ref=e884]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e885] [cursor=pointer]:
+            - strong [ref=e886]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e887]: 待验证
+          - button "新问题 待补充" [ref=e888] [cursor=pointer]:
+            - strong [ref=e889]: 新问题
+            - generic [ref=e890]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e891] [cursor=pointer]:
+            - strong [ref=e892]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e893]: 待验证
+          - button "提交恢复-dfa7294a 待补充" [ref=e894] [cursor=pointer]:
+            - strong [ref=e895]: 提交恢复-dfa7294a
+            - generic [ref=e896]: 待补充
+          - button "新问题 待补充" [ref=e897] [cursor=pointer]:
+            - strong [ref=e898]: 新问题
+            - generic [ref=e899]: 待补充
+          - button "新问题 待补充" [ref=e900] [cursor=pointer]:
+            - strong [ref=e901]: 新问题
+            - generic [ref=e902]: 待补充
+          - button "提交恢复-1585d01a 待补充" [ref=e903] [cursor=pointer]:
+            - strong [ref=e904]: 提交恢复-1585d01a
+            - generic [ref=e905]: 待补充
+          - button "UI权限恢复-07a2fd8d 的问题 UI权限恢复-07a2fd8d 的独立正 待补充" [ref=e906] [cursor=pointer]:
+            - strong [ref=e907]: UI权限恢复-07a2fd8d 的问题 UI权限恢复-07a2fd8d 的独立正
+            - generic [ref=e908]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e909] [cursor=pointer]:
+            - strong [ref=e910]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e911]: 待接管
+          - button "UI权限恢复-32495749 的问题 UI权限恢复-32495749 的独立正 待补充" [ref=e912] [cursor=pointer]:
+            - strong [ref=e913]: UI权限恢复-32495749 的问题 UI权限恢复-32495749 的独立正
+            - generic [ref=e914]: 待补充
+          - button "新问题 待补充" [ref=e915] [cursor=pointer]:
+            - strong [ref=e916]: 新问题
+            - generic [ref=e917]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e918] [cursor=pointer]:
+            - strong [ref=e919]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e920]: 待接管
+          - button "UI权限恢复-f7835372 的问题 UI权限恢复-f7835372 的独立正 待补充" [ref=e921] [cursor=pointer]:
+            - strong [ref=e922]: UI权限恢复-f7835372 的问题 UI权限恢复-f7835372 的独立正
+            - generic [ref=e923]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e924] [cursor=pointer]:
+            - strong [ref=e925]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e926]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e927] [cursor=pointer]:
+            - strong [ref=e928]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e929]: 待验证
+          - button "新问题 待补充" [ref=e930] [cursor=pointer]:
+            - strong [ref=e931]: 新问题
+            - generic [ref=e932]: 待补充
+          - button "W 后第一条持久事件 待补充" [ref=e933] [cursor=pointer]:
+            - strong [ref=e934]: W 后第一条持久事件
+            - generic [ref=e935]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e936] [cursor=pointer]:
+            - strong [ref=e937]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e938]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e939] [cursor=pointer]:
+            - strong [ref=e940]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e941]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e942] [cursor=pointer]:
+            - strong [ref=e943]: 重传同一条已保存消息
+            - generic [ref=e944]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e945] [cursor=pointer]:
+            - strong [ref=e946]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e947]: 待验证
+          - button "原始消息内容 待补充" [ref=e948] [cursor=pointer]:
+            - strong [ref=e949]: 原始消息内容
+            - generic [ref=e950]: 待补充
+          - button "新问题 待补充" [ref=e951] [cursor=pointer]:
+            - strong [ref=e952]: 新问题
+            - generic [ref=e953]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e954] [cursor=pointer]:
+            - strong [ref=e955]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e956]: 待接管
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e957] [cursor=pointer]:
+            - strong [ref=e958]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e959]: 待补充
+          - button "新问题 待补充" [ref=e960] [cursor=pointer]:
+            - strong [ref=e961]: 新问题
+            - generic [ref=e962]: 待补充
+          - button "提交恢复-ae07c34f 待补充" [ref=e963] [cursor=pointer]:
+            - strong [ref=e964]: 提交恢复-ae07c34f
+            - generic [ref=e965]: 待补充
+          - button "接管导出-eb8b91b2 待验证" [ref=e966] [cursor=pointer]:
+            - strong [ref=e967]: 接管导出-eb8b91b2
+            - generic [ref=e968]: 待验证
+          - button "重传同一条已保存消息 待补充" [ref=e969] [cursor=pointer]:
+            - strong [ref=e970]: 重传同一条已保存消息
+            - generic [ref=e971]: 待补充
+          - button "UI权限恢复-007b356a 的问题 UI权限恢复-007b356a 的独立正 待补充" [ref=e972] [cursor=pointer]:
+            - strong [ref=e973]: UI权限恢复-007b356a 的问题 UI权限恢复-007b356a 的独立正
+            - generic [ref=e974]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e975] [cursor=pointer]:
+            - strong [ref=e976]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e977]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e978] [cursor=pointer]:
+            - strong [ref=e979]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e980]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e981] [cursor=pointer]:
+            - strong [ref=e982]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e983]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e984] [cursor=pointer]:
+            - strong [ref=e985]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e986]: 待验证
+          - button "提交恢复-5afde094 待补充" [ref=e987] [cursor=pointer]:
+            - strong [ref=e988]: 提交恢复-5afde094
+            - generic [ref=e989]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e990] [cursor=pointer]:
+            - strong [ref=e991]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e992]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e993] [cursor=pointer]:
+            - strong [ref=e994]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e995]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e996] [cursor=pointer]:
+            - strong [ref=e997]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e998]: 待验证
+          - button "UI权限恢复-66096eb4 的问题 UI权限恢复-66096eb4 的独立正 待补充" [ref=e999] [cursor=pointer]:
+            - strong [ref=e1000]: UI权限恢复-66096eb4 的问题 UI权限恢复-66096eb4 的独立正
+            - generic [ref=e1001]: 待补充
+          - button "提交恢复-7aefc3e1 待补充" [ref=e1002] [cursor=pointer]:
+            - strong [ref=e1003]: 提交恢复-7aefc3e1
+            - generic [ref=e1004]: 待补充
+          - button "提交恢复-7c4ead1b 待补充" [ref=e1005] [cursor=pointer]:
+            - strong [ref=e1006]: 提交恢复-7c4ead1b
+            - generic [ref=e1007]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e1008] [cursor=pointer]:
+            - strong [ref=e1009]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1010]: 待验证
+          - button "新问题 待补充" [ref=e1011] [cursor=pointer]:
+            - strong [ref=e1012]: 新问题
+            - generic [ref=e1013]: 待补充
+          - button "合成差异已复核 已解决" [ref=e1014] [cursor=pointer]:
+            - strong [ref=e1015]: 合成差异已复核
+            - generic [ref=e1016]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e1017] [cursor=pointer]:
+            - strong [ref=e1018]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1019]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e1020] [cursor=pointer]:
+            - strong [ref=e1021]: 重传同一条已保存消息
+            - generic [ref=e1022]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1023] [cursor=pointer]:
+            - strong [ref=e1024]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1025]: 待接管
+          - button "提交恢复-f4b37cc6 待补充" [ref=e1026] [cursor=pointer]:
+            - strong [ref=e1027]: 提交恢复-f4b37cc6
+            - generic [ref=e1028]: 待补充
+          - button "UI权限恢复-7458f69f 的问题 UI权限恢复-7458f69f 的独立正 待补充" [ref=e1029] [cursor=pointer]:
+            - strong [ref=e1030]: UI权限恢复-7458f69f 的问题 UI权限恢复-7458f69f 的独立正
+            - generic [ref=e1031]: 待补充
+          - button "合成差异已复核 已解决" [ref=e1032] [cursor=pointer]:
+            - strong [ref=e1033]: 合成差异已复核
+            - generic [ref=e1034]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e1035] [cursor=pointer]:
+            - strong [ref=e1036]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1037]: 待验证
+          - button "提交恢复-11b12081 second 待补充" [ref=e1038] [cursor=pointer]:
+            - strong [ref=e1039]: 提交恢复-11b12081 second
+            - generic [ref=e1040]: 待补充
+          - button "新问题 待补充" [ref=e1041] [cursor=pointer]:
+            - strong [ref=e1042]: 新问题
+            - generic [ref=e1043]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e1044] [cursor=pointer]:
+            - strong [ref=e1045]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1046]: 已解决
+          - button "新问题 待补充" [ref=e1047] [cursor=pointer]:
+            - strong [ref=e1048]: 新问题
+            - generic [ref=e1049]: 待补充
+          - button "新问题 待补充" [ref=e1050] [cursor=pointer]:
+            - strong [ref=e1051]: 新问题
+            - generic [ref=e1052]: 待补充
+          - button "新问题 待补充" [ref=e1053] [cursor=pointer]:
+            - strong [ref=e1054]: 新问题
+            - generic [ref=e1055]: 待补充
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e1056] [cursor=pointer]:
+            - strong [ref=e1057]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e1058]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e1059] [cursor=pointer]:
+            - strong [ref=e1060]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1061]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e1062] [cursor=pointer]:
+            - strong [ref=e1063]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1064]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1065] [cursor=pointer]:
+            - strong [ref=e1066]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1067]: 待接管
+          - button "新问题 待补充" [ref=e1068] [cursor=pointer]:
+            - strong [ref=e1069]: 新问题
+            - generic [ref=e1070]: 待补充
+          - button "UI权限恢复-97386a57 的问题 UI权限恢复-97386a57 的独立正 待补充" [ref=e1071] [cursor=pointer]:
+            - strong [ref=e1072]: UI权限恢复-97386a57 的问题 UI权限恢复-97386a57 的独立正
+            - generic [ref=e1073]: 待补充
+          - button "acl-http-36abda416852489fbd8bf450d4aa5ae0 待接管" [ref=e1074] [cursor=pointer]:
+            - strong [ref=e1075]: acl-http-36abda416852489fbd8bf450d4aa5ae0
+            - generic [ref=e1076]: 待接管
+          - button "提交恢复-8b651b6f 待补充" [ref=e1077] [cursor=pointer]:
+            - strong [ref=e1078]: 提交恢复-8b651b6f
+            - generic [ref=e1079]: 待补充
+          - button "新问题 待补充" [ref=e1080] [cursor=pointer]:
+            - strong [ref=e1081]: 新问题
+            - generic [ref=e1082]: 待补充
+          - button "新问题 待补充" [ref=e1083] [cursor=pointer]:
+            - strong [ref=e1084]: 新问题
+            - generic [ref=e1085]: 待补充
+          - button "提交恢复-481592f0 待验证" [ref=e1086] [cursor=pointer]:
+            - strong [ref=e1087]: 提交恢复-481592f0
+            - generic [ref=e1088]: 待验证
+          - button "原始消息内容 待补充" [ref=e1089] [cursor=pointer]:
+            - strong [ref=e1090]: 原始消息内容
+            - generic [ref=e1091]: 待补充
+          - button "W 后第一条持久事件 待补充" [ref=e1092] [cursor=pointer]:
+            - strong [ref=e1093]: W 后第一条持久事件
+            - generic [ref=e1094]: 待补充
+          - button "重传同一条已保存消息 待补充" [ref=e1095] [cursor=pointer]:
+            - strong [ref=e1096]: 重传同一条已保存消息
+            - generic [ref=e1097]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1098] [cursor=pointer]:
+            - strong [ref=e1099]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1100]: 待接管
+          - button "提交恢复-d2840741 待补充" [ref=e1101] [cursor=pointer]:
+            - strong [ref=e1102]: 提交恢复-d2840741
+            - generic [ref=e1103]: 待补充
+          - button "原始消息内容 待补充" [ref=e1104] [cursor=pointer]:
+            - strong [ref=e1105]: 原始消息内容
+            - generic [ref=e1106]: 待补充
+          - button "原始消息内容 待补充" [ref=e1107] [cursor=pointer]:
+            - strong [ref=e1108]: 原始消息内容
+            - generic [ref=e1109]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1110] [cursor=pointer]:
+            - strong [ref=e1111]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1112]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1113] [cursor=pointer]:
+            - strong [ref=e1114]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1115]: 待接管
+          - button "同一主体同一键，不同命令命名空间 待补充" [ref=e1116] [cursor=pointer]:
+            - strong [ref=e1117]: 同一主体同一键，不同命令命名空间
+            - generic [ref=e1118]: 待补充
+          - button "合成差异已复核 已解决" [ref=e1119] [cursor=pointer]:
+            - strong [ref=e1120]: 合成差异已复核
+            - generic [ref=e1121]: 已解决
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1122] [cursor=pointer]:
+            - strong [ref=e1123]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1124]: 待接管
+          - button "新问题 待补充" [ref=e1125] [cursor=pointer]:
+            - strong [ref=e1126]: 新问题
+            - generic [ref=e1127]: 待补充
+          - button "提交恢复-84ae19c2 待补充" [ref=e1128] [cursor=pointer]:
+            - strong [ref=e1129]: 提交恢复-84ae19c2
+            - generic [ref=e1130]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e1131] [cursor=pointer]:
+            - strong [ref=e1132]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1133]: 已解决
+          - button "提交恢复-d0c8f405 待补充" [ref=e1134] [cursor=pointer]:
+            - strong [ref=e1135]: 提交恢复-d0c8f405
+            - generic [ref=e1136]: 待补充
+          - button "新问题 待补充" [ref=e1137] [cursor=pointer]:
+            - strong [ref=e1138]: 新问题
+            - generic [ref=e1139]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 已解决" [ref=e1140] [cursor=pointer]:
+            - strong [ref=e1141]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1142]: 已解决
+          - button "重传同一条已保存消息 待补充" [ref=e1143] [cursor=pointer]:
+            - strong [ref=e1144]: 重传同一条已保存消息
+            - generic [ref=e1145]: 待补充
+          - button "提交恢复-8b097276 待验证" [ref=e1146] [cursor=pointer]:
+            - strong [ref=e1147]: 提交恢复-8b097276
+            - generic [ref=e1148]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待补充" [ref=e1149] [cursor=pointer]:
+            - strong [ref=e1150]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1151]: 待补充
+          - button "提交恢复-b04bad2d 待补充" [ref=e1152] [cursor=pointer]:
+            - strong [ref=e1153]: 提交恢复-b04bad2d
+            - generic [ref=e1154]: 待补充
+          - button "UI权限恢复-c9100953 的问题 UI权限恢复-c9100953 的独立正 待补充" [ref=e1155] [cursor=pointer]:
+            - strong [ref=e1156]: UI权限恢复-c9100953 的问题 UI权限恢复-c9100953 的独立正
+            - generic [ref=e1157]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1158] [cursor=pointer]:
+            - strong [ref=e1159]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1160]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1161] [cursor=pointer]:
+            - strong [ref=e1162]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1163]: 待接管
+          - button "UI权限恢复-ffb627bf 的问题 UI权限恢复-ffb627bf 的独立正 待补充" [ref=e1164] [cursor=pointer]:
+            - strong [ref=e1165]: UI权限恢复-ffb627bf 的问题 UI权限恢复-ffb627bf 的独立正
+            - generic [ref=e1166]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1167] [cursor=pointer]:
+            - strong [ref=e1168]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1169]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1170] [cursor=pointer]:
+            - strong [ref=e1171]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1172]: 待接管
+          - button "报表与明细金额不一致，请检查合成订单。 待验证" [ref=e1173] [cursor=pointer]:
+            - strong [ref=e1174]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1175]: 待验证
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1176] [cursor=pointer]:
+            - strong [ref=e1177]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1178]: 待接管
+          - button "新问题 待补充" [ref=e1179] [cursor=pointer]:
+            - strong [ref=e1180]: 新问题
+            - generic [ref=e1181]: 待补充
+          - button "新问题 待补充" [ref=e1182] [cursor=pointer]:
+            - strong [ref=e1183]: 新问题
+            - generic [ref=e1184]: 待补充
+          - button "新问题 待补充" [ref=e1185] [cursor=pointer]:
+            - strong [ref=e1186]: 新问题
+            - generic [ref=e1187]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1188] [cursor=pointer]:
+            - strong [ref=e1189]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1190]: 待接管
+          - button "UI权限恢复-382417b2 的问题 UI权限恢复-382417b2 的独立正 待补充" [ref=e1191] [cursor=pointer]:
+            - strong [ref=e1192]: UI权限恢复-382417b2 的问题 UI权限恢复-382417b2 的独立正
+            - generic [ref=e1193]: 待补充
+          - button "提交恢复-38b03622 待补充" [ref=e1194] [cursor=pointer]:
+            - strong [ref=e1195]: 提交恢复-38b03622
+            - generic [ref=e1196]: 待补充
+          - button "新问题 待补充" [ref=e1197] [cursor=pointer]:
+            - strong [ref=e1198]: 新问题
+            - generic [ref=e1199]: 待补充
+          - button "提交恢复-35d5ccdb 待补充" [ref=e1200] [cursor=pointer]:
+            - strong [ref=e1201]: 提交恢复-35d5ccdb
+            - generic [ref=e1202]: 待补充
+          - button "报表与明细金额不一致，请检查合成订单。 待接管" [ref=e1203] [cursor=pointer]:
+            - strong [ref=e1204]: 报表与明细金额不一致，请检查合成订单。
+            - generic [ref=e1205]: 待接管
+          - button "新问题 待补充" [ref=e1206] [cursor=pointer]:
+            - strong [ref=e1207]: 新问题
+            - generic [ref=e1208]: 待补充
+          - button "提交恢复-cd06ed06 待验证" [ref=e1209] [cursor=pointer]:
+            - strong [ref=e1210]: 提交恢复-cd06ed06
+            - generic [ref=e1211]: 待验证
+      - generic [ref=e1213]:
+        - generic [ref=e1214]: ◎
+        - heading "从一个具体问题开始" [level=2] [ref=e1215]
+        - paragraph [ref=e1216]: 选择系统环境，持续补充材料，得到可复核的检查结果。
+        - generic [ref=e1217]:
+          - strong [ref=e1218]: 报表与明细金额不一致
+          - generic [ref=e1219]: 上传两份 CSV，确认范围后执行只读核对。
+        - paragraph [ref=e1220]: 本环境使用合成执行后端，不调用真实模型或业务资源。
+    - generic [ref=e1221]: 合成数据开发验证 · 执行完成后仍需用户确认
+```

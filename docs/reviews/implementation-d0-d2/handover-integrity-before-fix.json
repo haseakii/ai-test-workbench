@@ -1,0 +1,27 @@
+{
+  "scope": "real approved MySQL transactions, before cross-evidence integrity repair",
+  "passed": 0,
+  "failed": 4,
+  "cases": [
+    {
+      "name": "contextInputRevisionMustMatchItsHistoricalPlanEvenWhenTheConversationHasNewInput",
+      "result": "fail",
+      "reason": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown."
+    },
+    {
+      "name": "contextAttachmentDigestMustBelongToTheReferencedConversationSources",
+      "result": "fail",
+      "reason": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown."
+    },
+    {
+      "name": "selfConsistentContextHashCannotBindDifferentProvidedScopeToTheApprovedPlan",
+      "result": "fail",
+      "reason": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown."
+    },
+    {
+      "name": "alteredPlatformSummaryCannotOverrideTheHashedProviderSummaryArtifact",
+      "result": "fail",
+      "reason": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown."
+    }
+  ]
+}

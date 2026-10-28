@@ -1,6 +1,11 @@
 /** Design-only declarations. No transport, credentials, adapter or production implementation. */
 export type ContractVersion = 'initial-draft';
 export type Id = string;
+/** Internal identifiers and resume cursors retain distinct runtime wire constraints. */
+export type Uuid = string;
+export type Cursor = string;
+/** Runtime/Schema enforce 0..9007199254740991. MySQL BIGINT alone is insufficient. */
+export type SafeInteger = number;
 export type Instant = string; // RFC3339 UTC; never infer unknown timestamps.
 export type Sha256 = string; // 64 lowercase hex characters.
 export type Decimal = string; // finite non-negative decimal, no floating-point currency.
@@ -12,22 +17,22 @@ export type EvidenceLevel = 'advertised' | 'adapter_supported' | 'verified' | 'u
 export interface CallContext {
   contractVersion: ContractVersion;
   correlationId: Id;
-  tenantId: Id;
-  subjectContext: { subjectId: Id; authorizationRef: Id }; // authenticated server context
+  tenantId: Uuid;
+  subjectContext: { subjectId: Uuid; authorizationRef: Id }; // authenticated server context
   deadline: Instant;
 }
-export interface ConnectionRef { providerId: Id; connectionId: Id; connectionRevision: number }
-export interface BindingRef { bindingId: Id; nodeRunId: Id; providerId: Id }
+export interface ConnectionRef { providerId: Id; connectionId: Id; connectionRevision: SafeInteger }
+export interface BindingRef { bindingId: Uuid; nodeRunId: Uuid; providerId: Id }
 export interface SubmissionRef extends BindingRef {
-  tenantId: Id;
+  tenantId: Uuid;
   idempotencyKey: Id;
   specHash: Sha256;
 }
 export interface CommandRef {
-  commandId: Id;
+  commandId: Uuid;
   idempotencyKey: Id;
   requestHash: Sha256;
-  expectedRevision: number;
+  expectedRevision: SafeInteger;
 }
 export interface CapabilitySnapshot {
   connection: ConnectionRef;
@@ -41,7 +46,7 @@ export interface CapabilitySnapshot {
   capabilities: Array<{
     name: 'image_input' | 'resume_checkpoint' | 'permission_bridge' | 'binary_artifact'
       | 'durable_events' | 'idempotent_start' | 'submission_fence' | 'hard_call_limit'
-      | 'usage_reporting' | 'hard_token_limit';
+      | 'usage_reporting' | 'hard_token_limit' | 'admission_guard';
     level: EvidenceLevel;
     evidenceRef: Id | null;
   }>;
@@ -49,27 +54,28 @@ export interface CapabilitySnapshot {
 }
 export interface ExecutionSpec {
   contractVersion: ContractVersion;
+  admission: AdmissionTicket;
   purpose: ExecutionPurpose; // Understanding/title/summary carry no business-tool grants.
-  tenantId: Id;
-  conversationId: Id;
-  workflowRunId: Id;
+  tenantId: Uuid;
+  conversationId: Uuid;
+  workflowRunId: Uuid;
   workflowVersion: Id;
-  nodeRunId: Id;
-  bindingId: Id;
-  ownershipEpoch: number;
+  nodeRunId: Uuid;
+  bindingId: Uuid;
+  ownershipEpoch: SafeInteger;
   connection: ConnectionRef;
   capabilitySnapshotHash: Sha256;
   agentId: Id;
-  systemId: Id;
-  environmentId: Id;
-  primaryRepositoryId: Id | null;
+  systemId: Uuid;
+  environmentId: Uuid;
+  primaryRepositoryId: Uuid | null;
   deployedCommit: string | null;
   codeCommit: string | null;
   objective: string;
   preparation: {
-    inputRevision: number;
-    configurationSnapshotRevision: number;
-    admissionPolicyRevision: number;
+    inputRevision: SafeInteger;
+    configurationSnapshotRevision: SafeInteger;
+    admissionPolicyRevision: SafeInteger;
     integrationSnapshotRef: Id;
     integrationSnapshotHash: Sha256;
     environmentResourcesRef: Id;
@@ -81,21 +87,21 @@ export interface ExecutionSpec {
     runtimeManifestHash: Sha256;
     contextManifestRef: Id;
     contextManifestHash: Sha256;
-    authorizationRevision: number;
+    authorizationRevision: SafeInteger;
   };
   inputs: Array<{ attachmentId: Id; sha256: Sha256; authorizationRef: Id }>;
   executionIdentityRef: Id;
   workspaceAuthorizationRef: Id;
   resourceAuthorizationRefs: Id[];
-  modelRequest: { modelId: Id; presetId: Id; presetRevision: number };
-  skills: Array<{ skillId: Id; revision: number; sha256: Sha256 }>;
+  modelRequest: { modelId: Id; presetId: Id; presetRevision: SafeInteger };
+  skills: Array<{ skillId: Id; revision: SafeInteger; sha256: Sha256 }>;
   budget: {
     modelQuotaSnapshotRef: Id;
     modelQuotaSnapshotHash: Sha256; // binds subject / connection / agent / canonical model / policy / period
     reservationId: Id;
     scopeId: Id; // descendants share this scope; no parent/child double billing
-    maxNewCalls: number;
-    maxConcurrency: number;
+    maxNewCalls: SafeInteger;
+    maxConcurrency: SafeInteger;
     estimatedAmount: Decimal | null;
     currency: string | null;
     unknownUsagePolicy: 'block_new_billable_actions' | 'allow_with_platform_limits';
@@ -107,6 +113,20 @@ export interface ExecutionSpec {
   };
   deadline: Instant;
   outputContract: { schemaRef: Id; artifactTypes: string[]; evidenceRequired: boolean };
+}
+/** Content hash excludes only ExecutionSpec.admission to avoid recursive hashing. */
+export interface AdmissionTicket {
+  ticketId: Uuid;
+  bindingId: Uuid;
+  executionContentHash: Sha256;
+  authorizationRevision: SafeInteger;
+  approvalRef: Id | null;
+  approvalRevision: SafeInteger | null;
+  notBefore: Instant;
+  notAfter: Instant;
+  authorityRef: Id;
+  // Acceptance atomically consumes/checks current guards at the authenticated authority.
+  // An expired/missing authority blocks first acceptance; lookup/stop remain allowed.
 }
 export interface ValidationReport {
   specHash: Sha256;
@@ -153,7 +173,7 @@ export interface ProviderPermissionRequest {
   requestContextHash: Sha256;
   operationId: Id;
   operationHash: Sha256;
-  mappingRevision: number;
+  mappingRevision: SafeInteger;
   validity: 'live' | 'stale' | 'unknown';
   observedAt: Instant;
   expiresAt: Instant | null; // null is unknown/no supplied expiry, never perpetual validity
@@ -163,8 +183,10 @@ export interface ExecutionSnapshot {
   binding: BindingRef;
   run: ProviderRunRef | null;
   state: BindingState;
-  snapshotRevision: number;
-  eventWatermark: number;
+  snapshotRevision: SafeInteger;
+  eventWatermark: SafeInteger;
+  /** Atomic with the snapshot; resume strictly after eventWatermark. */
+  resumeCursor: Cursor;
   observedAt: Instant;
   executionActive: KnownBoolean;
   outcome: 'succeeded' | 'failed' | 'cancelled' | null;
@@ -201,22 +223,22 @@ export interface ExecutionEvent {
   providerId: Id;
   providerRunId: Id;
   providerEventId: Id;
-  bindingId: Id;
-  sequence: number;
-  sourceSequence: number | null;
+  bindingId: Uuid;
+  sequence: SafeInteger;
+  sourceSequence: SafeInteger | null;
   occurredAt: Instant;
   receivedAt: Instant;
   payloadVersion: 1;
   visibility: 'business' | 'operator';
   payload: EventPayload;
 }
-export interface EventReadRequest { binding: BindingRef; cursor: string | null; limit: number }
+export interface EventReadRequest { binding: BindingRef; cursor: Cursor | null; limit: SafeInteger }
 export interface EventPage {
   events: ExecutionEvent[];
-  cursor: string | null;
+  cursor: Cursor | null;
   hasMore: boolean;
-  earliestRetainedSequence: number;
-  snapshotRevision: number;
+  earliestRetainedSequence: SafeInteger;
+  snapshotRevision: SafeInteger;
 }
 export interface InputRequest {
   binding: BindingRef;
@@ -229,7 +251,7 @@ export interface InputRequest {
   checkpointRef: Id | null;
 }
 export type InputReceipt =
-  | { status: 'accepted_pending'; inputId: Id; queuePosition: number | null }
+  | { status: 'accepted_pending'; inputId: Id; queuePosition: SafeInteger | null }
   | { status: 'adopted'; inputId: Id; adoptedAtBoundary: Id }
   | { status: 'rejected'; inputId: Id; reason: string };
 export interface CancelRequest { binding: BindingRef; command: CommandRef; reason: string }
@@ -251,8 +273,8 @@ export type ResumeReceipt =
 export interface OperationPlan {
   operationId: Id;
   operationHash: Sha256;
-  systemId: Id;
-  environmentId: Id;
+  systemId: Uuid;
+  environmentId: Uuid;
   parameterHash: Sha256;
   targetSetHash: Sha256;
   preconditionHash: Sha256;
@@ -263,20 +285,20 @@ export interface OperationPlan {
 }
 export interface ApprovedOperation extends OperationPlan {
   businessApprovalId: Id;
-  approvalRevision: number;
-  approverSubjectId: Id;
+  approvalRevision: SafeInteger;
+  authority: DecisionAuthority;
   authorizationProofRef: Id;
   validUntil: Instant;
 }
 export type DecisionAuthority =
   | { kind: 'human'; subjectId: Id; qualificationRef: Id }
-  | { kind: 'policy'; grantId: Id; grantRevision: number; grantHash: Sha256; issuerId: Id; serviceIdentityRef: Id; evaluationProofRef: Id };
+  | { kind: 'policy'; grantId: Id; grantRevision: SafeInteger; grantHash: Sha256; issuerId: Id; serviceIdentityRef: Id; evaluationProofRef: Id };
 export interface BusinessApprovalRecord {
   authority: DecisionAuthority;
   id: Id;
   binding: BindingRef;
-  planRevision: number;
-  revision: number;
+  planRevision: SafeInteger;
+  revision: SafeInteger;
   plan: OperationPlan;
   decisionState: 'pending' | 'approved' | 'denied' | 'changes_requested' | 'expired' | 'revoked' | 'superseded';
   requestedBy: Id;
@@ -305,7 +327,7 @@ export type PermissionResponse = {
   command: CommandRef;
   requestId: Id;
   requestContextHash: Sha256;
-  mappingRevision: number;
+  mappingRevision: SafeInteger;
   optionId: Id;
 } & (
   | { decision: 'allow'; approvedOperation: ApprovedOperation }
@@ -320,7 +342,7 @@ export interface ArtifactDescriptor {
   artifactId: Id;
   bindingId: Id;
   mimeType: string;
-  bytes: number;
+  bytes: SafeInteger;
   sha256: Sha256;
   sourceRef: Id;
   importState: 'metadata_only' | 'importing' | 'verified' | 'failed';
@@ -349,7 +371,7 @@ export type ProviderError = {
   correlationId: Id;
   phase: 'validation' | 'submission' | 'observation' | 'permission' | 'execution' | 'artifact';
   retryAdvice: 'read_only' | 'reconcile' | 'correct_input' | 'none';
-  currentRevision: number | null;
+  currentRevision: SafeInteger | null;
 } & (
   | { acceptance: 'not_accepted'; nonAcceptanceProof: { admissionFence: Id; proofRef: Id } }
   | { acceptance: 'not_sent' | 'accepted' | 'unknown'; nonAcceptanceProof: null }

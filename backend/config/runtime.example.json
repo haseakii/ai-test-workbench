@@ -1,0 +1,8 @@
+{
+  "SPRING_PROFILES_ACTIVE": "synthetic",
+  "WB_DB_URL": "jdbc:mysql://127.0.0.1:3306/workbench_platform?sslMode=VERIFY_CA&trustCertificateKeyStoreUrl=REPLACE_TRUSTSTORE_URI&trustCertificateKeyStorePassword=REPLACE_TRUSTSTORE_PASSWORD&trustCertificateKeyStoreType=PKCS12&connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true",
+  "WB_DB_USER": "workbench",
+  "WB_DB_PASSWORD": "REPLACE_EXISTING_APPROVED_RUNTIME_PASSWORD",
+  "WB_BLOB_ROOT": "REPLACE_PRIVATE_ABSOLUTE_BLOB_DIRECTORY",
+  "WB_PORT": "18080"
+}

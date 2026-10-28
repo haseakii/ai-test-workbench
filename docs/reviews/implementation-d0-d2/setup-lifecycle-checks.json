@@ -1,0 +1,60 @@
+{
+  "scope": "existing authorized synthetic service and schemas only; no provisioning or real environment install",
+  "observedAt": "2026-10-27T01:26:30.627160+00:00",
+  "artifactSha256": "60d85b5844a67850271784133387bbc7fa8b6ccaca62f5e721ac55bf98e01654",
+  "cases": [
+    {
+      "name": "template_three_kinds_have_only_placeholder_secrets",
+      "result": "pass"
+    },
+    {
+      "name": "doctor_reads_current_schema_without_runtime_writes",
+      "result": "pass"
+    },
+    {
+      "name": "up_reuses_original_live_process",
+      "result": "pass"
+    },
+    {
+      "name": "running_service_rejects_concurrent_migration",
+      "result": "pass"
+    },
+    {
+      "name": "missing_config_fails_without_creating_runtime",
+      "result": "pass"
+    },
+    {
+      "name": "readable_secret_config_is_rejected_without_permission_change",
+      "result": "pass"
+    },
+    {
+      "name": "occupied_port_reports_error_without_touching_other_listener",
+      "result": "pass"
+    },
+    {
+      "name": "unavailable_database_has_bounded_redacted_error",
+      "result": "pass"
+    },
+    {
+      "name": "graceful_stop_retains_blobs_and_process_evidence",
+      "result": "pass"
+    },
+    {
+      "name": "up_restarts_existing_data_without_initialization",
+      "result": "pass"
+    },
+    {
+      "name": "restart_has_new_owned_pid_no_migration_or_blob_change",
+      "result": "pass"
+    }
+  ],
+  "finalState": {
+    "ok": true,
+    "code": "READY",
+    "state": "ready",
+    "pid": 75021,
+    "sha256": "60d85b5844a67850271784133387bbc7fa8b6ccaca62f5e721ac55bf98e01654"
+  },
+  "passed": 11,
+  "failed": 0
+}

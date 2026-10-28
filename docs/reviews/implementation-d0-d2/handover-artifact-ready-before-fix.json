@@ -1,0 +1,6 @@
+{
+  "test": "alignedMutableCsvMetadataCannotReplaceThePersistentArtifactReadyFact",
+  "result": "fail",
+  "reason": "Expected io.aitest.workbench.infrastructure.Store.Problem to be thrown, but nothing was thrown.",
+  "scope": "artifact Blob plus mutable metadata changed consistently, original persisted ArtifactReady retained"
+}

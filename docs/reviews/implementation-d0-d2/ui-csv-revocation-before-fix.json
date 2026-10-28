@@ -1,0 +1,152 @@
+{
+  "config": {
+    "configFile": "/workspace/ai-test-workbench/frontend/playwright.config.ts",
+    "rootDir": "/workspace/ai-test-workbench/frontend/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/reviews/implementation-d0-d2/ui-csv-revocation-before-fix.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/ui-csv-revocation-before-fix-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/ai-test-workbench/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "handover.spec.ts",
+      "file": "handover.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "差异文件晚响应在界面已观察来源撤权后也不得下载",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3623,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at noLateDownload (/workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts:56:101)\n    at /workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts:139:153",
+                    "location": {
+                      "file": "/workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts",
+                      "column": 101,
+                      "line": 56
+                    },
+                    "snippet": "  54 |  // The held response headers arrived; allow the hash/identity continuation to settle.\n  55 |  // An absence check needs a bounded observation window and never drives execution.\n> 56 |  const late=await page.waitForEvent('download',{timeout:800}).then(()=>true,()=>false);expect(late).toBe(false);expect(downloads).toHaveLength(0);\n     |                                                                                                     ^\n  57 | }\n  58 |\n  59 | test('已批准 CSV 闭环和用户确认后导出可复算且不含正文的接管包',async({page,request})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts",
+                        "column": 101,
+                        "line": 56
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  54 |  // The held response headers arrived; allow the hash/identity continuation to settle.\n  55 |  // An absence check needs a bounded observation window and never drives execution.\n> 56 |  const late=await page.waitForEvent('download',{timeout:800}).then(()=>true,()=>false);expect(late).toBe(false);expect(downloads).toHaveLength(0);\n     |                                                                                                     ^\n  57 | }\n  58 |\n  59 | test('已批准 CSV 闭环和用户确认后导出可复算且不含正文的接管包',async({page,request})=>{\n    at noLateDownload (/workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts:56:101)\n    at /workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts:139:153"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T12:52:15.709Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/ui-csv-revocation-before-fix-artifacts/handover-差异文件晚响应在界面已观察来源撤权后也不得下载/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/ui-csv-revocation-before-fix-artifacts/handover-差异文件晚响应在界面已观察来源撤权后也不得下载/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ai-test-workbench/docs/reviews/implementation-d0-d2/ui-csv-revocation-before-fix-artifacts/handover-差异文件晚响应在界面已观察来源撤权后也不得下载/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ai-test-workbench/frontend/tests/e2e/handover.spec.ts",
+                    "column": 101,
+                    "line": 56
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fdb13d2ccb19b5f00cac-32d93a2743aa46efb589",
+          "file": "handover.spec.ts",
+          "line": 508,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T12:52:15.213Z",
+    "duration": 4371.704,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

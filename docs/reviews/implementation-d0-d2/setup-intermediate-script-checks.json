@@ -1,0 +1,7 @@
+{
+  "scope": "expanded 26 test run; 4 fixture mismatches",
+  "total": 26,
+  "passed": 22,
+  "failed": 4,
+  "reason": "fake Jar fixture missed newly required RuntimeReadiness.class, causing expected early ARTIFACT_INCOMPLETE; fixture will include class, production artifact validation remains"
+}

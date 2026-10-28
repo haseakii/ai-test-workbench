@@ -65,4 +65,4 @@ React、Vite、TypeScript、组件库、Java SDK 与包管理器锁文件仍在�
 
 以下是 `a03e4e0` 已有非数据库候选的核查入口，本轮没有重新宣称其为最新或已兼容：[Spring Boot](https://docs.spring.io/spring-boot/system-requirements.html)、[Java 21 虚拟线程](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)、[Spring JDBC](https://docs.spring.io/spring-framework/reference/data-access/jdbc/core.html)、[ACP Java](https://agentclientprotocol.com/libraries/java)、[MCP SDK](https://modelcontextprotocol.io/docs/sdk)、[React](https://react.dev/versions)、[Vite](https://vite.dev/guide/)。
 
-未创建 pom、安装 Java SDK、拉取数据库容器或启动数据库。仅记录当前选择与待验证合同，不宣称已完成性能、兼容或恢复试验。
+初稿之后已获授权建立 Maven 工程并完成部分兼容、真实 MySQL 与合成服务试验。当前采用 Boot 4.1.2、Maven 3.9.11、Connector/J 9.7.0、Flyway 12.4.0，Node 24.19.0；SDK 离线验证使用 ACP 0.80.0 与 MCP 2.1.0。证据及未覆盖项见[实施记录](../reviews/IMPLEMENTATION-PROGRESS-20261026.md)，不将这些结果泛化为真实 Provider 或性能验收。

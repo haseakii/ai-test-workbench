@@ -1,0 +1,22 @@
+{
+  "suite": {
+    "{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation": "https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd",
+    "version": "3.0.2",
+    "name": "io.aitest.workbench.execution.AdmissionRaceTest",
+    "time": "18.508",
+    "tests": "13",
+    "errors": "0",
+    "skipped": "0",
+    "failures": "1",
+    "flakes": "0"
+  },
+  "failures": [
+    {
+      "name": "committedChangesFenceTheNextAdmissionBoundary(Change, Boundary)[9]",
+      "failure": "org.opentest4j.AssertionFailedError: A06 transaction checkpoint not reached ==> expected: <true> but was: <false>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)\n\tat org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:69)\n\tat org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:41)\n\tat org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:228)\n\tat io.aitest.workbench.execution.AdmissionRaceTest.await(AdmissionRaceTest.java:41)\n\tat io.aitest.workbench.execution.AdmissionRaceTest.overlap(AdmissionRaceTest.java:99)\n\tat io.aitest.workbench.execution.AdmissionRaceTest.committedChangesFenceTheNextAdmissionBoundary(AdmissionRaceTest.java:175)\n"
+    }
+  ],
+  "classification": "test fixture barrier error, fixed; helper pre-transaction outbox ownership update waited behind STOP leader before follower could enter observed transaction",
+  "privateLog": "/workspace/scratch/development-start-20261026/a06-admission-third.log",
+  "final": "13/13 passed on final allowed test source, see a06-admission-test-preparation.json"
+}

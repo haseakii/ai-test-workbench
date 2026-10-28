@@ -1,0 +1,12 @@
+{
+  "scope": "against prior A10/A11 checkpoint; original financial account pair/period, events, authorization, provider and schema gate preserved",
+  "matches": {
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/QuotaLedger.java": true,
+    "backend/platform-server/src/main/java/io/aitest/workbench/infrastructure/Store.java": true,
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/ExecutionWorker.java": true,
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/FixtureProvider.java": true,
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/ContextManifests.java": true,
+    "backend/platform-server/src/main/java/io/aitest/workbench/execution/ExecutionSpecs.java": true,
+    "backend/platform-server/src/main/java/io/aitest/workbench/bootstrap/SchemaReadiness.java": true
+  }
+}
