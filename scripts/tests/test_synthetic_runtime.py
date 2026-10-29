@@ -56,9 +56,34 @@ class SyntheticRuntimeSafetyTest(unittest.TestCase):
                 "BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeReadiness.class",
                 "BOOT-INF/classes/static/index.html",
                 "BOOT-INF/classes/db/runner-migration/V1__runner_journal.sql",
+                "BOOT-INF/classes/db/migration/V1__platform.sql",
+                "BOOT-INF/classes/db/migration/V2__title_source_and_quota_policy.sql",
+                "BOOT-INF/classes/db/migration/V3__scoped_content_review.sql",
+                "BOOT-INF/classes/db/migration/V4__receipt_scope_and_synthetic_marker.sql",
+                "BOOT-INF/classes/db/migration/V5__frozen_quota_accounts.sql",
+                "BOOT-INF/classes/db/migration/V6__context_manifests.sql",
+                "BOOT-INF/classes/db/migration/V7__typed_provider_journal.sql",
+                "BOOT-INF/classes/db/migration/V8__resource_operation_consumption.sql",
+                "BOOT-INF/classes/db/migration/V9__local_auth_sessions.sql",
+                "BOOT-INF/classes/db/migration/V10__local_accounts_and_login_limits.sql",
+                "BOOT-INF/classes/db/runner-migration/V2__single_start_intent.sql",
+                "BOOT-INF/classes/db/runner-migration/V3__scoped_command_intents.sql",
             ]:
                 archive.writestr(name, "offline-test-only")
         return file
+
+    def test_incomplete_migration_is_rejected(self):
+        original = self.packaged_fixture()
+        for entry in ("BOOT-INF/classes/db/migration/V8__resource_operation_consumption.sql", "BOOT-INF/classes/db/migration/V10__local_accounts_and_login_limits.sql", "BOOT-INF/classes/db/runner-migration/V3__scoped_command_intents.sql"):
+            with self.subTest(entry=entry):
+                incomplete = self.root / "incomplete.jar"
+                with zipfile.ZipFile(original) as src, zipfile.ZipFile(incomplete, "w") as dst:
+                    for info in src.infolist():
+                        if info.filename != entry:
+                            dst.writestr(info, src.read(info.filename))
+                with self.assertRaises(runtime.RuntimeFailure) as failure:
+                    runtime.artifact_preflight(incomplete)
+                self.assertEqual(failure.exception.code, "ARTIFACT_INCOMPLETE")
 
     def migration_configs(self):
         files = []

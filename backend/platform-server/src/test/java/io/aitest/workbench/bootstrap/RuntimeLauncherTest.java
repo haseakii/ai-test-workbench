@@ -48,7 +48,7 @@ class RuntimeLauncherTest {
     RuntimeLauncher.Options options(String action,boolean initialize)throws Exception{
         Path bundle=root.resolve("中文 解包 目录"),runtime=root.resolve("私有 运行");Files.createDirectories(bundle.resolve("app"));
         if(!Files.exists(bundle.resolve("app/platform-server.jar")))try(var jar=new JarOutputStream(Files.newOutputStream(bundle.resolve("app/platform-server.jar")))){
-            for(String name:List.of("BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeProbe.class","BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeReadiness.class","BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeLifecycleControl.class","BOOT-INF/classes/static/index.html","BOOT-INF/classes/db/runner-migration/V1__runner_journal.sql")){jar.putNextEntry(new JarEntry(name));jar.write(new byte[]{1});jar.closeEntry();}
+            for(String name:List.of("BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeProbe.class","BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeReadiness.class","BOOT-INF/classes/io/aitest/workbench/bootstrap/RuntimeLifecycleControl.class","BOOT-INF/classes/static/index.html","BOOT-INF/classes/db/runner-migration/V1__runner_journal.sql","BOOT-INF/classes/db/migration/V1__platform.sql","BOOT-INF/classes/db/migration/V2__title_source_and_quota_policy.sql","BOOT-INF/classes/db/migration/V3__scoped_content_review.sql","BOOT-INF/classes/db/migration/V4__receipt_scope_and_synthetic_marker.sql","BOOT-INF/classes/db/migration/V5__frozen_quota_accounts.sql","BOOT-INF/classes/db/migration/V6__context_manifests.sql","BOOT-INF/classes/db/migration/V7__typed_provider_journal.sql","BOOT-INF/classes/db/migration/V8__resource_operation_consumption.sql","BOOT-INF/classes/db/migration/V9__local_auth_sessions.sql","BOOT-INF/classes/db/migration/V10__local_accounts_and_login_limits.sql","BOOT-INF/classes/db/runner-migration/V2__single_start_intent.sql","BOOT-INF/classes/db/runner-migration/V3__scoped_command_intents.sql")){jar.putNextEntry(new JarEntry(name));jar.write(new byte[]{1});jar.closeEntry();}
         }
         Path config=root.resolve("runtime-private.json"),platform=root.resolve("platform-private.json"),runner=root.resolve("runner-private.json");
         if(!Files.exists(config))RuntimeFiles.writeNewPrivateFile(config,RuntimeLauncher.JSON.writeValueAsBytes(config(runtime)));
@@ -60,6 +60,16 @@ class RuntimeLauncherTest {
     RuntimeLauncher.Failure rejected(String code,RuntimeLauncher.Work<?> work){var f=assertThrows(RuntimeLauncher.Failure.class,work::run);assertEquals(code,f.code);assertFalse(f.getMessage().contains(password));assertFalse(f.getMessage().contains(url));return f;}
     Map<String,String> hostile(){return Map.of("JAVA_TOOL_OPTIONS","-javaagent:untrusted","_JAVA_OPTIONS","-Dserver.address=0.0.0.0","JDK_JAVA_OPTIONS","-Dspring.profiles.active=production","CLASSPATH","bad","LOADER_PATH","bad","MYSQL_PWD","secret","WB_MIGRATION_PASSWORD","privileged","SPRING_APPLICATION_JSON","bad","HTTPS_PROXY","http://proxy.invalid:8080");}
 
+    @Test void incompleteNewMigrationsAreRejected() throws Exception {
+        var good=options("doctor",false).jar(); RuntimeLauncher.checkJar(good);
+        for(String missing:List.of("BOOT-INF/classes/db/migration/V8__resource_operation_consumption.sql", "BOOT-INF/classes/db/migration/V10__local_accounts_and_login_limits.sql", "BOOT-INF/classes/db/runner-migration/V3__scoped_command_intents.sql")) {
+            Path incomplete=root.resolve("incomplete.jar");
+            try(var in=new java.util.jar.JarFile(good.toFile());var out=new JarOutputStream(Files.newOutputStream(incomplete))) {
+                var entries=in.entries();while(entries.hasMoreElements()){var e=entries.nextElement();if(e.getName().equals(missing))continue;out.putNextEntry(new JarEntry(e.getName()));try(var bytes=in.getInputStream(e)){bytes.transferTo(out);}out.closeEntry();}
+            }
+            rejected("ARTIFACT_INCOMPLETE",()->{RuntimeLauncher.checkJar(incomplete);return null;});
+        }
+    }
     @Test void optionsUseLocalAppDataAndKeepChineseSpaceBundlePaths(){
         var value=RuntimeLauncher.options(new String[]{"doctor","--bundle-dir",root.resolve("中文 空格").toString()},Map.of("LOCALAPPDATA",root.resolve("用户 私有").toString()));
         assertEquals(root.resolve("用户 私有/AiTestWorkbench/synthetic"),value.directory());assertEquals(root.resolve("中文 空格/app/platform-server.jar"),value.jar());assertEquals(value.directory().resolve("runtime-private.json"),value.config());

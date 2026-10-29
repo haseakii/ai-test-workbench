@@ -1,0 +1,33 @@
+{
+  "candidate_sha256": {
+    "V10__local_accounts_and_login_limits.sql": "52aa4704e530e2adf54d5087572a6d5b3a1817ebdf2689f95c55949e3de8e72d",
+    "V11__production_bootstrap_guard.sql": "1d1ef8c21bc905f587f54f622c7fd3e10b5937f46af1fa151b73c656e52237e6",
+    "V1__platform.sql": "a5a5ae686f943be76b908a0c17381fea662695e78b544c5f74934bc28731e7c3",
+    "V2__title_source_and_quota_policy.sql": "3d6e1348322220eba5859c738fb93daa943f17308426725c8e5c6f8da90af2ed",
+    "V3__scoped_content_review.sql": "f7a19e1384e71a9782229a8c2ad0b6a70987e7b00e3ff85ee068d49d7ce8ce2c",
+    "V4__receipt_scope_and_production_marker.sql": "727741ee30230f61359af08bb2a9c481490ab3c13403fdf99017d65f7350c6a9",
+    "V5__frozen_quota_accounts.sql": "a479f9d0aa86fb1628e36db66fadcbb28ab4107ed1a87b9d75624b367549ef7b",
+    "V6__context_manifests.sql": "1aadb47f036d6120183dd928c3c48b0f100ecc04173c400650a413d9fc101294",
+    "V7__typed_provider_journal.sql": "ff4dad56ea304313654a87cc4aba893944a1ab2430041ea108d18bc8135b9ecb",
+    "V8__resource_operation_consumption.sql": "bf30db9f26d6d312ab65da697c672e996d10f7891656b4a6f02c877c12fc05e7",
+    "V9__local_auth_sessions.sql": "c0558a28b177612146b96a521d6bbb55dd1f8d9f3649acb7890a833f8b5bbc1c"
+  },
+  "database_tested": false,
+  "draft_specific": [
+    "V11__production_bootstrap_guard.sql"
+  ],
+  "kind": "review_only_empty_database_candidate",
+  "runtime_wired": false,
+  "source_sha256": {
+    "V10__local_accounts_and_login_limits.sql": "00f764339d5ae7785526670a0a44c637306b7f4d77eefc7e6d623984d49170f6",
+    "V1__platform.sql": "505b49670972b2de17eb2bcb818d28ea09f911af58fd8e0c016cc55a16e114bf",
+    "V2__title_source_and_quota_policy.sql": "db78222168aa7c614ae69a99ae6f8760511913f7fc5ce3fab03fd365ce44b492",
+    "V3__scoped_content_review.sql": "839fd62b6031430a832c09c1406d6045fa8cedc2fa4666a29970222e5c3efe7d",
+    "V4__receipt_scope_and_synthetic_marker.sql": "20dcb68df9ef8b8b25bc8cc26bd5b8f4df2e575171f7ad4de75f7daada3153da",
+    "V5__frozen_quota_accounts.sql": "02e55e3f6462da9248cb9e1809f14bd1ef3b40fc492e055d8d29c4f61be312c3",
+    "V6__context_manifests.sql": "64cca5af6f8d60ef0ec435e35b96a6ee23e161fe2bcdac8954269ce9f187e61c",
+    "V7__typed_provider_journal.sql": "7cfdcd1d6db5e20ce5eaa4d89d5000c704e06a74802963833cf0cbb6649f62a7",
+    "V8__resource_operation_consumption.sql": "4b888a6f6a4a1848e1e7c2feec978e3f22f0acfd8a9723da1006c2b929adf81b",
+    "V9__local_auth_sessions.sql": "1866613c8f609a96349311b4c079b2d93f4fd568ce24bf35a478aa19a1bff51f"
+  }
+}

@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 /** Read-only startup gate. Migration credentials, repair and DDL are never used here. */
 public final class SchemaReadiness {
-    public static final int PLATFORM_VERSION=7;
+    public static final int PLATFORM_VERSION=10;
     private SchemaReadiness(){}
     public static void platform(DataSource dataSource){verify(dataSource,"classpath:db/migration","flyway_schema_history",PLATFORM_VERSION);}
     public static void verify(DataSource dataSource,String location,String historyTable,int target){

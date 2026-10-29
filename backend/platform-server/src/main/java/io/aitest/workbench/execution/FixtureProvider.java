@@ -20,6 +20,8 @@ import static io.aitest.workbench.infrastructure.Store.*;
 
 /** Persistent local CSV test backend. This is not a real Agent or ACP implementation. */
 @Component
+@org.springframework.context.annotation.Profile("synthetic")
+@org.springframework.context.annotation.DependsOn("syntheticBoundary")
 public class FixtureProvider implements ExecutionProvider {
     public static final String PROVIDER_ID="persistent-synthetic";
     private final Store db;private final PreparationService preparation;private final Materials materials;

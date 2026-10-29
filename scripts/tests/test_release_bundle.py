@@ -193,6 +193,16 @@ class ReleaseBundleTest(unittest.TestCase):
         self.invoke('build', '--jar', str(jar), '--output-dir', str(output), success=False)
         self.assertFalse(output.exists())
 
+    def test_missing_new_migration_is_rejected_before_bundle_creation(self):
+        for entry in ['BOOT-INF/classes/db/migration/V8__resource_operation_consumption.sql',
+                      'BOOT-INF/classes/db/migration/V10__local_accounts_and_login_limits.sql',
+                      'BOOT-INF/classes/db/runner-migration/V3__scoped_command_intents.sql']:
+            with self.subTest(entry=entry):
+                jar = self.modified_jar(entry)
+                output = self.directory / ('out-' + entry.rsplit('/', 1)[1])
+                self.invoke('build', '--jar', str(jar), '--output-dir', str(output), success=False)
+                self.assertFalse(output.exists())
+
     def test_missing_mysql_dependency_is_rejected_before_bundle_creation(self):
         jar = self.modified_jar('BOOT-INF/lib/mysql-connector-j-')
         output = self.directory / 'out'

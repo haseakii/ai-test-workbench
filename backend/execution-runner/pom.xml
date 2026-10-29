@@ -4,8 +4,8 @@
   <dependencies>
     <dependency><groupId>io.aitest</groupId><artifactId>provider-contract</artifactId><version>${project.version}</version></dependency>
     <dependency><groupId>com.mysql</groupId><artifactId>mysql-connector-j</artifactId><scope>test</scope></dependency>
-    <!-- Offline D0 SDK compatibility probes only; no Agent or MCP service is started. -->
-    <dependency><groupId>com.agentclientprotocol</groupId><artifactId>acp-json-jackson3</artifactId><version>0.80.0</version><scope>test</scope></dependency>
+    <!-- The stdio host is unregistered and disabled until execution isolation is verified. -->
+    <dependency><groupId>com.agentclientprotocol</groupId><artifactId>acp-json-jackson3</artifactId><version>0.80.0</version></dependency>
     <dependency><groupId>io.modelcontextprotocol.sdk</groupId><artifactId>mcp-json-jackson3</artifactId><version>2.1.0</version><scope>test</scope></dependency>
     <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><scope>test</scope></dependency>
   </dependencies>

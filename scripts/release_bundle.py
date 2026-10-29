@@ -60,7 +60,7 @@ def artifact(jar):
             if not required.issubset(names) or not any(n.startswith(classes + 'static/assets/') and n.endswith('.js') for n in names):
                 raise ValueError()
             versions = sorted(int(re.search(r'/V([0-9]+)__', n)[1]) for n in names if re.fullmatch(r'BOOT-INF/classes/db/migration/V[0-9]+__[^/]+\.sql', n))
-            if versions != list(range(1, 8)):
+            if versions != list(range(1, 11)) or not {'BOOT-INF/classes/db/migration/V5__frozen_quota_accounts.sql', 'BOOT-INF/classes/db/runner-migration/V3__scoped_command_intents.sql', 'BOOT-INF/classes/db/migration/V9__local_auth_sessions.sql', 'BOOT-INF/classes/db/migration/V2__title_source_and_quota_policy.sql', 'BOOT-INF/classes/db/migration/V1__platform.sql', 'BOOT-INF/classes/db/migration/V4__receipt_scope_and_synthetic_marker.sql', 'BOOT-INF/classes/db/migration/V6__context_manifests.sql', 'BOOT-INF/classes/db/migration/V8__resource_operation_consumption.sql', 'BOOT-INF/classes/db/migration/V7__typed_provider_journal.sql', 'BOOT-INF/classes/db/runner-migration/V1__runner_journal.sql', 'BOOT-INF/classes/db/runner-migration/V2__single_start_intent.sql', 'BOOT-INF/classes/db/migration/V10__local_accounts_and_login_limits.sql', 'BOOT-INF/classes/db/migration/V3__scoped_content_review.sql'}.issubset(names):
                 raise ValueError()
             libs = sorted(n for n in names if n.startswith('BOOT-INF/lib/') and n.endswith('.jar'))
             required_libraries = ['mysql-connector-j-', 'spring-boot-', 'spring-jdbc-', 'flyway-core-', 'flyway-mysql-', 'provider-contract-']

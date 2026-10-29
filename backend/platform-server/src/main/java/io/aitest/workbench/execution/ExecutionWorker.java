@@ -22,6 +22,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static io.aitest.workbench.infrastructure.Store.*;
 
 @Service
+@org.springframework.context.annotation.Profile("synthetic")
+@org.springframework.context.annotation.DependsOn("syntheticBoundary")
 public class ExecutionWorker {
     private final Store db;private final Scope scope;private final PreparationService preparation;
     private final ExecutionProvider provider;private final Materials materials;

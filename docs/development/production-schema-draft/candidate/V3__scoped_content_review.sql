@@ -1,0 +1,4 @@
+-- REVIEW ONLY: empty database candidate; not wired, verified, or authorized for deployment.
+ALTER TABLE grants ADD COLUMN content_read BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE content_leases ADD COLUMN authorization_revision BIGINT NOT NULL DEFAULT 0,
+ ADD COLUMN grant_revision BIGINT NOT NULL DEFAULT 0;

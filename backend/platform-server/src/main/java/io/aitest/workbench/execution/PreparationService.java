@@ -15,6 +15,8 @@ import java.util.*;
 import static io.aitest.workbench.infrastructure.Store.*;
 
 @Service
+@org.springframework.context.annotation.Profile("synthetic")
+@org.springframework.context.annotation.DependsOn("syntheticBoundary")
 public class PreparationService {
     private final Store db;private final Scope scope;private final Materials materials;
     private final SyntheticCheckpoints checkpoints;

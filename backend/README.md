@@ -47,7 +47,7 @@ python scripts/synthetic_runtime.py doctor --runtime-dir <private-runtime-dir> -
 python scripts/synthetic_runtime.py up --runtime-dir <private-runtime-dir> --config <private-runtime.json> --platform-migration-config <private-platform-migration.json> --runner-migration-config <private-runner-migration.json> --java-home <jdk21> --jar <prebuilt-platform.jar>
 ```
 
-`doctor` 只读：检查配置权限/键/目标/TLS、Java 版本、Jar 完整性、目录可写性、端口或受管进程身份、MySQL 版本/引擎/严格模式/UTC/隔离级别以及 V1–V7 成功历史/校验和；不创建目录、改权限、迁移或写运行记录。`up` 先预检所有配置，依次用独立短期迁移进程检查/迁移平台和 Runner，再检查精确就绪并启动 JVM；Runner 迁移来自 Jar 内 `classpath:db/runner-migration`，无需源码目录或手工 SQL。迁移后的 Web 进程仅获得平台读写账号；没有迁移或 Runner 密码。已有数据上的重复检查应为 0 条新迁移，不能冒充完整空库安装证明。
+`doctor` 只读：检查配置权限/键/目标/TLS、Java 版本、Jar 完整性、目录可写性、端口或受管进程身份、MySQL 版本/引擎/严格模式/UTC/隔离级别以及当前源码目标的 V1–V10 成功历史/校验和；不创建目录、改权限、迁移或写运行记录。`up` 先预检所有配置，依次用独立短期迁移进程检查/迁移平台和 Runner，再检查精确就绪并启动 JVM；Runner 迁移来自 Jar 内 `classpath:db/runner-migration`，无需源码目录或手工 SQL。迁移后的 Web 进程仅获得平台读写账号；没有迁移或 Runner 密码。已有数据上的重复检查应为 0 条新迁移，不能冒充完整空库安装证明。
 
 日常运行沿同一入口，省略迁移参数，不重复初始化：
 
@@ -86,7 +86,7 @@ python scripts/synthetic_setup_check.py --runtime-dir <private-runtime-dir> --ru
 
 ## 工程和依赖
 
-三个 Maven 模块分别为 provider-contract、platform-server、execution-runner。最后一个目前只有边界和离线 SDK 验证，没有真实 ACP Runner。Java 目标为 21；Maven Wrapper 固定 3.9.11 并校验发行包 SHA-256；Boot 4.1.2 管理 Connector/J 9.7.0、Flyway core/mysql 12.4.0、Jackson 3.1.7。ACP 0.80.0、MCP 2.1.0 目前仅为离线测试依赖。
+三个 Maven 模块分别为 provider-contract、platform-server、execution-runner。Runner 模块已有接纳仲裁和一次性持久启动意图基础，尚未接入真实 ACP 进程或证明资源侧 fencing。Java 目标为 21；Maven Wrapper 固定 3.9.11 并校验发行包 SHA-256；Boot 4.1.2 管理 Connector/J 9.7.0、Flyway core/mysql 12.4.0、Jackson 3.1.7。ACP 0.80.0、MCP 2.1.0 目前仅为离线测试依赖。
 
 正式前端在 ../frontend，React 19.3.1、Vite 8.3.5，使用 package-lock.json。先构建前端，再打包服务，生成的静态资源进入同一服务 Jar。
 
@@ -191,3 +191,7 @@ WB_UI_REPORT=../docs/reviews/implementation-d0-d2/ui-submission-readiness-checks
 ```
 
 重复本地 HTTP/浏览器检查保留实际累计消费，不能把旧消费归零。当专用合成 Alice 账户剩余额度不足 20 且没有预占/活跃槽时，夹具通过既有受审计管理员 API 补足 100 单位测试余量，并为新测试环境设置一致上限；逐项核对消费/预占未变。该设置不涉及真实费用或数据库权限，产品默认值不变。仍有未决任务时先按原拥有者核查，不借配额调整释放未知占用。
+
+## D3 新增迁移与开发边界
+
+当前源码新增平台 V8（资源操作消费审计）、V9（独立会话摘要）、V10（独立账号及限流）与 Runner V2/V3（启动意图与命令命名空间）。平台启动门禁目标为 V10；旧 V7 数据库须由独立迁移入口在获准、服务停止且备份/恢复方案明确后升级，不能绕过门禁。Runner 启用前需验证 V2/V3 的完整历史；V2 将历史已接纳行保守标记为已有启动意图，禁止因缺记录重启。新增迁移尚未在本环境执行或通过真实 MySQL 验证，不能把离线测试当作升级成功。现有已打包制品及其 V7/V1 实测证据保留为原版本事实。
